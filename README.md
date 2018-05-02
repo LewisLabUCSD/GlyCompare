@@ -21,6 +21,12 @@ motifVector = glycan_str_to_glycan( json.load(open('unicarbkb_motifs_12259.json'
 glycanMotifs1 = mapMotifs( extractMotifs( glypyGlycan1 ) , motifsVector = motifVector ) 
 glycanMotifs2 = mapMotifs( extractMotifs( glypyGlycan2 ) , motifsVector = motifVector ) 
 ```
+### Existing Comparisons in GlyPy
+Using glypy we can compare two glycans based on ____?
+```
+glypy.compare( glycan1,glycan2) 
+```
+
 ### Compare glycans in motif-space
 
 With minimal loss of depth information, simple arithmetic comparisons are now possible in motif space:
@@ -80,4 +86,24 @@ We can also cluster glycoprofiles based on their motif contents:
 ```g = sns.clustermap( [commonMotifs_glycoprofile1 , commonMotifs_glycoprofile2] , metric='braycurtis')```
 
 ### Extact common motifs within a cluster
-<under construction>
+under construction
+
+### Construct Dependency Structure for New Mofif Vector
+```
+glycan_distance = np.matrix(1,len(motifVector),len(motifVector))
+for g1 in mofitVector:
+  for g2 in motifVector:
+    glypy.compare(g1,g2)
+# contruct hierarchy from distance matrix
+```
+
+### Motif Statistics 
+
+- Basic enrichment
+```
+ben glycoprofile test....whatever
+```
+- Motif Enrichment with heirarchical dependency 
+```
+glycoprofile compare with hierarchy
+```
