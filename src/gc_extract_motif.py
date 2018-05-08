@@ -8,7 +8,9 @@ from glypy.structure.glycan import fragment_to_substructure
 import time
 import multiprocessing
 import json
-import NBT_init
+import gc_init as NBT_init
+from gc_init import *
+
 
 def store_json(address, dic):
     with open(address, 'w') as fp:
@@ -21,6 +23,7 @@ def load_json(address):
 
 
 def get_motif(glycoct_obj, idex=0):
+    """imput a glycan object (loaded from glycoct.loads)"""
     # print('start getmotif')
     _frag_motif_list = {}
     # fig, axes = plt.subplots(6,9)
@@ -44,6 +47,7 @@ def get_motif(glycoct_obj, idex=0):
 
 
 def clean_duplicate(_frag_motif_dict):
+    """remove duplicates in a motif_dict"""
     for i in _frag_motif_dict.keys():
         # print(i)
         ldex = 0
@@ -134,27 +138,60 @@ def get_motif_with_count_wrap(idex, _name, glycoct_obj, motif_dic, success_list)
             print('break')
 
 
-def get_motif_pip(gly_len, used=False):
-    """to get the init file please run the NBT_GLYCAN_preprocess file"""
-    # root = r'/Users/apple/PycharmProjects/'
-    root = NBT_init.json_address
-    # root = "./"
-    glytoucan_data_base_addr__ = root + 'BNT_glycan_iupac_dic.json'
-    success_log_addr = root + 'BNT_for_motif_log.json'
-    glycan_list_addr = root + 'BNT_glycan_list_127.json'
-    glycan_motif_addr = root + 'BNT_glycan_with_motif.json'
-    x = load_json(glytoucan_data_base_addr__)
+def load_glycoct_for_database():
+    """get the glycoct format from glytoucan database or from self-generated local file"""
+    x = load_json(NBT_init.root_address + r'data_dic_finnn.json')
 
+    # store_json(r'/Users/apple/PycharmProjects/data_dic_finnn.json',x)
+    def get_drawed_glycan(addre):
+        from glypy.io import glycoct,iupac
+        f = open(addre)
+        _str = "".join(f.readlines())
+    #     for i in f.readlines():
+        return _str
+    output_for_motif = {}
+
+    f = open(r'/Users/apple/Desktop/NathanLab/NBT_Glycan_structure/Glycan_topolog_list.txt')
+    glycan_dict = {}
+    _count=0
+    for i in f.readlines():
+        _count += 1
+        _name, _code = i.rstrip('\n').split("\t")
+        _name = int(_name)
+        if len(_code) == 8:
+            try:
+                _gly_stru = x[_code]['structure_']
+            except KeyError:
+                print("no name: ", _code)
+                continue
+        else:
+            _addr = NBT_init.json_address+_code+".glycoct_condensed"
+            _gly_stru = get_drawed_glycan(_addr)
+
+        if _name not in glycan_dict.keys():
+            glycan_dict[_name] = {_code:glycoct.loads(_gly_stru)}
+
+        else:
+            glycan_dict[_name][_code] = glycoct.loads(_gly_stru)
+        output_for_motif[_code] = _gly_stru
+    print(_count)
+    store_json(r'/Users/apple/PycharmProjects/BNT_for_motif_extraction.json', output_for_motif)
+
+    return output_for_motif
+
+
+def get_motif_pip(gly_len, prior=True):
+    """Please set the prior=True, to get the data file please run the NBT_GLYCAN_preprocess file
+    If prior=False, it will extract glycan motif for all glycan in glytoucan database"""
+    # root = r'/Users/apple/PycharmProjects/'
     # multiprocess
     manager = multiprocessing.Manager()
 
     glycan_list = []
-    if used:
-        glycan_list = load_json(glycan_list_addr)
-        # glytoucan_motif_dic = manager.dict(load_json(glycan_motif_addr))
-        # success_list = manager.list(load_json(success_log_addr))
-
+    if prior:
+        glycan_list = load_json(glycoct_list_addr)
     else:
+        x = load_json(glytoucan_data_base_addr__)
         for i in x.keys():
             if type(x[i]) is dict:
                 if 'structure_' in x[i].keys():
@@ -164,7 +201,7 @@ def get_motif_pip(gly_len, used=False):
             elif type(x[i]) is str:
                 glycan_list.append(i)
         print('load ' + str(len(glycan_list)) + " glycan structure")
-        store_json(glycan_list_addr, glycan_list)
+        store_json(glycoct_list_addr, glycan_list)
 
     glytoucan_motif_dic = manager.dict()
     success_list = manager.list()
@@ -220,4 +257,5 @@ def get_motif_pip(gly_len, used=False):
 
 
 if __name__ == '__main__':
-    get_motif_pip(gly_len=23, used=False)
+    load_glycoct_for_database()
+    get_motif_pip(gly_len=23, prior=False)

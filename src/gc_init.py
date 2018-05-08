@@ -1,0 +1,171 @@
+from glypy.io import glycoct
+
+from json_utility import *
+
+# %matplotlib inline
+"""
+root address is json address
+"""
+
+root_ = "/Users/apple/PycharmProjects/GlyCompare/"
+num_processors = 8
+
+def glycan_str_to_glycan(a_dict_of_glycan_str):
+    if type(a_dict_of_glycan_str) == list:
+        return [glycoct.loads(i) for i in a_dict_of_glycan_str]
+    elif type(a_dict_of_glycan_str) == dict:
+        a_dict = {}
+        for i in a_dict_of_glycan_str.keys():
+            if type(a_dict_of_glycan_str[i]) == dict:
+                a_dict[i] = {}
+                for j in a_dict_of_glycan_str[i].keys():
+                    a_dict[i][j] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i][j]]
+            elif type(a_dict_of_glycan_str[i]) == list:
+                a_dict[i] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i]]
+            elif type(a_dict_of_glycan_str[i]) == str:
+                a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
+        return a_dict
+"""
+root address is json address
+"""
+
+json_address = root_ + "generated_json_file/"
+motif_plot_address = root_ + "motif_plot/"
+manual_curated_address = root_ + "glycan_structure/"
+plot_output_address = root_ + "output_plot/"
+source_address = root_ + "source_data/"
+
+# Part 1
+# for gc_extract motif
+"""
+def load_glycoct_for_database():
+    1. get the glycanID from Glycan_topolog_list
+        2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
+        3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
+        4. output a dict ID str -> glycoct str stored in: root_address + 'BNT_for_motif_extraction.json'
+"""
+# input
+glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json'
+topology_list = json_address + r'Glycan_topolog_list.txt'
+# output
+for_extraction_glycoct_dict_addr = json_address + 'BNT_for_motif_extraction.json'
+
+
+"""
+def get_motif_pip(gly_len, prior=True):
+    Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
+    If prior=False, it will generate glycan motif for all glycan in glytoucan database
+    1. load  dict ID -> glycoct str
+    2. convert to glypy.glycan obj
+    3. extract motif
+    4. save glycan_motif_addr
+"""
+# input
+for_extraction_glycoct_dict_addr = json_address + 'BNT_for_motif_extraction.json'
+glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json'
+# output
+success_log_addr = json_address + 'BNT_for_motif_log.json'
+glycan_list_addr = json_address + 'BNT_glycan_list_127.json'
+# this one will go into the next step
+glycan_dict_motif_list_addr = json_address + 'BNT_glycan_dict_degree_list_glycoct_for_motif.json'
+
+
+
+# part 2
+
+"""
+
+def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_addr):
+    merge the substructure of all glycans into motif dict
+    :param glycan_dict: degree -> [motif1, motif2, ... ]/BNT_glycan_dict_degree_list_glycoct_for_motif
+    store the glycan motif to BNT_motif_dic_degree_list.json
+    :return: sorted motif_vec
+    """
+# input
+BNT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(
+        load_json(glycan_dict_motif_list_addr))
+# output
+output_motif_dic_degree_list_addr = json_address + "BNT_motif_dic_degree_list.json"
+
+
+
+
+"""def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, id_list, matched_glycan_dict_addr):
+    :param motif_dict: degree - >[motif1, motif2, ...]  /NBT_motif_dic_degree_list
+    :param glycan_with_motif_dict: degree -> [motif1, motif2, ... ] /BNT_glycan_dict_degree_list_glycoct_for_motif
+    :param id_list: all GlytoucanID of the glycans you are analyzing /NBT_fixed_gylcan_name_list
+    :param matched_glycan_dict_addr: output_addr /NBT_fixed_gylcan_name_list
+    :return: glycan_match_existed_motif degree - >[motif1, motif2, ...]
+"""
+# input file
+NBT_motif_dic_degree_list = glycan_str_to_glycan(load_json(output_motif_dic_degree_list_addr))
+BNT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(
+        load_json(glycan_dict_motif_list_addr))
+NBT_fixed_gylcan_name_list = load_json(json_address + "BNT_fixed_gylcan_name.json")
+
+# output file
+output_matched_glycan_addr = json_address + "BNT_glycan_match_existed_motif.json"
+
+
+aaa = ['WT',
+       'mgat4A',
+       'mgat4A/mgat4B',
+       'mgat5',
+       'mgat4A/mgat4B/mgat5',
+       'B4GalT1',
+       'B4GalT2',
+       'B4GalT3',
+       'B4GalT4',
+       'B4GalT1/B4GalT2',
+       'B4GalT1/B4GalT3',
+       'B3gnt1',
+       'B3gnt2',
+       'st3gal3',
+       'st3gal4',
+       'st3gal6',
+       'st3gal3/st3gal4',
+       'st3gal4/st3gal6',
+       'KI_ST6GalNAc1/st3gal4/st3gal6',
+       'B3gnt2/mgat4a/mgat4b/mgat5',
+       'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
+       'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
+       'EPO48(mgat3)',
+       'EPO143(mgat4C)',
+       'EPO174(mgat2)',
+       'EPO200(B4galt1/B4galt2/B4galt3)',
+       'EPO275(B3gnt8)',
+       'EPO78(mgat4B)',
+       'EPO104(mgat5B)',
+       'EPO127(mgat1)',
+       'EPO259(mgat2/st3gal4/st3gal6)',
+       'EPO261(mgat2/mgat4A/mgat4B/mgat5)',
+       'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
+       'EPO266(fut8)']
+len(aaa)
+"""
+Run the gc_extract_motif and then run the gc_customized_motif_vec
+"""
+
+"""editing log from glypy
+1.  plypy.structure.monosaccharide 
+        class Monosaccharide
+              def __init__(self,....)
+        add line
+                 self.proportion = 0
+       
+2. from glypy.plot.buchheim import buchheim
+       change def first_walk(v, distance=0.6, visited=None)
+       change def second_walk(v, m=0, depth=0, min=None, visited=None)
+               min = second_walk(w, m + v.mod, depth + 0.55, min, visited=visited)
+       
+3. change draw_tree.py
+       DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
+
+4. whole plot_glycan_utility is wrapped and modified from plot() function from plot.draw_tree
+"""
+
+
+
+
+
+

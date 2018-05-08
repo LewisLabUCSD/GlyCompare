@@ -1,13 +1,10 @@
-import NBT_glycan_motif
-import NBT_init
 from json_utility import load_json
-from glypy.io import glycoct
-
 from glypy.plot.draw_tree import *
-
 from glypy.plot.buchheim import buchheim
 from glypy.plot.topological_layout import layout as topological
 from glypy.plot import cfg_symbols, iupac_symbols
+import gc_init
+import gc_glycan_motif
 
 line_to = cfg_symbols.line_to
 
@@ -39,7 +36,7 @@ layout_map = {
     "topological": topological
 }
 
-DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
+DEFAULT_SYMBOL_SCALE_FACTOR = 0.17
 
 #: :data:`special_cases` contains a list of names for
 #: special case monosaccharides
@@ -61,11 +58,11 @@ anomer_symbol_map = {
 
 
 def output_glycan_motif_vec_to_file():
-    vec_dict = load_json(NBT_init.root_address + 'BNT_motif_dic_degree_list.json')
-    motif_ = NBT_glycan_motif.GlycanMotifLib(vec_dict)
-    set_address = NBT_init.motif_plot_address
+    vec_dict = load_json(gc_init.json_address + 'BNT_motif_dic_degree_list.json')
+    motif_ = gc_glycan_motif.GlycanMotifLib(vec_dict)
+    set_address = gc_init.motif_plot_address
     for idex, i in enumerate(motif_.motif_vec):
-        _ = plot_glycan(i,center=True)
+        _ = plot_glycan(i, center=True)
         plt.savefig(set_address + str(idex) + '.png')
 
 
@@ -87,8 +84,14 @@ def plot_glycan_profile(a_profile, glycan_dict):
         _count += 1
 
 
-def plot_glycan_list(glycoct_list, idex_list=[], title='Glycans'):
-    _a = len(glycoct_list)
+def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
+    """
+    :param glycan_obj_list: a list of Glycan
+    :param idex_list: a list of index for glycan (i.e. motif indexes)
+    :param title: str title
+    :return: 
+    """
+    _a = len(glycan_obj_list)
     _len = 5
     _r = divmod(_a, 5)[0] + 1 if divmod(_a, 5)[1] != 0 else (divmod(_a, 5)[0])
     fig, axes = plt.subplots(_r, 5, squeeze=False)
@@ -98,19 +101,22 @@ def plot_glycan_list(glycoct_list, idex_list=[], title='Glycans'):
     #     print(axes)
     #     fig.set_size_inches(16,5)
     _count = 0
-    for idex, i in enumerate(glycoct_list):
+    for idex, i in enumerate(glycan_obj_list):
         #             print(i)
         #             print(divmod(_count, _a))
         _x, _y = divmod(_count, _len)
-        if idex_list == []:
+        if not idex_list:
             plot_glycan(i, ax=axes[_x][_y], center=True, title=str(idex))
         else:
             plot_glycan(i, ax=axes[_x][_y], center=True, title=str(idex_list[idex]))
-
         _count += 1
+    if addr == '':
+        pass
+    else:
+        plt.savefig(addr)
 
 
-def plot_glycan(tree, title='', at=(0, 0), ax=None, orientation='h', center=False, label=False,
+def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=False, label=False,
                 symbol_nomenclature='cfg', layout='balanced', **kwargs):
     '''
     Draw the parent outlink position and the child anomer symbol
@@ -187,6 +193,10 @@ def plot_glycan(tree, title='', at=(0, 0), ax=None, orientation='h', center=Fals
         ax.set_ylim(*ylim)
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
+    if addr == '':
+        pass
+    else:
+        plt.savefig(addr)
     return (dtree, ax)
 
 

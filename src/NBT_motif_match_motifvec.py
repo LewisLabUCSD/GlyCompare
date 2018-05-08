@@ -13,7 +13,7 @@ from json_utility import load_json
 import time
 import numpy as np
 import NBT_glycan_profile
-import NBT_data_processing_pip
+import gc_customizing_motif_vec
 import NBT_init
 import NBT_glycan_motif
 
