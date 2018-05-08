@@ -58,8 +58,7 @@ anomer_symbol_map = {
 
 
 def output_glycan_motif_vec_to_file():
-    vec_dict = load_json(gc_init.json_address + 'BNT_motif_dic_degree_list.json')
-    motif_ = gc_glycan_motif.GlycanMotifLib(vec_dict)
+    motif_ = gc_glycan_motif.GlycanMotifLib(gc_init.vec_dict)
     set_address = gc_init.motif_plot_address
     for idex, i in enumerate(motif_.motif_vec):
         _ = plot_glycan(i, center=True)

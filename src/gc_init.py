@@ -1,14 +1,31 @@
 from glypy.io import glycoct
-
 from json_utility import *
 
 # %matplotlib inline
-"""
-root address is json address
+
+
+########################################################################################
+"""editing log for glypy
+1.  plypy.structure.monosaccharide 
+        class Monosaccharide
+              def __init__(self,....)
+        add line
+                 self.proportion = 0
+       
+2. from glypy.plot.buchheim import buchheim
+       change def first_walk(v, distance=0.6, visited=None)
+       change def second_walk(v, m=0, depth=0, min=None, visited=None)
+               min = second_walk(w, m + v.mod, depth + 0.55, min, visited=visited)
+       
+3. change draw_tree.py
+       DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
+
+4. whole plot_glycan_utility is wrapped and modified from plot() function from plot.draw_tree
 """
 
-root_ = "/Users/apple/PycharmProjects/GlyCompare/"
-num_processors = 8
+########################################################################################
+# Basic editing
+
 
 def glycan_str_to_glycan(a_dict_of_glycan_str):
     if type(a_dict_of_glycan_str) == list:
@@ -25,24 +42,27 @@ def glycan_str_to_glycan(a_dict_of_glycan_str):
             elif type(a_dict_of_glycan_str[i]) == str:
                 a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
         return a_dict
-"""
-root address is json address
-"""
 
+# setting up the basic directory
+root_ = "/Users/apple/PycharmProjects/GlyCompare/"
+num_processors = 8
 json_address = root_ + "generated_json_file/"
 motif_plot_address = root_ + "motif_plot/"
 manual_curated_address = root_ + "glycan_structure/"
 plot_output_address = root_ + "output_plot/"
 source_address = root_ + "source_data/"
 
-# Part 1
+
+
+########################################################################################
+# Part 1 check gc_extract_motif.py
 # for gc_extract motif
 """
 def load_glycoct_for_database():
     1. get the glycanID from Glycan_topolog_list
-        2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
-        3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
-        4. output a dict ID str -> glycoct str stored in: root_address + 'BNT_for_motif_extraction.json'
+    2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
+    3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
+    4. output a dict ID str -> glycoct str stored in: root_address + 'BNT_for_motif_extraction.json'
 """
 # input
 glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json'
@@ -71,7 +91,8 @@ glycan_dict_motif_list_addr = json_address + 'BNT_glycan_dict_degree_list_glycoc
 
 
 
-# part 2
+########################################################################################
+# part 2 check gc_customizing_motif_vec.py
 
 """
 
@@ -105,6 +126,29 @@ NBT_fixed_gylcan_name_list = load_json(json_address + "BNT_fixed_gylcan_name.jso
 
 # output file
 output_matched_glycan_addr = json_address + "BNT_glycan_match_existed_motif.json"
+
+
+
+
+########################################################################################
+# part 3
+# for plotting glycan, check gc_plot_glycan_utilities.py
+"""
+# def plot_glycan_list(glycoct_list, idex_list=[], title='Glycans')
+        
+# def plot_glycan(tree, title='', at=(0, 0), ax=None, orientation='h', center=False, label=False,
+                symbol_nomenclature='cfg', layout='balanced', **kwargs):
+# def output_glycan_motif_vec_to_file
+"""
+vec_dict = load_json(output_motif_dic_degree_list_addr)
+
+#
+# def load_motif_vec():
+#     return load_json(json_address + "BNT_motif_vec.json")
+
+
+# def load_motif_vec_obj():
+#     return [glycoct.loads(i) for i in load_json(root_address + "BNT_motif_vec.json")]
 
 
 aaa = ['WT',
@@ -142,27 +186,10 @@ aaa = ['WT',
        'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
        'EPO266(fut8)']
 len(aaa)
-"""
-Run the gc_extract_motif and then run the gc_customized_motif_vec
-"""
 
-"""editing log from glypy
-1.  plypy.structure.monosaccharide 
-        class Monosaccharide
-              def __init__(self,....)
-        add line
-                 self.proportion = 0
-       
-2. from glypy.plot.buchheim import buchheim
-       change def first_walk(v, distance=0.6, visited=None)
-       change def second_walk(v, m=0, depth=0, min=None, visited=None)
-               min = second_walk(w, m + v.mod, depth + 0.55, min, visited=visited)
-       
-3. change draw_tree.py
-       DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
 
-4. whole plot_glycan_utility is wrapped and modified from plot() function from plot.draw_tree
-"""
+
+
 
 
 
