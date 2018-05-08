@@ -1,22 +1,10 @@
-# from json_utility import *
 import time
-from glypy.io import glycoct, iupac
 from glypy.algorithms.subtree_search import subtree_of
-from glypy.plot import plot
 from glypy.structure.glycan import fragment_to_substructure
-from glypy.io.glycoct import dump
-# from glycan_trie import  clean_duplicate
-from matplotlib import pyplot as plt
-# from parser_glytoucan_utility import *
-import numpy as np
 import multiprocessing
-import pandas as pd
 from gc_init import *
-# %matplotlib inline
-import gc_init
 import json
 
-import gc_plot_glycan_utilities
 def clean_duplicate(_frag_motif_list):
     for i in _frag_motif_list.keys():
         # print(i)
@@ -390,12 +378,18 @@ def load_dependency():
 def a_main():
 
     """ merge the substructure of all glycans into motif dict"""
+    BNT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(
+        load_json(glycan_dict_motif_list_addr))
     # output_motif_dic_degree_list_addr = root + "BNT_motif_dic_degree_list.json"
     NBT_motif_dic_degree_list = get_motif_dict_degree_list_pipe(BNT_glycan_dict_degree_list_glycoct_for_motif, output_motif_dic_degree_list_addr)
     # NBT_motif_dic_degree_list = glycan_str_to_glycan(load_json(root+"BNT_motif_dic_degree_list.json"))
 
     """ Start motif matching"""
     # print('start motif match')
+    BNT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(load_json(glycan_dict_motif_list_addr))
+    BNT_motif_dic_degree_list = glycan_str_to_glycan(load_json(output_motif_dic_degree_list_addr))
+    NBT_fixed_gylcan_name_list = load_json(NBT_fixed_gylcan_name_list_addr)
+
     # NBT_fixed_gylcan_name_list = load_json(root + "BNT_fixed_gylcan_name.json")
     glycan_match_existed_motif = motif_matching_wrapper(NBT_motif_dic_degree_list,
                                                         BNT_glycan_dict_degree_list_glycoct_for_motif,

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" afterPath="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_extract_motif.py" afterPath="$PROJECT_DIR$/src/gc_extract_motif.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_init.py" afterPath="$PROJECT_DIR$/src/gc_init.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/src/gc_plot_glycan_utilities.py" />
     </list>
@@ -14,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gc_extract_motif.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gc_extract_motif.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gc_extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="153" column="23" lean-forward="false" selection-start-line="153" selection-start-column="23" selection-end-line="153" selection-end-column="23" />
+            <state relative-caret-position="1296">
+              <caret line="243" column="8" lean-forward="false" selection-start-line="243" selection-start-column="8" selection-end-line="243" selection-end-column="8" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -29,21 +31,21 @@
       <file leaf-file-name="json_utility.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json_utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gc_init.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gc_init.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gc_init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="145" column="7" lean-forward="false" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
+            <state relative-caret-position="419">
+              <caret line="87" column="16" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="16" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#5905#6824#0" expanded="false" />
+                <element signature="e#5579#6498#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -52,20 +54,8 @@
       <file leaf-file-name="gc_customizing_motif_vec.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="29" column="41" lean-forward="false" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-              <folding>
-                <element signature="e#29#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NBT_motif_match_motifvec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="45">
+              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -75,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/src/gc_plot_glycan_utilities.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="194">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -95,16 +85,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NBT_nglycan_alignment.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NBT_nglycan_alignment.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -117,6 +97,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>NBT_init</find>
+      <find>load</find>
+      <find>NBT_motif_dic_degree_list_addr</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -132,12 +114,12 @@
         <option value="$PROJECT_DIR$/src/NBT_data_processing_pip.py" />
         <option value="$PROJECT_DIR$/src/init_env.py" />
         <option value="$PROJECT_DIR$/src/get_motif_server_version.py" />
-        <option value="$PROJECT_DIR$/src/gc_extract_motif.py" />
         <option value="$PROJECT_DIR$/src/gc_customized_motif_vec.py" />
-        <option value="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" />
         <option value="$PROJECT_DIR$/src/gc_glycan_motif.py" />
-        <option value="$PROJECT_DIR$/src/gc_plot_glycan_utilities.py" />
         <option value="$PROJECT_DIR$/src/gc_init.py" />
+        <option value="$PROJECT_DIR$/src/gc_plot_glycan_utilities.py" />
+        <option value="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" />
+        <option value="$PROJECT_DIR$/src/gc_extract_motif.py" />
       </list>
     </option>
   </component>
@@ -148,8 +130,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="157" />
-    <option name="y" value="-1026" />
+    <option name="y" value="64" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
@@ -248,7 +229,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="157" y="-1026" width="1440" height="877" extended-state="0" />
+    <frame x="0" y="64" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -301,13 +282,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
@@ -335,9 +309,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5865">
           <caret line="408" column="64" lean-forward="false" selection-start-line="408" selection-start-column="64" selection-end-line="408" selection-end-column="64" />
-          <folding>
-            <element signature="e#29#40#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -355,7 +327,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#5905#6824#0" expanded="false" />
+            <element signature="e#5579#6498#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -388,42 +360,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/init_env.py" />
     <entry file="file://$PROJECT_DIR$/src/extract_motif.py" />
-    <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="29" column="41" lean-forward="false" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-          <folding>
-            <element signature="e#29#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gc_extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="153" column="23" lean-forward="false" selection-start-line="153" selection-start-column="23" selection-end-line="153" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gc_glycan_motif.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
@@ -437,20 +373,54 @@
     <entry file="file://$PROJECT_DIR$/src/gc_plot_glycan_utilities.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gc_init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="145" column="7" lean-forward="false" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
+        <state relative-caret-position="419">
+          <caret line="87" column="16" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="16" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#5905#6824#0" expanded="false" />
+            <element signature="e#5579#6498#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gc_extract_motif.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="243" column="8" lean-forward="false" selection-start-line="243" selection-start-column="8" selection-end-line="243" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -8,7 +8,7 @@ from glypy.structure.glycan import fragment_to_substructure
 import time
 import multiprocessing
 import json
-import gc_init as NBT_init
+import gc_init
 from gc_init import *
 
 
@@ -22,8 +22,7 @@ def load_json(address):
         return json.load(f)
 
 
-def get_motif(glycoct_obj, idex=0):
-    """imput a glycan object (loaded from glycoct.loads)"""
+def extract_motif(glycoct_obj, idex=0):
     # print('start getmotif')
     _frag_motif_list = {}
     # fig, axes = plt.subplots(6,9)
@@ -47,7 +46,6 @@ def get_motif(glycoct_obj, idex=0):
 
 
 def clean_duplicate(_frag_motif_dict):
-    """remove duplicates in a motif_dict"""
     for i in _frag_motif_dict.keys():
         # print(i)
         ldex = 0
@@ -82,7 +80,7 @@ def clean_duplicate(_frag_motif_dict):
 #     return _frag_motif_dict
 
 
-def get_motif_with_count(glycoct_obj, idex=0):
+def extract_motif_with_count(glycoct_obj, idex=0):
     # print('start getmotif')
     _frag_motif_list = {}
     start_time = time.time()
@@ -102,12 +100,12 @@ def get_motif_with_count(glycoct_obj, idex=0):
     return _frag_motif_list
 
 
-def get_motif_wrap(idex, _name, glycoct_obj, motif_dic, success_list):
+def extract_motif_wrap(idex, _name, glycoct_obj, motif_dic, success_list):
     if not _name in success_list:
         try:
             # print('start', _name, glycoct_obj)
 
-            _temp_motif = get_motif(glycoct_obj, idex)
+            _temp_motif = extract_motif(glycoct_obj, idex)
             motif_dic[_name] = _temp_motif
             # print('has_motif', motif_dic[_name])
 
@@ -120,12 +118,12 @@ def get_motif_wrap(idex, _name, glycoct_obj, motif_dic, success_list):
             print('break')
 
 
-def get_motif_with_count_wrap(idex, _name, glycoct_obj, motif_dic, success_list):
+def extract_motif_with_count_wrap(idex, _name, glycoct_obj, motif_dic, success_list):
     if not _name in success_list:
         try:
             # print('start', _name, glycoct_obj)
 
-            _temp_motif = get_motif_with_count(glycoct_obj, idex)
+            _temp_motif = extract_motif_with_count(glycoct_obj, idex)
             motif_dic[_name] = _temp_motif
             # print('has_motif', motif_dic[_name])
 
@@ -139,8 +137,12 @@ def get_motif_with_count_wrap(idex, _name, glycoct_obj, motif_dic, success_list)
 
 
 def load_glycoct_for_database():
-    """get the glycoct format from glytoucan database or from self-generated local file"""
-    x = load_json(NBT_init.root_address + r'data_dic_finnn.json')
+    """ 1. get the glycanID from Glycan_topolog_list
+        2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
+        3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
+        4. output a dict ID str -> glycoct str stored in: root_address + 'BNT_for_motif_extraction.json'
+        """
+    x = load_json(glytoucan_data_base_addr__)
 
     # store_json(r'/Users/apple/PycharmProjects/data_dic_finnn.json',x)
     def get_drawed_glycan(addre):
@@ -151,7 +153,7 @@ def load_glycoct_for_database():
         return _str
     output_for_motif = {}
 
-    f = open(r'/Users/apple/Desktop/NathanLab/NBT_Glycan_structure/Glycan_topolog_list.txt')
+    f = open(topology_list)
     glycan_dict = {}
     _count=0
     for i in f.readlines():
@@ -165,7 +167,7 @@ def load_glycoct_for_database():
                 print("no name: ", _code)
                 continue
         else:
-            _addr = NBT_init.json_address+_code+".glycoct_condensed"
+            _addr = gc_init.manual_curated_address+_code+".glycoct_condensed"
             _gly_stru = get_drawed_glycan(_addr)
 
         if _name not in glycan_dict.keys():
@@ -175,23 +177,33 @@ def load_glycoct_for_database():
             glycan_dict[_name][_code] = glycoct.loads(_gly_stru)
         output_for_motif[_code] = _gly_stru
     print(_count)
-    store_json(r'/Users/apple/PycharmProjects/BNT_for_motif_extraction.json', output_for_motif)
+    store_json(for_extraction_glycoct_dict_addr, output_for_motif)
 
     return output_for_motif
 
 
 def get_motif_pip(gly_len, prior=True):
-    """Please set the prior=True, to get the data file please run the NBT_GLYCAN_preprocess file
-    If prior=False, it will extract glycan motif for all glycan in glytoucan database"""
+    """Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
+    If prior=False, it will generate glycan motif for all glycan in glytoucan database
+    1. load  dict ID -> glycoct str
+    2. convert to glypy.glycan obj
+    3. extract motif
+    4. save glycan_motif_addr
+    """
     # root = r'/Users/apple/PycharmProjects/'
     # multiprocess
     manager = multiprocessing.Manager()
-
+    x = load_json(glytoucan_data_base_addr__)
     glycan_list = []
     if prior:
-        glycan_list = load_json(glycoct_list_addr)
+        glycan_dict = load_json(for_extraction_glycoct_dict_addr)
+        glycoct_dict={}
+        glycan_list = list(glycan_dict.keys())
+        for i in glycan_dict:
+            glycoct_dict[i] = glycoct.loads(glycan_dict[i])
+
     else:
-        x = load_json(glytoucan_data_base_addr__)
+
         for i in x.keys():
             if type(x[i]) is dict:
                 if 'structure_' in x[i].keys():
@@ -201,35 +213,32 @@ def get_motif_pip(gly_len, prior=True):
             elif type(x[i]) is str:
                 glycan_list.append(i)
         print('load ' + str(len(glycan_list)) + " glycan structure")
-        store_json(glycoct_list_addr, glycan_list)
-
+        store_json(for_extraction_glycoct_dict_addr, glycan_list)
+        glycoct_dict = {}
+        count_ = 0
+        for i in glycan_list:
+            count_ += 1
+            print(i)
+            if count_ % 1000 == 0:
+                print(count_)
+            if type(x[i]) is str:
+                glycoct_dict[i] = glycoct.loads(x[i])
+            elif type(x[i]) is dict and 'structure_' in x[i].keys():
+                glycoct_dict[i] = glycoct.loads(x[i]['structure_'])
     glytoucan_motif_dic = manager.dict()
     success_list = manager.list()
-    # print(glycan_list[:2])
 
     end_time = time.time()
 
-    # success_list = manager.list()
-    glycoct_dict = {}
-    count_ = 0
-    for i in glycan_list:
-        count_ += 1
-        if count_ % 1000 == 0:
-            print(count_)
-        if type(x[i]) is str:
-            glycoct_dict[i] = glycoct.loads(x[i])
-        elif type(x[i]) is dict and 'structure_' in x[i].keys():
-            glycoct_dict[i] = glycoct.loads(x[i]['structure_'])
+    print('start parallel')
 
-    print('start parappel')
-    num_processors = 8
     pool = multiprocessing.Pool(processes=num_processors)
-    for idex, i in enumerate(glycan_list):
+    for idex, i in enumerate(glycoct_dict):
         if len(glycoct_dict[i]) > gly_len: continue
         """ using get motif with count wrapper
             Also check exists wrapper
         """
-        pool.apply_async(get_motif_with_count_wrap, args=(idex, i, glycoct_dict[i], glytoucan_motif_dic, success_list))
+        pool.apply_async(extract_motif_with_count_wrap, args=(idex, i, glycoct_dict[i], glytoucan_motif_dic, success_list))
         # print('finished ', idex)
     print("closing poll")
     pool.close()
@@ -238,7 +247,6 @@ def get_motif_pip(gly_len, prior=True):
 
     print('finished pool')
     a_motif_dic = dict(glytoucan_motif_dic)
-    # print(a_motif_dic)
 
     print('success_log')
     success_list = list(success_list)
@@ -253,9 +261,9 @@ def get_motif_pip(gly_len, prior=True):
         if i not in a_motif_dic.keys(): continue
         for j in a_motif_dic[i].keys():
             str_motif[i][j] = [str(k) for k in a_motif_dic[i][j]]
-    store_json(glycan_motif_addr, str_motif)
+    store_json(glycan_dict_motif_list_addr, str_motif)
 
 
 if __name__ == '__main__':
     load_glycoct_for_database()
-    get_motif_pip(gly_len=23, prior=False)
+    get_motif_pip(gly_len=23, prior=True)

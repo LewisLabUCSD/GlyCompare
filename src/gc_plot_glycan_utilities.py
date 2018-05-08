@@ -4,6 +4,7 @@ from glypy.plot.buchheim import buchheim
 from glypy.plot.topological_layout import layout as topological
 from glypy.plot import cfg_symbols, iupac_symbols
 import gc_init
+from gc_init import *
 import gc_glycan_motif
 
 line_to = cfg_symbols.line_to
@@ -58,7 +59,8 @@ anomer_symbol_map = {
 
 
 def output_glycan_motif_vec_to_file():
-    motif_ = gc_glycan_motif.GlycanMotifLib(gc_init.vec_dict)
+    vec_dict = load_json(output_motif_dic_degree_list_addr)
+    motif_ = gc_glycan_motif.GlycanMotifLib(vec_dict)
     set_address = gc_init.motif_plot_address
     for idex, i in enumerate(motif_.motif_vec):
         _ = plot_glycan(i, center=True)
