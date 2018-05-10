@@ -43,20 +43,21 @@ source_address = root_ + "source_data/"
 ########################################################################################
 # Part 1 check gc_extract_motif.py
 # for gc_extract motif
-"""
-def load_glycoct_for_database():
-    1. get the glycanID from Glycan_topolog_list
-    2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
-    3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
-    4. output a dict ID str -> glycoct str stored in: root_address + 'BNT_for_motif_extraction.json'
-"""
-# input
+# """
+# def load_glycoct_for_database():
+#     1. get the glycanID from Glycan_topolog_list
+#     2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
+#     3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
+#     4. output a dict ID str -> glycoct str stored in: root_address + 'NBT_for_motif_extraction.json'
+# """
+# # input
 glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json'
 topology_list = json_address + r'Glycan_topolog_list.txt'
-# output
-glycoct_dict_goto_extraction_addr = json_address + 'BNT_for_motif_extraction.json'
+# # output
+glycoct_dict_goto_extraction_addr = json_address + 'NBT_for_motif_extraction.json'
+#
 
-
+# <___________Ben___Start from here _________________>
 """
 def get_motif_pip(gly_len, prior=True):
     Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
@@ -67,13 +68,15 @@ def get_motif_pip(gly_len, prior=True):
     4. save glycan_motif_addr
 """
 # input
-glycoct_dict_goto_extraction_addr # from above
-glytoucan_data_base_addr__ # from above
+glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json' # from above
+glycoct_dict_goto_extraction_addr = json_address + 'NBT_for_motif_extraction.json'
+
+# glytoucan_data_base_addr__ # from above
 # output
-success_log_addr = json_address + 'BNT_for_motif_log.json'
-glycan_list_addr = json_address + 'BNT_glycan_list_127.json'
+success_log_addr = json_address + 'NBT_for_motif_log.json'
+glycan_list_addr = json_address + 'NBT_glycan_list_127.json'
 # this one will go into the next step
-glycan_dict_motif_list_addr = json_address + 'BNT_glycan_dict_degree_list_glycoct_for_motif.json'
+glycan_dict_motif_list_addr = json_address + 'NBT_glycan_dict_degree_list_glycoct_for_motif.json'
 
 
 
@@ -84,22 +87,22 @@ glycan_dict_motif_list_addr = json_address + 'BNT_glycan_dict_degree_list_glycoc
 
 def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_addr):
     merge the substructure of all glycans into motif dict
-    :param glycan_dict: degree -> [motif1, motif2, ... ]/BNT_glycan_dict_degree_list_glycoct_for_motif
-    store the glycan motif to BNT_motif_dic_degree_list.json
+    :param glycan_dict: degree -> [motif1, motif2, ... ]/NBT_glycan_dict_degree_list_glycoct_for_motif
+    store the glycan motif to NBT_motif_dic_degree_list.json
     :return: sorted motif_vec
     """
 # input
 glycan_dict_motif_list_addr # from part 1
 
 # output
-output_motif_dic_degree_list_addr = json_address + "BNT_motif_dic_degree_list.json"
+output_motif_dic_degree_list_addr = json_address + "NBT_motif_dic_degree_list.json"
 
 
 
 
 """def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, id_list, matched_glycan_dict_addr):
     :param motif_dict: degree - >[motif1, motif2, ...]  /NBT_motif_dic_degree_list
-    :param glycan_with_motif_dict: degree -> [motif1, motif2, ... ] /BNT_glycan_dict_degree_list_glycoct_for_motif
+    :param glycan_with_motif_dict: degree -> [motif1, motif2, ... ] /NBT_glycan_dict_degree_list_glycoct_for_motif
     :param id_list: all GlytoucanID of the glycans you are analyzing /NBT_fixed_gylcan_name_list
     :param matched_glycan_dict_addr: output_addr /NBT_fixed_gylcan_name_list
     :return: glycan_match_existed_motif degree - >[motif1, motif2, ...]
@@ -107,10 +110,10 @@ output_motif_dic_degree_list_addr = json_address + "BNT_motif_dic_degree_list.js
 # input file
 glycan_dict_motif_list_addr # from above
 output_motif_dic_degree_list_addr # from above
-NBT_fixed_gylcan_name_list_addr= json_address + "BNT_fixed_gylcan_name.json"
+NBT_fixed_gylcan_name_list_addr= json_address + "NBT_fixed_gylcan_name.json"
 
 # output file
-output_matched_glycan_addr = json_address + "BNT_glycan_match_existed_motif.json"
+output_matched_glycan_addr = json_address + "NBT_glycan_match_existed_motif.json"
 
 
 
@@ -128,11 +131,11 @@ output_matched_glycan_addr = json_address + "BNT_glycan_match_existed_motif.json
 
 #
 # def load_motif_vec():
-#     return load_json(json_address + "BNT_motif_vec.json")
+#     return load_json(json_address + "NBT_motif_vec.json")
 
 
 # def load_motif_vec_obj():
-#     return [glycoct.loads(i) for i in load_json(root_address + "BNT_motif_vec.json")]
+#     return [glycoct.loads(i) for i in load_json(root_address + "NBT_motif_vec.json")]
 
 
 aaa = ['WT',

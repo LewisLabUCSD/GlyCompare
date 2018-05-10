@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo.ipynb" afterPath="$PROJECT_DIR$/src/demo.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" afterPath="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_extract_motif.py" afterPath="$PROJECT_DIR$/src/gc_extract_motif.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gc_init.py" afterPath="$PROJECT_DIR$/src/gc_init.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +20,8 @@
       <file leaf-file-name="gc_extract_motif.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gc_extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="110" column="30" lean-forward="false" selection-start-line="110" selection-start-column="11" selection-end-line="110" selection-end-column="30" />
+            <state relative-caret-position="290">
+              <caret line="216" column="26" lean-forward="false" selection-start-line="216" selection-start-column="26" selection-end-line="216" selection-end-column="26" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -36,27 +39,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gc_init.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gc_init.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gc_init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="56" column="33" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
+            <state relative-caret-position="237">
+              <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="26" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#4804#5723#0" expanded="false" />
+                <element signature="e#4997#5916#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gc_customizing_motif_vec.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gc_customizing_motif_vec.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2955">
-              <caret line="256" column="54" lean-forward="false" selection-start-line="256" selection-start-column="54" selection-end-line="256" selection-end-column="54" />
+            <state relative-caret-position="382">
+              <caret line="324" column="0" lean-forward="true" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#1263#1304#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -100,10 +102,17 @@
       <find>NBT_init</find>
       <find>NBT_motif_dic_degree_list_addr</find>
       <find>load</find>
+      <find>BNT</find>
+      <find>BNT_</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
+      <replace>NBT</replace>
+      <replace>NBT_</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -118,9 +127,10 @@
         <option value="$PROJECT_DIR$/src/gc_customized_motif_vec.py" />
         <option value="$PROJECT_DIR$/src/gc_glycan_motif.py" />
         <option value="$PROJECT_DIR$/src/gc_plot_glycan_utilities.py" />
+        <option value="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" />
+        <option value="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" />
         <option value="$PROJECT_DIR$/src/gc_extract_motif.py" />
         <option value="$PROJECT_DIR$/src/gc_init.py" />
-        <option value="$PROJECT_DIR$/src/gc_customizing_motif_vec.py" />
       </list>
     </option>
   </component>
@@ -130,10 +140,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="100" />
-    <option name="y" value="32" />
-    <option name="width" value="1214" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="141" />
+    <option name="y" value="103" />
+    <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -231,18 +241,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="141" y="103" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17381974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17381974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -251,7 +262,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -313,7 +323,7 @@
           <caret line="56" column="33" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#4804#5723#0" expanded="false" />
+            <element signature="e#4997#5916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -344,7 +354,6 @@
           <caret line="171" column="58" lean-forward="false" selection-start-line="171" selection-start-column="58" selection-end-line="171" selection-end-column="58" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#1263#1304#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -373,7 +382,6 @@
           <caret line="408" column="64" lean-forward="false" selection-start-line="408" selection-start-column="64" selection-end-line="408" selection-end-column="64" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#1263#1304#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -382,6 +390,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -391,7 +400,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#4804#5723#0" expanded="false" />
+            <element signature="e#4997#5916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -410,6 +419,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -417,6 +427,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -444,6 +455,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -457,10 +469,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="324" column="0" lean-forward="true" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gc_extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="110" column="30" lean-forward="false" selection-start-line="110" selection-start-column="11" selection-end-line="110" selection-end-column="30" />
+        <state relative-caret-position="290">
+          <caret line="216" column="26" lean-forward="false" selection-start-line="216" selection-start-column="26" selection-end-line="216" selection-end-column="26" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -469,22 +505,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gc_init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="56" column="33" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
+        <state relative-caret-position="237">
+          <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="26" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#4804#5723#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gc_customizing_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
-          <caret line="256" column="54" lean-forward="false" selection-start-line="256" selection-start-column="54" selection-end-line="256" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#1263#1304#0" expanded="false" />
+            <element signature="e#4997#5916#0" expanded="false" />
           </folding>
         </state>
       </provider>

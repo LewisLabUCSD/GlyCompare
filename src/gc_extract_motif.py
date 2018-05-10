@@ -160,7 +160,7 @@ def load_glycoct_for_database():
     """ 1. get the glycanID from Glycan_topolog_list
         2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
         3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
-        4. output a dict ID str -> glycoct str stored in: root_address + 'BNT_for_motif_extraction.json'
+        4. output a dict ID str -> glycoct str stored in: root_address + 'NBT_for_motif_extraction.json'
         """
     x = load_json(glytoucan_data_base_addr__)
 
@@ -222,7 +222,6 @@ def get_motif_pip(gly_len, prior=True):
         glycan_list = list(glycan_dict.keys())
         for i in glycan_dict:
             glycoct_dict[i] = glycoct.loads(glycan_dict[i])
-
     else:
 
         for i in x.keys():
@@ -286,5 +285,6 @@ def get_motif_pip(gly_len, prior=True):
 
 
 if __name__ == '__main__':
-    load_glycoct_for_database()
-    get_motif_pip(gly_len=23, prior=True)
+    # load_glycoct_for_database()
+    # get_motif_pip(gly_len=23, prior=True)
+    pass
