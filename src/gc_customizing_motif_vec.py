@@ -8,6 +8,11 @@ import json
 
 
 def glycan_str_to_glycan(a_dict_of_glycan_str):
+    """
+
+    :param a_dict_of_glycan_str: load glycoct str transform to Glycan
+    :return:
+    """
     if type(a_dict_of_glycan_str) == list:
         return [glycoct.loads(i) for i in a_dict_of_glycan_str]
     elif type(a_dict_of_glycan_str) == dict:
@@ -96,12 +101,12 @@ def load_json(address):
 #         profile_obj_list.append(glycan_profile_obj(glycan_id_, mz_, abundance_, weighted_matrix))
 
 
-def _duplicate_cleaning_wrapper(idex, motif_list, cleaned_motif_dic):
+def _duplicate_cleaning_wrapper(degree, motif_list, cleaned_motif_dic):
     """
 
-    :param idex:
-    :param motif_list:
-    :param cleaned_motif_dic: store the
+    :param degree: complexity degree
+    :param motif_list: a list of Glycan
+    :param cleaned_motif_dic: stored
     :return:
     """
     ldex = 0
@@ -123,7 +128,7 @@ def _duplicate_cleaning_wrapper(idex, motif_list, cleaned_motif_dic):
                 print(ldex, jdex)
         # if not find_same:
         ldex += 1
-    cleaned_motif_dic[idex] = _check_list
+    cleaned_motif_dic[degree] = _check_list
 
 
 def merge_glycan_motif_dict_to_motif_dict(glycan_dict, combine_original=False):
@@ -160,7 +165,7 @@ def merge_glycan_motif_dict_to_motif_dict(glycan_dict, combine_original=False):
 def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_addr):
     """
     merge the substructure of all glycans into motif dict
-    :param glycan_dict: degree -> [motif1, motif2, ... ]/BNT_glycan_dict_degree_list_glycoct_for_motif
+    :param glycan_dict: {degree: [motif1, motif2, ... ]} /BNT_glycan_dict_degree_list_glycoct_for_motif
     store the glycan motif to BNT_motif_dic_degree_list.json
     :return: sorted motif_vec
     """
@@ -247,8 +252,8 @@ def motif_matching(motif_vec, glycan_with_motif_dict, glycan_name, idex, match_d
 def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, id_list, matched_glycan_dict_addr):
     """
     match the glycan_motif_dict_degree_list to motif vec
-    :param motif_dict: degree - >[motif1, motif2, ...]  /NBT_motif_dic_degree_list
-    :param glycan_with_motif_dict: degree -> [motif1, motif2, ... ] /BNT_glycan_dict_degree_list_glycoct_for_motif
+    :param motif_dict: {degree: [motif1, motif2, ...]}  /NBT_motif_dic_degree_list
+    :param glycan_with_motif_dict: {degree: [motif1, motif2, ...]} /BNT_glycan_dict_degree_list_glycoct_for_motif
     :param id_list: all GlytoucanID of the glycans you are analyzing /NBT_fixed_gylcan_name_list
     :param matched_glycan_dict_addr: output_addr /NBT_fixed_gylcan_name_list
     :return: glycan_match_existed_motif degree - >[motif1, motif2, ...]
