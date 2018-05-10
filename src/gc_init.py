@@ -27,21 +27,7 @@ from json_utility import *
 # Basic editing
 
 
-def glycan_str_to_glycan(a_dict_of_glycan_str):
-    if type(a_dict_of_glycan_str) == list:
-        return [glycoct.loads(i) for i in a_dict_of_glycan_str]
-    elif type(a_dict_of_glycan_str) == dict:
-        a_dict = {}
-        for i in a_dict_of_glycan_str.keys():
-            if type(a_dict_of_glycan_str[i]) == dict:
-                a_dict[i] = {}
-                for j in a_dict_of_glycan_str[i].keys():
-                    a_dict[i][j] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i][j]]
-            elif type(a_dict_of_glycan_str[i]) == list:
-                a_dict[i] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i]]
-            elif type(a_dict_of_glycan_str[i]) == str:
-                a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
-        return a_dict
+
 
 # setting up the basic directory
 root_ = "/Users/apple/PycharmProjects/GlyCompare/"
@@ -68,7 +54,7 @@ def load_glycoct_for_database():
 glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json'
 topology_list = json_address + r'Glycan_topolog_list.txt'
 # output
-for_extraction_glycoct_dict_addr = json_address + 'BNT_for_motif_extraction.json'
+glycoct_dict_goto_extraction_addr = json_address + 'BNT_for_motif_extraction.json'
 
 
 """
@@ -81,7 +67,7 @@ def get_motif_pip(gly_len, prior=True):
     4. save glycan_motif_addr
 """
 # input
-for_extraction_glycoct_dict_addr # from above
+glycoct_dict_goto_extraction_addr # from above
 glytoucan_data_base_addr__ # from above
 # output
 success_log_addr = json_address + 'BNT_for_motif_log.json'
