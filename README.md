@@ -1,6 +1,7 @@
 # GlyCompare
 Comparing glycans, leveraging motif substructure arithmetic 
 
+## Paper link: https://www.overleaf.com/16221947rjwhxdqwjbmq
 ## Basic Workflow
 
 ### Conversion of glycans to motif space
