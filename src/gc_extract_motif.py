@@ -1,15 +1,10 @@
-from glypy.io import glycoct, iupac
 from glypy.algorithms.subtree_search import subtree_of
-# from glypy.plot import plot
 from glypy.structure.glycan import fragment_to_substructure
-# from glypy.io.glycoct import dump
-# from matplotlib import pyplot as plt
-# from parser_glytoucan_utility import *
 import time
 import multiprocessing
-import json
 import gc_init
 from gc_init import *
+import json
 
 
 def store_json(address, dic):

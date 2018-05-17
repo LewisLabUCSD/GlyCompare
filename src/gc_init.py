@@ -1,8 +1,3 @@
-from glypy.io import glycoct
-from json_utility import *
-
-# %matplotlib inline
-
 
 ########################################################################################
 """editing log for glypy

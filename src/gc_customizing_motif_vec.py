@@ -1,9 +1,7 @@
-import time
 from glypy.algorithms.subtree_search import subtree_of
-from glypy.structure.glycan import fragment_to_substructure
+from glypy.io import glycoct
 import multiprocessing
 from gc_init import *
-import gc_init
 import json
 
 

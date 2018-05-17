@@ -6,7 +6,7 @@ from glypy.plot import cfg_symbols, iupac_symbols
 import gc_init
 from gc_init import *
 import gc_glycan_motif
-
+import matplotlib.pyplot as plt
 line_to = cfg_symbols.line_to
 
 
@@ -37,7 +37,7 @@ layout_map = {
     "topological": topological
 }
 
-DEFAULT_SYMBOL_SCALE_FACTOR = 0.17
+DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
 
 #: :data:`special_cases` contains a list of names for
 #: special case monosaccharides
@@ -72,6 +72,7 @@ def plot_glycan_profile(a_profile, glycan_dict):
     _len = 5
     _r = divmod(_a, 5)[0] + 1 if divmod(_a, 5)[1] != 0 else (divmod(_a, 5)[0])
     fig, axes = plt.subplots(_r, 5, squeeze=False)
+
     fig_size = (divmod(_a, 5)[0] + 1) * 3 if divmod(_a, 5)[1] != 0 else (divmod(_a, 5)[0]) * 3
     fig.set_size_inches(16, fig_size)
     #     print(axes)
@@ -192,6 +193,8 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
         xlim, ylim = _bounding_box_to_limits(dtree)
         ax.set_xlim(*xlim)
         ax.set_ylim(*ylim)
+        ax.set_facecolor('white')
+
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
     if addr == '':
