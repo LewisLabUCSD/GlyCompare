@@ -11,7 +11,15 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 Given different glycan representations, we will use glypy to translate these into motif space
 
 - IUPAC ```glypy( glycan , method='glycoct') ```
+- GlycoCT: Can be obtained by drawing your glycan in GlyTouCan, exporting in glycoCT format to a local directory 
 - ...Bokan
+
+#### Demo: Drawing and exporting a glycan in glycoCT format
+- Access ??? at glytoucan
+- Export as glycoCT
+- Download to local directory (the directory where you plan to run: ```convert_glycan_to_motifVector.py```
+- Navigate to the directory that contains your glycans using ```cd```
+- Run: ```python convert_glycan_to_motifVector.py```
 
 Once glycans are converted to glypy objects we can project them into motif space
 
