@@ -143,7 +143,7 @@ class GlycanMotifLib:
     def __init__(self, motif_):
         """
         self.motif_dict stores the id of the self.motif_vec
-        :param motif_:
+        :param motif_: motif vec or motif dict_degree_list:
         """
         if type(motif_) == dict:
             print(type(list(motif_.keys())[0]))
@@ -176,9 +176,7 @@ class GlycanMotifLib:
         self.motif_ncore_dep_tree = {}
         self.motif_dep_tree = {}
         self.motif_single_dep_tree = {}
-        self.get_motif_with_core()
-
-
+        self.extract_motif_with_core()
 
     def get_motif_index(self):
         pass
@@ -211,8 +209,9 @@ class GlycanMotifLib:
             print("Finish sia match ", len(self.motif_with_core_list),
                   " motifs are find with sia core ", len(self.gala_ept_vec),  " motifs are find with no sia core ")
 
-    def get_motif_with_core(self):
-        """ return the count"""
+    def extract_motif_with_core(self):
+        """ store the result in self.motif_with_core_list
+        and return the count"""
         # count = []
         print("start motif_with core")
         if self.motif_with_core_dict == {}:
@@ -225,7 +224,7 @@ class GlycanMotifLib:
                     """
                     motif j in i degree/motif in i-1 degree
                     """
-                    if subtree_of(self.nglycan_core, self.motif_vec[j]) is not None:
+                    if subtree_of(self.nglycan_core, self.motif_vec[j]) == 1:
                         self.motif_with_core_dict[i].append(j)
                         self.motif_with_core_list.append(j)
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
@@ -235,8 +234,9 @@ class GlycanMotifLib:
                   " motifs are matched to the n-glycan core")
 
     def motif_with_ncore_dependence_tree(self):
+        """ just connect motif to all parent"""
         print('start building ncore_dependence_tree')
-
+        edge_list = []
         if self.motif_ncore_dep_tree == {}:
             for i in sorted(list(self.motif_with_core_dict.keys())):
                 print(i)
@@ -250,11 +250,27 @@ class GlycanMotifLib:
                     """
                     self.motif_ncore_dep_tree[j] = []
                     for k in self.motif_with_core_dict[i - 1]:
-                        if subtree_of(self.motif_vec[k], self.motif_vec[j]) is not None:
+                        if subtree_of(self.motif_vec[k], self.motif_vec[j]) == 1:
                             self.motif_ncore_dep_tree[k].append(j)
-        return self.motif_ncore_dep_tree
+        return self.motif_ncore_dep_tree, edge_list
+
+
+    def dep_tree_to_edge_list(self, dep_tree):
+        """
+
+        :param dep_tree: motif_with_ncore_dependence_tree, motif_dependence_tree, motif_single_dependence_tree
+        :return: edge_list
+        """
+        edge_list = []
+        for i in dep_tree:
+            for k in dep_tree[i]:
+                edge_list.append((i, k))
+        return edge_list
 
     def motif_dependence_tree(self):
+        """ connect motif to all parents"""
+        print('start building dependence_tree')
+        edge_list = []
         if self.motif_dep_tree == {}:
             # self.motif_dep_tree = {}
             id_list = []
@@ -269,11 +285,14 @@ class GlycanMotifLib:
                     """
                     self.motif_dep_tree[j] = []
                     for k in self.motif_dict[i - 1]:
-                        if subtree_of(self.motif_vec[k], self.motif_vec[j]) is not None:
+                        if subtree_of(self.motif_vec[k], self.motif_vec[j]) == 1:
                             self.motif_dep_tree[k].append(j)
-        return self.motif_dep_tree
+                            edge_list.append((k, j))
+        return self.motif_dep_tree, edge_list
 
     def motif_single_dependence_tree(self):
+        """ just connect motif to one parent"""
+        edge_list = []
         if self.motif_single_dep_tree == {}:
             for i in sorted(list(self.motif_dict.keys())):
                 if 1 == i:
@@ -286,10 +305,10 @@ class GlycanMotifLib:
                     """
                     self.motif_single_dep_tree[j] = []
                     for k in self.motif_dict[i - 1]:
-                        if subtree_of(self.motif_vec[k], self.motif_vec[j]) is not None:
+                        if subtree_of(self.motif_vec[k], self.motif_vec[j]) == 1:
                             self.motif_single_dep_tree[k].append(j)
                             break
-        return self.motif_single_dep_tree
+        return self.motif_single_dep_tree, edge_list
 
 
 class MotifDpTree:
@@ -304,15 +323,13 @@ class MotifDpTree:
         self.motif_weight = motif_weight
         self.normalized_motif_weight = {}
         self._normalized_weight()
-        # self.after_drop_node = []
         self.heavy_dependency = {}
-        self.most_depedent_child = {}
+        self.most_dependent_child = {}
         self.gala_ept_vec = a_glycan_motif_lib.gala_ept_vec[:]
         self.sia_ept_vec = a_glycan_motif_lib.sia_ept_vec[:]
         self.sia_gala_ept_vec = self.gala_ept_vec[:]
         self.sia_gala_ept_vec.extend(self.sia_ept_vec[:])
-    # def load_abundance(self, abundance_vec):
-    #     se
+
 
     def get_sia_gal_vec(self):
         rt_lst = []

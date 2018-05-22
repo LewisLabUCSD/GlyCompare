@@ -247,7 +247,7 @@ def motif_matching(motif_vec, glycan_with_motif_dict, glycan_name, idex, match_d
     match_dict[glycan_name] = _existed_matrix[:]
 
 
-def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, id_list, matched_glycan_dict_addr):
+def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, matched_glycan_dict_addr):
     """
     match the glycan_motif_dict_degree_list to motif vec
     :param motif_dict: {degree: [motif1, motif2, ...]}  /NBT_motif_dic_degree_list
@@ -266,7 +266,7 @@ def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, id_list, matched_
     manager = multiprocessing.Manager()
     match_dict = manager.dict()  # {motif_name:[scores]}
     # print(type(glycan_with_motif_dict['G85809SI']['1'][0]))
-    for idex, i in enumerate(id_list):
+    for idex, i in enumerate(glycan_with_motif_dict):
         print('start processing', i)
         pool.apply_async(motif_matching, args=(motif_vec, glycan_with_motif_dict[i], i, idex, match_dict))
     print("closing poll")
@@ -312,21 +312,20 @@ def customizing_motif_vec_pip():
     NBT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(
         load_json(glycan_dict_motif_list_addr))
     # output_motif_dic_degree_list_addr = root + "NBT_motif_dic_degree_list.json"
-    NBT_motif_dic_degree_list = get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
-                                                                output_motif_dic_degree_list_addr)
-    # NBT_motif_dic_degree_list = glycan_str_to_glycan(load_json(root+"NBT_motif_dic_degree_list.json"))
+    # NBT_motif_dic_degree_list = get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
+    #                                                             output_motif_dic_degree_list_addr)
 
     """ Start motif matching"""
     # print('start motif match')
     # NBT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(load_json(glycan_dict_motif_list_addr))
     NBT_motif_dic_degree_list = glycan_str_to_glycan(load_json(output_motif_dic_degree_list_addr))
 
-    NBT_fixed_gylcan_name_list = load_json(NBT_fixed_gylcan_name_list_addr)
+    # NBT_fixed_gylcan_name_list = load_json(NBT_fixed_gylcan_name_list_addr)
 
     # NBT_fixed_gylcan_name_list = load_json(root + "NBT_fixed_gylcan_name.json")
     glycan_match_existed_motif = motif_matching_wrapper(NBT_motif_dic_degree_list,
                                                         NBT_glycan_dict_degree_list_glycoct_for_motif,
-                                                        NBT_fixed_gylcan_name_list, output_matched_glycan_addr)
+                                                        output_matched_glycan_addr)
 
     # glycan_match_existed_motif = motif_matching_wrapper(nbt_motif_dict, nbt_motif_dic_degree_list, nbt_fixed_gylcan_name_list, output_matched_glycan_addr)
 
