@@ -58,7 +58,12 @@ Each element of the glycan motif corresponds to a glypy readable glycan. Unique 
 Once glycans are converted to `glypy.Glycan` objects we can project them into motif space
 
 ```
-a_glycan_motif_dict = extract_motif(glycan_obj)
+a_glycan_motif_dict = extract_motif.extract_motif(glycan_obj)
+```
+
+For the batch work, please refer:
+```
+extract_motif.get_motif_pip(gly_len=23, prior=True)
 ```
 ### Customize motif_vector and match a_glycan_motif_dict 
 Generally, a customized substructre vector can be generated and all glycans are matched through pipeline
@@ -68,18 +73,18 @@ motif_lib = motif_class.GlycanMotifLib(json.load(output_motif_dic_degree_list_ad
 motif_lib.motif_vec
 ```
 #### Customize motif_vector
-- customize a motif_vector
+- customize a motif_vector, please refer `customize_motif_vec.customizing_motif_vec_pip()`
 ```
-get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
+customize_motif_vec.get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
                                                                 output_motif_dic_degree_list_addr)
 ```
 #### Match a_glycan_motif_dict to vector
 - Glycan with extracted motifs can be matched to a provided motif_vector using 
 ```
 match_dict[glycan_name]={}
-match_motif(motif_vector, a_glycan_motif_dict, glycan_name, match_dict, index=0)
+customize_motif_vec.match_motif(motif_vector, a_glycan_motif_dict, glycan_name, match_dict, index=0)
 ```
-- For the batch work, please go back and use pipeline
+- For the batch work, please refer `customize_motif_vec.customizing_motif_vec_pip()`
 ```
 customize_motif_vec.motif_matching_wrapper(NBT_motif_dic_degree_list,
                                                         NBT_glycan_dict_degree_list_glycoct_for_motif,
