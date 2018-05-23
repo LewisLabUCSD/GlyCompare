@@ -10,27 +10,40 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 
 Given different glycan representations, we will use glypy to translate these into motif space
 
-- IUPAC ```glypy( glycan , method='glycoct') ```
-- GlycoCT: Can be obtained by drawing your glycan in GlyTouCan, exporting in glycoCT format to a local directory 
-- ...Bokan
+- GlycoCT: 
+```
+from glypy.io import glycoct
+glycoct.loads(glycan_glycoct) 
+```
+
+
+- IUPAC 
+```
+from glypy.io import iupac
+iupac.loads(glycan_iupac) 
+```
 
 #### Demo: Drawing and exporting a glycan in glycoCT format
-- Access ??? at glytoucan
-- Export as glycoCT
-- Download to local directory (the directory where you plan to run: ```convert_glycan_to_motifVector.py```
-- Navigate to the directory that contains your glycans using ```cd```
-- Run: ```python convert_glycan_to_motifVector.py```
+- Access glycan with GlyTouCan ID in localized database `glytoucan[ID]`
+- If no ID, draw your glycan in GlyTouCan.org and export the glycoCT format to a local directory 
+- Run ```load_glycan_local``` with given directory name 
+- A processed json file which contains all the substructures of a glycan will be saved in targeted directory 
 
 Once glycans are converted to glypy objects we can project them into motif space
 
-```extractMotifs( glypyGlycan )```
+```extract_motif(glycan_obj)```
 
-Extracted motifs can be mapped to a provided motif vector using ```mapMotifs```
+Extracted motifs can be mapped to a provided motif vector using ```match_motif()```
 
 ```
-motifVector = glycan_str_to_glycan( json.load(open('unicarbkb_motifs_12259.json')) 
-glycanMotifs1 = mapMotifs( extractMotifs( glypyGlycan1 ) , motifsVector = motifVector ) 
-glycanMotifs2 = mapMotifs( extractMotifs( glypyGlycan2 ) , motifsVector = motifVector ) 
+motif_lib = motif_class.GlycanMotifLib(json.load('motifs.json')) # unicarbkb_motifs_12259
+motif_lib.motif_vec
+```
+or 
+```
+customizing_motif_vec_pip()
+    get_motif_dict_degree_list_pipe()
+    motif_matching_wrapper()
 ```
 ### Existing Comparisons in GlyPy
 Using glypy we can compare two glycans based on ____?
@@ -65,6 +78,14 @@ motifVector = mergeMotifs( [ extractMotifs(g) for g in glycans ] )
 ### Motif-based differential glycomics workflow
 
 We have implimented functions for reading glycoprofiles
+A Glycan profile is like this:
+`{'name':{'m/z':'GlyTouCanID'}}`
+For example:
+```
+{'Gly01': {'2244': 'G04483SK',
+                                '4587': '4587.1',
+                                '5037': 'G49604DB',
+                                '5486': '5486.1'}}
 ```
 glycanList1,abundance1 = read_glycoprofile( 'glycoprofile1.dic' )
 glycanList2,abundance2 = read_glycoprofile( 'glycoprofile2.dic' )
