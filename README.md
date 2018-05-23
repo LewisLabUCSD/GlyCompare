@@ -92,15 +92,24 @@ customize_motif_vec.motif_matching_wrapper(NBT_motif_dic_degree_list,
 ```
 ### Motif-based differential glycomics workflow
 
-We have implimented functions for reading glycoprofiles
-A Glycan profile is like this:
-`{'name':{'m/z':'GlyTouCanID'}}`
+We have implimented functions for reading glycoprofiles, glycan profile data include 
+- glycan structural data
+A Glycan structural profile is like this:
+`{'name':{'m/z':'GlyTouCanID or customized ID'}}`
 For example:
 ```
 {'Gly01': {'2244': 'G04483SK',
            '4587': '4587.1',
            '5037': 'G49604DB',
            '5486': '5486.1'}}
+```
+- glycan abundance data table
+```
+{'name':{'m/z':'abundance'}}
+{'Gly01': {'2244': 0.05,
+           '4587': 0.45,
+           '5037': 0.30,
+           '5486': 0.10}}
 ```
 glycanList1,abundance1 = read_glycoprofile( 'glycoprofile1.dic' )
 glycanList2,abundance2 = read_glycoprofile( 'glycoprofile2.dic' )
