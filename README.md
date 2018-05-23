@@ -13,38 +13,23 @@ Given different glycan representations, we will use glypy to translate these int
 - GlycoCT: 
 ```
 from glypy.io import glycoct
-glycoct.loads(glycan_glycoct) 
+a_glycan_obj = glycoct.loads(glycan_glycoct) 
 ```
 
 
 - IUPAC 
 ```
 from glypy.io import iupac
-iupac.loads(glycan_iupac) 
+a_glycan_obj = iupac.loads(glycan_iupac) 
 ```
 
 #### Demo: Drawing and exporting a glycan in glycoCT format
 - Access glycan with GlyTouCan ID in localized database `glytoucan[ID]`
 - If no ID, draw your glycan in GlyTouCan.org and export the glycoCT format to a local directory 
-- Run ```load_glycan_local``` with given directory name 
-- A processed json file which contains all the substructures of a glycan will be saved in targeted directory 
+- Run ```load_glycan_local()``` with given directory name 
+- A processed `NBT_for_motif_extraction.json` json file which contains all the substructures of a glycan will be saved in targeted directory 
 
-Once glycans are converted to glypy objects we can project them into motif space
 
-```extract_motif(glycan_obj)```
-
-Extracted motifs can be mapped to a provided motif vector using ```match_motif()```
-
-```
-motif_lib = motif_class.GlycanMotifLib(json.load('motifs.json')) # unicarbkb_motifs_12259
-motif_lib.motif_vec
-```
-or 
-```
-customizing_motif_vec_pip()
-    get_motif_dict_degree_list_pipe()
-    motif_matching_wrapper()
-```
 ### Existing Comparisons in GlyPy
 Using glypy we can compare two glycans based on ____?
 ```
@@ -64,16 +49,41 @@ With minimal loss of depth information, simple arithmetic comparisons are now po
 
 Each element of the glycan motif corresponds to a glypy readable glycan. Unique motifs, and common cores can easily be visualized in glypy
 
-```plot_glycan_list( motifVector , index[commonMotif==1])```
-```plot_glycan( motifVector[ 0 ]```
+```plot_glycan_list( motif_vector , index[commonMotif==1])```
+```plot_glycan( motif_vector[ 0 ]```
 
 ## Advanced Functionality
 
-### Construct a custom motif vector
-- For every glycan in your database, run ```extractMotifs```
-- Combine all extracted motifs into a global vector using ```mergeMotifs```
+### Extract motif
+Once glycans are converted to `glypy.Glycan` objects we can project them into motif space
+
 ```
-motifVector = mergeMotifs( [ extractMotifs(g) for g in glycans ] )
+a_glycan_motif_dict = extract_motif(glycan_obj)
+```
+### Customize motif_vector and match a_glycan_motif_dict 
+Generally, a customized substructre vector can be generated and all glycans are matched through pipeline
+```
+customize_motif_vec.customizing_motif_vec_pip()
+motif_lib = motif_class.GlycanMotifLib(json.load(output_motif_dic_degree_list_addr)) # unicarbkb_motifs_12259.json
+motif_lib.motif_vec
+```
+#### Customize motif_vector
+- customize a motif_vector
+```
+get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
+                                                                output_motif_dic_degree_list_addr)
+```
+#### Match a_glycan_motif_dict to vector
+- Glycan with extracted motifs can be matched to a provided motif_vector using 
+```
+match_dict[glycan_name]={}
+match_motif(motif_vector, a_glycan_motif_dict, glycan_name, match_dict, index=0)
+```
+- For the batch work, please go back and use pipeline
+```
+customize_motif_vec.motif_matching_wrapper(NBT_motif_dic_degree_list,
+                                                        NBT_glycan_dict_degree_list_glycoct_for_motif,
+                                                        output_matched_glycan_addr)
 ```
 ### Motif-based differential glycomics workflow
 
@@ -83,9 +93,9 @@ A Glycan profile is like this:
 For example:
 ```
 {'Gly01': {'2244': 'G04483SK',
-                                '4587': '4587.1',
-                                '5037': 'G49604DB',
-                                '5486': '5486.1'}}
+           '4587': '4587.1',
+           '5037': 'G49604DB',
+           '5486': '5486.1'}}
 ```
 glycanList1,abundance1 = read_glycoprofile( 'glycoprofile1.dic' )
 glycanList2,abundance2 = read_glycoprofile( 'glycoprofile2.dic' )
