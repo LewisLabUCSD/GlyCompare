@@ -12,8 +12,8 @@ sns.set(color_codes=True)
 from json_utility import load_json
 import time
 import numpy as np
-import NBT_glycan_profile
-import gc_customizing_motif_vec
+import glycan_profile
+import customize_motif_vector
 import NBT_init
 import NBT_glycan_motif
 

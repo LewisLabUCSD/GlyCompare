@@ -36,7 +36,7 @@ source_address = root_ + "source_data/"
 
 
 ########################################################################################
-# Part 1 check gc_extract_motif.py
+# Part 1 check extract_motif.py
 # for gc_extract motif
 # """
 # def load_glycoct_for_database():
@@ -76,7 +76,7 @@ glycan_dict_motif_list_addr = json_address + 'NBT_glycan_dict_degree_list_glycoc
 
 
 ########################################################################################
-# part 2 check gc_customizing_motif_vec.py
+# part 2 check customize_motif_vector.py
 
 """
 
@@ -115,7 +115,7 @@ output_matched_glycan_addr = json_address + "NBT_glycan_match_existed_motif.json
 
 ########################################################################################
 # part 3
-# for plotting glycan, check gc_plot_glycan_utilities.py
+# for plotting glycan, check plot_glycan_utilities.py
 """
 # def plot_glycan_list(glycoct_list, idex_list=[], title='Glycans')
         

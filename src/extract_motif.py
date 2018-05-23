@@ -1,21 +1,11 @@
+
 from glypy.algorithms.subtree_search import subtree_of
+from glypy.io import glycoct
 from glypy.structure.glycan import fragment_to_substructure
 import time
 import multiprocessing
-import gc_init
-from gc_init import *
-import json
-
-
-def store_json(address, dic):
-    with open(address, 'w') as fp:
-        json.dump(dic, fp)
-
-
-def load_json(address):
-    with open(address, 'r') as f:
-        return json.load(f)
-
+from __init__ import *
+from json_utility import load_json, store_json
 
 # def extract_motif(glycoct_obj, idex=0):
 #     # print('start getmotif')
@@ -154,7 +144,7 @@ def extract_motif_wrap(idex, _name, glycoct_obj, motif_dic, success_list):
 def load_glycoct_for_database():
     """ 1. get the glycanID from Glycan_topolog_list
         2. find ID in glytoucan database: /root_address + r'data_dic_finnn.json'
-        3. find ID in self-generated local file: /NBT_init.json_address+_code+".glycoct_condensed"
+        3. find ID in self-generated local file: /__init__.json_address+_code+".glycoct_condensed"
         4. output a dict ID str -> glycoct str stored in: root_address + 'NBT_for_motif_extraction.json'
         """
     x = load_json(glytoucan_data_base_addr__)
@@ -163,11 +153,10 @@ def load_glycoct_for_database():
     def get_drawed_glycan(addre):
         f = open(addre)
         _str = "".join(f.readlines())
-        #     for i in f.readlines():
         return _str
 
     output_for_motif = {}
-
+    glycan_dict_glycoct = {}
     f = open(topology_list)
     glycan_dict = {}
     _count = 0
@@ -182,7 +171,7 @@ def load_glycoct_for_database():
                 print("no name: ", _code)
                 continue
         else:
-            _addr = gc_init.manual_curated_address + _code + ".glycoct_condensed"
+            _addr = manual_curated_address + _code + ".glycoct_condensed"
             _gly_stru = get_drawed_glycan(_addr)
 
         if _name not in glycan_dict.keys():
@@ -191,10 +180,10 @@ def load_glycoct_for_database():
         else:
             glycan_dict[_name][_code] = glycoct.loads(_gly_stru)
         output_for_motif[_code] = _gly_stru
+        glycan_dict_glycoct[_code] = glycoct.loads(_gly_stru)
     print(_count)
     store_json(glycoct_dict_goto_extraction_addr, output_for_motif)
-
-    return output_for_motif
+    return glycan_dict
 
 
 def get_motif_pip(gly_len, prior=True):
@@ -204,6 +193,7 @@ def get_motif_pip(gly_len, prior=True):
     2. convert to glypy.glycan obj
     3. extract motif
     4. save glycan_motif_addr
+    :param prior:
     :param gly_len: the max degree of the glycan that can be processed
     """
     # root = r'/Users/apple/PycharmProjects/'
@@ -280,6 +270,6 @@ def get_motif_pip(gly_len, prior=True):
 
 
 if __name__ == '__main__':
-    # load_glycoct_for_database()
-    # get_motif_pip(gly_len=23, prior=True)
-    pass
+    load_glycoct_for_database()
+    get_motif_pip(gly_len=23, prior=True)
+    # pass

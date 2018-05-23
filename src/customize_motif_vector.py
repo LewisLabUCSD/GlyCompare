@@ -1,8 +1,8 @@
 from glypy.algorithms.subtree_search import subtree_of
 from glypy.io import glycoct
 import multiprocessing
-from gc_init import *
-import json
+from __init__ import *
+from json_utility import *
 
 
 def glycan_str_to_glycan(a_dict_of_glycan_str):
@@ -26,15 +26,6 @@ def glycan_str_to_glycan(a_dict_of_glycan_str):
                 a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
         return a_dict
 
-
-def store_json(address, dic):
-    with open(address, 'w') as fp:
-        json.dump(dic, fp)
-
-
-def load_json(address):
-    with open(address, 'r') as f:
-        return json.load(f)
 
 
 # def profile_loader(profile_dict, name):
@@ -172,7 +163,7 @@ def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_ad
     _motif_dic = merge_glycan_motif_dict_to_motif_dict(glycan_dict, combine_original=False)
     print('check merged motif vec len', check_motif_dict_length(_motif_dic))
     print("get_motif_dict_degree_list_pipe")
-    num_processors = 8
+    # num_processors = 8
     pool = multiprocessing.Pool(processes=num_processors)
     _motif_degree = list(_motif_dic.keys())
     sorted_len_motif_degree = sorted(_motif_degree, key=lambda x: len(_motif_dic[x]), reverse=True)
@@ -201,7 +192,7 @@ def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_ad
     return cleaned_motif_
 
 
-def motif_matching(motif_vec, glycan_with_motif_dict, glycan_name, idex, match_dict):
+def match_motif(motif_vec, glycan_with_motif_dict, glycan_name,  match_dict, idex=0):
     """
 
     :param motif_vec: customized motif vec
@@ -222,13 +213,9 @@ def motif_matching(motif_vec, glycan_with_motif_dict, glycan_name, idex, match_d
     #     assert type(glycan_with_motif_dict[1][0])!=str
     # print(len(motif_vec))
     for jdex, j in enumerate(motif_vec):
-
         #             print(type(j), type(_tree))
         _len = len(j)
         if str(_len) not in glycan_obj_dict.keys(): continue
-        #         print(_len)
-        #         assert type(j) != str
-        # print(len())
         _iter = 0
         # print(jdex)
         while _iter < len(glycan_obj_dict[str(_len)]):
@@ -240,10 +227,7 @@ def motif_matching(motif_vec, glycan_with_motif_dict, glycan_name, idex, match_d
                 del glycan_obj_dict[str(_len)][_iter]
             else:
                 _iter += 1
-
-    # print('finished ', idex)
     print('finished ', idex)
-    # print()
     match_dict[glycan_name] = _existed_matrix[:]
 
 
@@ -268,7 +252,7 @@ def motif_matching_wrapper(motif_dict, glycan_with_motif_dict, matched_glycan_di
     # print(type(glycan_with_motif_dict['G85809SI']['1'][0]))
     for idex, i in enumerate(glycan_with_motif_dict):
         print('start processing', i)
-        pool.apply_async(motif_matching, args=(motif_vec, glycan_with_motif_dict[i], i, idex, match_dict))
+        pool.apply_async(match_motif, args=(motif_vec, glycan_with_motif_dict[i], i, match_dict, idex))
     print("closing poll")
     pool.close()
     print('joining pool')
@@ -311,9 +295,9 @@ def customizing_motif_vec_pip():
     """ merge the substructure of all glycans into motif dict"""
     NBT_glycan_dict_degree_list_glycoct_for_motif = glycan_str_to_glycan(
         load_json(glycan_dict_motif_list_addr))
-    # output_motif_dic_degree_list_addr = root + "NBT_motif_dic_degree_list.json"
-    # NBT_motif_dic_degree_list = get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
-    #                                                             output_motif_dic_degree_list_addr)
+
+    NBT_motif_dic_degree_list = get_motif_dict_degree_list_pipe(NBT_glycan_dict_degree_list_glycoct_for_motif,
+                                                                output_motif_dic_degree_list_addr)
 
     """ Start motif matching"""
     # print('start motif match')

@@ -3,11 +3,10 @@ from glypy.plot.draw_tree import *
 from glypy.plot.buchheim import buchheim
 from glypy.plot.topological_layout import layout as topological
 from glypy.plot import cfg_symbols, iupac_symbols
-import gc_init
-from gc_init import *
-import gc_glycan_motif
+import __init__
+from __init__ import *
+import motif_class
 import matplotlib.pyplot as plt
-line_to = cfg_symbols.line_to
 
 
 # def
@@ -27,15 +26,20 @@ def _bounding_box_to_limits(dtree):
     return np.array((min_x, max_x)), np.array((min_y, max_y))
 
 
+line_to = cfg_symbols.CFGNomenclature().line_to
+
+
 nomenclature_map = {
-    "cfg": cfg_symbols,
-    'iupac': iupac_symbols
+    "cfg": cfg_symbols.CFGNomenclature(),
+    'iupac': iupac_symbols.IUPACTextSymbolicNomenclature(),
+    "snfg": snfg_symbols.SNFGNomenclature()
 }
 
 layout_map = {
-    "balanced": buchheim,
-    "topological": topological
+    "balanced": BalancedTreeLayout,
+    "topological": TopologicalTreeLayout
 }
+
 
 DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
 
@@ -60,8 +64,8 @@ anomer_symbol_map = {
 
 def output_glycan_motif_vec_to_file():
     vec_dict = load_json(output_motif_dic_degree_list_addr)
-    motif_ = gc_glycan_motif.GlycanMotifLib(vec_dict)
-    set_address = gc_init.motif_plot_address
+    motif_ = motif_class.GlycanMotifLib(vec_dict)
+    set_address = __init__.motif_plot_address
     for idex, i in enumerate(motif_.motif_vec):
         _ = plot_glycan(i, center=True)
         plt.savefig(set_address + str(idex) + '.png')
@@ -91,7 +95,7 @@ def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
     :param glycan_obj_list: a list of Glycan
     :param idex_list: a list of index for glycan (i.e. motif indexes)
     :param title: str title
-    :return: 
+    :return:
     """
     _a = len(glycan_obj_list)
     _len = 5
@@ -119,7 +123,7 @@ def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
 
 
 def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=False, label=False,
-                symbol_nomenclature='cfg', layout='balanced', **kwargs):
+         symbol_nomenclature='cfg', layout='balanced', layout_args=None, **kwargs):
     '''
     Draw the parent outlink position and the child anomer symbol
     Parameters
@@ -148,24 +152,22 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
     transform_scale = kwargs.pop("scale", (0.8,))
     try:
         transform_scale = tuple(transform_scale)
-    except:
+    except Exception:
         transform_scale = (transform_scale, transform_scale)
 
     if isinstance(symbol_nomenclature, basestring):
         symbol_nomenclature = nomenclature_map.get(symbol_nomenclature)
+    elif symbol_nomenclature is None:
+        symbol_nomenclature = snfg_symbols.SNFGNomenclature()
 
     if isinstance(layout, basestring):
         layout = layout_map.get(layout)
 
     tree_root = root(tree)
     dtree = DrawTreeNode(tree_root)
-    if layout == topological:
-        for node in breadth_first_traversal(dtree):
-            node.mask_special_cases = False
 
-    layout(dtree)
-    if layout != topological:
-        dtree.fix_special_cases()
+    layout_algorithm = layout(dtree)
+    layout_algorithm.layout(**(layout_args or {}))
 
     fig = None
     # Create a figure if no axes are provided
@@ -174,17 +176,25 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
         # at = (0, 0)
         center = True
         ax.axis('off')
+    (layout_transform,
+     substituent_transform,
+     _) = symbol_nomenclature.get_layout_transform(orientation)
+    layout_algorithm.transform(layout_transform)
     dtree.draw(at=at, ax=ax, scale=scale, label=False,
-               symbol_nomenclature=symbol_nomenclature, **kwargs)
+               symbol_nomenclature=symbol_nomenclature,
+               annotation_transform=substituent_transform,
+               **kwargs)
     dtree.axes = ax
     dtree.data['orientation'] = orientation
     dtree.set_transform(mtransforms.Affine2D())
     if label:
         dtree.draw_linkage_annotations(
             at=at, ax=ax, scale=scale,
-            symbol_nomenclature=symbol_nomenclature, **kwargs)
+            symbol_nomenclature=symbol_nomenclature,
+            **kwargs)
     if orientation in {"h", "horizontal"}:
-        dtree.set_transform(mtransforms.Affine2D().rotate_deg(90).scale(*transform_scale))
+        pass
+        # dtree.set_transform(mtransforms.Affine2D().rotate_deg(90).scale(*transform_scale))
         # dtree.update_text_position(-90)
     # If the figure is stand-alone, center it
     if fig is not None or center:
@@ -202,6 +212,10 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
     else:
         plt.savefig(addr)
     return (dtree, ax)
+
+
+if __name__ == '__main__':
+    output_glycan_motif_vec_to_file()
 
 
 if __name__ == '__main__':

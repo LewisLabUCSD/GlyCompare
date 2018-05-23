@@ -145,13 +145,17 @@ class GlycanMotifLib:
         self.motif_dict stores the id of the self.motif_vec
         :param motif_: motif vec or motif dict_degree_list:
         """
+        assert not motif_, "motif vector is empty"
         if type(motif_) == dict:
             print(type(list(motif_.keys())[0]))
             dict_keys = sorted([int(i) for i in motif_.keys()])
             self.motif_vec = []
             for i in dict_keys:
                 for j in motif_[str(i)]:
-                    self.motif_vec.append(glycoct.loads(j))
+                    if isinstance(j, type(self._man2)):
+                        self.motif_vec.append(j)
+                    else:
+                        self.motif_vec.append(glycoct.loads(j))
             self.motif_dict = {}
             for idex, i in enumerate(self.motif_vec):
                     if len(i) not in self.motif_dict.keys():
@@ -159,7 +163,10 @@ class GlycanMotifLib:
                     else:
                         self.motif_dict[len(i)].append(idex)
         elif type(motif_) == list:
-            self.motif_vec = [glycoct.loads(i) for i in motif_]
+            if type(motif_[0])==type(self._man2):
+                self.motif_vec = motif_
+            else:
+                self.motif_vec = [glycoct.loads(i) for i in motif_]
             self.motif_dict = {}
             for idex, i in enumerate(self.motif_vec):
                     if len(i) not in self.motif_dict.keys():
