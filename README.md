@@ -95,7 +95,7 @@ customize_motif_vec.motif_matching_wrapper(NBT_motif_dic_degree_list,
 We have implimented functions for reading glycoprofiles, glycan profile data include 
 - glycan structural data
 A Glycan structural profile is like this:
-`{'name':{'m/z':'GlyTouCanID or customized ID'}}`
+`{'name1':{'m/z':'GlyTouCanID or customized ID'}}`
 For example:
 ```
 {'Gly01': {'2244': 'G04483SK',
@@ -103,16 +103,30 @@ For example:
            '5037': 'G49604DB',
            '5486': '5486.1'}}
 ```
-- glycan abundance data table
+- glycan abundance data table 
 ```
-{'name':{'m/z':'abundance'}}
-{'Gly01': {'2244': 0.05,
-           '4587': 0.45,
-           '5037': 0.30,
-           '5486': 0.10}}
+{'m/z_1':abundance_list1,
+ 'm/z_2':abundance_list2,
+ 'm/z_3':abundance_list3,
+}
 ```
-glycanList1,abundance1 = read_glycoprofile( 'glycoprofile1.dic' )
-glycanList2,abundance2 = read_glycoprofile( 'glycoprofile2.dic' )
+- example for a 5-profile abundance table
+```
+{'2244': [0, 0, 0, 0, 0],
+ '4587': [0, 0, 0, 0, 0],
+ '5037': [0, 0, 0, 0, 0],
+ '5486': [0, 0, 0, 0, 0],}
+```
+### the example code
+```
+abundance_data_table = load_json(__init__.json_address + "NBT_dict_name_abundance_cross_profile.json")
+merged_glycan_profile, _ = glycan_profile.load_glycan_profile_dic()
+glycan_profiles_obj = glycan_profile.combine_profile_mz_with_motif_existance(merged_glycan_profile,
+                                                                                  abundance_data_table)
+
+
+```
+## comparison across enzyme isoform
 # extract motifs
 glycanMotifMatrix1 = np.matrix( [mapMotifs( extractMotifs( g1 ) , motifsVector = motifVector ) for g1 in glycanList1 ] )
 glycanMotifMatrix2 = np.matrix( [mapMotifs( extractMotifs( g2 ) , motifsVector = motifVector ) for g2 in glycanList2 ] )
