@@ -183,6 +183,8 @@ def load_glycoct_for_database():
         glycan_dict_glycoct[_code] = glycoct.loads(_gly_stru)
     print(_count)
     store_json(glycoct_dict_goto_extraction_addr, output_for_motif)
+    store_json(glycoct_dict_goto_extraction_addr, output_for_motif)
+
     return glycan_dict
 
 
