@@ -145,7 +145,7 @@ class GlycanMotifLib:
         self.motif_dict stores the id of the self.motif_vec
         :param motif_: motif vec or motif dict_degree_list:
         """
-        assert not motif_, "motif vector is empty"
+        assert motif_, "motif vector is empty"
         if type(motif_) == dict:
             print(type(list(motif_.keys())[0]))
             dict_keys = sorted([int(i) for i in motif_.keys()])
@@ -259,6 +259,7 @@ class GlycanMotifLib:
                     for k in self.motif_with_core_dict[i - 1]:
                         if subtree_of(self.motif_vec[k], self.motif_vec[j]) == 1:
                             self.motif_ncore_dep_tree[k].append(j)
+                            edge_list.append((k, j))
         return self.motif_ncore_dep_tree, edge_list
 
 
@@ -282,6 +283,7 @@ class GlycanMotifLib:
             # self.motif_dep_tree = {}
             id_list = []
             for i in sorted(list(self.motif_dict.keys())):
+                print(i)
                 if 1 == i:
                     for j in self.motif_dict[i]:
                         self.motif_dep_tree[j] = []
