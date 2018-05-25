@@ -418,7 +418,7 @@ class MotifDpTree:
         return node_kept
     #
     # def get_the_most_dependent_node(self):
-    #     """heavy——dependency parents-> child_lst
+    #     """heavy dependency parents child_lst
     #         parents_vec child -> parents
     #     """
     #     for j, i_list in self.heavy_dependency.items():
