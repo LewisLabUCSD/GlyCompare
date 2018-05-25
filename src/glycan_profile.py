@@ -695,11 +695,11 @@ def merge_unzero_vec(prof_n, dict_name_abundance_cross_profile, glycan_dict, gly
         if dict_name_abundance_cross_profile[i][prof_n] > 0.02:
             # print(glycan_profile[_id].keys())
             if i in glycan_profile[_id].keys():
-                # print('\"' + i + '\": \"' + glycan_profile[_id][i] + '\"，')
+                # print('\"' + i + '\": \"' + glycan_profile[_id][i] + '\", ')
                 continue
             elif i in undoubt_list:
                 _temp_dict[i] = list(glycan_dict[int(i)].keys())[0]
-                # print('\"' + i + '\": \"' + glycan_profile[_id][i] + '\"，')
+                # print('\"' + i + '\": \"' + glycan_profile[_id][i] + '\",')
                 continue
             print(dict_name_abundance_cross_profile[i][prof_n], '\"' + i + '\":', list(glycan_dict[int(i)].keys()), ",")
         # continue
@@ -749,7 +749,7 @@ class glycan_profile_obj():
 
 #
 # def combine_profile_mz_with_motif_abundance(a_glycan_profile, NBT_dict_name_abundance_cross_profile):
-#     """combine glycan m/z with motif hit， the maximum will be 4-8
+#     """combine glycan m/z with motif hit, the maximum will be 4-8
 #     return profile_obj_list
 #     """
 #     print("start combine")
