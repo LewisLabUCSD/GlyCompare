@@ -1,8 +1,20 @@
+# import external libraries
 from glypy.structure.glycan import glycan
 from glypy.structure.glycan import MAIN_BRANCH_SYM
-from glypy.structure.monosaccharide import depth,children,parents
+from glypy.structure.monosaccharide import depth #,children,parents
 from glypy.structure.constants import Stem
 import numpy as np
+# import glycompare libraries
+import gc_extract_motif
+import customize_motif_vector
+import extract_motif
+import motif_class
+import __init__
+import json_utility
+import glycan_profile
+import plot_glycan_utilities
+import matplotlib.pyplot as plt
+from glypy.io import glycoct
 
 def glycan_stats(glycan):
 	functions = {'total_branch_points':total_branch_points,...}
@@ -29,9 +41,9 @@ def n_level_branching(glycan,dir='from',mannosaccharide='all',exclude_sacch=None
 	ndepth =  np.array([i for i in a_glycan.depth_first_traversal(apply_fn=depth)])
 	sacch =  np.array([i.stem[0] for i in a_glycan.depth_first_traversal()]) ### bug here, sometimes .stem returns multiple sugars. this implimentation ignores that
 	if dir=='from':
-		relatives =  [len(i) for i in a_glycan.depth_first_traversal(apply_fn=children)]
+		relatives =  [len(i.children) for i in a_glycan.depth_first_traversal()]
 	elif dir=='to':
-		relatives =  [len(i) for i in a_glycan.depth_first_traversal(apply_fn=parents)]
+		relatives =  [len(i.parents) for i in a_glycan.depth_first_traversal()]
 
 	n_level_branches = {}
 	for i in range(ndepth.max()):
