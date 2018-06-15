@@ -1,7 +1,8 @@
 from glypy.structure.glycan import glycan
 from glypy.structure.glycan import MAIN_BRANCH_SYM
-from glypy.structure.monosaccharide import depth,degree
+from glypy.structure.monosaccharide import depth,children,parents
 from glypy.structure.constants import Stem
+import numpy as np
 
 def glycan_stats(glycan):
 	functions = {'total_branch_points':total_branch_points,...}
@@ -16,21 +17,42 @@ def total_branch_points(glycan,exclude_root=True):
 		branches.remove(MAIN_BRANCH_SYM)
 	return len(branches)
 
-# total n-level (or all) branchpoints (from/to) [any or specific monosaccharides] (mannose/glcNAc/...) 
-def n_level_branching(glycan,dir='from',mannosaccharide='all')
+# total n-level (or all) branchpoints (from/to) [any or specific monosaccharides] (mannose/glcNAc/...)
+# mannosaccharide: 'all' or 'glc' or ['glc','man'] 
+# exclude_sacch: 'glc' or ['glc','man'] 
+def n_level_branching(glycan,dir='from',mannosaccharide='all',exclude_sacch=None)
 	assert dir in ['to','from']
-	assert mannosaccharide == 'all' or monosaccharide in Stem
+	assert mannosaccharide == 'all' or set(monosaccharide) < set(Stem)
 
 	# get nodes, depth of nodes, children and parents
 	nodes =  [i for i in a_glycan.depth_first_traversal()]
-	depth =  [i for i in a_glycan.depth_first_traversal(apply_fn=depth)]
+	ndepth =  np.array([i for i in a_glycan.depth_first_traversal(apply_fn=depth)])
+	sacch =  np.array([i.stem[0] for i in a_glycan.depth_first_traversal()]) ### bug here, sometimes .stem returns multiple sugars. this implimentation ignores that
 	if dir=='from':
-		relatives =  [i for i in a_glycan.depth_first_traversal(apply_fn=children)]
+		relatives =  [len(i) for i in a_glycan.depth_first_traversal(apply_fn=children)]
 	elif dir=='to':
-		relatives =  [i for i in a_glycan.depth_first_traversal(apply_fn=parents)]
+		relatives =  [len(i) for i in a_glycan.depth_first_traversal(apply_fn=parents)]
 
-	n_level_branches = 
-	for d,n in zip(depth,nodes):
+	n_level_branches = {}
+	for i in range(ndepth.max()):
+		# identify sugars at depth i
+		if monosaccharide=='all':
+			idx = np.where(ndepth==i)[0]
+		elif exclude_sacch is None:
+			idx = np.where(ndepth==i and (sacch in mannosaccharide))[0]
+		else:
+			idx = np.where(ndepth==i and (sacch in mannosaccharide) and (sacch not in exclude_sacch))[0]
+		if idx.size==0:
+			continue
+		# iterate over relevant sugars
+		sum_i = 0
+		for j in idx:
+			# add a branch fo every value greater than 1
+			sum_i += (relatives[j]-1)
+		n_level_branches[i]=sum_i
+
+	return n_level_branches
+
 
 ###############
 ## Depth & Elongation
