@@ -322,7 +322,7 @@ class GlycanMotifLib:
 
 class MotifDpTree:
     def __init__(self, a_glycan_motif_lib, motif_weight):
-        self.dep_tree = a_glycan_motif_lib.motif_with_ncore_dependence_tree()
+        self.dep_tree,_ = a_glycan_motif_lib.motif_with_ncore_dependence_tree()
         self.node_len = len(a_glycan_motif_lib.motif_with_core_list)
         self.all_nodes = a_glycan_motif_lib.motif_with_core_list
         self.parents_vec = {}
