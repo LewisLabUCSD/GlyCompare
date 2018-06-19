@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/NBT_merged_profile_dict_merged.json" afterPath="$PROJECT_DIR$/generated_json_file/NBT_merged_profile_dict_merged.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/glycan_profile_clustering-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/glycan_profile_clustering-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_profile_clustering.ipynb" afterPath="$PROJECT_DIR$/src/glycan_profile_clustering.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/motif_class.py" afterPath="$PROJECT_DIR$/src/motif_class.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +17,8 @@
       <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="198" column="47" lean-forward="true" selection-start-line="198" selection-start-column="47" selection-end-line="198" selection-end-column="47" />
+            <state relative-caret-position="2880">
+              <caret line="198" column="47" lean-forward="false" selection-start-line="198" selection-start-column="47" selection-end-line="198" selection-end-column="47" />
               <folding>
                 <element signature="e#1#55#0" expanded="true" />
               </folding>
@@ -32,7 +29,7 @@
       <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
+            <state relative-caret-position="5445">
               <caret line="919" column="31" lean-forward="false" selection-start-line="919" selection-start-column="31" selection-end-line="919" selection-end-column="31" />
               <folding>
                 <element signature="e#507#18965#0" expanded="false" />
@@ -63,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/motif_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="132" column="22" lean-forward="true" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+            <state relative-caret-position="134">
+              <caret line="115" column="40" lean-forward="false" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
               <folding>
                 <element signature="e#16#70#0" expanded="true" />
               </folding>
@@ -75,10 +72,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="NBT_nglycan_alignment.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/NBT_nglycan_alignment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="plot_glycan_utilities.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
+            <state relative-caret-position="1020">
               <caret line="92" column="20" lean-forward="false" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="20" />
               <folding>
                 <element signature="e#2124#2767#0" expanded="false" />
@@ -164,10 +171,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="79" />
-    <option name="y" value="23" />
-    <option name="width" value="1345" />
-    <option name="height" value="877" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -272,7 +277,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3505007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35550788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -327,6 +332,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/customize_motif_vector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4380">
+          <caret line="296" column="47" lean-forward="false" selection-start-line="296" selection-start-column="47" selection-end-line="296" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/motif_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1935">
+          <caret line="132" column="22" lean-forward="true" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+          <folding>
+            <element signature="e#16#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2310">
@@ -633,13 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NBT_nglycan_alignment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/init_env.py" />
     <entry file="file://$PROJECT_DIR$/src/extract_motif.py" />
     <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
@@ -717,8 +735,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="198" column="47" lean-forward="true" selection-start-line="198" selection-start-column="47" selection-end-line="198" selection-end-column="47" />
+        <state relative-caret-position="2880">
+          <caret line="198" column="47" lean-forward="false" selection-start-line="198" selection-start-column="47" selection-end-line="198" selection-end-column="47" />
           <folding>
             <element signature="e#1#55#0" expanded="true" />
           </folding>
@@ -727,7 +745,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
+        <state relative-caret-position="5445">
           <caret line="919" column="31" lean-forward="false" selection-start-line="919" selection-start-column="31" selection-end-line="919" selection-end-column="31" />
           <folding>
             <element signature="e#507#18965#0" expanded="false" />
@@ -737,7 +755,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
+        <state relative-caret-position="1020">
           <caret line="92" column="20" lean-forward="false" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="20" />
           <folding>
             <element signature="e#2124#2767#0" expanded="false" />
@@ -748,11 +766,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/motif_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="132" column="22" lean-forward="true" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+        <state relative-caret-position="134">
+          <caret line="115" column="40" lean-forward="false" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
           <folding>
             <element signature="e#16#70#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NBT_nglycan_alignment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
