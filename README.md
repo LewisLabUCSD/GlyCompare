@@ -5,7 +5,8 @@ Comparing glycans, leveraging motif substructure arithmetic
 https://www.overleaf.com/16221947rjwhxdqwjbmq
 
 
-## Definition of variables for Glycompare:
+## Definition of variables in Glycompare:
+  - Each keywords represent a define type of variable. 
 
 ### Glycan Part:
 -  **glycan**
