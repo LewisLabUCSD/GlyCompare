@@ -9,7 +9,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - Each keywords represent a define type of variable. 
 
 ### Glycan Part:
--  **glycan_**
+- **glycan_**
 
   - type: a glycan object. The object of gly.structure.glycan.glycan
 - **glycan_id**
