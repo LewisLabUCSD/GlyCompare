@@ -61,8 +61,10 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   
   .mz_list: 
   - type: list. A list of m/z for each glycan_.
+  
   .weighted_vec: 
   - as mentioned
+  
   .relative_abundance: 
   - as mentioned
   
