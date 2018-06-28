@@ -11,7 +11,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 ### Glycan Part:
 -  **glycan_**
 
-  - type: an glycan object. The object of gly.structure.glycan.glycan
+  - type: a glycan object. The object of gly.structure.glycan.glycan
 - **glycan_id**
 
   - type: str. String ID used for a **glycan_**.
