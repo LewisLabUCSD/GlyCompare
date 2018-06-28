@@ -6,7 +6,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 
 
 ## Definition and nomenclature for variables in Glycompare:
-  - Each keywords represent a defined type of variable. 
+  - Each keyword represents a defined type of variable. 
 
 ### Glycan Part:
 - **glycan_**
@@ -62,7 +62,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: list (of float). = match_mtrix.T * relative_abundance
   
   
-- **glycan_profile_obj** type: class
+- **_class_** **glycan_profile_obj()**:
 
   .glycan_id_list: 
   - type: list. A list of glycan_id.
