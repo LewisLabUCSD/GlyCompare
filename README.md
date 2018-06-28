@@ -22,7 +22,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 
   - type: str. Annotated m/z for a **glycan_**
 
-- **motif(substructure)**
+- **motif_(substructure)**
 
   - type: a glycan object. A substructure of a **glycan_**.
 - **motif_id** 
@@ -33,12 +33,12 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: list (of glycan). A list of **glycan_**.
 - **motif_dict**
 
-  - type: dict. Key is the degree of **motif**. motif_dict\[key\] is a **motif_vec**.
+  - type: dict. Key is the degree of **motif_**. motif_dict\[key\] is a **motif_vec**.
   
   
 - **match_vec**: 
 
-  - type: list (of float). length = len(motif_vec), The existency(0/1/1+) within a **glycan_** for each **motif** in **motif_vec**
+  - type: list (of float). length = len(motif_vec), The existency(0/1/1+) within a **glycan_** for each **motif_** in **motif_vec**
 - **match_mtrix**: 
 
   - type: 2D list (of float). row size: number of **glycan_**, column size: len(**motif_vec**), a list of **match_vec**
