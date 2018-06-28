@@ -5,7 +5,7 @@ Comparing glycans, leveraging motif substructure arithmetic
 https://www.overleaf.com/16221947rjwhxdqwjbmq
 
 
-## Definition of variables in Glycompare:
+## Definition and nomenclature for variables in Glycompare:
   - Each keywords represent a defined type of variable. 
 
 ### Glycan Part:
@@ -30,7 +30,11 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: str. String index ID used for a **glycan_**.
 - **motif_vec**
 
-  - type: list (of glycan). A list of **glycan_**.
+  - type: list (of glycan_). A list of **glycan_**.
+- **glycan_motif**
+
+  - type: list (of glycan_). A list of **motif_** that a **glycan_** has.
+  
 - **motif_dict**
 
   - type: dict. Key is the degree of **motif_**. motif_dict\[key\] is a **motif_vec**.
@@ -43,6 +47,9 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 
   - type: 2D list (of float). row size: number of **glycan_**, column size: len(**motif_vec**), a list of **match_vec**
   
+  
+### distinguish the variables that are same type.
+  - glycan_1, glycan_2 mean two different **glycan_**
   
 ### Glycoprofile Part
 
