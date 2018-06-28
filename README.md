@@ -24,7 +24,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 
 - **motif_(substructure)**
 
-  - type: a glycan object. A substructure of a **glycan_**.
+  - type: a glycan object. The object of gly.structure.glycan.glycan. Just a substructure that breaking down from **glycan_**.
 - **motif_id** 
 
   - type: str. String index ID used for a **glycan_**.
@@ -48,7 +48,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: 2D list (of float). List size: number of **glycan_**; Sublist size: len(**motif_vec**); simply a list of **match_vec**
   
   
-### distinguish the variables that have same type.
+### Distinguish the variables that have same type.
   - glycan_1, glycan_2 mean two different **glycan_**
   - motif_1, motif_2 mean two different **motif_**
   
@@ -111,17 +111,17 @@ glycan_ = iupac.loads(glycan_iupac)
 ### Existing Comparisons in GlyPy
 Using glypy we can compare two glycans based on ____?
 ```
-glypy.compare( glycan1,glycan2) 
+glypy.compare(glycan_1, glycan_2) 
 ```
 
 ### Compare glycans in motif-space
 
 With minimal loss of depth information, simple arithmetic comparisons are now possible in motif space:
 
-- Common Core Extraction: ```commonMotifs = glycanMotifs1*glycanMotifs2```
-- Unique elements of glycan1: ```uniqueMotifs = glycanMotifs1-glycanMotifs2```
-- Frequency of Motifs: ```motifFq = glycanMotifs1+glycanMotifs2```
-- Unions of Motifs: ```motifUnion = (numpy.array(glycanMotifs1+glycanMotifs2)>0).aslist()```
+- Common Core Extraction: ```commonMotifs = glycan_motif_1*glycan_motif_2```
+- Unique elements of glycan1: ```uniqueMotifs = glycan_motif_1-glycan_motif_2```
+- Frequency of Motifs: ```motifFq = glycan_motif_1+glycan_motif_2```
+- Unions of Motifs: ```motifUnion = (numpy.array(glycan_motif_1+glycan_motif_1)>0).aslist()```
 
 ### Visualize Results
 
