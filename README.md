@@ -36,25 +36,25 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: dict. Key is the degree of **motif_**. motif_dict\[key\] is a **motif_vec**.
   
   
-- **match_vec**: 
+- **match_vec**
 
   - type: list (of float). length = len(motif_vec), The existency(0/1/1+) within a **glycan_** for each **motif_** in **motif_vec**
-- **match_mtrix**: 
+- **match_mtrix**
 
   - type: 2D list (of float). row size: number of **glycan_**, column size: len(**motif_vec**), a list of **match_vec**
   
   
-### Glycoprofile Part:
+### Glycoprofile Part
 
-- **relative_abundance**:
+- **relative_abundance**
 
   - type: list (of float). Sum to 1. Relative abundance for each annotated glycan in a glycoprofile.
-- **weighted_vec**:
+- **weighted_vec**
 
   - type: list (of float). = match_mtrix.T * relative_abundance
   
   
-- **glycan_profile_obj**: type: class
+- **glycan_profile_obj** type: class
 
   .glycan_id_list: 
   - type: list. A list of glycan_id.
