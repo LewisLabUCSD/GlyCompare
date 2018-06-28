@@ -6,7 +6,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 
 
 ## Definition of variables in Glycompare:
-  - Each keywords represent a define type of variable. 
+  - Each keywords represent a defined type of variable. 
 
 ### Glycan Part:
 - **glycan_**
