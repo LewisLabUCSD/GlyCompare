@@ -45,11 +45,12 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: list (of float). length = len(motif_vec), The existency(0/1/1+) within a **glycan_** for each **motif_** in **motif_vec**
 - **match_mtrix**
 
-  - type: 2D list (of float). row size: number of **glycan_**, column size: len(**motif_vec**), a list of **match_vec**
+  - type: 2D list (of float). List size: number of **glycan_**; Sublist size: len(**motif_vec**); simply a list of **match_vec**
   
   
-### distinguish the variables that are same type.
+### distinguish the variables that have same type.
   - glycan_1, glycan_2 mean two different **glycan_**
+  - motif_1, motif_2 mean two different **motif_**
   
 ### Glycoprofile Part
 
