@@ -55,8 +55,10 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   
   
 - **glycan_profile_obj**: type: class
+
   .glycan_id_list: 
   - type: list. A list of glycan_id.
+  
   .mz_list: 
   - type: list. A list of m/z for each glycan_.
   .weighted_vec: 
