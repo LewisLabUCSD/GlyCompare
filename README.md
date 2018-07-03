@@ -57,6 +57,15 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - glycan_1, glycan_2 mean two different **glycan_**
   - motif_1, motif_2 mean two different **motif_**
   
+### Glycan IO Part:
+  - All glycan_ obj will be stored with glycoct format.
+  - GlycoCT: 
+    ```
+    from glypy.io import glycoct
+    glycan_ = glycoct.loads(json_load(target_address)) 
+    json_store(target_address, str(glycan_))
+    ```
+  
 ### Glycoprofile Part
 
 - **relative_abundance**
