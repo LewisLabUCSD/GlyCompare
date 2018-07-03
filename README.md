@@ -35,10 +35,10 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
   - type: str. String index ID used for a **glycan_**.
 - **motif_vec**
 
-  - type: list (of glycan_). A list of **glycan_**.
+  - type: list (of **motif_**). A list of **glycan_** type obj. A list of substructures that breaking down from **glycan_**..
 - **glycan_motif**
 
-  - type: list (of glycan_). A list of **motif_** that a **glycan_** has.
+  - type: list (of **motif_**). A list of **motif_** that a **glycan_** has.
   
 - **motif_dict**
 
