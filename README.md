@@ -48,6 +48,9 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 - **match_vec**
   - type: list (of float). length = len(motif_vec), The existency(0/1/1+) within a **glycan_** for each **motif_** in **motif_vec**
   
+- **match_dict**
+  - type: dict. Key is the glycan_id. match_dict\[glycan_id\] is a **match_vec**
+  
 - **match_mtrix**
   - type: 2D list (of float). List size: number of **glycan_**; Sublist size: len(**motif_vec**); simply a list of **match_vec**
   
