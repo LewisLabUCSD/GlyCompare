@@ -68,6 +68,11 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
     ```
   
 ### Glycoprofile Part
+- **glycoprofile**
+  - type: dict. Key: m/z. glycoprofile\[Key\]=glycan_id
+ 
+- **glycoprofile_dict**
+  - type: dict. Key: glycoprofile id. glycoprofile_dict\[Key\]=**glycoprofile**
 
 - **relative_abundance**
   - type: list (of float). Sum to 1. Relative abundance for each annotated glycan in a glycoprofile.
