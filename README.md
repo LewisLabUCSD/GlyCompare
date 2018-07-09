@@ -68,11 +68,11 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
     ```
   
 ### Glycoprofile Part
-- **glycoprofile**
-  - type: dict. Key: m/z. glycoprofile\[Key\]=glycan_id
+- **mz_to_struc**
+  - type: dict. Key: m/z. mz_to_struc\[m/z\]=glycan_id
  
-- **glycoprofile_dict**
-  - type: dict. Key: glycoprofile id. glycoprofile_dict\[Key\]=**glycoprofile**
+- **profile_mz_to_struc**
+  - type: dict. Key: glycoprofile id. profile_mz_to_struc\[id\]=**mz_to_struc**
 
 - **mz_abd_table**
   - type: pandas table. columns: each profile. row: m/z
@@ -86,7 +86,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 - **weighted_vec**
   - type: list (of float). = match_mtrix.T * relative_abundance
   
-- **_class_** **glycan_profile_obj()**:
+- **_class_** **glycoprofile()**:
   - glycan_id_list: 
     - type: list. A list of glycan_id.
   
