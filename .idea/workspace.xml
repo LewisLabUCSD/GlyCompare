@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/glycan_io.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/generated_json_file/data_dic_finnn.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/NBT_glycan_match_existed_motif.json" afterPath="$PROJECT_DIR$/generated_json_file/NBT_glycan_match_existed_motif.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/NBT_merged_profile_dict_merged.json" afterPath="$PROJECT_DIR$/generated_json_file/NBT_merged_profile_dict_merged.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/glycan_profile_clustering-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/glycan_profile_clustering-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" afterPath="$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__init__.py" afterPath="$PROJECT_DIR$/src/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/customize_motif_vector.py" afterPath="$PROJECT_DIR$/src/customize_motif_vector.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo.ipynb" afterPath="$PROJECT_DIR$/src/demo.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/extract_motif.py" afterPath="$PROJECT_DIR$/src/extract_motif.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_profile.py" afterPath="$PROJECT_DIR$/src/glycan_profile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_profile_clustering.ipynb" afterPath="$PROJECT_DIR$/src/glycan_profile_clustering.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hierarchical_enrichment.py" afterPath="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/motif_class.py" afterPath="$PROJECT_DIR$/src/motif_class.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45817727">
+    <splitter split-orientation="horizontal" split-proportion="0.57782674">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
@@ -56,7 +42,7 @@
             <entry file="file://$PROJECT_DIR$/src/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="746">
-                  <caret line="95" column="77" lean-forward="true" selection-start-line="95" selection-start-column="77" selection-end-line="95" selection-end-column="77" />
+                  <caret line="95" column="77" lean-forward="false" selection-start-line="95" selection-start-column="77" selection-end-line="95" selection-end-column="77" />
                   <folding>
                     <element signature="e#4541#5460#0" expanded="false" />
                   </folding>
@@ -87,11 +73,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/motif_class.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="608">
-                  <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
+                <state relative-caret-position="693">
+                  <caret line="104" column="11" lean-forward="false" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
                   <folding>
                     <element signature="e#16#27#0" expanded="true" />
                   </folding>
@@ -114,8 +100,8 @@
           <file leaf-file-name="hierarchical_enrichment.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/hierarchical_enrichment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="78">
-                  <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+                <state relative-caret-position="67">
+                  <caret line="166" column="60" lean-forward="false" selection-start-line="166" selection-start-column="60" selection-end-line="166" selection-end-column="60" />
                   <folding>
                     <element signature="e#0#29#0" expanded="true" />
                   </folding>
@@ -123,11 +109,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="glycan_stats.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="glycan_stats.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/glycan_stats.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+                <state relative-caret-position="299">
+                  <caret line="45" column="70" lean-forward="false" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
                   <folding>
                     <element signature="e#28#69#0" expanded="true" />
                   </folding>
@@ -143,7 +129,7 @@
             <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="467">
-                  <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+                  <caret line="86" column="13" lean-forward="false" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
                   <folding>
                     <element signature="e#1#55#0" expanded="true" />
                   </folding>
@@ -226,15 +212,15 @@
         <option value="$PROJECT_DIR$/src/NBT_nglycan_alignment.py" />
         <option value="$PROJECT_DIR$/src/aaa.py" />
         <option value="$PROJECT_DIR$/src/aa.py" />
-        <option value="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
         <option value="$PROJECT_DIR$/src/unimplemented_hierach_part.py" />
         <option value="$PROJECT_DIR$/src/glycan_io.py" />
-        <option value="$PROJECT_DIR$/src/motif_class.py" />
         <option value="$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" />
         <option value="$PROJECT_DIR$/src/__init__.py" />
         <option value="$PROJECT_DIR$/src/glycan_profile.py" />
         <option value="$PROJECT_DIR$/src/customize_motif_vector.py" />
         <option value="$PROJECT_DIR$/src/extract_motif.py" />
+        <option value="$PROJECT_DIR$/src/motif_class.py" />
+        <option value="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
       </list>
     </option>
   </component>
@@ -748,26 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/glycan_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding>
-            <element signature="e#28#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hierarchical_enrichment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -791,7 +757,7 @@
     <entry file="file://$PROJECT_DIR$/src/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="746">
-          <caret line="95" column="77" lean-forward="true" selection-start-line="95" selection-start-column="77" selection-end-line="95" selection-end-column="77" />
+          <caret line="95" column="77" lean-forward="false" selection-start-line="95" selection-start-column="77" selection-end-line="95" selection-end-column="77" />
           <folding>
             <element signature="e#4541#5460#0" expanded="false" />
           </folding>
@@ -818,10 +784,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/motif_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
+        <state relative-caret-position="693">
+          <caret line="104" column="11" lean-forward="false" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
           <folding>
             <element signature="e#16#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hierarchical_enrichment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="166" column="60" lean-forward="false" selection-start-line="166" selection-start-column="60" selection-end-line="166" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glycan_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="45" column="70" lean-forward="false" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
+          <folding>
+            <element signature="e#28#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
