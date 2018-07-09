@@ -74,7 +74,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 - **glycoprofile_dict**
   - type: dict. Key: glycoprofile id. glycoprofile_dict\[Key\]=**glycoprofile**
 
-- **glycoprofile_abd_table**
+- **glyco_abd_table**
   - type: pandas table. columns: each profile. row: m/z of glycan
   
 - **relative_abundance**
