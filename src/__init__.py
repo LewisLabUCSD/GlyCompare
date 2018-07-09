@@ -27,9 +27,9 @@
 # setting up the basic directory
 root_ = "/Users/apple/PycharmProjects/GlyCompare/"
 num_processors = 8
+exact_Ture = False
 json_address = root_ + "generated_json_file/"
 motif_plot_address = root_ + "motif_plot/"
-manual_curated_address = root_ + "glycan_structure/"
 plot_output_address = root_ + "output_plot/"
 source_address = root_ + "source_data/"
 
@@ -46,10 +46,10 @@ source_address = root_ + "source_data/"
 #     4. output a dict ID str -> glycoct str stored in: root_address + 'NBT_for_motif_extraction.json'
 # """
 # # input
-glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json'
-topology_list = json_address + r'Glycan_topolog_list.txt'
+glytoucan_database_addr__ = source_address + r'data_dic_finnn.json'
+topology_list_addr = source_address + r'Glycan_topolog_list.txt'
 # # output
-glycoct_dict_goto_extraction_addr = json_address + 'NBT_for_motif_extraction.json'
+glycan_dict_addr = json_address + 'glycan_dict.json'
 #
 
 # <___________Ben___Start from here _________________>
@@ -63,15 +63,13 @@ def get_motif_pip(gly_len, prior=True):
     4. save glycan_motif_addr
 """
 # input
-glytoucan_data_base_addr__ = json_address + r'data_dic_finnn.json' # from above
-glycoct_dict_goto_extraction_addr = json_address + 'NBT_for_motif_extraction.json'
+glytoucan_database_addr__ = source_address + r'data_dic_finnn.json' # from above
+glycan_dict_addr = json_address + 'glycan_dict.json'
 
 # glytoucan_data_base_addr__ # from above
 # output
-success_log_addr = json_address + 'NBT_for_motif_log.json'
-glycan_list_addr = json_address + 'NBT_glycan_list_127.json'
 # this one will go into the next step
-glycan_dict_motif_list_addr = json_address + 'NBT_glycan_dict_degree_list_glycoct_for_motif.json'
+glycan_motif_dict_addr = json_address + 'glycan_motif_dict.json'
 
 
 
@@ -87,10 +85,10 @@ def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_ad
     :return: sorted motif_vec
     """
 # input
-glycan_dict_motif_list_addr # from part 1
+glycan_dict_addr # from part 1
 
 # output
-output_motif_dic_degree_list_addr = json_address + "NBT_motif_dic_degree_list.json"
+merged_motif_dict_addr = json_address + "merged_motif_dict.json"
 
 
 
@@ -103,12 +101,11 @@ output_motif_dic_degree_list_addr = json_address + "NBT_motif_dic_degree_list.js
     :return: glycan_match_existed_motif degree - >[motif1, motif2, ...]
 """
 # input file
-glycan_dict_motif_list_addr # from above
-output_motif_dic_degree_list_addr # from above
-NBT_fixed_gylcan_name_list_addr= json_address + "NBT_fixed_gylcan_name.json"
+glycan_dict_addr # from above
+merged_motif_dict_addr # from above
 
 # output file
-output_matched_glycan_addr = json_address + "NBT_glycan_match_existed_motif.json"
+output_matched_dict_addr = json_address + "NBT_glycan_match_existed_motif.json"
 
 
 

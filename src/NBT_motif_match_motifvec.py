@@ -1,4 +1,5 @@
 # break glycoCT
+
 from glypy.io import glycoct, iupac
 from glypy.algorithms.subtree_search import subtree_of
 from glypy.plot import plot
@@ -6,7 +7,7 @@ from glypy.structure.glycan import fragment_to_substructure
 from glypy.io.glycoct import dump
 from matplotlib import pyplot as plt
 import seaborn as sns;
-
+import __init__
 sns.set(color_codes=True)
 
 from json_utility import load_json
@@ -14,9 +15,6 @@ import time
 import numpy as np
 import glycan_profile
 import customize_motif_vector
-import NBT_init
-import NBT_glycan_motif
-
 from json_utility import *
 import pandas as pd
 import seaborn
@@ -82,7 +80,7 @@ def motif_match_motif_vec(a_tree, motif_vec):
     _checked_matrix = np.zeros((1, len(motif_vec)))
     for jdex, j in enumerate(motif_vec):
         #             print(type(j), type(_tree))
-        if not subtree_of(j, a_tree, False) is None:
+        if not subtree_of(j, a_tree, exact=__init__.exact_Ture) is None:
             # _checked_matrix[jdex] = 1
             # print('finished ', )
             _checked_matrix[0, jdex] = 1

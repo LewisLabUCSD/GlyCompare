@@ -10,8 +10,8 @@ import numpy as np
 import __init__
 import plot_glycan_utilities
 GLOBAL_X = __init__.json_address + r'data_dic_finnn.json'
-GLOBAL_TOPOLOTGY_LIST = __init__.manual_curated_address + r"Glycan_topolog_list.txt"
-root_ = __init__.manual_curated_address
+GLOBAL_TOPOLOTGY_LIST = __init__.source_address + r"Glycan_topolog_list.txt"
+# root_ = __init__.source_address
 source_address = __init__.source_address
 
 
@@ -730,19 +730,19 @@ class glycan_profile_obj():
 
     def __init__(self, glycan_id_list, mz_list, relative_abd, motif_vec, hit_matrix, name=''):
         self.name = name
-        self.glycan_id = glycan_id_list
-        self.mz_id = mz_list
-        self.weighted_motif_vec = motif_vec
+        self.glycan_id_list = glycan_id_list
+        self.mz_id_list = mz_list
+        self.weighted_vec = motif_vec
         self.relative_abundance = relative_abd
         self.hit_matrix = hit_matrix
 
     #         self.relative_motif_vec = []
 
     def get_dict(self):
-        rt_ = {'m/z': self.mz_id,
-               'glycan': self.glycan_id,
+        rt_ = {'m/z': self.mz_id_list,
+               'glycan': self.glycan_id_list,
                'weight': list(self.relative_abundance),
-               'motif_vec': list(self.weighted_motif_vec),
+               'motif_vec': list(self.weighted_vec),
                # 'hit_matrix': self.hit_matrix
                }
         return rt_
