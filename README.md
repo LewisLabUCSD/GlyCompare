@@ -61,6 +61,7 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 ### Glycan IO Part:
     - All glycan_ obj will be stored with glycoct format.
     - GlycoCT: 
+    
     ```
     from glypy.io import glycoct
     glycan_ = glycoct.loads(json_load(target_address)) 
@@ -68,11 +69,11 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
     ```
   
 ### Glycoprofile Part
-- **mz_to_struc**
-  - type: dict. Key: m/z. mz_to_struc\[m/z\]=glycan_id
+- **mz_to_id_dict**
+  - type: dict. Key: m/z. mz_to_glycan_id\[m/z\]=glycan_id
  
-- **profile_mz_to_struc**
-  - type: dict. Key: glycoprofile id. profile_mz_to_struc\[id\]=**mz_to_struc**
+- **profile_mz_to_id**
+  - type: dict. Key: glycoprofile id. profile_mz_to_id\[id\]=**mz_to_id_dict**
 
 - **mz_abd_table**
   - type: pandas table. columns: each profile. row: m/z
