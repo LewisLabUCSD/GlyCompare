@@ -99,7 +99,7 @@ def _duplicate_cleaning_wrapper(degree, motif_list, cleaned_motif_dic):
 
 def merge_glycan_motif_dict_to_motif_dict(glycan_dict, combine_original=False):
     """
-
+    merge glycan_motif_dict to motif_dict
     :param glycan_dict: dict_ID_dict_degree_list
     :param combine_original: Check if you need add the original glycan to the motif-vec
     :return:
@@ -132,6 +132,7 @@ def merge_motif_dict_pipe(glycan_dict, output_merged_motif_dict_addr):
     merge the substructure of all glycans into motif dict
     :param glycan_dict: {degree: [motif1, motif2, ... ]} /NBT_glycan_dict_degree_list_glycoct_for_motif
     store the glycan motif to NBT_motif_dic_degree_list.json
+    :param output_merged_motif_dict_addr: addr
     :return: sorted motif_vec
     """
     # output_motif_dic_degree_list_addr = root + "NBT_motif_dic_degree_list.json"
@@ -206,8 +207,8 @@ def match_motif_for_pip(motif_vec, glycan_motif_dict, glycan_id, match_dict, ide
     :param motif_vec: customized motif vec
     :param glycan_motif_dict: extracted_motif_dic returned from the extract_motif
     :param glycan_id: ID glytoucan or other
-    :param idex: idex in list (mainly for progress check)
     :param match_dict: dict for storing final data
+    :param idex: idex in list (mainly for progress check)
     :return:
     """
     # make duplicate
@@ -224,7 +225,6 @@ def motif_matching_wrapper(motif_dict, glycan_motif_dict, matched_glycan_dict_ad
     match the glycan_motif_dict_degree_list to motif vec
     :param motif_dict: {degree: [motif1, motif2, ...]}  /NBT_motif_dic_degree_list
     :param glycan_motif_dict: {degree: [motif1, motif2, ...]} /NBT_glycan_dict_degree_list_glycoct_for_motif
-    :param id_list: all GlytoucanID of the glycans you are analyzing /NBT_fixed_gylcan_name_list
     :param matched_glycan_dict_addr: output_addr /NBT_fixed_gylcan_name_list
     :return: glycan_match_existed_motif degree - >[motif1, motif2, ...]
     """
@@ -250,14 +250,6 @@ def motif_matching_wrapper(motif_dict, glycan_motif_dict, matched_glycan_dict_ad
     store_json(matched_glycan_dict_addr, a_motif_dic)
     return a_motif_dic
 
-
-# def motif_dict_to_vec(motif_dict):
-#     motif_vec = []
-#     for i in sorted([int(j) for j in list(motif_dict.keys())]):
-#         print(i, len(motif_dict[str(i)]))
-#         motif_vec.extend(motif_dict[str(i)])
-#     print(len(motif_vec))
-#     return motif_vec
 
 
 def check_motif_dict_length(a_dict):

@@ -118,3 +118,10 @@ def load_glycan_str_from_manual_drawn(glycan_id):
         glycan_str = ''
     return glycan_str
 
+def motif_dict_to_motif_vec(motif_dict):
+    motif_vec = []
+    for i in sorted([int(j) for j in list(motif_dict.keys())]):
+        print(i, len(motif_dict[str(i)]))
+        motif_vec.extend(motif_dict[str(i)])
+    print(len(motif_vec))
+    return motif_vec

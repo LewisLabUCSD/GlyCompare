@@ -105,7 +105,7 @@ glycan_dict_addr # from above
 merged_motif_dict_addr # from above
 
 # output file
-output_matched_dict_addr = json_address + "NBT_glycan_match_existed_motif.json"
+output_matched_dict_addr = json_address + "match_dict.json"
 
 
 

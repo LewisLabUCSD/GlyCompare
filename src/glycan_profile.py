@@ -16,7 +16,7 @@ source_address = __init__.source_address
 
 
 def load_glycan_profile_dic():
-    glycan_profile = {'Gly01': {'2244': 'G04483SK',
+    glycan_profile = {'1': {'2244': 'G04483SK',
                                 '2605': 'G30460NZ',
                                 '2967': 'G17689DH',
                                 '3416': 'G54338PJ',
@@ -25,7 +25,7 @@ def load_glycan_profile_dic():
                                 '4587': '4587.1',
                                 '5037': 'G49604DB',
                                 '5486': '5486.1'}}
-    glycan_profile_merged = {'Gly01': {'2244': 'G04483SK',
+    glycan_profile_merged = {'1': {'2244': 'G04483SK',
                                        '2326': 'G00176HZ',
                                        '2530': 'G79457WN',
                                        '2605': 'G30460NZ',
@@ -42,7 +42,7 @@ def load_glycan_profile_dic():
                                        '3777': 'G76812VG',
                                        '3504': 'G10292TC'
                                        }}
-    glycan_profile_merged['Gly02'] = {
+    glycan_profile_merged['2'] = {
         '2244': 'G04483SK',
         '2326': 'G00176HZ',
         '2489': 'G10691MJ',
@@ -63,7 +63,7 @@ def load_glycan_profile_dic():
         '3777': 'G76812VG',
         '3504': 'G76812VG',
     }
-    glycan_profile['Gly02'] = {
+    glycan_profile['2'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -74,7 +74,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
     }
     # mgat4A/mgat4B
-    glycan_profile['Gly03'] = {
+    glycan_profile['3'] = {
         "2244": "G04483SK",
         "2693": "G07568IR",
         "3055": "G88127MB",
@@ -83,7 +83,7 @@ def load_glycan_profile_dic():
         "4226": "G56516KW",
         "4675": "4675.1",
     }
-    glycan_profile_merged['Gly03'] = {
+    glycan_profile_merged['3'] = {
         '2244': 'G04483SK',
         '2693': 'G07568IR',
         '3055': 'G88127MB',
@@ -96,7 +96,7 @@ def load_glycan_profile_dic():
         '3865': '3865.1'
     }
     # mgat5
-    glycan_profile['Gly04'] = {
+    glycan_profile['4'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -104,7 +104,7 @@ def load_glycan_profile_dic():
         "3777": "G76812VG",
         "4226": "G56516KW",
     }
-    glycan_profile_merged['Gly04'] = {
+    glycan_profile_merged['4'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -115,19 +115,19 @@ def load_glycan_profile_dic():
         '2693': 'G07568IR',
         '1836': 'G80858MF'
     }
-    glycan_profile['Gly05'] = {
+    glycan_profile['5'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
         "3416": "3416.1",
     }
-    glycan_profile_merged['Gly05'] = {'2040': 'G58667NI',
+    glycan_profile_merged['5'] = {'2040': 'G58667NI',
                                       '2244': 'G04483SK',
                                       '2605': 'G30460NZ',
                                       '2967': 'G17689DH',
                                       '3416': '3416.1'}
 
-    glycan_profile['Gly06'] = {
+    glycan_profile['6'] = {
         "1591": "G07483YN",
         "1836": "G80858MF",
         "2081": "G80393PG",
@@ -142,7 +142,7 @@ def load_glycan_profile_dic():
         "4587": "4587.1",
         "5037": "G49604DB",
     }
-    glycan_profile_merged['Gly06'] = {'1591': 'G07483YN',
+    glycan_profile_merged['6'] = {'1591': 'G07483YN',
                                       '1836': 'G80858MF',
                                       '2081': 'G80393PG',
                                       '2326': 'G00176HZ',
@@ -166,7 +166,7 @@ def load_glycan_profile_dic():
                                       '3212': '3212.1',
                                       '3661': '3661.1'}
     # B4GalT2
-    glycan_profile['Gly07'] = {
+    glycan_profile['7'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -179,7 +179,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
         "5486": "5486.1",
     }
-    glycan_profile_merged['Gly07'] = {'2081': 'G80393PG',
+    glycan_profile_merged['7'] = {'2081': 'G80393PG',
                                       '2244': 'G04483SK',
                                       '2605': 'G30460NZ',
                                       '2967': 'G17689DH',
@@ -195,7 +195,7 @@ def load_glycan_profile_dic():
                                       '5486': '5486.1',
                                       '3055': '3055.1'}
     # B4GalT3
-    glycan_profile['Gly08'] = {
+    glycan_profile['8'] = {
         "2605": "G30460NZ",
         "2967": "G17689DH",
         "3416": "G54338PJ",
@@ -207,7 +207,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
         "5486": "5486.1",
     }
-    glycan_profile_merged['Gly08'] = {'2605': 'G30460NZ',
+    glycan_profile_merged['8'] = {'2605': 'G30460NZ',
                                       '2967': 'G17689DH',
                                       "3055": '3055.1',
                                       '3416': 'G54338PJ',
@@ -223,7 +223,7 @@ def load_glycan_profile_dic():
                                       '5037': 'G49604DB',
                                       '5486': '5486.1'}
     # B4GalT4
-    glycan_profile['Gly09'] = {
+    glycan_profile['9'] = {
         "2967": "G17689DH",
         "3416": "G54338PJ",
         "3777": "G76812VG",
@@ -232,7 +232,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
         "5486": "5486.1",
     }
-    glycan_profile_merged['Gly09'] = {'2967': 'G17689DH',
+    glycan_profile_merged['9'] = {'2967': 'G17689DH',
                                       '3416': 'G54338PJ',
                                       '3777': 'G76812VG',
                                       "3865": '3865.1',
@@ -242,7 +242,7 @@ def load_glycan_profile_dic():
                                       '5037': 'G49604DB',
                                       '5486': '5486.1'}
     # B4GalT1/B4GalT2
-    glycan_profile['Gly10'] = {
+    glycan_profile['10'] = {
         "1591": "G07483YN",
         "1836": "G80858MF",
         "2081": "G80393PG",
@@ -259,7 +259,7 @@ def load_glycan_profile_dic():
         "4587": "4587.1",
         "5037": "G49604DB",
     }
-    glycan_profile_merged['Gly10'] = {'1591': 'G07483YN',
+    glycan_profile_merged['10'] = {'1591': 'G07483YN',
                                       '1836': 'G80858MF',
                                       "2040": 'G58667NI',
                                       '2081': 'G80393PG',
@@ -279,7 +279,7 @@ def load_glycan_profile_dic():
                                       '4587': '4587.1',
                                       '5037': 'G49604DB'}
     # B4GalT1/B4GalT2
-    glycan_profile['Gly11'] = {
+    glycan_profile['11'] = {
         "1591": "G07483YN",
         "1836": "G80858MF",
         "2081": "G80393PG",
@@ -290,7 +290,7 @@ def load_glycan_profile_dic():
         "3457": "3457.1",
         "4022": "G80264ZA",
     }
-    glycan_profile_merged['Gly11'] = {'1591': 'G07483YN',
+    glycan_profile_merged['11'] = {'1591': 'G07483YN',
                                       '1836': 'G80858MF',
                                       '2040': 'G58667NI',
                                       '2081': 'G80393PG',
@@ -303,7 +303,7 @@ def load_glycan_profile_dic():
                                       '3457': '3457.1',
                                       '4022': 'G80264ZA'}
     # B3gnt1
-    glycan_profile['Gly12'] = {'1836': 'G80858MF',
+    glycan_profile['12'] = {'1836': 'G80858MF',
                                '2040': 'G58667NI',
                                '2081': 'G80393PG',
                                '2244': 'G04483SK',
@@ -323,7 +323,7 @@ def load_glycan_profile_dic():
                                '4587': '4587.1',
                                '5037': 'G49604DB'}
     # B3gnt2
-    glycan_profile['Gly13'] = {
+    glycan_profile['13'] = {
         "2605": "G30460NZ",
         "3055": "3055.1",
         "3416": "G54338PJ",
@@ -333,7 +333,7 @@ def load_glycan_profile_dic():
         "4587": "4587.1",
     }
     # st3gal3
-    glycan_profile['Gly14'] = {
+    glycan_profile['14'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "3055": "3055.1",
@@ -344,7 +344,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
     }
     # st3gal3
-    glycan_profile['Gly14'] = {
+    glycan_profile['14'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "3055": "3055.1",
@@ -355,7 +355,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
     }
     # st3gal4
-    glycan_profile['Gly15'] = {
+    glycan_profile['15'] = {
         "2244": "G04483SK",
         "2489": "G10691MJ",
         "2693": "G07568IR",
@@ -367,7 +367,7 @@ def load_glycan_profile_dic():
         "4402": "4402.1",
     }
     # st3gal6
-    glycan_profile['Gly16'] = {
+    glycan_profile['16'] = {
         "1591": "G07483YN",
         "1836": "G80858MF",
         "2040": "G58667NI",
@@ -388,7 +388,7 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
     }
     # st3gal3/4
-    glycan_profile['Gly17'] = {
+    glycan_profile['17'] = {
         "2040": "G58667NI",
         "2244": "G04483SK",
         "2489": "G10691MJ",
@@ -404,7 +404,7 @@ def load_glycan_profile_dic():
         "4851": "4851.1",
     }
     # st3gal4/6
-    glycan_profile['Gly18'] = {
+    glycan_profile['18'] = {
         "2040": "G58667NI",
         "2244": "G04483SK",
         "2489": "G10691MJ",
@@ -416,7 +416,7 @@ def load_glycan_profile_dic():
         "4041": "4041.1",
     }
     # st3gal4/6
-    glycan_profile['Gly19'] = {
+    glycan_profile['19'] = {
         "1836": "G80858MF",
         "2081": "G80393PG",
         "2605": "G30460NZ",
@@ -431,14 +431,14 @@ def load_glycan_profile_dic():
         "5486": "5486.1",
     }
     # B3gnt2/mgat4a/mgat4b/mgat5
-    glycan_profile['Gly20'] = {
+    glycan_profile['20'] = {
         "1836": "G80858MF",
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
     }
     # st3gal4/6/mgat4A/4B/5
-    glycan_profile['Gly21'] = {
+    glycan_profile['21'] = {
         "1836": "G80858MF",
         "2040": "G58667NI",
         "2244": "G04483SK",
@@ -449,14 +449,14 @@ def load_glycan_profile_dic():
         "4041": "G90130AG",
     }
     # st3gal4/6/mgat4A/4B/5
-    glycan_profile['Gly22'] = {
+    glycan_profile['22'] = {
         "1836": "G80858MF",
         "2401": "G23295TF",
         "2605": "G30460NZ",
         "2967": "G17689DH",
     }
     # mgat3
-    glycan_profile['Gly23'] = {
+    glycan_profile['23'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -468,7 +468,7 @@ def load_glycan_profile_dic():
         "5486": "5486.1",
     }
     # mgat3
-    glycan_profile['Gly24'] = {
+    glycan_profile['24'] = {
         "2605": "G30460NZ",
         "2967": "G17689DH",
         "3416": "G54338PJ",
@@ -479,7 +479,7 @@ def load_glycan_profile_dic():
         "5486": "5486.1",
     }
     # mgat2
-    glycan_profile['Gly25'] = {
+    glycan_profile['25'] = {
         "1591": "G07483YN",
         "1795": "G12398HZ",
         "2156": "G39439UR",
@@ -489,7 +489,7 @@ def load_glycan_profile_dic():
         "3416": "3416.2",
     }
     # B4galt1/B4galt2/B4galt3
-    glycan_profile['Gly26'] = {
+    glycan_profile['26'] = {
         "1836": "G80858MF",
         "2081": "G80393PG",
         "2326": "G00176HZ",
@@ -497,7 +497,7 @@ def load_glycan_profile_dic():
         "2892": "G79412GP",
     }
     # B3gnt8
-    glycan_profile['Gly27'] = {
+    glycan_profile['27'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -509,7 +509,7 @@ def load_glycan_profile_dic():
         "5486": "5486.1",
     }
     # mgat4B
-    glycan_profile['Gly28'] = {
+    glycan_profile['28'] = {
         "2244": "G04483SK",
         "2605": "G30460NZ",
         "2967": "G17689DH",
@@ -519,7 +519,7 @@ def load_glycan_profile_dic():
         "4675": "4675.1",
     }
     # mgat5B
-    glycan_profile['Gly29'] = {
+    glycan_profile['29'] = {
         "2605": "G30460NZ",
         "2967": "G17689DH",
         "3416": "G54338PJ",
@@ -529,13 +529,13 @@ def load_glycan_profile_dic():
         "5037": "G49604DB",
     }
     # mgat1
-    glycan_profile['Gly30'] = {
+    glycan_profile['30'] = {
         "1375": "G60415BS",
         "1580": "G49721VX",
         "1754": "1754.1",
     }
     # mgat2/st3gal4/st3gal6
-    glycan_profile['Gly31'] = {
+    glycan_profile['31'] = {
         "1591": "G07483YN",
         "1795": "G12398HZ",
         "2156": "G39439UR",
@@ -545,13 +545,13 @@ def load_glycan_profile_dic():
         "2967": "2967.1",
     }
     # mgat2/mgat4A/mgat4B/mgat5
-    glycan_profile['Gly32'] = {
+    glycan_profile['32'] = {
         "1795": "G12398HZ",
         "2156": "G39439UR",
         "2605": "2605.2",
     }
     # mgat2/mgat4A/mgat4B/mgat5
-    glycan_profile['Gly33'] = {
+    glycan_profile['33'] = {
         "1795": "G12398HZ",
         "2244": "2244.1",
         "2605": "2605.2",
@@ -560,7 +560,7 @@ def load_glycan_profile_dic():
         "3143": "3143.1",
     }
     # mgat2/mgat4A/mgat4B/mgat5
-    glycan_profile['Gly34'] = {
+    glycan_profile['34'] = {
         "2792": "G39764AC",
         "3242": "G39813YP",
         "3603": "G05098FE",
@@ -569,84 +569,80 @@ def load_glycan_profile_dic():
         "4862": "G85809SI",
         "5312": "5312.1",
     }
-    return glycan_profile, glycan_profile_merged
+    return glycan_profile
 
 
+def load_glyco_table():
+    """
+    start from 2d table
+    :return:
+    """
 
-def load_glycan_profile(glycan_dict):
-    glycan_profile_table = pd.read_table(source_address+'nbt.3280_cho.txt')
+
+def load_mz_glycan_dict(addr=__init__.json_address+"NBT_mz_dict_glycan_glycoct.json"):
+    """
+
+    :param addr:
+    :return:
+    """
+    return load_json(addr)
+
+
+def load_cho_mz_abundance(cho_addr=__init__.source_address+'nbt.3280_cho.txt', mz_abd_addr=__init__.source_address+'glycan_table.xls'):
+    """
+
+    :param cho_addr:
+    :param mz_abd_addr:
+    :return:
+    """
+    mz_glycan_dict = load_mz_glycan_dict()
+    glycan_profile_table = pd.read_table(cho_addr)
     glycan_profile_table = glycan_profile_table.fillna(0)
+    mz_list = [int(i) for i in mz_glycan_dict.keys()]
+    mz_abd_table = glycan_profile_table[glycan_profile_table['m/z exp'].isin(mz_list)]
 
-    cutted_profile = glycan_profile_table[glycan_profile_table['m/z exp'].isin(glycan_dict.keys())]
-    cutted_profile.columns = ['m/z exp', 'Composition', 'm/z calc',
-                              'WT',
-                              'mgat4A',
-                              'mgat4A/mgat4B',
-                              'mgat5',
-                              'mgat4A/mgat4B/mgat5',
-                              'B4GalT1',
-                              'B4GalT2',
-                              'B4GalT3',
-                              'B4GalT4',
-                              'B4GalT1/B4GalT2',
-                              'B4GalT1/B4GalT3',
-                              'B3gnt1',
-                              'B3gnt2',
-                              'st3gal3',
-                              'st3gal4',
-                              'st3gal6',
-                              'st3gal3/st3gal4',
-                              'st3gal4/st3gal6',
-                              'KI_ST6GalNAc1/st3gal4/st3gal6',
-                              'B3gnt2/mgat4a/mgat4b/mgat5',
-                              'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-                              'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-                              'EPO48(mgat3)',
-                              'EPO143(mgat4C)',
-                              'EPO174(mgat2)',
-                              'EPO200(B4galt1/B4galt2/B4galt3)',
-                              'EPO275(B3gnt8)',
-                              'EPO78(mgat4B)',
-                              'EPO104(mgat5B)',
-                              'EPO127(mgat1)',
-                              'EPO259(mgat2/st3gal4/st3gal6)',
-                              'EPO261(mgat2/mgat4A/mgat4B/mgat5)',
-                              'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
-                              'EPO266(fut8)',
-                              'Rit110(B4galt1)',
-                              'Rit268(fut8/B4galt1)',
-                              'Rit(WT)']
-    cutted_profile.to_excel(source_address+'glycan_table.xls')
-    name_list = list(cutted_profile['m/z exp'])
-    profile_list = list(glycan_profile_table.columns)[3:]
-    print('name_list', len(name_list), 'profile_list', len(profile_list))
-    filtered_matrix = np.array(cutted_profile)[:, 3:]
-    lr_ = glycan_profile_table.shape[0]
+    del mz_abd_table['Composition']
+    del mz_abd_table['m/z calc']
+    _col = mz_abd_table.columns.values
+    # _col =
+    # _col[0] = 'm/z'
+    # _col = list(range(len(_col)))
+    _col[0] = 'm/z'
+    # print(_col)
+    for i in range(1, len(_col)):
+        _col[i] = i
+    mz_abd_table.colmuns = _col
+    mz_abd_table.index = list(range(mz_abd_table.shape[0]))
+    mz_abd_table.to_excel(mz_abd_addr)
+    return mz_abd_table
 
-    "remove \'m/z exp\', \'Composition\', \'m/z calc\'"
-    lc_ = glycan_profile_table.shape[1] - 3
 
+def get_norm_mz_abd_table(mz_abd_table, norm_abd_table_dict_addr=__init__.json_address+"norm_mz_abd_dict.json"):
+    """
+    normalize the mz over each profile
+
+    :param norm_abd_table_dict_addr:
+    :param mz_abd_table:
+    :return:
+    """
+    mz_list = list(mz_abd_table['m/z'])
+    profile_list = list(mz_abd_table.columns.values)[1:]
+    print('mz_list', len(mz_list), 'profile_list', len(profile_list))
+    lr_ = mz_abd_table.shape[0]
+    lc_ = mz_abd_table.shape[1] - 1
     print(lr_, lc_)
-    normal_weight_list = []
 
-    """should cut the profile here?"""
-    for i in range(1, lc_+1):
-        if i < 10:
-            k = "0" + str(i)
-        else:
-            k = str(i)
-        normal_weight_list.append(sum(glycan_profile_table['Gly' + k]))
-
-    print('normal_weight_list', len(normal_weight_list))
+    filtered_matrix = np.array(mz_abd_table)[:, 1:]
     normalized_matrix = np.array(filtered_matrix)
     for i in range(lc_):
-        normalized_matrix[:, i] = filtered_matrix[:, i] / normal_weight_list[i]
-    print(normal_weight_list)
-    NBT_dict_name_abundance_cross_profile = {}
-    for idex, i in enumerate(name_list):
-        NBT_dict_name_abundance_cross_profile[str(i)] = list(normalized_matrix[idex, :][:])
-    store_json(__init__.json_address + "NBT_dict_name_abundance_cross_profile.json", NBT_dict_name_abundance_cross_profile)
-    return NBT_dict_name_abundance_cross_profile
+        normalized_matrix[:, i] = filtered_matrix[:, i] / sum(filtered_matrix[:, i])
+    # print(normal_weight_list)
+
+    norm_mz_abd_dict = {}
+    for idex, i in enumerate(mz_list):
+        norm_mz_abd_dict[str(i)] = list(normalized_matrix[idex, :][:])
+    store_json(norm_abd_table_dict_addr, norm_mz_abd_dict)
+    return norm_mz_abd_dict
 
 
 def get_profile_str(glycan_dict, ez_vec):
@@ -686,10 +682,8 @@ def merge_unzero_vec(prof_n, dict_name_abundance_cross_profile, glycan_dict, gly
     """
 
     undoubt_list = ['3504']
-    if prof_n + 1 < 10:
-        _id = 'Gly0' + str(prof_n + 1)
-    else:
-        _id = 'Gly' + str(prof_n + 1)
+
+    _id = str(prof_n + 1)
     _temp_dict = dict(glycan_profile[_id])
     for i in sorted(list(dict_name_abundance_cross_profile.keys())):
         if dict_name_abundance_cross_profile[i][prof_n] > 0.02:
@@ -720,7 +714,7 @@ def merge_unzero_vec(prof_n, dict_name_abundance_cross_profile, glycan_dict, gly
     return _temp_dict
 
 
-class glycan_profile_obj():
+class Glycoprofile():
     """we will have the profile with topology
     dict self.profile
     list self.motif_list
@@ -728,21 +722,21 @@ class glycan_profile_obj():
     we will have a
     """
 
-    def __init__(self, glycan_id_list, mz_list, relative_abd, motif_vec, hit_matrix, name=''):
-        self.name = name
+    def __init__(self, glycan_id_list, mz_id_list, norm_abd, weighted_vec, hit_matrix=[], name=0):
         self.glycan_id_list = glycan_id_list
-        self.mz_id_list = mz_list
-        self.weighted_vec = motif_vec
-        self.relative_abundance = relative_abd
+        self.mz_id_list = mz_id_list
+        self.weighted_vec = weighted_vec
+        self.relative_abundance = norm_abd
         self.hit_matrix = hit_matrix
+        self.name = name
 
     #         self.relative_motif_vec = []
 
     def get_dict(self):
-        rt_ = {'m/z': self.mz_id_list,
-               'glycan': self.glycan_id_list,
-               'weight': list(self.relative_abundance),
-               'motif_vec': list(self.weighted_vec),
+        rt_ = {'m/z_list': self.mz_id_list,
+               'glycan_id_list': self.glycan_id_list,
+               'relative_abundance': list(self.relative_abundance),
+               'weighted_motif_vec': list(self.weighted_vec),
                # 'hit_matrix': self.hit_matrix
                }
         return rt_
@@ -757,7 +751,7 @@ class glycan_profile_obj():
 #     profile_obj_list = []
 #     for _pro in range(1, len(a_glycan_profile) + 1):
 #         if _pro < 10:
-#             _id = 'Gly0' + str(_pro)
+#             _id = '' + str(_pro)
 #         else:
 #             _id = 'Gly' + str(_pro)
 #             # print(_id)
@@ -792,38 +786,38 @@ class glycan_profile_obj():
 #     return profile_obj_list
 
 
-def combine_profile_mz_with_motif_existance(a_glycan_profile, NBT_dict_name_abundance_cross_profile):
-    """combine glycan m/z with motif existances, convert the counts into 1/0 in each glycan
+def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict):
+    """combine glycan m/z with motif existances, convert the counts 1+/0 into 1/0 in each glycan
     Glycan motifs are modified with
+    :param profile_mz_to_id:
+    :param norm_mz_abd_dict:
+    :param match_dict:
     return profile_obj_list
     """
-    NBT_glycan_match_existed_motif = load_json(__init__.json_address + "NBT_glycan_match_existed_motif.json")
-    profile_obj_list = []
-    # print(type(NBT_dict_name_abundance_cross_profile))
-    for _pro in range(1, len(a_glycan_profile) + 1):
-        if _pro < 10:
-            _id = 'Gly0' + str(_pro)
-        else:
-            _id = 'Gly' + str(_pro)
-            # print(_id)
-        weighted_matrix = np.zeros((len(NBT_glycan_match_existed_motif[list(NBT_glycan_match_existed_motif.keys())[0]])))
-        # print(weighted_matrix.shape)
-        abundance_ = []
-        # glycan_hit_array_ = []
-        mz_ = []
-        glycan_id_ = []
-        hit_matrix_ = []
+    glycoprofile_list = []
 
-        for i in sorted(list(a_glycan_profile[_id].keys())):
-            # print(_pro, i)
-            _name = a_glycan_profile[_id][i]
-            mz_.append(i)
-            glycan_id_.append(_name)
-            # print(i, type(i), type(_pro))
+    glycan_abd_dict = {}
+    _num = len(profile_mz_to_id.keys())
+    for i in match_dict.keys():
+        glycan_abd_dict[i] = _num*[0]
 
-            _bundance = NBT_dict_name_abundance_cross_profile[i][_pro - 1]
+    for pro_idex in range(1, len(profile_mz_to_id) + 1):
+        pro_id = str(pro_idex)
+        weighted_vec = np.zeros((len(match_dict[list(match_dict.keys())[0]])))
+        abundance_list = []
+        mz_list = []
+        glycan_id_list = []
+        match_mtrix = []
+
+        for i in sorted(list(profile_mz_to_id[pro_id].keys())):
+            glycan_id = profile_mz_to_id[pro_id][i]
+            mz_list.append(i)
+            glycan_id_list.append(glycan_id)
+
+            _bundance = norm_mz_abd_dict[i][pro_idex - 1]
+            glycan_abd_dict[glycan_id][pro_idex - 1] = _bundance
             _existance_list = []
-            for _count in NBT_glycan_match_existed_motif[_name]:
+            for _count in match_dict[glycan_id]:
                 if _count >= 1:
                     _existance_list.append(1)
                 elif _count == 0:
@@ -833,22 +827,22 @@ def combine_profile_mz_with_motif_existance(a_glycan_profile, NBT_dict_name_abun
 
             _temp_hit_matrix = np.array(_existance_list)
 
-            abundance_.append(_bundance)
-            hit_matrix_.append(_temp_hit_matrix)
+            abundance_list.append(_bundance)
+            match_mtrix.append(_temp_hit_matrix)
 
-        for idex,i in enumerate(abundance_):
-            weighted_matrix += hit_matrix_[idex] * i / sum(abundance_)
+        for idex,i in enumerate(abundance_list):
+            weighted_vec += match_mtrix[idex] * i / sum(abundance_list)
 
-        # print(sum(abundance_), weighted_matrix[:10])
+        glycoprofile_list.append(
+            Glycoprofile(glycan_id_list, mz_list, abundance_list, weighted_vec, hit_matrix=match_mtrix, name=pro_idex))
 
-        profile_obj_list.append(
-            glycan_profile_obj(glycan_id_, mz_, abundance_, weighted_matrix, hit_matrix_, name=str(_pro - 1)))
-    merged_profile_dict = {}
+    glycoprofile_output_list = []
     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
-    for idex, i in enumerate(profile_obj_list):
-        merged_profile_dict[idex] = i.get_dict()
-    store_json(__init__.json_address + r"NBT_merged_profile_dict_merged.json", merged_profile_dict)
-    return glycan_profiles(profile_obj_list)
+    for idex, i in enumerate(glycoprofile_list):
+        glycoprofile_output_list.append(i.get_dict())
+    # store_json(__init__.json_address + r"glycan_abd_dict.json", glycan_abd_dict)
+    store_json(__init__.json_address + r"glycoprofile_list.json", glycoprofile_output_list)
+    return glycoprofile_list
 
 #
 # def combine_profile_mz(a_glycan_profile, NBT_dict_name_abundance_cross_profile):
@@ -859,7 +853,7 @@ def combine_profile_mz_with_motif_existance(a_glycan_profile, NBT_dict_name_abun
 #     profile_obj_list = []
 #     for _pro in range(1, len(a_glycan_profile) + 1):
 #         if _pro < 10:
-#             _id = 'Gly0' + str(_pro)
+#             _id = '' + str(_pro)
 #         else:
 #             _id = 'Gly' + str(_pro)
 #             # print(_id)
@@ -903,16 +897,16 @@ def combine_profile_mz_with_motif_existance(a_glycan_profile, NBT_dict_name_abun
 #     return profile_obj_list
 
 
-class glycan_profiles:
-    def __init__(self, profile_obj_list):
-        self.raw_table = profile_obj_list[:]
+class MotifAbdTableGenerator:
+    def __init__(self, glycoprofile_list):
+        self.raw_table = glycoprofile_list[:]
 
     def table_btwn_two(self, n_a, n_b):
         #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         a_p = self.raw_table[n_a]
         b_p = self.raw_table[n_b]
-        d = {a_p.name: a_p.weighted_motif_vec, b_p.name: b_p.weighted_motif_vec}
+        d = {a_p.name: a_p.weighted_vec, b_p.name: b_p.weighted_vec}
         table = pd.DataFrame(data=d)
         #     table = table[(table[a_p.name]+table[b_p.name])!=0]
         """find out the abundance of the N-glycan core and use it to balance the weight """
@@ -931,14 +925,14 @@ class glycan_profiles:
         #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         a_p = self.raw_table[0]
-        d = {a_p.name: a_p.weighted_motif_vec}
+        d = {a_p.name: a_p.weighted_vec}
         wt_table = pd.DataFrame(data=d)
         for idex, i in enumerate(self.raw_table):
             # if idex == 0:
             #     continue
             b_p = i
             # _weight = 1 / b_p.weighted_motif_vec[7]
-            wt_table[b_p.name] = np.array(b_p.weighted_motif_vec)
+            wt_table[b_p.name] = np.array(b_p.weighted_vec)
             #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
             """find out the abundance of the N-glycan core and use it to balance the weight """
         # wt_table = pd.DataFrame(data=d)
@@ -987,7 +981,7 @@ class glycan_profiles:
         wt_table = pd.DataFrame()
         for idex, i in enumerate(self.raw_table):
             _temp_vec = []
-            for j in list(i.weighted_motif_vec):
+            for j in list(i.weighted_vec):
                 if j == 0:
                     _temp_vec.append(0)
                 else:
