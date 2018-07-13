@@ -81,6 +81,9 @@ https://www.overleaf.com/16221947rjwhxdqwjbmq
 - **glycan_abd_table**
   - type: pandas table. columns: each profile. row: glycan
   
+- **motif_abd_table**
+  - type: pandas table. columns: each profile. row: glycan
+  
 - **relative_abundance**
   - type: list (of float). Sum to 1. Relative abundance for each annotated glycan in a glycoprofile.
 
