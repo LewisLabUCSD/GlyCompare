@@ -74,7 +74,7 @@ glycan_motif_dict_addr = json_address + 'glycan_motif_dict.json'
 
 
 ########################################################################################
-# part 2 check customize_motif_vector.py
+# part 2 check customize_motif_vec.py
 
 """
 

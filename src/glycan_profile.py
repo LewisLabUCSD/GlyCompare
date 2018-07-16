@@ -722,10 +722,17 @@ class Glycoprofile():
     we will have a
     """
 
-    def __init__(self, glycan_id_list, mz_id_list, norm_abd, weighted_vec, hit_matrix=[], name=0):
+    def __init__(self, glycan_id_list, mz_id_list, norm_abd, match_vec_weighted, hit_matrix=[], name=0):
         self.glycan_id_list = glycan_id_list
         self.mz_id_list = mz_id_list
-        self.weighted_vec = weighted_vec
+        self.match_vec_weighted = match_vec_weighted
+        self.match_vec_exist = []
+        for i in match_vec_weighted:
+            if i < 0.001:
+                self.match_vec_exist.append(0)
+            else:
+                self.match_vec_exist.append(1)
+        # print("len match_vec_exist", len(self.match_vec_exist))
         self.relative_abundance = norm_abd
         self.hit_matrix = hit_matrix
         self.name = name
@@ -736,7 +743,8 @@ class Glycoprofile():
         rt_ = {'m/z_list': self.mz_id_list,
                'glycan_id_list': self.glycan_id_list,
                'relative_abundance': list(self.relative_abundance),
-               'weighted_motif_vec': list(self.weighted_vec),
+               'match_vec_exist': self.match_vec_exist,
+               'match_vec_weighted': list(self.match_vec_weighted),
                # 'hit_matrix': self.hit_matrix
                }
         return rt_
@@ -840,7 +848,7 @@ def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict):
     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
     for idex, i in enumerate(glycoprofile_list):
         glycoprofile_output_list.append(i.get_dict())
-    # store_json(__init__.json_address + r"glycan_abd_dict.json", glycan_abd_dict)
+    store_json(__init__.json_address + r"glycan_abd_dict.json", glycan_abd_dict)
     store_json(__init__.json_address + r"glycoprofile_list.json", glycoprofile_output_list)
     return glycoprofile_list
 
@@ -906,7 +914,7 @@ class MotifAbdTableGenerator:
         #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         a_p = self.raw_table[n_a]
         b_p = self.raw_table[n_b]
-        d = {a_p.name: a_p.weighted_vec, b_p.name: b_p.weighted_vec}
+        d = {a_p.name: a_p.match_vec_weighted, b_p.name: b_p.match_vec_weighted}
         table = pd.DataFrame(data=d)
         #     table = table[(table[a_p.name]+table[b_p.name])!=0]
         """find out the abundance of the N-glycan core and use it to balance the weight """
@@ -925,18 +933,36 @@ class MotifAbdTableGenerator:
         #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
         a_p = self.raw_table[0]
-        d = {a_p.name: a_p.weighted_vec}
+        d = {a_p.name: a_p.match_vec_weighted}
         wt_table = pd.DataFrame(data=d)
         for idex, i in enumerate(self.raw_table):
             # if idex == 0:
             #     continue
             b_p = i
             # _weight = 1 / b_p.weighted_motif_vec[7]
-            wt_table[b_p.name] = np.array(b_p.weighted_vec)
+            wt_table[b_p.name] = np.array(b_p.match_vec_weighted)
             #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
             """find out the abundance of the N-glycan core and use it to balance the weight """
         # wt_table = pd.DataFrame(data=d)
         return wt_table
+
+    def table_existance(self):
+        #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        a_p = self.raw_table[0]
+
+        d = {a_p.name: a_p.match_vec_exist}
+        existance_table = pd.DataFrame(data=d)
+        for idex, i in enumerate(self.raw_table):
+            # if idex == 0:
+            #     continue
+            b_p = i
+            # _weight = 1 / b_p.weighted_motif_vec[7]
+            existance_table[b_p.name] = np.array(b_p.match_vec_exist)
+            #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
+            """find out the abundance of the N-glycan core and use it to balance the weight """
+        # wt_table = pd.DataFrame(data=d)
+        return existance_table
 
     def table_against_wt_fc(self):
         #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
@@ -981,7 +1007,7 @@ class MotifAbdTableGenerator:
         wt_table = pd.DataFrame()
         for idex, i in enumerate(self.raw_table):
             _temp_vec = []
-            for j in list(i.weighted_vec):
+            for j in list(i.match_vec_weighted):
                 if j == 0:
                     _temp_vec.append(0)
                 else:
@@ -992,6 +1018,7 @@ class MotifAbdTableGenerator:
         # wt_table = pd.DataFrame(data=d)
         # g = sns.clustermap(existed_table, metric="yule")
         return wt_table
+
 
 if __name__ == '__main__':
     pass

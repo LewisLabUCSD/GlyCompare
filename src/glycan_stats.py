@@ -6,7 +6,7 @@ from glypy.structure.constants import Stem
 import numpy as np
 # import glycompare libraries
 import gc_extract_motif
-import customize_motif_vector
+import customize_motif_vec
 import extract_motif
 import motif_class
 import __init__

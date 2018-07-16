@@ -14,7 +14,7 @@ from json_utility import load_json
 import time
 import numpy as np
 import glycan_profile
-import customize_motif_vector
+import customize_motif_vec
 from json_utility import *
 import pandas as pd
 import seaborn

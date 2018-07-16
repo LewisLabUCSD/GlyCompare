@@ -6,6 +6,8 @@ import seaborn as sns
 from scipy.spatial import distance
 from glypy.io import glycoct
 import __init__
+import numpy as np
+
 sns.set(color_codes=True)
 # glyco_motif_list={}
 # glycoct_list = []
@@ -47,29 +49,29 @@ profile_name = ['WT',
 
 # len(aaa)
 
-
-def get_motif(glycoct_obj, idex=0):
-    # print('start getmotif')
-    _frag_motif_list = {}
-    # fig, axes = plt.subplots(6,9)
-    # fig.set_size_inches(14,6)
-    start_time = time.time()
-    for i in glycoct_obj.fragments(max_cleavages=len(glycoct_obj)):
-        _frag_gly = fragment_to_substructure(i, glycoct_obj)
-
-        # plot(_frag_gly)
-        if not len(_frag_gly) in _frag_motif_list.keys():
-            _frag_motif_list[len(_frag_gly)] = [glycoct.loads(_frag_gly)]
-        else:
-            _frag_motif_list[len(_frag_gly)].append(glycoct.loads(_frag_gly))
-    mid_time = time.time()
-    # print('start clean duplicate')
-    _frag_motif_list = clean_duplicate(_frag_motif_list)
-    end_time = time.time()
-    print(idex, len(glycoct_obj), end_time - mid_time, mid_time - start_time)
-    # print('finished getmotif')
-
-    return _frag_motif_list
+#
+# def get_motif(glycoct_obj, idex=0):
+#     # print('start getmotif')
+#     _frag_motif_list = {}
+#     # fig, axes = plt.subplots(6,9)
+#     # fig.set_size_inches(14,6)
+#     start_time = time.time()
+#     for i in glycoct_obj.fragments(max_cleavages=len(glycoct_obj)):
+#         _frag_gly = fragment_to_substructure(i, glycoct_obj)
+#
+#         # plot(_frag_gly)
+#         if not len(_frag_gly) in _frag_motif_list.keys():
+#             _frag_motif_list[len(_frag_gly)] = [glycoct.loads(_frag_gly)]
+#         else:
+#             _frag_motif_list[len(_frag_gly)].append(glycoct.loads(_frag_gly))
+#     mid_time = time.time()
+#     # print('start clean duplicate')
+#     _frag_motif_list = clean_duplicate(_frag_motif_list)
+#     end_time = time.time()
+#     print(idex, len(glycoct_obj), end_time - mid_time, mid_time - start_time)
+#     # print('finished getmotif')
+#
+#     return _frag_motif_list
 
 
 def clean_duplicate(_frag_motif_list):
@@ -80,8 +82,9 @@ def clean_duplicate(_frag_motif_list):
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
-                if subtree_of(_check_list[ldex], _check_list[jdex], __init__.exact_Ture) == 1 and subtree_of(_check_list[jdex],
-                                                                                        _check_list[ldex]) == 1:
+                if subtree_of(_check_list[ldex], _check_list[jdex], __init__.exact_Ture) == 1 and subtree_of(
+                        _check_list[jdex],
+                        _check_list[ldex]) == 1:
                     del _check_list[jdex]
                 else:
                     jdex += 1
@@ -256,8 +259,9 @@ class MotifLabNGlycan(MotifLab):
                     """
                     motif j in i degree/motif in i-1 degree
                     """
-                    if subtree_of(self._man1, self.motif_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(self._man2, self.motif_vec[
-                        j], exact=__init__.exact_Ture) is not None:
+                    if subtree_of(self._man1, self.motif_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(
+                            self._man2, self.motif_vec[
+                                j], exact=__init__.exact_Ture) is not None:
                         continue
                     if subtree_of(self._with_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
                         if len(self.motif_vec[j]) % 2 == 1:
@@ -297,7 +301,7 @@ class MotifLabNGlycan(MotifLab):
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
                   " motifs are matched to the n-glycan core")
 
-    def motif_with_ncore_dependence_tree(self):
+    def motif_dependence_tree(self):
         """ just connect motif to all parent"""
         print('start building ncore_dependence_tree')
         edge_list = []
@@ -320,42 +324,50 @@ class MotifLabNGlycan(MotifLab):
         return self.motif_tree_ncore_dep, edge_list
 
 
+def get_weight_dict(motif_abd_table):
+    _np_mat = np.array(motif_abd_table)
+    weight_dict = {}
+    for i in range(len(_np_mat)):
+        weight_dict[i] = list(_np_mat[i])
+    return weight_dict
+
+
 class MotifTree():
     def __init__(self, ):
         pass
 
 
-class MotifDpTree:
+class NodesDropper:
     def __init__(self, a_glycan_motif_lib, motif_weight):
-        self.dep_tree, _ = a_glycan_motif_lib.motif_with_ncore_dependence_tree()
+        self.dep_tree, _ = a_glycan_motif_lib.motif_dependence_tree()
         self.node_len = len(a_glycan_motif_lib.motif_with_core_list)
         self.all_nodes = a_glycan_motif_lib.motif_with_core_list
         self.parents_vec = {}
         for i in a_glycan_motif_lib.motif_with_core_list:
             self.parents_vec[i] = {}
-        #### self.generate_tree()
         self.motif_weight = motif_weight
         self.normalized_motif_weight = {}
         self._normalized_weight()
         self.heavy_dependency = {}
         self.most_dependent_child = {}
-        self.gala_ept_vec = a_glycan_motif_lib.gala_ept_vec[:]
-        self.sia_ept_vec = a_glycan_motif_lib.sia_ept_vec[:]
-        self.sia_gala_ept_vec = self.gala_ept_vec[:]
-        self.sia_gala_ept_vec.extend(self.sia_ept_vec[:])
+        self.nodes_kept = []
+        # self.gala_ept_vec = a_glycan_motif_lib.gala_ept_vec[:]
+        # self.sia_ept_vec = a_glycan_motif_lib.sia_ept_vec[:]
+        # self.sia_gala_ept_vec = self.gala_ept_vec[:]
+        # self.sia_gala_ept_vec.extend(self.sia_ept_vec[:])
 
-    def get_sia_gal_vec(self):
-        rt_lst = []
-        rt_lst.extend(self.gala_ept_vec[:])
-        rt_lst.extend(self.sia_ept_vec[:])
-        return rt_lst
+    # def get_sia_gal_vec(self):
+    #     rt_lst = []
+    #     rt_lst.extend(self.gala_ept_vec[:])
+    #     rt_lst.extend(self.sia_ept_vec[:])
+    #     return rt_lst
 
     # drop_list = add_sia_gal(a_dp_tree)
-
-    def get_drop_node_with_sia(self):
-        rt_lst = self.drop_node(distance.correlation)
-        rt_lst.extend(self.sia_gala_ept_vec)
-        return rt_lst
+    #
+    # def get_drop_node_with_sia(self):
+    #     rt_lst = self.drop_node(distance.correlation)
+    #     rt_lst.extend(self.sia_gala_ept_vec)
+    #     return rt_lst
 
     def compare_abundance(self):
         pass
@@ -379,59 +391,63 @@ class MotifDpTree:
             self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
             # _array[i,:] = _array[i,:]/_max
 
-    def drop_node(self, method=distance.correlation):
-        node_kept = []
-        for i in self.parents_vec.keys():
-            # print(i)
-            for j in self.dep_tree[i]:
-                self.parents_vec[j][i] = 1 - method(self.normalized_motif_weight[j], self.normalized_motif_weight[i])
-                # sns.clustermap
-        for i in self.parents_vec.keys():
-            find_ = False
-            _max = 0
-            _max_parent = ''
-            for j in self.parents_vec[i].keys():
+    def drop_node(self, method=distance.braycurtis, redo=True):
+        if self.nodes_kept != [] and redo is False:
+            return self.nodes_kept
+        else:
+            self.nodes_kept = []
+            for i in self.parents_vec.keys():
+                # print(i)
+                for j in self.dep_tree[i]:
+                    self.parents_vec[j][i] = 1 - method(self.normalized_motif_weight[j],
+                                                        self.normalized_motif_weight[i])
+                    # sns.clustermap
+            for i in self.parents_vec.keys():
+                find_ = False
+                _max = 0
+                _max_parent = ''
+                for j in self.parents_vec[i].keys():
 
-                if self.parents_vec[i][j] > 0.995:
+                    if self.parents_vec[i][j] > 0.995:
+                        # if _max_parent == '':
+                        #     print(i,j,"find", _max,self.parents_vec[i][j],_max < self.parents_vec[i][j])
+                        if _max < self.parents_vec[i][j]:
+                            _max = self.parents_vec[i][j]
+                            _max_parent = j
+                            # print(j,_max)
+                        # elif
+                        # if self.parents_vec[i][j] < 0.999999:
+                        #     print(self.parents_vec[i][j], i, j)
+                        # elif self.parents_vec[i][j] ==1:
+                        #     print('100', i,j)
+                        find_ = True
+
+                if find_:
                     # if _max_parent == '':
-                    #     print(i,j,"find", _max,self.parents_vec[i][j],_max < self.parents_vec[i][j])
-                    if _max < self.parents_vec[i][j]:
-                        _max = self.parents_vec[i][j]
-                        _max_parent = j
-                        # print(j,_max)
-                    # elif
-                    # if self.parents_vec[i][j] < 0.999999:
-                    #     print(self.parents_vec[i][j], i, j)
-                    # elif self.parents_vec[i][j] ==1:
-                    #     print('100', i,j)
-                    find_ = True
+                    #     print('wtf',i,_max_parent,_max)
+                    if _max_parent not in self.heavy_dependency.keys():
+                        # if _max_parent == "":
+                        #     print(_max)
+                        self.heavy_dependency[_max_parent] = [i]
+                    else:
+                        self.heavy_dependency[_max_parent].append(i)
 
-            if find_:
-                # if _max_parent == '':
-                #     print('wtf',i,_max_parent,_max)
-                if _max_parent not in self.heavy_dependency.keys():
-                    # if _max_parent == "":
-                    #     print(_max)
-                    self.heavy_dependency[_max_parent] = [i]
                 else:
-                    self.heavy_dependency[_max_parent].append(i)
-
-            else:
-                node_kept.append(i)
-        return node_kept
-        #
-        # def get_the_most_dependent_node(self):
-        #     """heavy dependency parents child_lst
-        #         parents_vec child -> parents
-        #     """
-        #     for j, i_list in self.heavy_dependency.items():
-        #         g = sorted(zip(i_list, [self.parents_vec[i][j] for i in i_list]), key=lambda x: x[1])[0][0]
-        #         if g not in self.most_depedent_child.keys():
-        #             self.most_depedent_child[j] = [g]
-        #         else:
-        #             self.most_depedent_child[j].append(g)
-        # self.most_depedent_child
-        # def generate_tree(self):
-        # def draw_dependency_with_abundance_with_parents_vec(self):
-        # def most_common_strcutre(self, a_vec, motif_vec):
-        #     NBT_motif_match_motifvec.find_common_structure_in_cluster(a_vec, )
+                    self.nodes_kept.append(i)
+            return self.nodes_kept
+            #
+            # def get_the_most_dependent_node(self):
+            #     """heavy dependency parents child_lst
+            #         parents_vec child -> parents
+            #     """
+            #     for j, i_list in self.heavy_dependency.items():
+            #         g = sorted(zip(i_list, [self.parents_vec[i][j] for i in i_list]), key=lambda x: x[1])[0][0]
+            #         if g not in self.most_depedent_child.keys():
+            #             self.most_depedent_child[j] = [g]
+            #         else:
+            #             self.most_depedent_child[j].append(g)
+            # self.most_depedent_child
+            # def generate_tree(self):
+            # def draw_dependency_with_abundance_with_parents_vec(self):
+            # def most_common_strcutre(self, a_vec, motif_vec):
+            #     NBT_motif_match_motifvec.find_common_structure_in_cluster(a_vec, )
