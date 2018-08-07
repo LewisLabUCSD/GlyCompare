@@ -213,9 +213,9 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
         plt.savefig(addr)
     return (dtree, ax)
 
-
-if __name__ == '__main__':
-    output_glycan_motif_vec_to_file()
+#
+# if __name__ == '__main__':
+#     output_glycan_motif_vec_to_file()
 
 
 if __name__ == '__main__':

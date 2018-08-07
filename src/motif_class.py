@@ -7,6 +7,7 @@ from scipy.spatial import distance
 from glypy.io import glycoct
 import __init__
 import numpy as np
+from scipy import stats
 
 sns.set(color_codes=True)
 # glyco_motif_list={}
@@ -140,7 +141,6 @@ class MotifLab():
         else:
             assert False, "should be either list or dict"
         self.motif_list = [i for i in range(len(self.motif_vec))]
-        self.motif_single_dep_tree = {}
         self.motif_dep_tree = {}
 
     def dep_tree_to_edge_list(self, dep_tree):
@@ -155,49 +155,46 @@ class MotifLab():
                 edge_list.append((i, k))
         return edge_list
 
-    def motif_dependence_tree(self):
+    def build_dependence_tree(self, a_motif_dict):
         """ connect motif to all parents"""
         print('start building dependence_tree')
         edge_list = []
-        if self.motif_dep_tree == {}:
-            # self.motif_dep_tree = {}
-            id_list = []
-            for i in sorted(list(self.motif_dict.keys())):
-                print(i)
-                if 1 == i:
-                    for j in self.motif_dict[i]:
-                        self.motif_dep_tree[j] = []
-                    continue
-                for j in self.motif_dict[i]:
-                    """
+        _dep_tree = {}
+        # self.motif_dep_tree = {}
+        for i in sorted(list(a_motif_dict.keys())):
+            print(i)
+            if i - 1 not in a_motif_dict.keys():
+                for j in a_motif_dict[i]:
+                    _dep_tree[j] = []
+                continue
+            for j in a_motif_dict[i]:
+                """
                     motif j in i degree/motif in i-1 degree
-                    """
-                    self.motif_dep_tree[j] = []
-                    for k in self.motif_dict[i - 1]:
-                        if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=__init__.exact_Ture) == 1:
-                            self.motif_dep_tree[k].append(j)
-                            edge_list.append((k, j))
-        return self.motif_dep_tree, edge_list
+                """
+                _dep_tree[j] = []
+                for k in a_motif_dict[i - 1]:
+                    if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=__init__.exact_Ture) == 1:
+                        _dep_tree[k].append(j)
+                        edge_list.append((k, j))
+        return _dep_tree, edge_list
 
-    def motif_single_dependence_tree(self):
-        """ just connect motif to one parent"""
+    def get_dependence_tree_all(self):
+        """
+        get the dep tree for all node
+        :return: dep_tree, edge_list
+        """
+        if self.motif_dep_tree == {}:
+            _dep_tree, _edge_list = self.build_dependence_tree(self.motif_dict)
+            self.motif_dep_tree = _dep_tree
+            return _dep_tree, _edge_list
+        else:
+            return self.motif_dep_tree, self._get_edge(self.motif_dep_tree)
+
+    def _get_edge(self, dep_tree):
         edge_list = []
-        if self.motif_single_dep_tree == {}:
-            for i in sorted(list(self.motif_dict.keys())):
-                if 1 == i:
-                    for j in self.motif_dict[i]:
-                        self.motif_single_dep_tree[j] = []
-                    continue
-                for j in self.motif_dict[i]:
-                    """
-                    motif j in i degree/motif in i-1 degree
-                    """
-                    self.motif_single_dep_tree[j] = []
-                    for k in self.motif_dict[i - 1]:
-                        if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=__init__.exact_Ture) == 1:
-                            self.motif_single_dep_tree[k].append(j)
-                            break
-        return self.motif_single_dep_tree, edge_list
+        for i in dep_tree:
+            edge_list.extend([(i, j) for j in dep_tree[i]])
+        return edge_list
 
 
 class MotifLabNGlycan(MotifLab):
@@ -225,7 +222,6 @@ class MotifLabNGlycan(MotifLab):
         LIN
         1:1d(2+1)2n
         2:1o(4+1)3d""")
-
     _man2 = glycoct.loads("""
         RES
         1b:a-dman-HEX-1:5
@@ -239,43 +235,41 @@ class MotifLabNGlycan(MotifLab):
         assert motif_, "motif vector is empty"
         MotifLab.__init__(self, motif_)
         self.motif_dict_with_core = {}
-        self.motif_vec_sia_ept = []
-        self.motif_vec_gala_ept = []
+        self.motif_dep_tree_ncore = {}
         self.motif_with_core_list = []
-        self.motif_tree_ncore_dep = {}
         self.extract_motif_with_core()
 
-    def get_motif_index(self):
-        pass
-
-    def create_epitope_vec(self):
-        print("start motif with sia")
-        if not self.motif_vec_sia_ept:
-            for i in sorted(list(self.motif_dict.keys())):
-                # if (i) > 9:
-                #     break
-                # print("len", i)
-                for j in self.motif_dict[i]:
-                    """
-                    motif j in i degree/motif in i-1 degree
-                    """
-                    if subtree_of(self._man1, self.motif_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(
-                            self._man2, self.motif_vec[
-                                j], exact=__init__.exact_Ture) is not None:
-                        continue
-                    if subtree_of(self._with_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
-                        if len(self.motif_vec[j]) % 2 == 1:
-                            self.motif_vec_sia_ept.append(j)
-                            # self.gala_ept_vec.append(j)
-                    elif subtree_of(self._no_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
-                        if len(self.motif_vec[j]) % 2 == 0:
-                            self.motif_vec_gala_ept.append(j)
-
-            print("Finish sia match ", len(self.motif_vec_sia_ept),
-                  " motifs are find with sia core ", len(self.motif_vec_gala_ept), " motifs are find with no sia core ")
-        else:
-            print("Finish sia match ", len(self.motif_vec_sia_ept),
-                  " motifs are find with sia core ", len(self.motif_vec_sia_ept), " motifs are find with no sia core ")
+    #     self.motif_vec_sia_ept = []
+    #     self.motif_vec_gala_ept = []
+    #
+    # def create_epitope_vec(self):
+    #     print("start motif with sia")
+    #     if not self.motif_vec_sia_ept:
+    #         for i in sorted(list(self.motif_dict.keys())):
+    #             # if (i) > 9:
+    #             #     break
+    #             # print("len", i)
+    #             for j in self.motif_dict[i]:
+    #                 """
+    #                 motif j in i degree/motif in i-1 degree
+    #                 """
+    #                 if subtree_of(self._man1, self.motif_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(
+    #                         self._man2, self.motif_vec[
+    #                             j], exact=__init__.exact_Ture) is not None:
+    #                     continue
+    #                 if subtree_of(self._with_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
+    #                     if len(self.motif_vec[j]) % 2 == 1:
+    #                         self.motif_vec_sia_ept.append(j)
+    #                         # self.gala_ept_vec.append(j)
+    #                 elif subtree_of(self._no_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
+    #                     if len(self.motif_vec[j]) % 2 == 0:
+    #                         self.motif_vec_gala_ept.append(j)
+    #
+    #         print("Finish sia match ", len(self.motif_vec_sia_ept),
+    #               " motifs are find with sia core ", len(self.motif_vec_gala_ept), " motifs are find with no sia core ")
+    #     else:
+    #         print("Finish sia match ", len(self.motif_vec_sia_ept),
+    #               " motifs are find with sia core ", len(self.motif_vec_sia_ept), " motifs are find with no sia core ")
 
     def extract_motif_with_core(self):
         """ store the result in self.motif_with_core_list
@@ -301,27 +295,17 @@ class MotifLabNGlycan(MotifLab):
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
                   " motifs are matched to the n-glycan core")
 
-    def motif_dependence_tree(self):
-        """ just connect motif to all parent"""
-        print('start building ncore_dependence_tree')
-        edge_list = []
-        if self.motif_tree_ncore_dep == {}:
-            for i in sorted(list(self.motif_dict_with_core.keys())):
-                print(i)
-                if len(self.nglycan_core) == i:
-                    for j in self.motif_dict_with_core[i]:
-                        self.motif_tree_ncore_dep[j] = []
-                    continue
-                for j in self.motif_dict_with_core[i]:
-                    """
-                    motif j in i degree/motif in i-1 degree
-                    """
-                    self.motif_tree_ncore_dep[j] = []
-                    for k in self.motif_dict_with_core[i - 1]:
-                        if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=__init__.exact_Ture) == 1:
-                            self.motif_tree_ncore_dep[k].append(j)
-                            edge_list.append((k, j))
-        return self.motif_tree_ncore_dep, edge_list
+    def get_dependence_tree_ncore(self):
+        """
+        get the dep tree for ncore's node
+        :return: dep_tree, edge_list
+        """
+        if self.motif_dep_tree_ncore == {}:
+            _dep_tree, _edge_list = self.build_dependence_tree(self.motif_dict_with_core)
+            self.motif_dep_tree_ncore = _dep_tree
+            return _dep_tree, _edge_list
+        else:
+            return self.motif_dep_tree_ncore, self._get_edge(self.motif_dep_tree_ncore)
 
 
 def get_weight_dict(motif_abd_table):
@@ -332,29 +316,271 @@ def get_weight_dict(motif_abd_table):
     return weight_dict
 
 
-class MotifTree():
-    def __init__(self, ):
-        pass
+class NodesState():
+    threshold=200
+    def __init__(self, dependence_tree, motif_weight):
+        self.dep_tree = dependence_tree
+        self.edge = self._get_edge(dependence_tree)
+        self.all_nodes = self._get_node(dependence_tree)
+        self.motif_weight = motif_weight
+        self.normalized_motif_weight = {}
+        self._normalized_weight()
+        self.parents_dic = {}
+        for i in dependence_tree:
+            self.parents_dic[i] = {}
+        self.nodes_kept = []
+        self._out_degree_list = []
+        self._in_degree_list = []
+
+
+    def _get_node(self, dep_tree):
+        """
+        get nodes from dep_tree
+        :param dep_tree:
+        :return:
+        """
+        node_list = list(dep_tree.keys())
+        for i in dep_tree:
+            node_list.extend(dep_tree[i])
+        return sorted(list(set(node_list)))
+
+    def _get_edge(self, dep_tree):
+        """
+        get edge from dep_tree
+        :param dep_tree:
+        :return:
+        """
+        edge_list = []
+        for i in dep_tree:
+            edge_list.extend([(i, j) for j in dep_tree[i]])
+        return edge_list
+
+    # wrapper
+    # def get_edge_ttest_dis(self):
+    #     _list = []
+    #     for i, j in self.edge:
+    #         _list.append(self.get_value(i, j, method=self.one_vs_rest_t))
+    #     return _list
+
+    # wrapper
+    def _no_num(self, _list, _num):
+        _len = len(_list)
+        count_ = 0
+        while _num in _list:
+            _list.remove(_num)
+            count_ +=1
+        print("there are ", count_, " removed from ", _len)
+        return _list
+
+    def get_edge_ttest_dis(self):
+        _list = []
+        for i, j in self.edge:
+            _list.append(self.get_value(i, j, method=self.one_vs_rest_t))
+        return _list
+
+    # wrapper
+    def get_edge_corr_dis(self):
+        _list = []
+        for i, j in self.edge:
+            _list.append(self.get_value(i, j, method=self.get_corr))
+        return _list
+
+    def _normalized_weight(self):
+        for i in self.motif_weight.keys():
+            _max = max(self.motif_weight[i])
+            self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
+
+    def get_vector(self,i):
+        return self.normalized_motif_weight[i]
+
+    def get_value(self, i, j, method):
+        # print()
+        return method(vec_a=self.normalized_motif_weight[j], vec_b=self.normalized_motif_weight[i])
+
+    def get_corr(self, vec_a, vec_b):
+        return 1 - distance.braycurtis(vec_a, vec_b)
+
+    def one_vs_rest_t(self, vec_a, vec_b):
+        diff_vec = [vec_a[i] - vec_b[i] for i in range(len(vec_a))]
+        # for i in range(len(vec_a)):
+        _min = min(diff_vec)
+        _temp_vec = diff_vec[:]
+        _temp_vec.remove(_min)
+        neg_log_p_min = self.get_neg_log_p_ttest(_min, _temp_vec)
+        _max = max(diff_vec)
+        _temp_vec = diff_vec[:]
+        _temp_vec.remove(_max)
+        neg_log_p_max = self.get_neg_log_p_ttest(_max, _temp_vec)
+
+        return_neg_log_p = max(neg_log_p_min, neg_log_p_max)
+        if return_neg_log_p > self.threshold:
+            # print(_min, diff_vec)
+            return_neg_log_p = self.threshold
+        return return_neg_log_p
+
+    def get_neg_log_p_ttest(self, _ele, _vec):
+        _vec = np.array(_vec)
+        if _vec.var() == 0:
+            if _ele - _vec.mean() == 0:
+                return 0
+            else:
+                return self.threshold
+        else:
+            tt = (_ele - _vec.mean()) / np.sqrt(_vec.var() / len(_vec))
+        p = stats.t.sf(np.abs(tt), len(_vec) - 1)
+        return -np.log(p)
+
+
+
+    # def one_vs_rest_oneside_t(self, vec_a, vec_b):
+    #     diff_vec = [vec_a[i] - vec_b[i] for i in range(len(vec_a))]
+    #     print(diff_vec)
+    #     # for i in diff_vec:
+    #     #     if i < 0:
+    #     #         print()
+    #             # assert False
+    #     # for  i in range(len(vec_a)):
+    #     _min = min(diff_vec)
+    #     _temp_vec = diff_vec[:]
+    #     _temp_vec.remove(_min)
+    #     neg_log_p_min = self.get_neg_log_p_ttest(_min, _temp_vec)
+    #
+    #     if neg_log_p_min > 100:
+    #         # print(_min, diff_vec)
+    #         neg_log_p_min = 100
+    #     assert 0 <= neg_log_p_min <= 100
+    #     # elif p_min == float('inf'):
+    #     #     print(_min, diff_vec)
+    #     # if -np.log(p_min) > 1000 or -np.log(p_min) < -1000:
+    #     #     print(_min, diff_vec)
+    #     return neg_log_p_min
+
+    def get_node_value(self, method='get_corr'):
+        if self.nodes_kept != [] and False:
+            return self.nodes_kept
+        else:
+            self.nodes_kept = []
+            # _in_degree_list = []
+            # _out_degree_list = []
+            for i in self.parents_dic.keys():
+                # print(i)
+                for j in self.dep_tree[i]:
+                    if method == 'get_corr':
+                        self.parents_dic[j][i] = self.get_value(i, j, self.get_corr)
+                    elif method == 'one_vs_rest_t':
+                        self.parents_dic[j][i] = self.get_value(i, j, self.one_vs_rest_t)
+                        # sns.clustermap
+                self._out_degree_list.append(len(self.dep_tree[i]))
+
+            for i in self.parents_dic.keys():
+                self._in_degree_list.append(len(self.parents_dic[i]))
+
+                # find_ = False
+                # _max = 0
+                _list = []
+
+                for j in self.parents_dic[i].keys():
+                    _list.append(self.parents_dic[i][j])
+                    # if _max_parent == '':
+                    #     print(i,j,"find", _max,self.parents_vec[i][j],_max < self.parents_vec[i][j])
+                    # if _max < self.parents_dic[i][j]:
+                    #     _max = self.parents_dic[i][j]
+                    #     _max_parent = j
+                    # print(j,_max)
+                    # elif
+                    # if self.parents_vec[i][j] < 0.999999:
+                    #     print(self.parents_vec[i][j], i, j)
+                    # elif self.parents_vec[i][j] ==1:
+                    #     print('100', i,j)
+                    # find_ = True
+                if _list:
+                    self.nodes_kept.append(max(_list))
+                    # if find_:
+                    #     # if _max_parent == '':
+                    #     #     print('wtf',i,_max_parent,_max)
+                    #     if _max_parent not in self.heavy_dependency.keys():
+                    #         # if _max_parent == "":
+                    #         #     print(_max)
+                    #         self.heavy_dependency[_max_parent] = [i]
+                    #     else:
+                    #         self.heavy_dependency[_max_parent].append(i)
+
+                    # else:
+                    #     self.nodes_kept.append(i)
+            return self.nodes_kept
+
+    def get_edge_node_degree(self):
+        out_degree = {}
+        in_degree = {}
+        out_degree_list = []
+        in_degree_list = []
+        for i,j in self.edge:
+            if i not in out_degree.keys():
+                out_degree[i] = 1
+            else:
+                out_degree[i] += 1
+            if j not in in_degree.keys():
+                in_degree[j] = 1
+            else:
+                in_degree[j] += 1
+        for i,j in self.edge:
+            out_degree_list.append(out_degree[i])
+            in_degree_list.append(in_degree[j])
+        return out_degree_list, in_degree_list
+
+
 
 
 class NodesDropper:
-    def __init__(self, a_glycan_motif_lib, motif_weight):
-        self.dep_tree, _ = a_glycan_motif_lib.motif_dependence_tree()
-        self.node_len = len(a_glycan_motif_lib.motif_with_core_list)
-        self.all_nodes = a_glycan_motif_lib.motif_with_core_list
+    def __init__(self, dependence_tree, motif_weight):
+        self.dep_tree = dependence_tree
+        self.all_nodes = self._get_node(dependence_tree)
+
         self.parents_vec = {}
-        for i in a_glycan_motif_lib.motif_with_core_list:
+        for i in dependence_tree:
             self.parents_vec[i] = {}
+
         self.motif_weight = motif_weight
         self.normalized_motif_weight = {}
         self._normalized_weight()
         self.heavy_dependency = {}
         self.most_dependent_child = {}
         self.nodes_kept = []
+
+    def _get_node(self, dep_tree):
+        node_list = list(dep_tree.keys())
+
+        for i in dep_tree:
+            node_list.extend(dep_tree[i])
+        return sorted(list(set(node_list)))
         # self.gala_ept_vec = a_glycan_motif_lib.gala_ept_vec[:]
         # self.sia_ept_vec = a_glycan_motif_lib.sia_ept_vec[:]
         # self.sia_gala_ept_vec = self.gala_ept_vec[:]
         # self.sia_gala_ept_vec.extend(self.sia_ept_vec[:])
+
+    def _normalized_weight(self):
+        for i in self.motif_weight.keys():
+            _max = max(self.motif_weight[i])
+            self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
+
+    def _z_score(self, vec_a, vec_b):
+        diff_vec = [vec_a[i] - vec_b[i] for i in range(len(vec_a))]
+        # for i in range(len(vec_a)):
+        _min = min(diff_vec)
+        _temp_vec = diff_vec[:]
+        _temp_vec.remove(_min)
+        p_min = self.ttest_wrapper(_min, _temp_vec)
+        _max = max(diff_vec)
+        _temp_vec = diff_vec[:]
+        _temp_vec.remove(_max)
+        p_max = self.ttest_wrapper(_max, _temp_vec)
+        return min(p_min, p_max)
+
+    def ttest_wrapper(self, _ele, _vec):
+        _vec = np.array(_vec)
+        tt = (_ele - _vec.mean()) / np.sqrt(_vec.var() / len(_vec))
+        p = stats.t.sf(np.abs(tt), len(_vec) - 1) * 2
+        return p
 
     # def get_sia_gal_vec(self):
     #     rt_lst = []
@@ -385,11 +611,10 @@ class NodesDropper:
         #         if find_: continue
         # self.after_drop_node.append(i)
 
-    def _normalized_weight(self):
-        for i in self.motif_weight.keys():
-            _max = max(self.motif_weight[i])
-            self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
-            # _array[i,:] = _array[i,:]/_max
+    # def _normalized_weight(self):
+    #     for i in self.motif_weight.keys():
+    #         _max = max(self.motif_weight[i])
+    #         self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
 
     def drop_node(self, method=distance.braycurtis, redo=True):
         if self.nodes_kept != [] and redo is False:
@@ -432,6 +657,48 @@ class NodesDropper:
                     else:
                         self.heavy_dependency[_max_parent].append(i)
 
+                else:
+                    self.nodes_kept.append(i)
+            return self.nodes_kept
+
+    def drop_node_with_t_test(self, method=distance.braycurtis, redo=True):
+        if self.nodes_kept != [] and redo is False:
+            return self.nodes_kept
+        else:
+            self.nodes_kept = []
+            for i in self.parents_vec.keys():
+                # print(i)
+                for j in self.dep_tree[i]:
+                    self.parents_vec[j][i] = 1 - method(self.normalized_motif_weight[j],
+                                                        self.normalized_motif_weight[i])
+                    # sns.clustermap
+            for i in self.parents_vec.keys():
+                find_ = False
+                _max = 0
+                _max_parent = ''
+                for j in self.parents_vec[i].keys():
+                    if self.parents_vec[i][j] > 0.995:
+                        # if _max_parent == '':
+                        #     print(i,j,"find", _max,self.parents_vec[i][j],_max < self.parents_vec[i][j])
+                        if _max < self.parents_vec[i][j]:
+                            _max = self.parents_vec[i][j]
+                            _max_parent = j
+                            # print(j,_max)
+                        # elif
+                        # if self.parents_vec[i][j] < 0.999999:
+                        #     print(self.parents_vec[i][j], i, j)
+                        # elif self.parents_vec[i][j] ==1:
+                        #     print('100', i,j)
+                        find_ = True
+                if find_:
+                    # if _max_parent == '':
+                    #     print('wtf',i,_max_parent,_max)
+                    if _max_parent not in self.heavy_dependency.keys():
+                        # if _max_parent == "":
+                        #     print(_max)
+                        self.heavy_dependency[_max_parent] = [i]
+                    else:
+                        self.heavy_dependency[_max_parent].append(i)
                 else:
                     self.nodes_kept.append(i)
             return self.nodes_kept
