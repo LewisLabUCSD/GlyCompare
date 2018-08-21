@@ -1,5 +1,8 @@
 import seaborn as sns
+
+import nglycan_alignment
 import plot_glycan_utilities
+
 sns.set_palette("RdBu_r", 7)
 import time
 import numpy as np
@@ -18,27 +21,27 @@ from glypy.io import glycoct
 import numpy as np
 
 profile_name = ['WT',
-       'mgat4A',
-       'mgat4A/mgat4B',
-       'mgat5',
-       'mgat4A/mgat4B/mgat5',
-       'B4GalT1',
-       'B4GalT2',
-       'B4GalT3',
-       'B4GalT4',
-       'B4GalT1/B4GalT2',
-       'B4GalT1/B4GalT3',
-       'B3gnt1',
-       'B3gnt2',
-       'st3gal3',
-       'st3gal4',
-       'st3gal6',
-       'st3gal3/st3gal4',
-       'st3gal4/st3gal6',
-       'KI_ST6GalNAc1/st3gal4/st3gal6',
-       'B3gnt2/mgat4a/mgat4b/mgat5',
-       'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-       'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
+                'mgat4A',
+                'mgat4A/mgat4B',
+                'mgat5',
+                'mgat4A/mgat4B/mgat5',
+                'B4GalT1',
+                'B4GalT2',
+                'B4GalT3',
+                'B4GalT4',
+                'B4GalT1/B4GalT2',
+                'B4GalT1/B4GalT3',
+                'B3gnt1',
+                'B3gnt2',
+                'st3gal3',
+                'st3gal4',
+                'st3gal6',
+                'st3gal3/st3gal4',
+                'st3gal4/st3gal6',
+                'KI_ST6GalNAc1/st3gal4/st3gal6',
+                'B3gnt2/mgat4a/mgat4b/mgat5',
+                'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
+                'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
                 'EPO48(mgat3)',
                 'EPO143(mgat4C)',
                 'EPO174(mgat2)',
@@ -62,12 +65,14 @@ def draw_motif_cluster(g, df, name_prefix, color_threshold):
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_row.linkage,
                                              # truncate_mode='lastp',show_contracted=True,p=50,
                                              labels=df.index,
-                                             color_threshold=color_threshold, orientation='left', leaf_font_size=10)
+                                             color_threshold=color_threshold, orientation='left', leaf_font_size=10,
+                                             distance_sort='descending', leaf_rotation=45)
 
     #     plt.show()
     plt.savefig(r"./" + name_prefix + 'motif_cluster.png')
     cccluster_dict = {}
-    for i, j in zip(scipy.cluster.hierarchy.fcluster(g.dendrogram_row.linkage, t=0.19, criterion='distance'), df.index):
+    for i, j in zip(scipy.cluster.hierarchy.fcluster(g.dendrogram_row.linkage, t=color_threshold, criterion='distance'),
+                    df.index):
         if i not in cccluster_dict.keys():
             cccluster_dict[i] = [j]
         else:
@@ -75,17 +80,30 @@ def draw_motif_cluster(g, df, name_prefix, color_threshold):
     return cccluster_dict
 
 
-def draw_glycan_cluster(glyco_motif_cluster, name_prefix, vec_):
+def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weights_dict, threshold_list=[0.5, 0.6, 0.7]):
     # vec_ = load_json(NBT_init.root_address + 'NBT_motif_vec.json')
     _count = 0
     for i in range(1, len(glyco_motif_cluster.keys()) + 1):
         list_ = glyco_motif_cluster[i]
+        name_list = [str(j)+':'+str(round(motif_weights_dict[j], 4)) for j in list_]
         _count += len(list_)
-        plot_glycan_utilities.plot_glycan_list([vec_[i] for i in list_], list_, str(i))
+        plot_glycan_utilities.plot_glycan_list([motif_vec[i] for i in list_], name_list, str(i))
         print(glyco_motif_cluster[i])
         plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
-        _temp_node, _name = NBT_motif_match_motifvec.find_greatest_common_divisor(glyco_motif_cluster[i], i, vec_)
-        plot_glycan_utilities.plot_glycan(_temp_node[0], _name[0])
+        # _temp_node, _name = NBT_motif_match_motifvec.find_greatest_common_divisor(glyco_motif_cluster[i], i, vec_)
+        # plot_glycan_utilities.plot_glycan(_temp_node[0], _name[0])
+        a_panel = nglycan_alignment.glycan_model()
+        for j in glyco_motif_cluster[i]:
+            # print(j)
+            # plot_glycan_utilities.plot_glycan(vec_[i], title=str(i))
+            gly_nglycan_dict = nglycan_alignment.traves_glycan(motif_vec[j], weight=motif_weights_dict[j])
+            a_panel.glycan_walk(gly_nglycan_dict)
+
+            # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
+
+            # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
+        glycan_list = a_panel.get_reps(threshold_list)
+        plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in threshold_list])
         plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.core.png')
 
 
@@ -99,17 +117,18 @@ def draw_profile_cluster(g, df, profile_name, name_prefix, color_threshold):
     plt.xlabel('Distance', fontdict={'fontsize': 25})
     plt.rc_context({'lines.linewidth': 4})
     plt.ylabel('KO Gene Name', fontdict={'fontsize': 25})
-    den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_col.linkage,distance_sort=True,
-                                             labels=[', '.join(i) for i in zip(df.columns, profile_name)],
+    col_list = [str(x) for x in df.columns.tolist()]
+    den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_col.linkage, distance_sort='descending',
+                                             labels=[', '.join(i) for i in zip(col_list, profile_name)],
                                              color_threshold=color_threshold, orientation='left', leaf_font_size=25.)
     plt.savefig(__init__.plot_output_address + name_prefix + 'profile_cluster.png')
     return {}
+
 
 """The following are pipelines"""
 
 
 def draw_glycan_clustermap(df_ncore, name_prefix, metric="braycurtis"):
-
     # draw clustermap
     g = sns.clustermap(df_ncore, metric=metric)
     g.savefig(__init__.plot_output_address + name_prefix + 'clustermap.png')
@@ -117,7 +136,7 @@ def draw_glycan_clustermap(df_ncore, name_prefix, metric="braycurtis"):
     # draw profiles
 
 
-    #draw motif clusters
+    # draw motif clusters
     # draw_glycan_cluster(cccluster_dict, name_prefix)
 
 
@@ -163,11 +182,13 @@ def motif_with_n_glycan_core_all_motif(motif_, existed_table, weight_dict, color
 
 def get_abd_table_pip(match_dict_addr=__init__.json_address + "match_dict.json"):
     # load CHO paper abundance table
-    mz_abd_table = glycan_profile.load_cho_mz_abundance(cho_addr=__init__.source_address+'nbt.3280_cho.txt', mz_abd_addr=__init__.source_address+'glycan_table.xls')
+    mz_abd_table = glycan_profile.load_cho_mz_abundance(cho_addr=__init__.source_address + 'nbt.3280_cho.txt',
+                                                        mz_abd_addr=__init__.source_address + 'glycan_table.xls')
     # load glycoprofile Mass Spectrum m/z and glycan structure info
     profile_mz_to_id = glycan_profile.load_glycan_profile_dic()
     # normalize CHO abundance table
-    norm_mz_abd_dict = glycan_profile.get_norm_mz_abd_table(mz_abd_table, norm_abd_table_dict_addr=__init__.json_address+"norm_mz_abd_dict.json")
+    norm_mz_abd_dict = glycan_profile.get_norm_mz_abd_table(mz_abd_table,
+                                                            norm_abd_table_dict_addr=__init__.json_address + "norm_mz_abd_dict.json")
     # load match_dict
     match_dict = json_utility.load_json(match_dict_addr)
     # digitalize the glycoprofile
@@ -200,7 +221,8 @@ def pipe_motif_ana_with_motif_existance():
 
     motif_abd_table = get_abd_table_pip()
 
-    motif_lib = motif_class.MotifLabNGlycan(json_utility.load_json(__init__.merged_motif_dict_addr)) # unicarbkb_motifs_12259.json
+    motif_lib = motif_class.MotifLabNGlycan(
+        json_utility.load_json(__init__.merged_motif_dict_addr))  # unicarbkb_motifs_12259.json
 
     weight_dict = motif_class.get_weight_dict(motif_abd_table)
     dropper = motif_class.NodesDropper(motif_lib, weight_dict)

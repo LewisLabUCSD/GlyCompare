@@ -13,7 +13,8 @@ def load_glycan_dict_from_json(addr=__init__.glycan_dict_addr, loader=glycoct):
     glycan_str_dict = load_json(addr)
     glycan_dict = {}
     for i in glycan_str_dict:
-        glycan_dict[i] = loader.loads(glycan_dict[i])
+        # print(i)
+        glycan_dict[i] = loader.loads(glycan_str_dict[i])
     return glycan_dict
 
 
@@ -50,15 +51,6 @@ def load_glycan_str_from_database(topology_list_addr, output_file=__init__.glyca
     print("There are ", _count, "glycan id found; ", _loaded, "glycans loaded")
     store_json(output_file, glycan_str_dict)
     return glycan_dict
-
-
-def motif_dict_to_motif_vec(motif_dict):
-    motif_vec = []
-    for i in sorted([int(j) for j in list(motif_dict.keys())]):
-        print(i, len(motif_dict[str(i)]))
-        motif_vec.extend(motif_dict[str(i)])
-    print(len(motif_vec))
-    return motif_vec
 
 
 def glycan_str_to_glycan(a_dict_of_glycan_str):
@@ -118,6 +110,7 @@ def load_glycan_str_from_manual_drawn(glycan_id):
         glycan_str = ''
     return glycan_str
 
+
 def motif_dict_to_motif_vec(motif_dict):
     motif_vec = []
     for i in sorted([int(j) for j in list(motif_dict.keys())]):
@@ -125,3 +118,15 @@ def motif_dict_to_motif_vec(motif_dict):
         motif_vec.extend(motif_dict[str(i)])
     print(len(motif_vec))
     return motif_vec
+
+
+def motif_vec_to_motif_dict(motif_vec):
+    motif_dict = {}
+    for i in motif_vec:
+        # print(i,))
+        if len(i) not in motif_dict.keys():
+            motif_dict[len(i)] = [i]
+        else:
+            motif_dict[len(i)].append(i)
+    # print(len(motif_vec))
+    return motif_dict

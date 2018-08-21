@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/motif_class.py" line="581" />
+    <bookmark url="file://$PROJECT_DIR$/src/motif_class.py" line="637" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/Test_Hier-checkpoint.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Test_Hier.ipynb" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NBT_nglycan_alignment.py" afterPath="$PROJECT_DIR$/src/nglycan_alignment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/abundance_matrix.txt" afterPath="$PROJECT_DIR$/generated_json_file/abundance_matrix.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_abd_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_abd_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_motif_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_motif_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycoprofile_list.json" afterPath="$PROJECT_DIR$/generated_json_file/glycoprofile_list.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/match_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/match_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/merged_motif_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/merged_motif_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/norm_mz_abd_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/norm_mz_abd_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/Test_Info_Enrich-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/Test_Info_Enrich-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/clustering_enrichment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/clustering_enrichment-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test_Info_Enrich.ipynb" afterPath="$PROJECT_DIR$/src/Test_Info_Enrich.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clustering_analysis_pip.py" afterPath="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clustering_enrichment.ipynb" afterPath="$PROJECT_DIR$/src/clustering_enrichment.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hierarchical_enrichment.py" afterPath="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/customize_motif_vec.py" afterPath="$PROJECT_DIR$/src/customize_motif_vec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/extract_motif.py" afterPath="$PROJECT_DIR$/src/extract_motif.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_io.py" afterPath="$PROJECT_DIR$/src/glycan_io.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/motif_class.py" afterPath="$PROJECT_DIR$/src/motif_class.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,29 +33,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/GlyCompare$glycan_profile.coverage" NAME="glycan_profile Coverage Results" MODIFIED="1531203521863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/GlyCompare$glycan_profile.coverage" NAME="glycan_profile Coverage Results" MODIFIED="1533793804721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="27" column="50" lean-forward="false" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+            <state relative-caret-position="547">
+              <caret line="154" column="33" lean-forward="false" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="33" />
               <folding>
-                <element signature="e#4518#5437#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hierarchical_enrichment.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/hierarchical_enrichment.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-188">
-              <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#1#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,16 +52,36 @@
       <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="990" column="24" lean-forward="true" selection-start-line="990" selection-start-column="24" selection-end-line="990" selection-end-column="24" />
+            <state relative-caret-position="2145">
+              <caret line="749" column="18" lean-forward="false" selection-start-line="749" selection-start-column="18" selection-end-line="749" selection-end-column="18" />
               <folding>
                 <element signature="e#493#18772#0" expanded="false" />
                 <element signature="e#982#1919#0" expanded="false" />
-                <element signature="e#20966#21305#0" expanded="false" />
                 <element signature="e#21362#22026#0" expanded="false" />
                 <element signature="e#22127#23865#0" expanded="false" />
                 <element signature="e#25148#25149#0" expanded="false" />
+                <element signature="e#31593#36766#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_utility.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/json_utility.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -73,29 +89,17 @@
       <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/motif_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="428" column="71" lean-forward="true" selection-start-line="428" selection-start-column="71" selection-end-line="428" selection-end-column="71" />
+            <state relative-caret-position="161">
+              <caret line="580" column="24" lean-forward="false" selection-start-line="580" selection-start-column="8" selection-end-line="580" selection-end-column="24" />
               <folding>
                 <element signature="e#16#27#0" expanded="true" />
                 <element signature="e#7413#7652#0" expanded="false" />
                 <element signature="e#7687#7820#0" expanded="false" />
                 <element signature="e#7848#7904#0" expanded="false" />
                 <element signature="e#8331#8364#0" expanded="false" />
-                <element signature="e#12496#12740#0" expanded="false" />
-                <element signature="e#12785#13008#0" expanded="false" />
-                <element signature="e#19308#27219#0" expanded="false" />
-                <element signature="e#24409#27219#0" expanded="false" />
+                <element signature="e#13007#13230#0" expanded="false" />
+                <element signature="e#26621#29431#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="glycan_io.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/glycan_io.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1133">
-              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -103,8 +107,8 @@
       <file leaf-file-name="plot_glycan_utilities.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1171">
-              <caret line="195" column="12" lean-forward="true" selection-start-line="195" selection-start-column="12" selection-end-line="195" selection-end-column="12" />
+            <state relative-caret-position="1290">
+              <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -113,11 +117,41 @@
       <file leaf-file-name="clustering_analysis_pip.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="140" column="71" lean-forward="false" selection-start-line="140" selection-start-column="71" selection-end-line="140" selection-end-column="71" />
+            <state relative-caret-position="-836">
+              <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="matrix.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="727">
+              <caret line="566" column="44" lean-forward="false" selection-start-line="566" selection-start-column="44" selection-end-line="566" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NBT_motif_match_motifvec.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nglycan_alignment.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nglycan_alignment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-221">
+              <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,15 +167,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>NBT_init</find>
-      <find>NBT_motif_dic_degree_list_addr</find>
-      <find>BNT</find>
-      <find>BNT_</find>
-      <find>gc_glycan_motif</find>
-      <find>match_motif</find>
-      <find>load_glycan_profile_dic</find>
-      <find>GlycanMotifLib</find>
-      <find>，</find>
       <find>scored_motif_vec1</find>
       <find>fragment_to_substructure</find>
       <find>extract_mo</find>
@@ -162,6 +187,16 @@
       <find>pop</find>
       <find>get_edge_onettest_dis</find>
       <find>get_node</find>
+      <find>error</find>
+      <find>num</find>
+      <find>merge</find>
+      <find>combi</find>
+      <find>motif_dict</find>
+      <find>int\(</find>
+      <find>WT</find>
+      <find>draw_motif_cluster</find>
+      <find>traves_glycan</find>
+      <find>glycan_wal</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -175,8 +210,8 @@
       <replace>glycan_profile</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/src</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -196,21 +231,24 @@
         <option value="$PROJECT_DIR$/src/gc_glycan_motif.py" />
         <option value="$PROJECT_DIR$/src/gc_extract_motif.py" />
         <option value="$PROJECT_DIR$/src/NBT_glycan_profile.py" />
-        <option value="$PROJECT_DIR$/src/NBT_nglycan_alignment.py" />
         <option value="$PROJECT_DIR$/src/aaa.py" />
         <option value="$PROJECT_DIR$/src/aa.py" />
         <option value="$PROJECT_DIR$/src/unimplemented_hierach_part.py" />
         <option value="$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" />
-        <option value="$PROJECT_DIR$/src/extract_motif.py" />
         <option value="$PROJECT_DIR$/src/customize_motif_vector.py" />
-        <option value="$PROJECT_DIR$/src/glycan_io.py" />
         <option value="$PROJECT_DIR$/src/__init__.py" />
         <option value="$PROJECT_DIR$/src/glycan_profile.py" />
-        <option value="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py" />
         <option value="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
-        <option value="$PROJECT_DIR$/src/motif_class.py" />
         <option value="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
+        <option value="$PROJECT_DIR$/src/glycan_io.py" />
+        <option value="$PROJECT_DIR$/src/customize_motif_vec.py" />
+        <option value="$PROJECT_DIR$/src/extract_motif.py" />
+        <option value="$PROJECT_DIR$/src/NBT_nglycan_alignment.py" />
+        <option value="$PROJECT_DIR$/src/motif_class.py" />
+        <option value="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
+        <option value="$PROJECT_DIR$/src/nglycan_alignment.py" />
+        <option value="$PROJECT_DIR$/src/json_utility.py" />
       </list>
     </option>
   </component>
@@ -221,7 +259,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1440" />
+    <option name="x" value="722" />
+    <option name="width" value="718" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -264,6 +303,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -275,18 +315,12 @@
             <path>
               <item name="GlyCompare" type="b2602c69:ProjectViewProjectNode" />
               <item name="GlyCompare" type="462c0819:PsiDirectoryNode" />
-              <item name="generated_json_file" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GlyCompare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GlyCompare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,16 +386,15 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24105866" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4170243" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24678111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32520324" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18454936" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39939025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -370,6 +403,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3241107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -407,39 +441,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4485">
-          <caret line="303" column="0" lean-forward="true" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/motif_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2475">
-          <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
-          <folding>
-            <element signature="e#16#27#0" expanded="true" />
-            <element signature="e#7413#7652#0" expanded="false" />
-            <element signature="e#7687#7820#0" expanded="false" />
-            <element signature="e#7848#7904#0" expanded="false" />
-            <element signature="e#8331#8364#0" expanded="false" />
-            <element signature="e#12496#12740#0" expanded="false" />
-            <element signature="e#12785#13008#0" expanded="false" />
-            <element signature="e#19308#27219#0" expanded="false" />
-            <element signature="e#24409#27219#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -451,7 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -459,9 +459,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding>
-            <element signature="e#4518#5437#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -469,10 +467,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2850">
           <caret line="198" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding>
-            <element signature="e#2124#2767#0" expanded="false" />
-            <element signature="e#2853#3875#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -507,10 +502,8 @@
             <element signature="e#7687#7820#0" expanded="false" />
             <element signature="e#7848#7904#0" expanded="false" />
             <element signature="e#8331#8364#0" expanded="false" />
-            <element signature="e#12496#12740#0" expanded="false" />
-            <element signature="e#12785#13008#0" expanded="false" />
-            <element signature="e#19308#27219#0" expanded="false" />
-            <element signature="e#24409#27219#0" expanded="false" />
+            <element signature="e#13007#13230#0" expanded="false" />
+            <element signature="e#26621#29431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -526,7 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -534,9 +526,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
           <caret line="56" column="33" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
-          <folding>
-            <element signature="e#4518#5437#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -544,10 +534,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-          <folding>
-            <element signature="e#2124#2767#0" expanded="false" />
-            <element signature="e#2853#3875#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -561,10 +548,8 @@
             <element signature="e#7687#7820#0" expanded="false" />
             <element signature="e#7848#7904#0" expanded="false" />
             <element signature="e#8331#8364#0" expanded="false" />
-            <element signature="e#12496#12740#0" expanded="false" />
-            <element signature="e#12785#13008#0" expanded="false" />
-            <element signature="e#19308#27219#0" expanded="false" />
-            <element signature="e#24409#27219#0" expanded="false" />
+            <element signature="e#13007#13230#0" expanded="false" />
+            <element signature="e#26621#29431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -587,7 +572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,9 +593,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4518#5437#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -619,14 +601,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#2124#2767#0" expanded="false" />
-            <element signature="e#2853#3875#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NBT_nglycan_alignment.py">
+    <entry file="file://$PROJECT_DIR$/src/nglycan_alignment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
@@ -670,44 +649,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NBT_nglycan_alignment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aaa.py" />
     <entry file="file://$PROJECT_DIR$/src/aa.py" />
-    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="233" column="21" lean-forward="false" selection-start-line="233" selection-start-column="21" selection-end-line="233" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/clustering_enrichment.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -736,23 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="1246" column="40" lean-forward="false" selection-start-line="1246" selection-start-column="40" selection-end-line="1246" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="27" column="50" lean-forward="false" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-          <folding>
-            <element signature="e#4518#5437#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/scipy/stats/contingency.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -760,72 +686,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/collections/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="990" column="24" lean-forward="true" selection-start-line="990" selection-start-column="24" selection-end-line="990" selection-end-column="24" />
-          <folding>
-            <element signature="e#493#18772#0" expanded="false" />
-            <element signature="e#982#1919#0" expanded="false" />
-            <element signature="e#20966#21305#0" expanded="false" />
-            <element signature="e#21362#22026#0" expanded="false" />
-            <element signature="e#22127#23865#0" expanded="false" />
-            <element signature="e#25148#25149#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="121">
+          <caret line="370" column="14" lean-forward="true" selection-start-line="370" selection-start-column="14" selection-end-line="370" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/scipy/stats/stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="140" column="71" lean-forward="false" selection-start-line="140" selection-start-column="71" selection-end-line="140" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1171">
-          <caret line="195" column="12" lean-forward="true" selection-start-line="195" selection-start-column="12" selection-end-line="195" selection-end-column="12" />
+        <state relative-caret-position="237">
+          <caret line="3756" column="28" lean-forward="true" selection-start-line="3756" selection-start-column="28" selection-end-line="3756" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/glycan_io.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1133">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="255">
+          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glycan_profile_clustering.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hierarchical_enrichment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1360">
+          <caret line="50" column="19" lean-forward="false" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3795">
+          <caret line="258" column="64" lean-forward="false" selection-start-line="258" selection-start-column="64" selection-end-line="258" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2145">
+          <caret line="749" column="18" lean-forward="false" selection-start-line="749" selection-start-column="18" selection-end-line="749" selection-end-column="18" />
+          <folding>
+            <element signature="e#493#18772#0" expanded="false" />
+            <element signature="e#982#1919#0" expanded="false" />
+            <element signature="e#21362#22026#0" expanded="false" />
+            <element signature="e#22127#23865#0" expanded="false" />
+            <element signature="e#25148#25149#0" expanded="false" />
+            <element signature="e#31593#36766#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="566" column="44" lean-forward="false" selection-start-line="566" selection-start-column="44" selection-end-line="566" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/motif_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="428" column="71" lean-forward="true" selection-start-line="428" selection-start-column="71" selection-end-line="428" selection-end-column="71" />
+        <state relative-caret-position="161">
+          <caret line="580" column="24" lean-forward="false" selection-start-line="580" selection-start-column="8" selection-end-line="580" selection-end-column="24" />
           <folding>
             <element signature="e#16#27#0" expanded="true" />
             <element signature="e#7413#7652#0" expanded="false" />
             <element signature="e#7687#7820#0" expanded="false" />
             <element signature="e#7848#7904#0" expanded="false" />
             <element signature="e#8331#8364#0" expanded="false" />
-            <element signature="e#12496#12740#0" expanded="false" />
-            <element signature="e#12785#13008#0" expanded="false" />
-            <element signature="e#19308#27219#0" expanded="false" />
-            <element signature="e#24409#27219#0" expanded="false" />
+            <element signature="e#13007#13230#0" expanded="false" />
+            <element signature="e#26621#29431#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hierarchical_enrichment.py">
+    <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-188">
-          <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        <state relative-caret-position="-836">
+          <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nglycan_alignment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="154" column="33" lean-forward="false" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="33" />
+          <folding>
+            <element signature="e#1#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

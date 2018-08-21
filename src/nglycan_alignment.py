@@ -6,6 +6,7 @@ mono_dic = {'M1': "bdMan",
             'M2_1': "adMan",
             'M2_2': "adMan",
             'M3_1':"adMan",
+            'M3_2':"adMan",
             "G": "GlcNAc",
             "Glc_1": "GlcNAc",
             "Glc_2": "GlcNAc",
@@ -22,13 +23,20 @@ class glycan_model():
 # LIN
 # 1:1d(5+1)2n""")
 
-    def __init__(self, a_gly_dic=None):
+    def __init__(self):
         """ a plain model"""
-        self.panel = a_gly_dic
-        if self.panel == None:
-            self.total_count = 0
-        elif isinstance(self.panel, glycan_mono):
-            self.total_count = 1
+        # self.motif_vec = motif_vec
+        # self.motif_weight_dict = motif_weight
+        self.motif_weight_list = []
+        self.normed_motif_weight_list = []
+        self.total_weight = 0
+        self.panel = None
+
+        # self.panel = a_gly_dic
+        # if self.panel is None:
+        #     self.total_count = 0
+        # elif isinstance(self.panel, glycan_mono):
+        #     self.total_count = 1
 
     def _model_builder(self):
         pass
@@ -36,21 +44,28 @@ class glycan_model():
     def glycan_walk(self, a_gly_dic):
         """build glycan with 4 branches
             each node have count, """
-        if self.panel == None:
+        if self.panel is None:
             self.panel = a_gly_dic
+            self.motif_weight_list = [a_gly_dic.count]
+            self.total_weight = a_gly_dic.count
         else:
             assert a_gly_dic.name == self.panel.name, 'root not match'
-            self.panel.count += 1
+            # _weight = self.motif_weight_dict[motif_index]
+            self.panel.count += a_gly_dic.count
             for i in a_gly_dic.child:
                 _found = False
                 for j in self.panel.child:
                     if j.name == i.name:
-                        j.count += 1
+                        # print(i.name, 'add',i.count)
+                        j.count += i.count
                         _found = True
                         self._recur_glycan_walk(i, j)
                 if not _found:
                     self.panel.child.append(i)
-        self.total_count += 1
+            self.motif_weight_list.append(a_gly_dic.count)
+            self.total_weight += a_gly_dic.count
+
+        # self.total_count += 1
 
     def _recur_glycan_walk(self, i_gly_dic, panel_dic):
         assert i_gly_dic.name == panel_dic.name, 'recur root not match'
@@ -58,7 +73,8 @@ class glycan_model():
             _found = False
             for j in panel_dic.child:
                 if j.name == i.name:
-                    j.count += 1
+                    # print(i.name, 'add',i.count)
+                    j.count += i.count
                     _found = True
                     self._recur_glycan_walk(i, j)
             if not _found:
@@ -74,7 +90,7 @@ class glycan_model():
         return self._travel_str_dict(self.panel)
 
     def _travel_str_dict(self, a_mono):
-        return a_mono.name + ',' + str(a_mono.count / self.total_count) + '[' + ','.join(
+        return a_mono.name + ',' + str(a_mono.count / self.total_weight) + '[' + ','.join(
             [self._travel_str_dict(i) for i in a_mono.child]) + ']'
 
     def get_common_representative(self, threshold):
@@ -83,16 +99,29 @@ class glycan_model():
         M2_2,1.0[Glc_1,1.0[R,0.5[S,0.2[]]],Glc_2,0.95[R,0.15[]]]]],F,0.5[]]'"""
         root_mono = glypy.monosaccharides["GlcNAc"]
         for i in self.panel.child:
-            if i.count / self.total_count < threshold: continue
+            # print(i.name, i.count)
+            if i.count / self.total_weight < threshold: continue
             root_mono.add_monosaccharide(self._helper_get_common(i, threshold))
         return glypy.Glycan(root=root_mono)
+
+    def get_reps(self, threshold_list=[0.5,0.6,0.7]):
+        return_list = []
+        for _thre in threshold_list:
+            root_mono = glypy.monosaccharides["GlcNAc"]
+            for i in self.panel.child:
+                # print(i.name, i.count)
+                if i.count / self.total_weight < _thre: continue
+                root_mono.add_monosaccharide(self._helper_get_common(i, _thre))
+            return_list.append(glypy.Glycan(root=root_mono))
+        return return_list
 
     def _helper_get_common(self, a_glycan_mono, threshold):
         # print(mono_dic[a_glycan_mono.name])
         # print(glypy.monosaccharides(mono_dic[a_glycan_mono.name]))
         _mono = glypy.monosaccharides[mono_dic[a_glycan_mono.name]]
         for i in a_glycan_mono.child:
-            if i.count / self.total_count < threshold:
+            # print(i.name, i.count, self.total_weight, i.count / self.total_weight, threshold)
+            if i.count / self.total_weight < threshold:
                 continue
             _mono.add_monosaccharide(self._helper_get_common(i, threshold))
         return _mono
@@ -131,21 +160,21 @@ M3 = 7
 PASM = 6
 
 
-def _travel_pasm(mono):
+def _travel_pasm(mono, weight):
     if mono.children():
         _, _child = mono.children()[0]
         _branch = []
         if str(_child).find('n-acetyl') != -1 and str(_child).find('glc') != -1:
             # _branch['G'] = _travel_pasm(_child)
-            _temp_mono = glycan_mono('G', _travel_pasm(_child))
+            _temp_mono = glycan_mono('G', _travel_pasm(_child, weight=weight), count=weight)
             _branch.append(_temp_mono)
         elif str(_child).find('dgro-dgal') != -1:
             # _branch['S'] = _travel_pasm(_child)
-            _temp_mono = glycan_mono('S', _travel_pasm(_child))
+            _temp_mono = glycan_mono('S', _travel_pasm(_child, weight=weight), count=weight)
             _branch.append(_temp_mono)
         elif str(_child).find('gal') != -1:
             # _branch['R'] = _travel_pasm(_child)
-            _temp_mono = glycan_mono('R', _travel_pasm(_child))
+            _temp_mono = glycan_mono('R', _travel_pasm(_child, weight=weight), count=weight)
             _branch.append(_temp_mono)
         else:
             assert False, 'Error in _travel_pasm'
@@ -159,10 +188,10 @@ def travel_str_dict(a_mono):
     return a_mono.name + ',' + str(a_mono.count) + '[' + ','.join([travel_str_dict(i) for i in a_mono.child]) + ']'
 
 
-def traves_glycan(a_gly):
+def traves_glycan(a_gly, weight):
     _root = a_gly.root
     _state = ROOT
-    return glycan_mono('G', _re_travel_glycan(_root, _state))
+    return glycan_mono('G', _re_travel_glycan(_root, _state, weight), count=weight)
 
 
 def get_depth_man(a_dict):
@@ -188,7 +217,7 @@ def map_glycan(a_g_dict, b_g_dict):
     # for i in a_g_dict:
 
 
-def _re_travel_glycan(mono, state):
+def _re_travel_glycan(mono, state, weight):
     """return a list of glycan_mono as child"""
     if mono.children():
         if state == M2:
@@ -199,13 +228,13 @@ def _re_travel_glycan(mono, state):
                 _count += 1
                 if str(_child).find('glc') != -1:
                     # _branch['Glc_' + str(_count)] = _travel_pasm(_child)  # which is man2 passed through
-                    _temp_mono = glycan_mono('Glc_' + str(_count), _travel_pasm(_child))
+                    _temp_mono = glycan_mono('Glc_' + str(_count), _travel_pasm(_child, weight), count=weight)
                     _branch.append(_temp_mono)
                 elif str(_child).find('man') != -1:
 
                     _man_count += 1
                     # _branch['M2_' + str(_count)] = _re_travel_glycan(_child, state=M2)  # which is man2 passed through
-                    _temp_mono = glycan_mono('M3_' + str(_man_count))
+                    _temp_mono = glycan_mono('M3_' + str(_man_count), count=weight)
                     _branch.append(_temp_mono)
 
             if len(mono.children()) == 2:
@@ -225,17 +254,17 @@ def _re_travel_glycan(mono, state):
                 for _, _child in mono.children():
                     if str(_child).find('a-lgal') != -1:
                         # _branch['F'] = {}
-                        _temp_mono = glycan_mono('F')
+                        _temp_mono = glycan_mono('F', count=weight)
                         _branch.append(_temp_mono)
                     elif str(_child).find('n-acetyl') != -1 and str(_child).find('dglc') != -1:
                         #                         _branch['G'] = {}
                         # _branch['G'] = _re_travel_glycan(_child, state=ROOTG)
-                        _temp_mono = glycan_mono('G', _re_travel_glycan(_child, state=ROOTG))
+                        _temp_mono = glycan_mono('G', _re_travel_glycan(_child, state=ROOTG, weight=weight), count=weight)
                         _branch.append(_temp_mono)
             elif len(mono.children()) == 1:
                 _branch = []
                 _, _child = mono.children()[0]
-                _temp_mono = glycan_mono('G', _re_travel_glycan(_child, state=ROOTG))
+                _temp_mono = glycan_mono('G', _re_travel_glycan(_child, state=ROOTG, weight=weight), count=weight)
                 _branch.append(_temp_mono)
             else:
                 assert False, 'Wrong in root'
@@ -247,7 +276,7 @@ def _re_travel_glycan(mono, state):
             _, _child = mono.children()[0]
             assert str(_child).find('man') != -1, 'Wrong man in RGal'
             # _branch['M1'] = _re_travel_glycan(_child, state=M1)
-            _temp_mono = glycan_mono('M1', _re_travel_glycan(_child, state=M1))
+            _temp_mono = glycan_mono('M1', _re_travel_glycan(_child, state=M1, weight=weight), count=weight)
             _branch.append(_temp_mono)
             return _branch
 
@@ -258,7 +287,7 @@ def _re_travel_glycan(mono, state):
                 _count += 1
                 if str(_child).find('man') != -1:
                     # _branch['M2_' + str(_count)] = _re_travel_glycan(_child, state=M2)  # which is man2 passed through
-                    _temp_mono = glycan_mono('M2_' + str(_count), _re_travel_glycan(_child, state=M2))
+                    _temp_mono = glycan_mono('M2_' + str(_count), _re_travel_glycan(_child, state=M2, weight=weight), count=weight)
                     _branch.append(_temp_mono)
                 else:
                     assert False, 'find other mono in M1'

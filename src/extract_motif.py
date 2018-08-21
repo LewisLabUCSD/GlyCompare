@@ -83,9 +83,10 @@ def extract_motif(glycan_, branch=5):
     for i in glycan_.fragments(max_cleavages=branch):
         _frag_gly = fragment_to_substructure(i, glycan_)
         if not str(len(_frag_gly)) in extracted_motif_dic.keys():
-            extracted_motif_dic[str(len(_frag_gly))] = [str(_frag_gly)]
+            extracted_motif_dic[str(len(_frag_gly))] = [_frag_gly]
         else:
-            extracted_motif_dic[str(len(_frag_gly))].append(str(_frag_gly))
+            extracted_motif_dic[str(len(_frag_gly))].append(_frag_gly)
+    extracted_motif_dic[str(len(glycan_))]=[glycan_]
     return extracted_motif_dic
 
 

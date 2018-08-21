@@ -317,11 +317,15 @@ def get_weight_dict(motif_abd_table):
 
 
 class NodesState():
-    threshold=200
+    threshold = 200
+
     def __init__(self, dependence_tree, motif_weight):
         self.dep_tree = dependence_tree
-        self.edge = self._get_edge(dependence_tree)
-        self.all_nodes = self._get_node(dependence_tree)
+        self.nodes_sta = []
+        # self.nodes = self._get_node(self.dep_tree)
+        self.edges = self._get_edge(dependence_tree)
+        self.nodes = self._get_node(dependence_tree)
+
         self.motif_weight = motif_weight
         self.normalized_motif_weight = {}
         self._normalized_weight()
@@ -331,7 +335,10 @@ class NodesState():
         self.nodes_kept = []
         self._out_degree_list = []
         self._in_degree_list = []
-
+        self.flat_paired_diff = []
+        self.flat_normed_paired_diff = []
+        self.nodes_kept = []
+        self.nodes_stat_value = []
 
     def _get_node(self, dep_tree):
         """
@@ -368,21 +375,21 @@ class NodesState():
         count_ = 0
         while _num in _list:
             _list.remove(_num)
-            count_ +=1
+            count_ += 1
         print("there are ", count_, " removed from ", _len)
         return _list
 
     def get_edge_ttest_dis(self):
         _list = []
-        for i, j in self.edge:
-            _list.append(self.get_value(i, j, method=self.one_vs_rest_t))
+        for i, j in self.edges:
+            _list.append(self.get_value_unnormed(i, j, method=self.one_vs_rest_t))
         return _list
 
     # wrapper
     def get_edge_corr_dis(self):
         _list = []
-        for i, j in self.edge:
-            _list.append(self.get_value(i, j, method=self.get_corr))
+        for i, j in self.edges:
+            _list.append(self.get_value_unnormed(i, j, method=self.get_corr))
         return _list
 
     def _normalized_weight(self):
@@ -390,12 +397,17 @@ class NodesState():
             _max = max(self.motif_weight[i])
             self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
 
-    def get_vector(self,i):
+    def get_vector(self, i):
         return self.normalized_motif_weight[i]
 
-    def get_value(self, i, j, method):
+    def get_value_unnormed(self, i, j, method):
         # print()
-        return method(vec_a=self.normalized_motif_weight[j], vec_b=self.normalized_motif_weight[i])
+        return method(vec_a=self.motif_weight[i], vec_b=self.motif_weight[j])
+
+    #
+    # def get_value_normed(self, i, j, method):
+    #     # print()
+    #     return method(vec_a=self.normalized_motif_weight[j], vec_b=self.normalized_motif_weight[i])
 
     def get_corr(self, vec_a, vec_b):
         return 1 - distance.braycurtis(vec_a, vec_b)
@@ -418,6 +430,45 @@ class NodesState():
             return_neg_log_p = self.threshold
         return return_neg_log_p
 
+    def all_one_vs_rest_t(self, vec_a, vec_b):
+        diff_vec = [vec_a[i] - vec_b[i] for i in range(len(vec_a))]
+        # print(diff_vec)
+        # for i in range(len(vec_a)):
+        _return_list = []
+        for i in diff_vec:
+            _temp_vec = diff_vec[:]
+            _temp_vec.remove(i)
+            # print(i, _temp_vec)
+            if np.var(_temp_vec) == 0:
+                return []
+            neg_log_p = self.get_neg_log_p_ttest(i, _temp_vec)
+            if neg_log_p > self.threshold:
+                # print(_min, diff_vec)
+                neg_log_p = self.threshold
+            _return_list.append(neg_log_p)
+        return _return_list
+
+    # def get_weight_list(self):
+    #     for i in self.normalized_motif_weight:
+    #         for j in self.normalized_motif_weight[i]:
+    #             _temp_vec = diff_vec[:]
+    #             _temp_vec.remove(i)
+
+    def get_edge_all_ttest(self):
+        _list = []
+        self.flat_normed_paired_diff = []
+        self.flat_paired_diff = []
+        for i, j in self.edges:
+            _temp = self.get_value_unnormed(i, j, method=self.all_one_vs_rest_t)
+            if _temp:
+                _list.extend(_temp)
+                self.flat_paired_diff.extend(
+                    [self.motif_weight[i][k] - self.motif_weight[j][k] for k in range(len(self.motif_weight[j]))])
+                self.flat_normed_paired_diff.extend(
+                    [self.normalized_motif_weight[i][k] - self.normalized_motif_weight[j][k] for k in
+                     range(len(self.normalized_motif_weight[j]))])
+        return _list
+
     def get_neg_log_p_ttest(self, _ele, _vec):
         _vec = np.array(_vec)
         if _vec.var() == 0:
@@ -426,10 +477,27 @@ class NodesState():
             else:
                 return self.threshold
         else:
+            # print(_vec.mean(), _vec.var())
             tt = (_ele - _vec.mean()) / np.sqrt(_vec.var() / len(_vec))
-        p = stats.t.sf(np.abs(tt), len(_vec) - 1)
+            scipy_tt = stats.ttest_1samp(_vec, _ele)
+            # print(type(scipy_tt.pvalue))
+            p = scipy_tt.pvalue
+        # p = stats.t.sf(np.abs(tt), len(_vec) - 1)*2
         return -np.log(p)
 
+    # def get_neg_log_p_ttest_sci(self, _ele, _vec):
+    #     _vec = np.array(_vec)
+    #     if _vec.var() == 0:
+    #         if _ele - _vec.mean() == 0:
+    #             return 0
+    #         else:
+    #             return self.threshold
+    #     else:
+    #         # print(_vec.mean(), _vec.var())
+    #         tt = (_ele - _vec.mean()) / np.sqrt(_vec.var() / len(_vec))
+    #
+    #     p = stats.t.sf(np.abs(tt), len(_vec) - 1)*2
+    #     return -np.log(p)
 
 
     # def one_vs_rest_oneside_t(self, vec_a, vec_b):
@@ -455,80 +523,79 @@ class NodesState():
     #     #     print(_min, diff_vec)
     #     return neg_log_p_min
 
-    def get_node_value(self, method='get_corr'):
-        if self.nodes_kept != [] and False:
-            return self.nodes_kept
-        else:
-            self.nodes_kept = []
-            # _in_degree_list = []
-            # _out_degree_list = []
-            for i in self.parents_dic.keys():
+    def get_node_value(self, redo=True):
+        if redo:
+            self.nodes_stat_value = []
+            self._in_degree_list = []
+            self._out_degree_list = []
+            self.nodes_sta = []
+            for i in sorted(list(self.parents_dic.keys())):
                 # print(i)
                 for j in self.dep_tree[i]:
-                    if method == 'get_corr':
-                        self.parents_dic[j][i] = self.get_value(i, j, self.get_corr)
-                    elif method == 'one_vs_rest_t':
-                        self.parents_dic[j][i] = self.get_value(i, j, self.one_vs_rest_t)
-                        # sns.clustermap
+                    self.parents_dic[j][i] = (self.get_value_unnormed(i, j, self.get_corr),
+                                              self.get_value_unnormed(i, j, self.one_vs_rest_t))
                 self._out_degree_list.append(len(self.dep_tree[i]))
 
-            for i in self.parents_dic.keys():
+            # can be split
+            for i in sorted(list(self.parents_dic.keys())):
+
                 self._in_degree_list.append(len(self.parents_dic[i]))
-
-                # find_ = False
-                # _max = 0
                 _list = []
-
                 for j in self.parents_dic[i].keys():
                     _list.append(self.parents_dic[i][j])
-                    # if _max_parent == '':
-                    #     print(i,j,"find", _max,self.parents_vec[i][j],_max < self.parents_vec[i][j])
-                    # if _max < self.parents_dic[i][j]:
-                    #     _max = self.parents_dic[i][j]
-                    #     _max_parent = j
-                    # print(j,_max)
-                    # elif
-                    # if self.parents_vec[i][j] < 0.999999:
-                    #     print(self.parents_vec[i][j], i, j)
-                    # elif self.parents_vec[i][j] ==1:
-                    #     print('100', i,j)
-                    # find_ = True
                 if _list:
-                    self.nodes_kept.append(max(_list))
-                    # if find_:
-                    #     # if _max_parent == '':
-                    #     #     print('wtf',i,_max_parent,_max)
-                    #     if _max_parent not in self.heavy_dependency.keys():
-                    #         # if _max_parent == "":
-                    #         #     print(_max)
-                    #         self.heavy_dependency[_max_parent] = [i]
-                    #     else:
-                    #         self.heavy_dependency[_max_parent].append(i)
+                    # self.nodes_kept.append(max(_list))
+                    _list = sorted(_list, key=lambda x: x[0])
+                    self.nodes_stat_value.append(_list[0])
+                else:
+                    self.nodes_stat_value.append((-1, -1))
 
-                    # else:
-                    #     self.nodes_kept.append(i)
-            return self.nodes_kept
+            return zip(*self.nodes_stat_value)
 
-    def get_edge_node_degree(self):
+    def get_node_sta(self):
+        self.nodes_sta = []
+        for i in sorted(list(self.parents_dic.keys())):
+            _mean = np.mean(self.motif_weight[i])
+            _var = np.var(self.motif_weight[i])
+            self.nodes_sta.append((_mean, _var))
+        return zip(*self.nodes_sta)
+
+    def get_edge_node_degree(self, edges=[]):
         out_degree = {}
         in_degree = {}
         out_degree_list = []
         in_degree_list = []
-        for i,j in self.edge:
-            if i not in out_degree.keys():
-                out_degree[i] = 1
-            else:
-                out_degree[i] += 1
-            if j not in in_degree.keys():
-                in_degree[j] = 1
-            else:
-                in_degree[j] += 1
-        for i,j in self.edge:
+        for i in self.nodes:
+            out_degree[i] = 0
+            in_degree[i] = 0
+        if not edges:
+            edges = self.edges
+        for i, j in edges:
+            out_degree[i] += 1
+            in_degree[j] += 1
+        for i, j in edges:
             out_degree_list.append(out_degree[i])
             in_degree_list.append(in_degree[j])
         return out_degree_list, in_degree_list
 
+    def get_nodes_degree(self, edges=[]):
+        out_degree = {}
+        in_degree = {}
+        out_degree_list = []
+        in_degree_list = []
+        for i in self.nodes:
+            out_degree[i] = 0
+            in_degree[i] = 0
+        if not edges:
+            edges = self.edges
+        for i, j in edges:
+            out_degree[i] += 1
+            in_degree[j] += 1
 
+        return out_degree, in_degree
+
+    def nodes_dropper(self):
+        """drop nodes based on features"""
 
 
 class NodesDropper:
