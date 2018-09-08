@@ -66,13 +66,17 @@ def draw_motif_cluster(g, df, name_prefix, color_threshold):
                                              # truncate_mode='lastp',show_contracted=True,p=50,
                                              labels=df.index,
                                              color_threshold=color_threshold, orientation='left', leaf_font_size=10,
-                                             distance_sort='descending', leaf_rotation=45)
+                                             distance_sort='descending', leaf_rotation=0)
 
     #     plt.show()
     plt.savefig(r"./" + name_prefix + 'motif_cluster.png')
     cccluster_dict = {}
+    # for i in zip(scipy.cluster.hierarchy.fcluster(g.dendrogram_row.linkage, t=color_threshold, criterion='distance'),df.index.tolist()):
+    #     print(i)
+
+
     for i, j in zip(scipy.cluster.hierarchy.fcluster(g.dendrogram_row.linkage, t=color_threshold, criterion='distance'),
-                    df.index):
+                    df.index.tolist()):
         if i not in cccluster_dict.keys():
             cccluster_dict[i] = [j]
         else:
@@ -102,9 +106,11 @@ def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weigh
             # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
 
             # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
-        glycan_list = a_panel.get_reps(threshold_list)
-        plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in threshold_list])
-        plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.core.png')
+        glycan_list = a_panel.get_reps(threshold_list=[0.51])
+        plot_glycan_utilities.plot_glycan(glycan_list[0], title=str(i), addr=__init__.plot_output_address+name_prefix+str(i)+'.core.png')
+        # plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
+        # plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in [0.51, 0.6, 0.7]])
+        # plt.savefig()
 
 
 # print(len(cccluster_dict.keys()))
@@ -139,23 +145,23 @@ def draw_glycan_clustermap(df_ncore, name_prefix, metric="braycurtis"):
     # draw motif clusters
     # draw_glycan_cluster(cccluster_dict, name_prefix)
 
-
-def motif_with_n_glycan_core_all_motif(motif_, existed_table, weight_dict, color_threshold=0.55):
-    motif_.get_motif_with_core()
-    ncore_dependence_tree = motif_.motif_with_ncore_dependence_tree()
-    dp_tree = motif_class.MotifDpTree(ncore_dependence_tree, motif_.motif_with_core_list, weight_dict)
-    #     # store_json(r"/Users/apple/PycharmProjects/abundance_matrix.json", weight_dict)
-    len(dp_tree.all_nodes)
-    # existed_table = _ggg.table_exist_or_not()
-    df_ncore = existed_table[existed_table.index.isin(dp_tree.all_nodes)]
-    g = sns.clustermap(df_ncore, metric="jaccard")
-    name_prefix = 'all_nodes.'
-    g.savefig(__init__.plot_output_address + name_prefix + 'clustermap.png')
-    draw_profile_cluster(g, df_ncore, profile_name, name_prefix, color_threshold)
-    cccluster_dict = draw_motif_cluster(g, df_ncore, name_prefix, color_threshold=0.44)
-    draw_glycan_cluster(cccluster_dict, name_prefix)
-
-
+#
+# def motif_with_n_glycan_core_all_motif(motif_, existed_table, weight_dict, color_threshold=0.55):
+#     motif_.get_motif_with_core()
+#     ncore_dependence_tree = motif_.motif_with_ncore_dependence_tree()
+#     dp_tree = motif_class.MotifDpTree(ncore_dependence_tree, motif_.motif_with_core_list, weight_dict)
+#     #     # store_json(r"/Users/apple/PycharmProjects/abundance_matrix.json", weight_dict)
+#     len(dp_tree.all_nodes)
+#     # existed_table = _ggg.table_exist_or_not()
+#     df_ncore = existed_table[existed_table.index.isin(dp_tree.all_nodes)]
+#     g = sns.clustermap(df_ncore, metric="jaccard")
+#     name_prefix = 'all_nodes.'
+#     g.savefig(__init__.plot_output_address + name_prefix + 'clustermap.png')
+#     draw_profile_cluster(g, df_ncore, profile_name, name_prefix, color_threshold)
+#     cccluster_dict = draw_motif_cluster(g, df_ncore, name_prefix, color_threshold=0.35)
+#     draw_glycan_cluster(cccluster_dict, name_prefix)
+#
+#
 # def pipe_motif_ana_with_motif_abundance():
 #     """for every glycan, use the motif counts(4 max) vec to represent
 #         the abundance of the motif in a profile is represented by the sum of weight*abundance

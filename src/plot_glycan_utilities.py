@@ -21,8 +21,8 @@ def _bounding_box_to_limits(dtree):
         stretched.append((x, y))
     points = stretched
     xs, ys = zip(*points)
-    min_x, max_x = min(xs) - 2, max(xs) + 2
-    min_y, max_y = min(ys) - 2, max(ys) + 2
+    min_x, max_x = min(xs) - 2.5, max(xs) + 1.5
+    min_y, max_y = min(ys) - 2.5, max(ys) + 1.5
     return np.array((min_x, max_x)), np.array((min_y, max_y))
 
 
@@ -41,7 +41,7 @@ layout_map = {
 }
 
 
-DEFAULT_SYMBOL_SCALE_FACTOR = 0.25
+DEFAULT_SYMBOL_SCALE_FACTOR = 0.16
 
 #: :data:`special_cases` contains a list of names for
 #: special case monosaccharides
@@ -210,7 +210,7 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
     if addr == '':
         pass
     else:
-        plt.savefig(addr)
+        plt.savefig(addr, transparent=True, format='png', dpi='figure')
     return (dtree, ax)
 
 #

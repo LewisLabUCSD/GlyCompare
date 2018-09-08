@@ -166,6 +166,41 @@ aaa = ['WT',
        'EPO266(fut8)']
 len(aaa)
 
+aaa_re = ['WT',
+       'mgat4A',
+       'mgat4A.mgat4B',
+       'mgat5',
+       'mgat4A.mgat4B.mgat5',
+       'B4GalT1',
+       'B4GalT2',
+       'B4GalT3',
+       'B4GalT4',
+       'B4GalT1.B4GalT2',
+       'B4GalT1.B4GalT3',
+       'B3gnt1',
+       'B3gnt2',
+       'st3gal3',
+       'st3gal4',
+       'st3gal6',
+       'st3gal3.st3gal4',
+       'st3gal4.st3gal6',
+       'KI_ST6GalNAc1.st3gal4.st3gal6',
+       'B3gnt2.mgat4a.mgat4b.mgat5',
+       'st3gal4.st3gal6.mgat4a.mgat4b.mgat5',
+       'KI_ST6GalNAc1.st3gal4.st3gal6.mgat4a.mgat4b.mgat5',
+       'EPO48.mgat3.',
+       'EPO143.mgat4C.',
+       'EPO174.mgat2.',
+       'EPO200.B4galt1.B4galt2.B4galt3.',
+       'EPO275.B3gnt8.',
+       'EPO78.mgat4B.',
+       'EPO104.mgat5B.',
+       'EPO127.mgat1.',
+       'EPO259.mgat2.st3gal4.st3gal6.',
+       'EPO261.mgat2.mgat4A.mgat4B.mgat5.',
+       'EPO263.mgat2.st3gal4.st3gal6.magt4A.mgat4B.mgat5.',
+       'EPO266.fut8.']
+
 
 
 

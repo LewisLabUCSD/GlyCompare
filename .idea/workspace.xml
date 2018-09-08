@@ -5,25 +5,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NBT_nglycan_alignment.py" afterPath="$PROJECT_DIR$/src/nglycan_alignment.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped1.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped1.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped1.png" afterPath="$PROJECT_DIR$/output_plot/dropped1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped10.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped10.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped10.png" afterPath="$PROJECT_DIR$/output_plot/dropped10.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped11.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped11.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped11.png" afterPath="$PROJECT_DIR$/output_plot/dropped11.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped12.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped12.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped12.png" afterPath="$PROJECT_DIR$/output_plot/dropped12.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped13.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped13.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped13.png" afterPath="$PROJECT_DIR$/output_plot/dropped13.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped14.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped14.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped14.png" afterPath="$PROJECT_DIR$/output_plot/dropped14.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped15.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped15.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped15.png" afterPath="$PROJECT_DIR$/output_plot/dropped15.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped16.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped16.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped16.png" afterPath="$PROJECT_DIR$/output_plot/dropped16.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped17.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped17.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped17.png" afterPath="$PROJECT_DIR$/output_plot/dropped17.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped18.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped18.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped18.png" afterPath="$PROJECT_DIR$/output_plot/dropped18.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped19.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped19.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped19.png" afterPath="$PROJECT_DIR$/output_plot/dropped19.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped2.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped2.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped2.png" afterPath="$PROJECT_DIR$/output_plot/dropped2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped20.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped20.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped20.png" afterPath="$PROJECT_DIR$/output_plot/dropped20.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped21.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped21.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped21.png" afterPath="$PROJECT_DIR$/output_plot/dropped21.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped22.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped22.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped22.png" afterPath="$PROJECT_DIR$/output_plot/dropped22.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped23.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped23.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped23.png" afterPath="$PROJECT_DIR$/output_plot/dropped23.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped24.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped24.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped24.png" afterPath="$PROJECT_DIR$/output_plot/dropped24.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped25.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped25.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped25.png" afterPath="$PROJECT_DIR$/output_plot/dropped25.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped26.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped26.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped26.png" afterPath="$PROJECT_DIR$/output_plot/dropped26.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped3.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped3.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped3.png" afterPath="$PROJECT_DIR$/output_plot/dropped3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped4.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped4.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped4.png" afterPath="$PROJECT_DIR$/output_plot/dropped4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped5.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped5.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped5.png" afterPath="$PROJECT_DIR$/output_plot/dropped5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped6.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped6.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped6.png" afterPath="$PROJECT_DIR$/output_plot/dropped6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped7.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped7.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped7.png" afterPath="$PROJECT_DIR$/output_plot/dropped7.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped8.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped8.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped8.png" afterPath="$PROJECT_DIR$/output_plot/dropped8.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped9.core.png" afterPath="$PROJECT_DIR$/output_plot/dropped9.core.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped9.png" afterPath="$PROJECT_DIR$/output_plot/dropped9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/droppedprofile_cluster.png" afterPath="$PROJECT_DIR$/output_plot/droppedprofile_cluster.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/droppedmotif_cluster.png" afterPath="$PROJECT_DIR$/src/droppedmotif_cluster.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/abundance_matrix.txt" afterPath="$PROJECT_DIR$/generated_json_file/abundance_matrix.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_abd_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_abd_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_motif_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_motif_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycoprofile_list.json" afterPath="$PROJECT_DIR$/generated_json_file/glycoprofile_list.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/match_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/match_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/merged_motif_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/merged_motif_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/norm_mz_abd_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/norm_mz_abd_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/Test_Info_Enrich-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/Test_Info_Enrich-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/clustering_enrichment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/clustering_enrichment-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/R/A03.Clustering.R" afterPath="$PROJECT_DIR$/src/R/A03.Clustering.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test_Info_Enrich.ipynb" afterPath="$PROJECT_DIR$/src/Test_Info_Enrich.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__init__.py" afterPath="$PROJECT_DIR$/src/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clustering_analysis_pip.py" afterPath="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clustering_enrichment.ipynb" afterPath="$PROJECT_DIR$/src/clustering_enrichment.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/customize_motif_vec.py" afterPath="$PROJECT_DIR$/src/customize_motif_vec.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/extract_motif.py" afterPath="$PROJECT_DIR$/src/extract_motif.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_io.py" afterPath="$PROJECT_DIR$/src/glycan_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/motif_class.py" afterPath="$PROJECT_DIR$/src/motif_class.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_profile.py" afterPath="$PROJECT_DIR$/src/glycan_profile.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +88,7 @@
       <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
+            <state relative-caret-position="2190">
               <caret line="154" column="33" lean-forward="false" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="33" />
               <folding>
                 <element signature="e#1#55#0" expanded="true" />
@@ -52,15 +100,15 @@
       <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2145">
-              <caret line="749" column="18" lean-forward="false" selection-start-line="749" selection-start-column="18" selection-end-line="749" selection-end-column="18" />
+            <state relative-caret-position="297">
+              <caret line="464" column="27" lean-forward="false" selection-start-line="464" selection-start-column="27" selection-end-line="464" selection-end-column="27" />
               <folding>
-                <element signature="e#493#18772#0" expanded="false" />
                 <element signature="e#982#1919#0" expanded="false" />
-                <element signature="e#21362#22026#0" expanded="false" />
-                <element signature="e#22127#23865#0" expanded="false" />
-                <element signature="e#25148#25149#0" expanded="false" />
-                <element signature="e#31593#36766#0" expanded="false" />
+                <element signature="e#3547#3803#0" expanded="false" />
+                <element signature="e#6308#6359#0" expanded="false" />
+                <element signature="e#21418#22082#0" expanded="false" />
+                <element signature="e#25204#25205#0" expanded="false" />
+                <element signature="e#31649#36822#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -69,28 +117,28 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="452">
+              <caret line="175" column="17" lean-forward="true" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json_utility.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="json_utility.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json_utility.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/motif_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="580" column="24" lean-forward="false" selection-start-line="580" selection-start-column="8" selection-end-line="580" selection-end-column="24" />
+            <state relative-caret-position="341">
+              <caret line="453" column="41" lean-forward="true" selection-start-line="453" selection-start-column="41" selection-end-line="453" selection-end-column="41" />
               <folding>
                 <element signature="e#16#27#0" expanded="true" />
                 <element signature="e#7413#7652#0" expanded="false" />
@@ -107,8 +155,30 @@
       <file leaf-file-name="plot_glycan_utilities.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
+            <state relative-caret-position="2535">
+              <caret line="177" column="22" lean-forward="false" selection-start-line="177" selection-start-column="22" selection-end-line="177" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pyplot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/matplotlib/pyplot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10680">
+              <caret line="763" column="27" lean-forward="false" selection-start-line="763" selection-start-column="27" selection-end-line="763" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cfg_symbols.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/cfg_symbols.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -117,41 +187,11 @@
       <file leaf-file-name="clustering_analysis_pip.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-836">
-              <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
+            <state relative-caret-position="1500">
+              <caret line="103" column="19" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="matrix.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="727">
-              <caret line="566" column="44" lean-forward="false" selection-start-line="566" selection-start-column="44" selection-end-line="566" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NBT_motif_match_motifvec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nglycan_alignment.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nglycan_alignment.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -167,7 +207,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>scored_motif_vec1</find>
       <find>fragment_to_substructure</find>
       <find>extract_mo</find>
       <find>root_</find>
@@ -197,6 +236,7 @@
       <find>draw_motif_cluster</find>
       <find>traves_glycan</find>
       <find>glycan_wal</find>
+      <find>load_glycan_profile_dic</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -236,19 +276,21 @@
         <option value="$PROJECT_DIR$/src/unimplemented_hierach_part.py" />
         <option value="$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" />
         <option value="$PROJECT_DIR$/src/customize_motif_vector.py" />
-        <option value="$PROJECT_DIR$/src/__init__.py" />
-        <option value="$PROJECT_DIR$/src/glycan_profile.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py" />
-        <option value="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
         <option value="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
         <option value="$PROJECT_DIR$/src/glycan_io.py" />
         <option value="$PROJECT_DIR$/src/customize_motif_vec.py" />
         <option value="$PROJECT_DIR$/src/extract_motif.py" />
         <option value="$PROJECT_DIR$/src/NBT_nglycan_alignment.py" />
         <option value="$PROJECT_DIR$/src/motif_class.py" />
-        <option value="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
         <option value="$PROJECT_DIR$/src/nglycan_alignment.py" />
         <option value="$PROJECT_DIR$/src/json_utility.py" />
+        <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py" />
+        <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py" />
+        <option value="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
+        <option value="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
+        <option value="$PROJECT_DIR$/src/glycan_profile.py" />
+        <option value="$PROJECT_DIR$/src/__init__.py" />
       </list>
     </option>
   </component>
@@ -258,10 +300,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="722" />
-    <option name="width" value="718" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -303,7 +345,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -321,6 +362,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -383,17 +425,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24105866" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25035766" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4170243" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41699347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39939025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -441,13 +483,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/json_utility.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -467,7 +502,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2850">
           <caret line="198" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -534,7 +571,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-          <folding />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -601,7 +640,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,27 +659,6 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="16" lean-forward="false" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/cfg_symbols.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="79" column="11" lean-forward="false" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="380" column="8" lean-forward="false" selection-start-line="380" selection-start-column="8" selection-end-line="380" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -697,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="3756" column="28" lean-forward="true" selection-start-line="3756" selection-start-column="28" selection-end-line="3756" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,7 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,32 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3795">
           <caret line="258" column="64" lean-forward="false" selection-start-line="258" selection-start-column="64" selection-end-line="258" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="749" column="18" lean-forward="false" selection-start-line="749" selection-start-column="18" selection-end-line="749" selection-end-column="18" />
-          <folding>
-            <element signature="e#493#18772#0" expanded="false" />
-            <element signature="e#982#1919#0" expanded="false" />
-            <element signature="e#21362#22026#0" expanded="false" />
-            <element signature="e#22127#23865#0" expanded="false" />
-            <element signature="e#25148#25149#0" expanded="false" />
-            <element signature="e#31593#36766#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,22 +752,118 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
+        <state relative-caret-position="8235">
           <caret line="566" column="44" lean-forward="false" selection-start-line="566" selection-start-column="44" selection-end-line="566" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nglycan_alignment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3477">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-448">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/cfg_symbols.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10680">
+          <caret line="763" column="27" lean-forward="false" selection-start-line="763" selection-start-column="27" selection-end-line="763" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2535">
+          <caret line="177" column="22" lean-forward="false" selection-start-line="177" selection-start-column="22" selection-end-line="177" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="103" column="19" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2190">
+          <caret line="154" column="33" lean-forward="false" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="33" />
+          <folding>
+            <element signature="e#1#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="464" column="27" lean-forward="false" selection-start-line="464" selection-start-column="27" selection-end-line="464" selection-end-column="27" />
+          <folding>
+            <element signature="e#982#1919#0" expanded="false" />
+            <element signature="e#3547#3803#0" expanded="false" />
+            <element signature="e#6308#6359#0" expanded="false" />
+            <element signature="e#21418#22082#0" expanded="false" />
+            <element signature="e#25204#25205#0" expanded="false" />
+            <element signature="e#31649#36822#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="175" column="17" lean-forward="true" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/motif_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="580" column="24" lean-forward="false" selection-start-line="580" selection-start-column="8" selection-end-line="580" selection-end-column="24" />
+        <state relative-caret-position="341">
+          <caret line="453" column="41" lean-forward="true" selection-start-line="453" selection-start-column="41" selection-end-line="453" selection-end-column="41" />
           <folding>
             <element signature="e#16#27#0" expanded="true" />
             <element signature="e#7413#7652#0" expanded="false" />
@@ -785,50 +873,6 @@
             <element signature="e#13007#13230#0" expanded="false" />
             <element signature="e#26621#29431#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-836">
-          <caret line="90" column="23" lean-forward="false" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nglycan_alignment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="154" column="33" lean-forward="false" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="33" />
-          <folding>
-            <element signature="e#1#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>

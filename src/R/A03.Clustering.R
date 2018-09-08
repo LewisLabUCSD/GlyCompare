@@ -4,14 +4,14 @@ library(ReorderCluster)
 #######################################################################################
 # Visualize significant correlations: Manhatann Plot for pathway vs phenotype/glycan  #  
 # ----------------------------------------------------------------------------------- #
-myA03.Clustering <- function(GMProfile=NULL, BioProfile=NULL, 
-                             PathwayProfile=NULL, ResultDir=NULL){
-  ## get Dendogram and Heatmap
-  GP <- .myFun.doCluster(M=GMProfile,      Profile.NAME="GMProfile",      ResultDir)
-  BP <- .myFun.doCluster(M=BioProfile,     Profile.NAME="BioProfile",     ResultDir)
-  PP <- .myFun.doCluster(M=PathwayProfile, Profile.NAME="PathwayProfile", ResultDir)
-  return(list(GP=GP,BP=BP,PP=PP))
-}
+#myA03.Clustering <- function(GMProfile=NULL, BioProfile=NULL, 
+#                             PathwayProfile=NULL, ResultDir=NULL){
+#  ## get Dendogram and Heatmap
+#  GP <- .myFun.doCluster(M=GMProfile,      Profile.NAME="GMProfile",      ResultDir)
+#  BP <- .myFun.doCluster(M=BioProfile,     Profile.NAME="BioProfile",     ResultDir)
+#  PP <- .myFun.doCluster(M=PathwayProfile, Profile.NAME="PathwayProfile", ResultDir)
+#  return(list(GP=GP,BP=BP,PP=PP))
+#}
   
 # ----------------------------------------------------------------------------------- #
 # Subfunctions for doing Clustering analysis
@@ -32,7 +32,7 @@ myA03.Clustering <- function(GMProfile=NULL, BioProfile=NULL,
   
   ## Dendogram for row & col
   HC  <- .myFun.doHierCluster( ProfileMatrix=M,   hc_method = "ward.D2",
-                               k_cluster.row = 3, k_cluster.col = 9)
+                               k_cluster.row = 15, k_cluster.col = 2)
   
   ## Two-way clustering using annHeatmap
   k_cluster=3
@@ -60,7 +60,7 @@ myA03.Clustering <- function(GMProfile=NULL, BioProfile=NULL,
                                   k_cluster.row = NULL,  k_cluster.col = NULL){
   ## Dendogram for row
   hc.row <- hcut(ProfileMatrix, k = k_cluster.row, stand = FALSE, 
-                 hc_func = "hclust", hc_method = hc_method)
+                 hc_func = "hclust", hc_method = hc_method, hc_metric='spearman')
   dist=dist(ProfileMatrix)
   class = as.numeric( unname(hc.row$cluster) )
   res=RearrangeJoseph(hc.row,as.matrix(dist),class,TRUE)
@@ -103,7 +103,7 @@ myA03.Clustering <- function(GMProfile=NULL, BioProfile=NULL,
   dev.off()
   
   ## 3. Write Cluster
-  if(Profile.NAME==GMProfile){
+  if(Profile.NAME=='GMProfile'){
     fp = paste0(ResultDir,Profile.NAME,".Cluster2.csv")
     motif.cluster <- list()
     motif.cluster$ID <- hc.col$labels[ hc.col$order ]
@@ -118,4 +118,14 @@ myA03.Clustering <- function(GMProfile=NULL, BioProfile=NULL,
   plot(HP)
   dev.off()
 }
+#.myFun.doHierCluster( ProfileMatrix=abundance_matrix,   hc_method = "ward.D2",
+#                      k_cluster.row = 3, k_cluster.col = 9)
+
+
+abundance_matrix2 <- abundance_matrix[,-1]
+GP <- .myFun.doCluster(M=abundance_matrix2,      Profile.NAME="GMProfile",      ResultDir='~/')
+#rownames(abundance_matrix2) 
+#length(abundance_matrix['X1'])
+#.myFun.doHierCluster( ProfileMatrix = abundance_matrix2,  hc_method = 'ward.D2', 
+#                                  k_cluster.row = 4,  k_cluster.col = 15)
 
