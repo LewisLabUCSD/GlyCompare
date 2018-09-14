@@ -172,7 +172,7 @@ def get_motif_linkages_dict(motifID, monosaccharide_glycoct2labels, output = __i
 
 	print('There are ' + str(len(motif_linkages_dict['simple'])) + ' simple linkages')
 	print('There are ' + str(len(motif_linkages_dict['specific'])) + ' simple linkages')
-	with open('motif_linkages_dict.json', 'w') as f:
+	with open(__init__.json_address + 'motif_linkages_dict.json', 'w') as f:
 		json.dump(motif_linkages_dict, f)
 	return motif_linkages_dict
 
