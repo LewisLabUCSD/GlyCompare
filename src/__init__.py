@@ -35,6 +35,7 @@ source_address = root_ + "source_data/"
 
 
 
+
 ########################################################################################
 # Part 1 check extract_motif.py
 # for gc_extract motif
@@ -202,7 +203,12 @@ aaa_re = ['WT',
        'EPO266.fut8.']
 
 
-
+########################################################################################
+# part 4
+# for getting glycan stats, check glycan_stats.py
+monosaccharide_glycoct2labels_addr = json_address + 'monosaccharide_glycoct2labels.json'
+motifID_addr = json_address + ' Unicarbkb_motif_vec_12259.json'
+motif_linkages_dict_addr = json_address + 'motif_linkages_dict.json'
 
 
 

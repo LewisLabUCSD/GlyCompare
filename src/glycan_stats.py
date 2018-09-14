@@ -71,7 +71,7 @@ def n_level_branching(glycan,dir='from',mannosaccharide='all',exclude_sacch=None
 
 # get depth
 def branch_depth(glycan):
-	 glycan.label_branches()
+	glycan.label_branches()
 
 # In [39]: a_glycan.branch_parent_map
 # Out[39]: {'a': '-', 'b': '-', 'c': 'b', 'd': 'b', 'e': 'd', 'f': 'd'}
@@ -117,3 +117,170 @@ def branch_depth(glycan):
 # manosylation percentage
 
 # high mannose glucose
+
+###############
+## Linkage stats
+# Get Linkages - Based on observations in motifID
+def get_motif_linkages_dict(motifID, monosaccharide_glycoct2labels, output = __init__.motif_linkages_dict_addr):
+	'''
+	This function generates a motif_linkages_dict based on the linkages observed from the motifs in motifID. motifID could
+	be got from its respective json file according to __init__.py file.
+	'''
+	import re
+	import json
+	from glypy.io import glycoct
+
+	# Add code to verify if motifs are glycan objects or not
+	try:
+		motifID = [glycoct.loads(motif) for motif in motifID]
+	except:
+		pass
+
+	motif_linkages_dict = {'simple': {}, 'specific': {}}
+
+	# Get linkages from glycan(s)
+	simple_linkages = []
+	specific_linkages = []
+	for motif in motifID:
+		nodes = {}
+		for node in motif.iternodes():
+			nodes[str(node.id)] = node
+
+		re_nodes = "\((\d+)\)"
+		re_linkages = "\((-?\d\+-?\d)\)"
+		for link in motif.link_index:
+			nodeIDs = re.findall(re_nodes, str(link))
+			node1 = monosaccharide_glycoct2labels[str(nodes[nodeIDs[0]])]
+			node2 = monosaccharide_glycoct2labels[str(nodes[nodeIDs[1]])]
+			linkage = '_' + re.findall(re_linkages, str(link))[0] + '_'
+			simple_linkages.append(node1 + '_' + node2)
+			specific_linkages.append(node1 + linkage + node2)
+
+			simple_linkages = list(set(simple_linkages))
+			specific_linkages = list(set(specific_linkages))
+
+	# Assign index to each linkage
+	link_id = 0
+	for linkage in simple_linkages:
+		motif_linkages_dict['simple'][link_id] = linkage
+		link_id += 1
+
+	link_id = 0
+	for linkage in specific_linkages:
+		motif_linkages_dict['specific'][link_id] = linkage
+		link_id += 1
+
+	print('There are ' + str(len(motif_linkages_dict['simple'])) + ' simple linkages')
+	print('There are ' + str(len(motif_linkages_dict['specific'])) + ' simple linkages')
+	with open('motif_linkages_dict.json', 'w') as f:
+		json.dump(motif_linkages_dict, f)
+	return motif_linkages_dict
+
+
+def get_glycan_linkage_stats(glycan, monosaccharide_glycoct2labels, motif_linkages_dict):
+	'''
+	Function is to get a vector for a glycan, containing counts for each linkage that it has. Each count is located at the
+	respective linkage index according to their IDs in motif_linkages_dict. Both monosaccharide_glycoct2labels and
+	motif_linkages_dict could be found as json files according to __init__.py file.
+	'''
+	import re
+	import numpy as np
+	from glypy.io import glycoct
+	from collections import Counter
+
+	simple_linkage_stats = None
+	specific_linkage_stats = None
+
+	# Code to verify if glycan is a glycan object or not
+	if type(glycan) == str:
+		try:
+			glycan = glycoct.loads(glycan)
+		except:
+			print(glycan + ' is not in GlycoCT format')
+
+	_man1 = glycoct.loads("""
+            RES
+            1b:b-dman-HEX-1:5
+            LIN""")
+
+	if type(glycan) == type(_man1):
+		# Get linkages from glycan(s)
+		nodes = {}
+		for node in glycan.iternodes():
+			nodes[str(node.id)] = node
+
+		simple_linkages = []
+		specific_linkages = []
+		re_nodes = "\((\d+)\)"
+		re_linkages = "\((-?\d\+-?\d)\)"
+		NoError = True
+		for link in glycan.link_index:
+			nodeIDs = re.findall(re_nodes, str(link))
+			try:
+				node1 = monosaccharide_glycoct2labels[str(nodes[nodeIDs[0]])]
+			except:
+				node1 = str(nodes[nodeIDs[0]])
+				print(node1 + ' not in monosaccharide_glycoct2labels')
+				NoError = False
+				break
+			try:
+				node2 = monosaccharide_glycoct2labels[str(nodes[nodeIDs[1]])]
+			except:
+				node2 = str(nodes[nodeIDs[1]])
+				print(node2 + ' not in monosaccharide_glycoct2labels')
+				NoError = False
+				break
+			linkage = '_' + re.findall(re_linkages, str(link))[0] + '_'
+			simple_linkages.append(node1 + '_' + node2)
+			specific_linkages.append(node1 + linkage + node2)
+
+		if NoError:
+			# Get stats from linkages
+			simple_linkage_freq = Counter(simple_linkages)
+			specific_linkage_freq = Counter(specific_linkages)
+
+			# Generate vector based on linkage observations contained in motif_linkages_dict
+			simple_linkage_stats = np.zeros((1, len(motif_linkages_dict['simple'])))
+			specific_linkage_stats = np.zeros((1, len(motif_linkages_dict['specific'])))
+
+			for link in simple_linkage_freq.keys():
+				for key, value in motif_linkages_dict['simple'].items():
+					if str(link) == str(value):
+						simple_linkage_stats[0][key] = int(simple_linkage_freq[link])
+
+			for link in specific_linkage_freq.keys():
+				for key, value in motif_linkages_dict['specific'].items():
+					if str(link) == str(value):
+						specific_linkage_stats[0][key] = int(specific_linkage_freq[link])
+	else:
+		print(str(glycan) + ' not analyzed, because is not a glycan object')
+	return simple_linkage_stats, specific_linkage_stats
+
+
+def get_multiple_glycan_linkage_stats(glycans, monosaccharide_glycoct2labels, motif_linkages_dict):
+	'''
+	Function is to get a matrix for multiple glycans, containing respective vectors with counts for each linkage that
+	they have. Each count is located at the	respective linkage index according to their IDs in motif_linkages_dict.
+	Both monosaccharide_glycoct2labels and	motif_linkages_dict could be found as json files according to __init__.py file.
+	'''
+	if isinstance(glycans, list):
+		simple_linkages = np.zeros((len(glycans), len(motif_linkages_dict['simple'])))
+		specific_linkages = np.zeros((len(glycans), len(motif_linkages_dict['specific'])))
+		glycan_number = 0
+		not_included = []
+		for glycan in glycans:
+			simple, specific = get_glycan_linkage_stats(glycan, monosaccharide_glycoct2labels, motif_linkages_dict)
+			if (isinstance(simple, np.ndarray)) and (isinstance(specific, np.ndarray)):
+				simple_linkages[glycan_number, :] = simple
+				specific_linkages[glycan_number, :] = specific
+			else:
+				not_included.append(glycan_number)
+			glycan_number += 1
+		if len(not_included) > 0:
+			print('Glycans not included in the analysis have the following indexes:')
+			print(not_included)
+	else:
+		print('glycans must be a list')
+		simple_linkages = None
+		specific_linkages = None
+	return simple_linkages, specific_linkages
