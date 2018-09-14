@@ -179,8 +179,8 @@ def get_motif_linkages_dict(motifID, monosaccharide_glycoct2labels, output = __i
 
 def get_glycan_linkage_stats(glycan, monosaccharide_glycoct2labels, motif_linkages_dict):
 	'''
-	Function is to get a vector for a glycan, containing counts for each linkage that it has. Each count is located at the
-	respective linkage index according to their IDs in motif_linkages_dict. Both monosaccharide_glycoct2labels and
+	Function is to get a vector for a glycan, containing counts for each linkage that it has. Each count is located at
+	the	respective linkage index according to their IDs in motif_linkages_dict. Both monosaccharide_glycoct2labels and
 	motif_linkages_dict could be found as json files according to __init__.py file.
 	'''
 	import re
