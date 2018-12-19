@@ -122,7 +122,7 @@ def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
         plt.savefig(addr)
 
 
-def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=False, label=False,
+def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=True, label=True,
          symbol_nomenclature='cfg', layout='balanced', layout_args=None, **kwargs):
     '''
     Draw the parent outlink position and the child anomer symbol
@@ -210,7 +210,7 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
     if addr == '':
         pass
     else:
-        plt.savefig(addr, transparent=True, format='png', dpi='figure')
+        plt.savefig(addr, transparent=True, format='eps', dpi='figure')
     return (dtree, ax)
 
 #

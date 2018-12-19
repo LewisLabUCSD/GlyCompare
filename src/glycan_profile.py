@@ -612,7 +612,7 @@ def load_cho_mz_abundance(cho_addr=__init__.source_address+'nbt.3280_cho.txt', m
     # print(_col)
     for i in range(1, len(_col)):
         _col[i] = i
-    mz_abd_table.colmuns = _col
+    mz_abd_table.columns = _col
     mz_abd_table.index = list(range(mz_abd_table.shape[0]))
     mz_abd_table.to_excel(mz_abd_addr)
     return mz_abd_table
@@ -723,7 +723,7 @@ class Glycoprofile():
     we will have a
     """
 
-    def __init__(self, glycan_id_list, mz_id_list, norm_abd, match_vec_weighted, hit_matrix=[], name=0):
+    def __init__(self, glycan_id_list, mz_id_list, norm_abd, match_vec_weighted, hit_matrix=[], name=0, profile_name=''):
         self.glycan_id_list = glycan_id_list
         self.mz_id_list = mz_id_list
         self.match_vec_weighted = match_vec_weighted
@@ -737,11 +737,13 @@ class Glycoprofile():
         self.relative_abundance = norm_abd
         self.hit_matrix = hit_matrix
         self.name = name
+        self.profile_name = profile_name
 
     #         self.relative_motif_vec = []
 
     def get_dict(self):
-        rt_ = {'m/z_list': self.mz_id_list,
+        rt_ = {'profile_name':self.profile_name,
+               'm/z_list': self.mz_id_list,
                'glycan_id_list': self.glycan_id_list,
                'relative_abundance': list(self.relative_abundance),
                'match_vec_exist': self.match_vec_exist,
@@ -795,7 +797,7 @@ class Glycoprofile():
 #     return profile_obj_list
 
 
-def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict):
+def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict, get_existance=True, addr_root=__init__.json_address):
     """combine glycan m/z with motif existances, convert the counts 1+/0 into 1/0 in each glycan
     Glycan motifs are modified with
     :param profile_mz_to_id:
@@ -803,6 +805,7 @@ def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict):
     :param match_dict:
     return profile_obj_list
     """
+
     glycoprofile_list = []
 
     glycan_abd_dict = {}
@@ -828,7 +831,10 @@ def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict):
             _existance_list = []
             for _count in match_dict[glycan_id]:
                 if _count >= 1:
-                    _existance_list.append(1)
+                    if get_existance:
+                        _existance_list.append(1)
+                    else:
+                        _existance_list.append(_count)
                 elif _count == 0:
                     _existance_list.append(0)
                 else:
@@ -843,14 +849,14 @@ def get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict):
             weighted_vec += match_mtrix[idex] * i / sum(abundance_list)
 
         glycoprofile_list.append(
-            Glycoprofile(glycan_id_list, mz_list, abundance_list, weighted_vec, hit_matrix=match_mtrix, name=pro_idex))
+            Glycoprofile(glycan_id_list, mz_list, abundance_list, weighted_vec, hit_matrix=match_mtrix, name=pro_idex, profile_name=__init__.aaa[pro_idex-1]))
 
     glycoprofile_output_list = []
     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
     for idex, i in enumerate(glycoprofile_list):
         glycoprofile_output_list.append(i.get_dict())
-    store_json(__init__.json_address + r"glycan_abd_dict.json", glycan_abd_dict)
-    store_json(__init__.json_address + r"glycoprofile_list.json", glycoprofile_output_list)
+    store_json(addr_root + r"glycan_abd_dict.json", glycan_abd_dict)
+    store_json(addr_root + r"glycoprofile_list.json", glycoprofile_output_list)
     return glycoprofile_list
 
 #

@@ -130,3 +130,9 @@ def motif_vec_to_motif_dict(motif_vec):
             motif_dict[len(i)].append(i)
     # print(len(motif_vec))
     return motif_dict
+
+
+def save_glycan(a_glycan, addr):
+    _w = open(addr, 'w')
+    _w.write(str(a_glycan))
+    _w.close()

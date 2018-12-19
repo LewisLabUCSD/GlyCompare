@@ -159,8 +159,8 @@ def get_motif_pip(glycan_dict, gly_len, output_file=__init__.glycan_motif_dict_a
 
 
 def main():
-    glycan_dict = glycan_io.load_glycan_str_from_database(__init__.topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct)
-    glycan_motif_dic = get_motif_pip(glycan_dict, gly_len=23, output_file=__init__.glycan_motif_dict_addr)
+    glycan_dict = glycan_io.load_glycan_str_from_database(topology_list_addr=__init__.topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct)
+    glycan_motif_dic = get_motif_pip(glycan_dict=glycan_dict, gly_len=23, output_file=__init__.glycan_motif_dict_addr)
 
 
 if __name__ == '__main__':

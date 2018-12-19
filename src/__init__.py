@@ -21,15 +21,20 @@
 ########################################################################################
 # Basic editing
 
+from glypy import plot
+# for HMO
+
+exact_Ture = False
 
 
 
+# for HMO
 # setting up the basic directory
 root_ = "/Users/apple/PycharmProjects/GlyCompare/"
 num_processors = 8
-exact_Ture = False
+# exact_Ture = True
 json_address = root_ + "generated_json_file/"
-motif_plot_address = root_ + "motif_plot/"
+# motif_plot_address = root_ + "motif_plot/"
 plot_output_address = root_ + "output_plot/"
 source_address = root_ + "source_data/"
 

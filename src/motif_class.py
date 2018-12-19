@@ -1,13 +1,25 @@
 # break glycoCT
 import time
+import copy
+import scipy
 from glypy.algorithms.subtree_search import subtree_of
 from glypy.structure.glycan import fragment_to_substructure
+import glypy.structure.glycan
 import seaborn as sns
 from scipy.spatial import distance
 from glypy.io import glycoct
 import __init__
 import numpy as np
+import pandas as pd
 from scipy import stats
+import ndex
+from ndex.networkn import NdexGraph
+import networkx as nx
+# G=NdexGraph(server='http://ndexbio.org',uuid='5514aa50-3bbf-11e8-8695-0ac135e8bacf',username='bobao@ucsd.edu',password='37~bO^#1D3')
+import matplotlib.pyplot as plt
+import warnings
+
+warnings.filterwarnings('ignore')
 
 sns.set(color_codes=True)
 # glyco_motif_list={}
@@ -146,7 +158,7 @@ class MotifLab():
     def dep_tree_to_edge_list(self, dep_tree):
         """
 
-        :param dep_tree: motif_with_ncore_dependence_tree, motif_dependence_tree, motif_single_dependence_tree
+        :param dep_tree: motif_with_core_dependence_tree, motif_dependence_tree, motif_single_dependence_tree
         :return: edge_list
         """
         edge_list = []
@@ -197,13 +209,11 @@ class MotifLab():
         return edge_list
 
 
-class MotifLabNGlycan(MotifLab):
+class MotifLabwithCore(MotifLab):
     """
     store vec
     """
-    nglycan_core = glycoct.loads(
-        "RES\n1b:x-dglc-HEX-1:5\n2s:n-acetyl\n3b:b-dglc-HEX-1:5\n4s:n-acetyl\n5b:b-dman-HEX-1:5\n6b:a-dman-HEX-1:5"
-        "\n7b:a-dman-HEX-1:5\nLIN\n1:1d(2+1)2n\n2:1o(4+1)3d\n3:3d(2+1)4n\n4:3o(4+1)5d\n5:5o(3+1)6d\n6:5o(6+1)7d\n ")
+
     _with_sia_core = glycoct.loads("""RES
         1b:b-dglc-HEX-1:5
         2s:n-acetyl
@@ -227,15 +237,22 @@ class MotifLabNGlycan(MotifLab):
         1b:a-dman-HEX-1:5
         LIN""")
 
-    def __init__(self, motif_):
+    def __init__(self, motif_, glycan_core=glycoct.loads(
+        "RES\n1b:x-dglc-HEX-1:5\n2s:n-acetyl\n3b:b-dglc-HEX-1:5\n4s:n-acetyl\n5b:b-dman-HEX-1:5\n6b:a-dman-HEX-1:5"
+        "\n7b:a-dman-HEX-1:5\nLIN\n1:1d(2+1)2n\n2:1o(4+1)3d\n3:3d(2+1)4n\n4:3o(4+1)5d\n5:5o(3+1)6d\n6:5o(6+1)7d\n ")):
         """
         self.motif_dict stores the id of the self.motif_vec
         :param motif_: motif vec or motif dict_degree_list:
         """
+        print(glycan_core)
+        if type(glycan_core) == str:
+            self.glycan_core = glycoct.loads(glycan_core)
+        self.glycan_core = glycan_core
+        assert isinstance(self.glycan_core, glypy.structure.glycan.Glycan)
         assert motif_, "motif vector is empty"
         MotifLab.__init__(self, motif_)
         self.motif_dict_with_core = {}
-        self.motif_dep_tree_ncore = {}
+        self.motif_dep_tree_core = {}
         self.motif_with_core_list = []
         self.extract_motif_with_core()
 
@@ -278,7 +295,7 @@ class MotifLabNGlycan(MotifLab):
         print("start motif_with core")
         if self.motif_dict_with_core == {}:
             for i in sorted(list(self.motif_dict.keys())):
-                if len(self.nglycan_core) > i:
+                if len(self.glycan_core) > i:
                     continue
                 print("len", i)
                 self.motif_dict_with_core[i] = []
@@ -286,7 +303,7 @@ class MotifLabNGlycan(MotifLab):
                     """
                     motif j in i degree/motif in i-1 degree
                     """
-                    if subtree_of(self.nglycan_core, self.motif_vec[j], exact=__init__.exact_Ture) == 1:
+                    if subtree_of(self.glycan_core, self.motif_vec[j], exact=__init__.exact_Ture) == 1:
                         self.motif_dict_with_core[i].append(j)
                         self.motif_with_core_list.append(j)
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
@@ -295,24 +312,24 @@ class MotifLabNGlycan(MotifLab):
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
                   " motifs are matched to the n-glycan core")
 
-    def get_dependence_tree_ncore(self):
+    def get_dependence_tree_core(self):
         """
-        get the dep tree for ncore's node
+        get the dep tree for core's node
         :return: dep_tree, edge_list
         """
-        if self.motif_dep_tree_ncore == {}:
+        if self.motif_dep_tree_core == {}:
             _dep_tree, _edge_list = self.build_dependence_tree(self.motif_dict_with_core)
-            self.motif_dep_tree_ncore = _dep_tree
+            self.motif_dep_tree_core = _dep_tree
             return _dep_tree, _edge_list
         else:
-            return self.motif_dep_tree_ncore, self._get_edge(self.motif_dep_tree_ncore)
+            return self.motif_dep_tree_core, self._get_edge(self.motif_dep_tree_core)
 
 
 def get_weight_dict(motif_abd_table):
     _np_mat = np.array(motif_abd_table)
     weight_dict = {}
     for i in range(len(_np_mat)):
-        weight_dict[i] = list(_np_mat[i])
+        weight_dict[motif_abd_table.index[i]] = list(_np_mat[i])
     return weight_dict
 
 
@@ -322,16 +339,21 @@ class NodesState():
     def __init__(self, dependence_tree, motif_weight):
         self.dep_tree = dependence_tree
         self.nodes_sta = []
+        self.zero_value = []
+
         # self.nodes = self._get_node(self.dep_tree)
         self.edges = self._get_edge(dependence_tree)
         self.nodes = self._get_node(dependence_tree)
-
         self.motif_weight = motif_weight
+        self._drop_nodes_with_weight_zero()
+        self._modify_dep_tree()
+
         self.normalized_motif_weight = {}
         self._normalized_weight()
         self.parents_dic = {}
         for i in dependence_tree:
-            self.parents_dic[i] = {}
+            if i in self.nodes:
+                self.parents_dic[i] = {}
         self.nodes_kept = []
         self._out_degree_list = []
         self._in_degree_list = []
@@ -339,6 +361,449 @@ class NodesState():
         self.flat_normed_paired_diff = []
         self.nodes_kept = []
         self.nodes_stat_value = []
+        self.edge_attri = {}
+        self.drop_parallel = []
+        self.edge_dic_re = {}
+        self.edge_dic = dict(dependence_tree)
+        self.node_attri = {}
+        self.edge_corre = {}
+        self.collapsed_node = {}
+        self.collapsed_edge = {}
+        self.collapsed_edge_dic = {}
+        self.collapsed_edge_dic_re = {}
+        self.collapsed_edge_attri = {}
+
+    def upload_network(self, edges, nodes, edge_attri={}, node_attri={}, add_notimp_edge=True):
+        node_list = list(nodes)
+        edge_list = list(edges)
+        # G=nx.Graph(G)
+        # dG=nx.relabel_nodes(G, nx.get_node_attributes(G,'name'), copy=True)
+
+        # nx.draw(dG, with_labels=True)
+        # # G=NdexGraph()
+        # id2name_map=dict(zip(range(len(dG.nodes())), dG.nodes()))
+        # name2id_map={v:k for k,v in id2name_map.items()}
+        # dG=nx.relabel_nodes(dG, name2id_map)
+        # nx.set_node_attributes(dG,'names', id2name_map)
+        if edge_attri == {}:
+            edge_attri = copy.deepcopy(self.edge_attri)
+        if node_attri == {}:
+            node_attri = copy.deepcopy(self.node_attri)
+        # print(node_attri)
+        G = NdexGraph()
+        if node_attri == {}:
+            for i in node_list:
+                G.add_node(i, name=str(i), attr_dict={})
+        else:
+            for i in node_list:
+                # print('check', i, node_attri[i])
+                G.add_node(i, name=str(i), attr_dict=node_attri[i])
+
+        if edge_attri == {}:
+            for ind, pair in enumerate(edge_list):
+                i, j = pair
+                G.add_edge(i, j, attr_dict={}, key=ind)
+        else:
+            for ind, pair in enumerate(edge_list):
+                i, j = pair
+                # print('check', i, j, edge_attri[i][j])
+                if add_notimp_edge:
+                    G.add_edge(i, j, attr_dict=edge_attri[i][j], key=ind)
+                else:
+                    if edge_attri[i][j]['kept'].find('Not') == -1:
+                        G.add_edge(i, j, attr_dict=edge_attri[i][j], key=ind)
+        G.upload_to(server='http://ndexbio.org', username='bobao@ucsd.edu', password='37~bO^#1D3')
+        return G
+
+    def _update_intermediate_node(self, if_collapsing=False):
+        if not if_collapsing:
+            for i in self.nodes:
+
+                if self._check_dep(i, self.edge_dic[i]):
+                    if i in self.edge_dic_re:
+                        if self._check_dep_re(i, self.edge_dic_re[i]):
+                            self.node_attri[i]['kept'] = 'immd'
+                        else:
+                            self.node_attri[i]['kept'] = 'med_root'
+                    else:
+                        self.node_attri[i]['kept'] = 'root'
+
+    def nodes_dropping_pipe(self, drop_parellel=False, drop_diff_abund=False, motif_vec=[]):
+        """check the unuseful nodes
+           The node['kept'] attribute will have
+                immd
+                no
+                yes
+                med_root
+                ttest
+                """
+        """ drop parrellel is only for clustering """
+
+        node_mean, node_var = self.get_node_sta()
+        node_corr, node_pvalue = self.get_node_value()
+        # node_pvalue =_a.get_node_value(method='one_vs_rest_t')
+
+        # print(np.random.normal(0.0000, 0.001, len(node_corr)))
+        # for i,j in enumerate(np.random.normal(0.000, 0.0001, len(node_corr))):
+        #     node_corr[i]+=j
+        node_table = pd.DataFrame({'node': self.nodes, 'node_mean': node_mean, 'node_var': node_var,
+                                   'out_d': self._out_degree_list, 'in_d': self._in_degree_list, 'p_value': node_pvalue,
+                                   'correlation': node_corr})
+
+        node_attri = {}
+        edge_attri = {}
+        drop_parellel_edge = []
+        for i in self.nodes:
+            node_attri[i] = {'kept': 'no'}
+
+        # print(node_attri.keys())
+        for i, j in self.edges:
+            if i not in edge_attri.keys():
+                edge_attri[i] = {j: {'kept': 'no'}}
+            else:
+                edge_attri[i][j] = {'kept': 'no'}
+        corr_list = self.get_edge_corr_dis()
+        # print(corr_list)
+        dep_count = {}
+        dropping_list = []
+        for index, pair in enumerate(self.edges):
+            i, j = pair
+            if i in self.edge_corre.keys():
+                self.edge_corre[i][j] = corr_list[index]
+            else:
+                self.edge_corre[i] = {j: corr_list[index]}
+            # print(i, j, corr_list[index])
+            if corr_list[index] > 0.9999:
+                # print('delete', i, j)
+                edge_attri[i][j]['kept'] = 'Dep'
+                # node_attri[i]['kept'] = 'Dep'
+                dropping_list.append(i)
+                if i not in dep_count.keys():
+                    dep_count[i] = [j]
+                else:
+                    dep_count[i].append(j)
+
+        print('_a.nodes', len(self.nodes))
+
+        # generate dep_tree weights'
+        merged_weights_dict = dict(zip(self.nodes, [1] * len(self.nodes)))
+        print('merged_weights_dict', len(merged_weights_dict))
+        for i in sorted(list(dep_count.keys())):
+            _counts = len(dep_count[i])
+
+            for j in dep_count[i]:
+
+                merged_weights_dict[j] += merged_weights_dict[i] / _counts
+            merged_weights_dict[i] = 0
+        _weights = [merged_weights_dict[x] for x in merged_weights_dict.keys()]
+        _weights = [x for x in _weights if x > 0.1]
+
+        #     print('dropping_list', len(set(dropping_list)))
+        dropping_list = list(set(dropping_list))
+        # print(dropping_list)
+        mod_nodes = [x for x in self.nodes if x not in dropping_list]
+        mod_edges = list(self.edges)
+        # print("mod nodes", mod_nodes)
+        print("After first drop", len(set(dropping_list)), "+", len(mod_nodes), "= ", len(self.nodes), sum(_weights))
+
+        if drop_parellel:
+            for i in range(len(mod_nodes)):
+                for j in range(i, len(mod_nodes)):
+                    if j == i: continue
+                    if motif_vec:
+                        _re = subtree_of(motif_vec[mod_nodes[i]], motif_vec[mod_nodes[j]], exact=__init__.exact_Ture)
+                        if _re:
+                            check_through = True
+                            # print(mod_nodes[i], mod_nodes[j], _re, self.get_value_unnormed(mod_nodes[i], mod_nodes[j], self.get_corr))
+
+                        else:
+                            check_through = False
+                    else:
+                        check_through = True
+                    if check_through and self.get_value_unnormed(mod_nodes[i], mod_nodes[j], self.get_corr) > 0.9999:
+                        node_attri[mod_nodes[i]]['kept'] = 'DepSame'
+                        # print('drop same level', mod_nodes[i], mod_nodes[j])
+                        dropping_list.append(mod_nodes[i])
+                        # print(mod_nodes[i])
+                        if mod_nodes[i] not in edge_attri.keys():
+                            self.edge_corre[mod_nodes[i]] = {mod_nodes[j]: 1}
+                            drop_parellel_edge.append((mod_nodes[i], mod_nodes[j]))
+                            edge_attri[mod_nodes[i]] = {mod_nodes[j]: {'kept': 'DepSameEdge'}}
+                        else:
+                            self.edge_corre[mod_nodes[i]][mod_nodes[j]] = 1
+                            drop_parellel_edge.append((mod_nodes[i], mod_nodes[j]))
+                            edge_attri[mod_nodes[i]][mod_nodes[j]] = {'kept': 'DepSameEdge'}
+                        merged_weights_dict[mod_nodes[j]] += merged_weights_dict[mod_nodes[i]]
+                        merged_weights_dict[mod_nodes[i]] = 0
+            print('After comparing same level, dropping_list', len(set(dropping_list)))
+            mod_nodes = [x for x in self.nodes if x not in dropping_list]
+            _weights = [merged_weights_dict[x] for x in merged_weights_dict.keys()]
+            _weights = [x for x in _weights if x > 0.1]
+            print('After second dropping', len(set(dropping_list)), "+", len(mod_nodes), "= ", len(self.nodes),
+                  sum(_weights))
+        # print('len edge', len(mod_edges))
+        #########################
+        # mod_edges = _a.edges
+        # mod_nodes = [x for x in _a.nodes if x not in dropping_list]
+        # print(mod_edges)
+        # print(dropping_list)
+        for i in sorted(list(dropping_list)):
+            mod_edges = [x for x in mod_edges if i not in x]
+        # print(mod_edges)
+        # print('len edge', len(mod_edges))
+        #########################
+        if drop_diff_abund:
+            def get_edges_from_edges_list(node, edges, relative="parents"):
+                relative_list = []
+                if relative == 'parents':
+                    for i, j in edges:
+                        if i == node:
+                            relative_list.append(j)
+                elif relative == 'children':
+                    for i, j in edges:
+                        if j == node:
+                            relative_list.append(i)
+                else:
+                    assert ValueError, 'No such parameter, parents or children'
+                return relative_list
+
+            # print(len(mod_edges), len(mod_nodes))
+
+            mod_out_degree, mod_in_degree = self.get_nodes_degree(mod_edges)
+            mod_out_degree_list = [mod_out_degree[x] for x in mod_nodes]
+            mod_in_degree_list = [mod_in_degree[x] for x in mod_nodes]
+            after_dropped_nodes_table_all = node_table[node_table.node.isin(mod_nodes)]
+            after_dropped_nodes_table_all['in_d'] = mod_in_degree_list
+            after_dropped_nodes_table_all['out_d'] = mod_out_degree_list
+            # print(mod_in_degree_list,mod_out_degree_list)
+            # print(after_dropped_nodes_table_all.head())
+            # plt.hist(after_dropped_nodes_table_all.in_d, alpha=0.5, )
+            # plt.hist(after_dropped_nodes_table_all.out_d, alpha=0.5, )
+            # plt.legend(['in', 'out'])
+            # plt.show()
+            after_dropped_nodes_table = after_dropped_nodes_table_all[after_dropped_nodes_table_all.out_d < 3]
+            _temp_dropping_list = [x for x in after_dropped_nodes_table_all.node.tolist() if
+                                   x not in after_dropped_nodes_table.node.tolist()]
+            # print('_temp_dropping_list', len(set(_temp_dropping_list)))
+
+            # print(_temp_dropping_list)
+            _count = 0
+            nodes_dropped_by_out_degree = []
+            for i in _temp_dropping_list:
+                _children_list = get_edges_from_edges_list(i, mod_edges)
+                _motif_abd_list = []
+                for j in _children_list:
+                    _motif_abd_list.extend(self.motif_weight[j])
+                _z, _p = scipy.stats.ttest_ind(self.motif_weight[i], _motif_abd_list, equal_var=False)
+                #     print(_a.motif_weight[i], _motif_abd_list)
+                #     plot_glycan_utilities.plot_glycan(motif_vec[i], title=str(_p/2))
+                if _p / 2 > 0.15:
+                    _count += 1
+                    nodes_dropped_by_out_degree.append(i)
+                    _child_counts = len(_children_list)
+                    node_attri[i]['kept'] = 'ttest'
+                    for j in _children_list:
+                        merged_weights_dict[j] += merged_weights_dict[i] / _child_counts
+                        edge_attri[i][j]['kept'] = 'ttest'
+                    merged_weights_dict[i] = 0
+            _weights = [merged_weights_dict[x] for x in merged_weights_dict.keys()]
+            for i in dropping_list:
+                if merged_weights_dict[i] > 0:
+                    print("?", i, merged_weights_dict[i])
+            _weights = [x for x in _weights if x > 0.1]
+
+            print('_temp_dropping_list', len(set(_temp_dropping_list)), _count)
+            dropping_list.extend(nodes_dropped_by_out_degree)
+
+            mod_nodes = [x for x in self.nodes if x not in dropping_list]
+            print(len(set(dropping_list)), "+", len(mod_nodes), "= ", len(self.nodes), sum(_weights))
+            # mod_edges = self.edges
+            for i in sorted(list(dropping_list)):
+                mod_edges = [x for x in mod_edges if i not in x]
+        # print('len nodes', len(mod_nodes), len(mod_edges))
+        # _value =
+        # print(len(_weights), sum(_weights))
+        # print(_weights)
+        # after_dropped_nodes_table_all
+        #     print(_p/2)
+        # print(drop_parellel_edge)
+        for i in drop_parellel_edge:
+            j, k = i
+            if j in mod_nodes or k in mod_nodes:
+                self.edges.append(i)
+                self.drop_parallel.append(i)
+
+        for i in self.nodes:
+            # node_attri[i] = {'kept': 'no'}
+            if i in mod_nodes:
+                node_attri[i]['kept'] = 'yes'
+        # print(mod_edges)
+        # self.edges.extend(drop_parellel_edge)
+        for i in mod_edges:
+            # print(i)
+            if i not in self.edges:
+                self.edges.append(i)
+        self.edge_attri = edge_attri
+        self.node_attri = node_attri
+        # print(self.edge_dic_re)
+        self._update_attri()
+        # for i in self.nodes:
+        #     assert node_attri[i]['kept'] != 'no', i
+        print('mod_nodes', len(mod_nodes))
+        print('mod_edges', len(mod_edges))
+        return node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict
+
+    def collapsing_potential_node(self):
+        """check the unuseful nodes
+           The node['kept'] attribute will have
+                immd
+                no
+                yes
+                med_root
+                ttest
+                """
+        self.collapsed_edge_dic = copy.deepcopy(self.edge_dic)
+        # print(_collapsed_edge)
+        self.collapsed_edge_dic_re = copy.deepcopy(self.edge_dic_re)
+        # print(_collapsed_edge_re)
+        self.collapsed_node = list(self.nodes)
+        # _go_throught_nodes = sorted(list(self.node_attri.keys()))
+        self.collapsed_edge_attri = copy.deepcopy(self.edge_attri)
+
+        _index = 0
+        # _collapsed = True
+
+        while _index < len(self.collapsed_node):
+            _node = self.collapsed_node[_index]
+            if self.node_attri[_node]['kept'] == 'immd' and self._check_if_this_node_removeable(_node):
+                _temp_edge = list(self.collapsed_edge_dic[_node])
+                _temp_edge_re = list(self.collapsed_edge_dic_re[_node])
+                for j in _temp_edge_re:
+                    for k in _temp_edge:
+                        self.collapsed_edge_dic[j].append(k)
+                        self.collapsed_edge_dic_re[k].append(j)
+                        self.collapsed_edge_dic[j] = list(set(self.collapsed_edge_dic[j]))
+                        self.collapsed_edge_dic_re[k] = list(set(self.collapsed_edge_dic_re[k]))
+                        if self.get_value_unnormed(j, k, method=self.get_corr) > 0.99999:
+                            self.collapsed_edge_attri[j][k] = {'kept': 'collapsed_dep'}
+                        else:
+                            self.collapsed_edge_attri[j][k] = {'kept': 'collapsed_var'}
+                            # print(self.collapsed_edge_attri[_node], j, _node, k)
+                            # del self.collapsed_edge_attri[_node][k]
+                            # del self.collapsed_edge_attri[j][_node]
+                del self.collapsed_edge_dic[_node]
+                del self.collapsed_edge_dic_re[_node]
+                self.collapsed_node.remove(_node)
+                self.drop_edges(_node, self.collapsed_edge_dic)
+                self.drop_edges(_node, self.collapsed_edge_dic_re)
+            else:
+                _index += 1
+                # self._update_intermediate_node()
+
+        _collapsed_edge_list = self._get_edge(self.collapsed_edge_dic)
+        for i, j in _collapsed_edge_list:
+            if i not in self.collapsed_node:
+                print('no node', i)
+            if j not in self.collapsed_node:
+                print('no node', j)
+        self._check_edge_if_imp_after_collapse()
+        return _collapsed_edge_list, self.collapsed_node, self.collapsed_edge_attri
+
+    def _check_edge_if_imp_after_collapse(self):
+        for i in self.collapsed_node:
+            no_dep = True
+            if i in self.collapsed_edge_dic_re.keys():
+                for j in self.collapsed_edge_dic_re[i]:
+                    if no_dep and self.get_value_unnormed(j, i, method=self.get_corr) > 0.999999:
+                        no_dep = False
+                if not no_dep:
+                    for j in self.collapsed_edge_dic_re[i]:
+                        if self.get_value_unnormed(j, i, method=self.get_corr) < 0.999999:
+                            if self.collapsed_edge_attri[j][i]['kept'] == 'NotImp': continue
+                            self.collapsed_edge_attri[j][i]['kept'] += 'NotImp'
+                else:
+                    for j in self.collapsed_edge_dic_re[i]:
+                        # if self.get_value_unnormed(j, i, method=self.get_corr) < 0.999999:
+                        self.collapsed_edge_attri[j][i]['kept'] += 'SomeWhatImp'
+
+    def _check_if_this_node_removeable(self, node):
+        """only for collapsing"""
+        # _dep = True
+        for i in self.collapsed_edge_dic[node]:
+            """"""
+            if self.get_value_unnormed(node, i, method=self.get_corr) > 0.999999:
+                continue
+            _have_dep = False
+            for j in self.collapsed_edge_dic_re[i]:
+                if j != node:
+                    if self.get_value_unnormed(j, i, method=self.get_corr) > 0.999999:
+                        """its removable"""
+                        _have_dep = True
+            if not _have_dep:
+                return False
+        return True
+
+    def drop_edges(self, _node, _dict):
+        for i in _dict:
+            if _node in _dict[i]:
+                _dict[i].remove(_node)
+
+    def _update_attri(self):
+        self._update_edge()
+        self._update_intermediate_node()
+
+    def _update_edge(self):
+        """if one node is 100% dep on others other parents node that with <100% dep are removed"""
+        _sorted_edge = self.edges
+        _sorted_edge = sorted(_sorted_edge, key=lambda x: x[1])
+        for i, j in _sorted_edge:
+            if j not in self.edge_dic_re.keys():
+                self.edge_dic_re[j] = [i]
+            else:
+                self.edge_dic_re[j].append(i)
+
+        for i in self.edge_dic_re.keys():
+            if self._check_dep_re(i, self.edge_dic_re[i]):
+                for j in self.edge_dic_re[i]:
+                    # print(i,j)
+                    if self.edge_corre[j][i] <= 0.999999:
+                        self.edge_attri[j][i]['kept'] = 'NotImp'
+
+    def _check_dep(self, index, _list):
+        # print(index, _list)
+        for i in _list:
+            # print(self.edge_corre[index])
+            if self.get_value_unnormed(index, i, method=self.get_corr) > 0.999999:
+                return True
+        return False
+
+    def _check_dep_re(self, index, _list):
+        for i in _list:
+            if self.get_value_unnormed(index, i, method=self.get_corr) > 0.999999:
+                return True
+        return False
+
+    def _drop_nodes_with_weight_zero(self):
+        for i in list(self.motif_weight.keys()):
+            if sum(self.motif_weight[i]) == 0:
+                self.zero_value.append(i)
+                del self.motif_weight[i]
+        self.nodes = [x for x in self.nodes if x not in self.zero_value]
+        for i in sorted(list(self.zero_value)):
+            self.edges = [x for x in self.edges if i not in x]
+
+        print('Nodes dropped', self.zero_value, )
+        print(len(self.nodes), len(self.edges))
+        # def _drop_nodes(self, nodes_list):
+        # self.nodes =
+        # pass
+
+    def _modify_dep_tree(self):
+        for i in list(self.dep_tree.keys()):
+            if i in self.zero_value:
+                del self.dep_tree[i]
+            else:
+                self.dep_tree[i] = [x for x in self.dep_tree[i] if x not in self.zero_value]
 
     def _get_node(self, dep_tree):
         """
@@ -357,10 +822,12 @@ class NodesState():
         :param dep_tree:
         :return:
         """
+
         edge_list = []
         for i in dep_tree:
             edge_list.extend([(i, j) for j in dep_tree[i]])
-        return edge_list
+
+        return sorted(edge_list, key=lambda x: x[0])
 
     # wrapper
     # def get_edge_ttest_dis(self):
@@ -389,12 +856,15 @@ class NodesState():
     def get_edge_corr_dis(self):
         _list = []
         for i, j in self.edges:
+            # print(i,j, self.get_value_unnormed(i, j, method=self.get_corr))
             _list.append(self.get_value_unnormed(i, j, method=self.get_corr))
         return _list
 
     def _normalized_weight(self):
         for i in self.motif_weight.keys():
             _max = max(self.motif_weight[i])
+            if _max == 0:
+                print(i)
             self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
 
     def get_vector(self, i):
@@ -471,7 +941,7 @@ class NodesState():
 
     def get_neg_log_p_ttest(self, _ele, _vec):
         _vec = np.array(_vec)
-        if _vec.var() == 0:
+        if _vec.var() < 0.0000001:
             if _ele - _vec.mean() == 0:
                 return 0
             else:
@@ -483,6 +953,9 @@ class NodesState():
             # print(type(scipy_tt.pvalue))
             p = scipy_tt.pvalue
         # p = stats.t.sf(np.abs(tt), len(_vec) - 1)*2
+        # if p==0:
+        #     print('error')
+        #     print( _ele, _vec, _vec.var())
         return -np.log(p)
 
     # def get_neg_log_p_ttest_sci(self, _ele, _vec):
@@ -532,6 +1005,7 @@ class NodesState():
             for i in sorted(list(self.parents_dic.keys())):
                 # print(i)
                 for j in self.dep_tree[i]:
+                    # print(i,j)
                     self.parents_dic[j][i] = (self.get_value_unnormed(i, j, self.get_corr),
                                               self.get_value_unnormed(i, j, self.one_vs_rest_t))
                 self._out_degree_list.append(len(self.dep_tree[i]))

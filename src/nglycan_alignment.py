@@ -208,12 +208,12 @@ def get_depth_gal(a_dict):
         # list(a_dict.keys())[0]
         return 1 + get_depth_gal(a_dict.child[0])
     else:
-        return 0
+        return 1
 
 
 def map_glycan(a_g_dict, b_g_dict):
     """combine two glycan together, if one node doesn't have branch, copy the other"""
-
+    pass
     # for i in a_g_dict:
 
 
@@ -281,6 +281,7 @@ def _re_travel_glycan(mono, state, weight):
             return _branch
 
         elif state == M1:
+            # print('m1')
             _count = 0
             _branch = []
             for _, _child in mono.children():
@@ -293,7 +294,9 @@ def _re_travel_glycan(mono, state, weight):
                     assert False, 'find other mono in M1'
             if len(mono.children()) == 2:
                 d1 = get_depth_man(_branch[0])
+                # print('two branches')
                 d2 = get_depth_man(_branch[1])
+                # print(d1, d2)
                 if d1 > d2:
                     pass
                 else:

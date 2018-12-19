@@ -127,7 +127,7 @@ def merge_glycan_motif_dict_to_motif_dict(glycan_motif_dict, combine_original=Tr
     return _motif_dic
 
 
-def merge_motif_dict_pipe(glycan_dict, output_merged_motif_dict_addr):
+def merge_motif_dict_pipe(glycan_dict, output_merged_motif_dict_addr, glycan_dict_addr=__init__.glycan_dict_addr):
     """
     merge the substructure of all glycans into motif dict
     :param glycan_dict: {degree: [motif1, motif2, ... ]} /NBT_glycan_dict_degree_list_glycoct_for_motif
@@ -137,7 +137,7 @@ def merge_motif_dict_pipe(glycan_dict, output_merged_motif_dict_addr):
     """
     # output_motif_dic_degree_list_addr = root + "NBT_motif_dic_degree_list.json"
 
-    _motif_dic = merge_glycan_motif_dict_to_motif_dict(glycan_dict, combine_original=True)
+    _motif_dic = merge_glycan_motif_dict_to_motif_dict(glycan_dict, combine_original=True, glycan_dict_addr=glycan_dict_addr)
     print('check merged motif vec len', check_motif_dict_length(_motif_dic))
     print("get_motif_dict_degree_list_pipe")
     # num_processors = 8

@@ -18,46 +18,47 @@ import json_utility
 import pandas as pd
 import scipy
 from glypy.io import glycoct
+import glycan_io
 import numpy as np
 
-profile_name = ['WT',
-                'mgat4A',
-                'mgat4A/mgat4B',
-                'mgat5',
-                'mgat4A/mgat4B/mgat5',
-                'B4GalT1',
-                'B4GalT2',
-                'B4GalT3',
-                'B4GalT4',
-                'B4GalT1/B4GalT2',
-                'B4GalT1/B4GalT3',
-                'B3gnt1',
-                'B3gnt2',
-                'st3gal3',
-                'st3gal4',
-                'st3gal6',
-                'st3gal3/st3gal4',
-                'st3gal4/st3gal6',
-                'KI_ST6GalNAc1/st3gal4/st3gal6',
-                'B3gnt2/mgat4a/mgat4b/mgat5',
-                'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-                'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-                'EPO48(mgat3)',
-                'EPO143(mgat4C)',
-                'EPO174(mgat2)',
-                'EPO200(B4galt1/B4galt2/B4galt3)',
-                'EPO275(B3gnt8)',
-                'EPO78(mgat4B)',
-                'EPO104(mgat5B)',
-                'EPO127(mgat1)',
-                'EPO259(mgat2/st3gal4/st3gal6)',
-                'EPO261(mgat2/mgat4A/mgat4B/mgat5)',
-                'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
-                'EPO266(fut8)']
+# profile_name = ['WT',
+#                 'mgat4A',
+#                 'mgat4A/mgat4B',
+#                 'mgat5',
+#                 'mgat4A/mgat4B/mgat5',
+#                 'B4GalT1',
+#                 'B4GalT2',
+#                 'B4GalT3',
+#                 'B4GalT4',
+#                 'B4GalT1/B4GalT2',
+#                 'B4GalT1/B4GalT3',
+#                 'B3gnt1',
+#                 'B3gnt2',
+#                 'st3gal3',
+#                 'st3gal4',
+#                 'st3gal6',
+#                 'st3gal3/st3gal4',
+#                 'st3gal4/st3gal6',
+#                 'KI_ST6GalNAc1/st3gal4/st3gal6',
+#                 'B3gnt2/mgat4a/mgat4b/mgat5',
+#                 'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
+#                 'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
+#                 'EPO48(mgat3)',
+#                 'EPO143(mgat4C)',
+#                 'EPO174(mgat2)',
+#                 'EPO200(B4galt1/B4galt2/B4galt3)',
+#                 'EPO275(B3gnt8)',
+#                 'EPO78(mgat4B)',
+#                 'EPO104(mgat5B)',
+#                 'EPO127(mgat1)',
+#                 'EPO259(mgat2/st3gal4/st3gal6)',
+#                 'EPO261(mgat2/mgat4A/mgat4B/mgat5)',
+#                 'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
+#                 'EPO266(fut8)']
 
 
-def draw_motif_cluster(g, df, name_prefix, color_threshold):
-    plt.figure(figsize=(10, 35))
+def draw_motif_cluster(g, df, name_prefix, color_threshold, fig_size=(10,35)):
+    plt.figure(figsize=fig_size)
     plt.title('Hierarchical Clustering Profile', fontdict={'fontsize': 25})
     plt.xlabel('Distance', fontdict={'fontsize': 25})
     plt.rc_context({'lines.linewidth': 4})
@@ -84,7 +85,7 @@ def draw_motif_cluster(g, df, name_prefix, color_threshold):
     return cccluster_dict
 
 
-def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weights_dict, threshold_list=[0.5, 0.6, 0.7]):
+def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weights_dict, plot_rep=True, threshold_list=[0.5, 0.6, 0.7]):
     # vec_ = load_json(NBT_init.root_address + 'NBT_motif_vec.json')
     _count = 0
     for i in range(1, len(glyco_motif_cluster.keys()) + 1):
@@ -94,20 +95,23 @@ def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weigh
         plot_glycan_utilities.plot_glycan_list([motif_vec[i] for i in list_], name_list, str(i))
         print(glyco_motif_cluster[i])
         plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
-        # _temp_node, _name = NBT_motif_match_motifvec.find_greatest_common_divisor(glyco_motif_cluster[i], i, vec_)
+        ## _temp_node, _name = NBT_motif_match_motifvec.find_greatest_common_divisor(glyco_motif_cluster[i], i, vec_)
         # plot_glycan_utilities.plot_glycan(_temp_node[0], _name[0])
-        a_panel = nglycan_alignment.glycan_model()
-        for j in glyco_motif_cluster[i]:
-            # print(j)
-            # plot_glycan_utilities.plot_glycan(vec_[i], title=str(i))
-            gly_nglycan_dict = nglycan_alignment.traves_glycan(motif_vec[j], weight=motif_weights_dict[j])
-            a_panel.glycan_walk(gly_nglycan_dict)
+        if plot_rep:
+            a_panel = nglycan_alignment.glycan_model()
+            for j in glyco_motif_cluster[i]:
+                # print(j)
+                # plot_glycan_utilities.plot_glycan(vec_[i], title=str(i))
+                gly_nglycan_dict = nglycan_alignment.traves_glycan(motif_vec[j], weight=motif_weights_dict[j])
+                a_panel.glycan_walk(gly_nglycan_dict)
 
-            # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
+                # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
 
-            # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
-        glycan_list = a_panel.get_reps(threshold_list=[0.51])
-        plot_glycan_utilities.plot_glycan(glycan_list[0], title=str(i), addr=__init__.plot_output_address+name_prefix+str(i)+'.core.png')
+                # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
+            glycan_list = a_panel.get_reps(threshold_list=[0.51])
+            glycan_io.save_glycan(glycan_list[0], __init__.plot_output_address+name_prefix+str(i)+'.core.glycoct')
+            plot_glycan_utilities.plot_glycan(glycan_list[0], title=str(i), addr=__init__.plot_output_address+name_prefix+str(i)+'.core.eps')
+
         # plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
         # plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in [0.51, 0.6, 0.7]])
         # plt.savefig()
