@@ -1,0 +1,372 @@
+[
+  {
+    "names": [
+      "GalNac", 
+      "GalNAc", 
+      "N-Acetylglucosamine"
+    ], 
+    "structure": "RES 1b:b-dgal-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n"
+  }, 
+  {
+    "names": [
+      "Psicose", 
+      "Psi"
+    ], 
+    "structure": "RES 1b:x-drib-HEX-2:6|2:keto"
+  }, 
+  {
+    "names": [
+      "Gul", 
+      "Gulose"
+    ], 
+    "structure": "RES 1b:x-dgul-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Oct"
+    ], 
+    "structure": "RES 1b:x-dman-OCT-2:6"
+  }, 
+  {
+    "names": [
+      "Kdo"
+    ], 
+    "structure": "RES 1b:x-dman-OCT-2:6|1:a|2:keto|3:d"
+  }, 
+  {
+    "names": [
+      "Glucose", 
+      "bdGlc", 
+      "Glc"
+    ], 
+    "structure": "RES 1b:b-dglc-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Non"
+    ], 
+    "structure": "RES 1b:a-dgro-dgal-NON-2:6"
+  }, 
+  {
+    "names": [
+      "Ara", 
+      "Arabinose"
+    ], 
+    "structure": "RES 1b:x-lara-PEN-1:4"
+  }, 
+  {
+    "names": [
+      "Tet"
+    ], 
+    "structure": "RES 1b:x-TET-x:x"
+  }, 
+  {
+    "names": [
+      "Ery", 
+      "Erythrose"
+    ], 
+    "structure": "RES 1b:x-dery-TET-1:4"
+  }, 
+  {
+    "names": [
+      "Neu5Ac", 
+      "Sialic Acid", 
+      "NeuAc"
+    ], 
+    "structure": "RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl LIN 1:1d(5+1)2n"
+  }, 
+  {
+    "names": [
+      "Fru", 
+      "Fructose"
+    ], 
+    "structure": "RES 1b:x-dara-HEX-2:6|2:keto"
+  }, 
+  {
+    "names": [
+      "Fucose", 
+      "Fuc"
+    ], 
+    "structure": "RES 1b:a-lgal-HEX-1:5|6:d"
+  }, 
+  {
+    "names": [
+      "NeuGc", 
+      "Neu5Gc"
+    ], 
+    "structure": "RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-glycolyl LIN 1:1d(5+1)2n"
+  }, 
+  {
+    "names": [
+      "Galacturonic Acid", 
+      "GalA"
+    ], 
+    "structure": "RES 1b:x-dgal-HEX-1:5|6:a"
+  }, 
+  {
+    "names": [
+      "Tri"
+    ], 
+    "structure": "RES 1b:x-TRI-x:x"
+  }, 
+  {
+    "names": [
+      "Muramic Acid", 
+      "Mur"
+    ], 
+    "structure": "RES 1b:x-dglc-HEX-1:5 2s:amino 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n"
+  }, 
+  {
+    "names": [
+      "Tyv", 
+      "Tyvelose"
+    ], 
+    "structure": "RES 1b:x-dara-HEX-1:5|3:d|6:d"
+  }, 
+  {
+    "names": [
+      "bdGal", 
+      "Gal", 
+      "Galactose"
+    ], 
+    "structure": "RES 1b:b-dgal-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "IdoA", 
+      "Iduronic Acid"
+    ], 
+    "structure": "RES 1b:x-lido-HEX-1:5|6:a"
+  }, 
+  {
+    "names": [
+      "bdMan", 
+      "Man", 
+      "Mannose"
+    ], 
+    "structure": "RES 1b:b-dman-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Rha", 
+      "Rhamnose"
+    ], 
+    "structure": "RES 1b:x-lman-HEX-1:5|6:d"
+  }, 
+  {
+    "names": [
+      "Glucuronic Acid", 
+      "GlcA"
+    ], 
+    "structure": "RES 1b:b-dglc-HEX-1:5|6:a"
+  }, 
+  {
+    "names": [
+      "MurNGc"
+    ], 
+    "structure": "RES 1b:x-dglc-HEX-1:5 2s:n-glycolyl 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n"
+  }, 
+  {
+    "names": [
+      "Tal", 
+      "Talose"
+    ], 
+    "structure": "RES 1b:x-dtal-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Quinovose", 
+      "Qui"
+    ], 
+    "structure": "RES 1b:x-dglc-HEX-1:5|6:d"
+  }, 
+  {
+    "names": [
+      "Neuraminic acid", 
+      "Neu"
+    ], 
+    "structure": "RES 1b:x-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:amino LIN 1:1d(5+1)2n"
+  }, 
+  {
+    "names": [
+      "Ribose", 
+      "Rib"
+    ], 
+    "structure": "RES 1b:x-drib-PEN-1:4"
+  }, 
+  {
+    "names": [
+      "Xylose", 
+      "Xyl"
+    ], 
+    "structure": "RES 1b:x-dxyl-PEN-1:5"
+  }, 
+  {
+    "names": [
+      "Xulose", 
+      "Xul"
+    ], 
+    "structure": "RES 1b:x-dthr-PEN-2:5|2:keto"
+  }, 
+  {
+    "names": [
+      "Allose", 
+      "All"
+    ], 
+    "structure": "RES 1b:x-dall-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Fructofuranose"
+    ], 
+    "structure": "RES 1b:x-dara-HEX-2:5|2:keto"
+  }, 
+  {
+    "names": [
+      "Sorbose", 
+      "Sor"
+    ], 
+    "structure": "RES 1b:x-lxyl-HEX-2:6|2:keto"
+  }, 
+  {
+    "names": [
+      "GlcN", 
+      "2-Amino-2-deoxyglucose", 
+      "Glucosamine"
+    ], 
+    "structure": "RES 1b:b-dglc-HEX-1:5 2s:amino LIN 1:1x(-1+-1)2x"
+  }, 
+  {
+    "names": [
+      "Oli", 
+      "Olivose"
+    ], 
+    "structure": "RES 1b:x-dara-HEX-1:5|2:d|6:d"
+  }, 
+  {
+    "names": [
+      "MurNAc"
+    ], 
+    "structure": "RES 1b:x-dglc-HEX-1:5 2s:n-acetyl 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n"
+  }, 
+  {
+    "names": [
+      "Ido"
+    ], 
+    "structure": "RES 1b:x-lido-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "NeuAc2", 
+      "Neu5,9Ac2"
+    ], 
+    "structure": "RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl 3s:n-acetyl LIN 1:1d(5+1)2n 2:1d(9+1)3n"
+  }, 
+  {
+    "names": [
+      "Sed", 
+      "Sedulose"
+    ], 
+    "structure": "RES 1b:x-dalt-HEP-2:6|2:keto"
+  }, 
+  {
+    "names": [
+      "Pen"
+    ], 
+    "structure": "RES 1b:x-PEN-1:4"
+  }, 
+  {
+    "names": [
+      "Sug"
+    ], 
+    "structure": "RES 1b:x-SUG-0:0"
+  }, 
+  {
+    "names": [
+      "Tag", 
+      "Tagatose"
+    ], 
+    "structure": "RES 1b:x-dlyx-HEX-2:6|2:keto"
+  }, 
+  {
+    "names": [
+      "adMan", 
+      "aMan"
+    ], 
+    "structure": "RES 1b:a-dman-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Dec"
+    ], 
+    "structure": "RES 1b:x-DEC-x:x"
+  }, 
+  {
+    "names": [
+      "2-Keto-3-deoxynanonic acid", 
+      "Kdn", 
+      "KDN"
+    ], 
+    "structure": "RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d"
+  }, 
+  {
+    "names": [
+      "HexNAc"
+    ], 
+    "structure": "RES 1b:x-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n"
+  }, 
+  {
+    "names": [
+      "Lyx", 
+      "Lyxose"
+    ], 
+    "structure": "RES 1b:x-dlyx-PEN-1:5"
+  }, 
+  {
+    "names": [
+      "Hex"
+    ], 
+    "structure": "RES 1b:x-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "Altose", 
+      "Alt"
+    ], 
+    "structure": "RES 1b:x-dalt-HEX-1:5"
+  }, 
+  {
+    "names": [
+      "GlcNAc", 
+      "GlcNA", 
+      "GlcNac"
+    ], 
+    "structure": "RES 1b:b-dglc-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n"
+  }, 
+  {
+    "names": [
+      "Hep"
+    ], 
+    "structure": "RES 1b:a-lgro-dman-HEP-1:5"
+  }, 
+  {
+    "names": [
+      "ManAnhydro"
+    ], 
+    "structure": "RES 1b:b-dman-HEX-1:5 2s:anhydro LIN 1:1o(2+1)2n"
+  }, 
+  {
+    "names": [
+      "Bac", 
+      "Bacillosamine"
+    ], 
+    "structure": "RES 1b:a-lglc-HEX-1:5|6:d 2s:amino 3s:amino LIN 1:1d(2+1)2n 2:1d(4+1)3n"
+  }, 
+  {
+    "names": [
+      "Threose", 
+      "Thr"
+    ], 
+    "structure": "RES 1b:x-dthr-TET-1:4"
+  }
+]

@@ -1,136 +1,401 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/motif_class.py" line="1111" />
+    <bookmark url="file://$PROJECT_DIR$/src/motif_class.py" line="1141" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/generated_json_file/glycanHMO_dict.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/generated_json_file/glycanHMO_motif_dict.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped1.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped10.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped11.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped12.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped13.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped14.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped15.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped16.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped17.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped18.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped19.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped2.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped20.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped21.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped22.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped23.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped24.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped25.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped25.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped26.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped26.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped27.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped27.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped28.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped28.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped3.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped4.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped5.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped6.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped7.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped8.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped9.core.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/Test_Info_Enrich-checkpoint.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/1700.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Test_Info_Enrich.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/aa.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_0.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_10.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_11.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_12.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_13.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_14.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_15.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_17.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_18.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_19.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_20.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_21.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_22.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_23.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_7.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boxplot_cluster_9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/raw_abundance.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/raw_abundance_sub.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/raw_abundance_zscore.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_7.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/substructure_cluster_9.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Paper/GlyCompare.docx" afterPath="$PROJECT_DIR$/Paper/GlyCompare.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped1.png" afterPath="$PROJECT_DIR$/output_plot/dropped1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped10.png" afterPath="$PROJECT_DIR$/output_plot/dropped10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped11.png" afterPath="$PROJECT_DIR$/output_plot/dropped11.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped12.png" afterPath="$PROJECT_DIR$/output_plot/dropped12.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped13.png" afterPath="$PROJECT_DIR$/output_plot/dropped13.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped14.png" afterPath="$PROJECT_DIR$/output_plot/dropped14.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped15.png" afterPath="$PROJECT_DIR$/output_plot/dropped15.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped16.png" afterPath="$PROJECT_DIR$/output_plot/dropped16.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped17.png" afterPath="$PROJECT_DIR$/output_plot/dropped17.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped18.png" afterPath="$PROJECT_DIR$/output_plot/dropped18.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped19.png" afterPath="$PROJECT_DIR$/output_plot/dropped19.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped2.png" afterPath="$PROJECT_DIR$/output_plot/dropped2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped20.png" afterPath="$PROJECT_DIR$/output_plot/dropped20.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped21.png" afterPath="$PROJECT_DIR$/output_plot/dropped21.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped22.png" afterPath="$PROJECT_DIR$/output_plot/dropped22.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped23.png" afterPath="$PROJECT_DIR$/output_plot/dropped23.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped3.png" afterPath="$PROJECT_DIR$/output_plot/dropped3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped4.png" afterPath="$PROJECT_DIR$/output_plot/dropped4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped5.png" afterPath="$PROJECT_DIR$/output_plot/dropped5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped6.png" afterPath="$PROJECT_DIR$/output_plot/dropped6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped7.png" afterPath="$PROJECT_DIR$/output_plot/dropped7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped8.png" afterPath="$PROJECT_DIR$/output_plot/dropped8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/dropped9.png" afterPath="$PROJECT_DIR$/output_plot/dropped9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output_plot/droppedprofile_cluster.png" afterPath="$PROJECT_DIR$/output_plot/droppedprofile_cluster.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/1700" afterPath="$PROJECT_DIR$/src/1700" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/droppedmotif_cluster.png" afterPath="$PROJECT_DIR$/src/droppedmotif_cluster.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/initiator.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nglycan_composition.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test_glycan_io.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/2c_profile_match.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_d_table_y_axis.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure_substructure_merged.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/raw_glycan_cluster.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Figure/Figure_substructure_merged.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hmo/hmo_network.cys.bkp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/1.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/10.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/11.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/12.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/13.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/14.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/15.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/16.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/17.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/1700.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/18.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/19.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/2.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/20.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/21.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/22.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/23.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/3.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/4.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/5.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/6.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/7.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/8.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/9.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/_substructure_cluster_1.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/aa.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_15.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_18.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_19.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_22.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_23.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_24.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/boxplot_cluster_9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped1.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped1.core.eps.ai" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped1.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped10.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped10.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped11.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped11.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped12.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped12.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped13.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped13.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped14.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped14.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped15.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped15.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped15.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped16.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped17.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped17.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped18.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped18.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped18.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped19.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped19.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped19.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped2.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped2.core.eps.ai" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped2.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped20.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped20.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped21.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped21.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped22.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped22.core.eps.ai" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped22.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped22.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped23.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped23.core.eps.ai" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped23.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped23.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped3.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped3.core.eps.ai" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped3.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped4.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped4.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped5.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped5.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped6.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped6.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped7.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped7.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped8.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped8.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped9.core.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped9.core.eps.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/dropped9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/droppedclustermap.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/droppedmotif_cluster.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo15.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo18.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo19.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif1.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif10.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif100.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif101.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif102.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif103.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif104.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif105.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif106.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif107.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif108.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif109.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif11.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif110.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif111.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif112.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif113.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif114.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif115.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif116.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif117.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif118.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif119.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif12.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif120.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif121.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif122.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif123.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif124.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif125.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif126.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif127.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif128.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif129.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif13.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif130.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif131.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif132.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif133.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif134.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif135.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif136.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif137.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif138.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif139.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif14.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif140.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif141.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif142.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif143.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif144.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif145.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif146.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif147.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif148.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif149.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif15.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif150.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif151.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif152.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif153.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif154.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif155.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif156.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif157.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif158.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif159.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif16.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif160.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif161.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif162.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif163.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif164.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif165.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif166.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif167.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif168.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif169.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif17.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif170.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif171.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif172.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif173.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif18.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif19.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif2.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif20.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif21.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif22.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif23.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif24.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif25.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif26.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif27.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif28.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif29.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif3.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif30.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif31.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif32.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif33.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif34.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif35.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif36.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif37.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif38.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif39.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif4.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif40.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif41.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif42.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif43.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif44.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif45.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif46.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif47.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif48.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif49.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif5.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif50.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif51.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif52.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif53.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif54.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif55.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif56.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif57.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif58.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif59.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif6.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif60.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif61.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif62.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif63.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif64.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif65.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif66.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif67.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif68.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif69.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif7.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif70.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif71.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif72.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif73.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif74.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif75.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif76.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif77.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif78.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif79.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif8.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif80.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif81.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif82.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif83.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif84.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif85.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif86.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif87.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif88.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif89.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif9.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif90.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif91.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif92.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif93.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif94.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif95.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif96.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif97.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif98.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/hmo_motif99.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/raw_abundance.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/raw_abundance_sub.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/raw_abundance_zscore.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_1.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_2.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_3.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_4.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_5.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_6.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_7.eps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output_plot/substructure_cluster_condense.eps" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Data/CHO/output_plot/raw_abundance_glycoprofile_redraw.pdf" afterPath="$PROJECT_DIR$/Figure/Data/CHO/output_plot/raw_abundance_glycoprofile_redraw.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure1/pseudo_glycan_vertical.pdf" afterPath="$PROJECT_DIR$/Figure/Figure1/pseudo_glycan_vertical.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure1/pseudo_merge_all.pdf" afterPath="$PROJECT_DIR$/Figure/Figure1/pseudo_merge_all.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure1/pseudo_merge_all.png" afterPath="$PROJECT_DIR$/Figure/Figure1/pseudo_merge_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_4.pdf" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_4.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_5.pdf" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_5.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_5.png" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_6.pdf" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_6.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_6.png" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure2_6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure_substructure_merged.pdf" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/Figure_substructure_merged.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/raw_glycan_cluster_no_anno.pdf" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/raw_glycan_cluster_no_anno.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Figure2_CHO/rep_substructure_23.pdf" afterPath="$PROJECT_DIR$/Figure/Figure2_CHO/rep_substructure_23.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Method/Prepresentative.pdf" afterPath="$PROJECT_DIR$/Figure/Method/Prepresentative.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Paper/Glycompare_plots_to_Austin.pptx" afterPath="$PROJECT_DIR$/Paper/Glycompare_plots_to_Austin.pptx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hmo/hmo_network.cys" afterPath="$PROJECT_DIR$/hmo/hmo_network.cys" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source_data/glycan_table.xls" afterPath="$PROJECT_DIR$/source_data/glycan_table.xls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/full_abundance_matrix.txt" afterPath="$PROJECT_DIR$/generated_json_file/full_abundance_matrix.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Data/HMO/glycanHMO_motif_dict.json" afterPath="$PROJECT_DIR$/Figure/Data/HMO/glycanHMO_motif_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Figure/Data/HMO/match_dict.json" afterPath="$PROJECT_DIR$/Figure/Data/HMO/match_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_abd_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_abd_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycan_motif_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/glycan_motif_dict.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/glycoprofile_list.json" afterPath="$PROJECT_DIR$/generated_json_file/glycoprofile_list.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/match_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/match_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/merged_motif_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/merged_motif_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/norm_mz_abd_dict.json" afterPath="$PROJECT_DIR$/generated_json_file/norm_mz_abd_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated_json_file/substructure_matrix_zscore_base.txt" afterPath="$PROJECT_DIR$/generated_json_file/substructure_matrix_zscore_base.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/CHO_GlycoProfile_Check-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/CHO_GlycoProfile_Check-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/Generating_motif_plot-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/Generating_motif_plot-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/NBT_data_selected_with_NC_for_paper-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/NBT_data_selected_with_NC_for_paper-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/clustering_enrichment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/clustering_enrichment-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/demo-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/glycan_profile_clustering-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/glycan_profile_clustering-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/hmo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/hmo_analysis-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CHO_GlycoProfile_Check.ipynb" afterPath="$PROJECT_DIR$/src/CHO_GlycoProfile_Check.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Generating_motif_plot.ipynb" afterPath="$PROJECT_DIR$/src/Generating_motif_plot.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__init__.py" afterPath="$PROJECT_DIR$/src/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clustering_analysis_pip.py" afterPath="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clustering_enrichment.ipynb" afterPath="$PROJECT_DIR$/src/clustering_enrichment.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/customize_motif_vec.py" afterPath="$PROJECT_DIR$/src/customize_motif_vec.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo.ipynb" afterPath="$PROJECT_DIR$/src/demo.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/extract_motif.py" afterPath="$PROJECT_DIR$/src/extract_motif.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_io.py" afterPath="$PROJECT_DIR$/src/glycan_io.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_profile.py" afterPath="$PROJECT_DIR$/src/glycan_profile.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/glycan_profile_clustering.ipynb" afterPath="$PROJECT_DIR$/src/glycan_profile_clustering.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hmo_analysis.ipynb" afterPath="$PROJECT_DIR$/src/hmo_analysis.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/motif_class.py" afterPath="$PROJECT_DIR$/src/motif_class.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nglycan_alignment.py" afterPath="$PROJECT_DIR$/src/nglycan_alignment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,54 +406,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/GlyCompare$Nosetests_in_test_glycan_io_py.coverage" NAME="Nosetests in test_glycan_io.py Coverage Results" MODIFIED="1553804254502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/GlyCompare$glycan_profile.coverage" NAME="glycan_profile Coverage Results" MODIFIED="1533793804721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/GlyCompare$glycan_io.coverage" NAME="glycan_io Coverage Results" MODIFIED="1552068329728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
+      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/initiator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10980">
-              <caret line="832" column="31" lean-forward="false" selection-start-line="832" selection-start-column="31" selection-end-line="832" selection-end-column="31" />
+            <state relative-caret-position="90">
+              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
-                <element signature="e#982#1919#0" expanded="false" />
-                <element signature="e#3547#3803#0" expanded="false" />
-                <element signature="e#6308#6359#0" expanded="false" />
-                <element signature="e#21418#22082#0" expanded="false" />
-                <element signature="e#25311#25312#0" expanded="false" />
-                <element signature="e#31948#37121#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="clustering_analysis_pip.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3015">
-              <caret line="204" column="50" lean-forward="false" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="161" column="91" lean-forward="false" selection-start-line="161" selection-start-column="91" selection-end-line="161" selection-end-column="91" />
-              <folding>
-                <element signature="e#1#55#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -197,19 +427,23 @@
       <file leaf-file-name="glycan_io.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/glycan_io.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="45">
+              <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customize_motif_vec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
+      <file leaf-file-name="test_glycan_io.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test_glycan_io.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3885">
-              <caret line="264" column="92" lean-forward="false" selection-start-line="264" selection-start-column="92" selection-end-line="264" selection-end-column="92" />
-              <folding />
+            <state relative-caret-position="720">
+              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -217,16 +451,32 @@
       <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/motif_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7665">
-              <caret line="650" column="30" lean-forward="false" selection-start-line="650" selection-start-column="30" selection-end-line="650" selection-end-column="30" />
+            <state relative-caret-position="4425">
+              <caret line="344" column="8" lean-forward="false" selection-start-line="344" selection-start-column="8" selection-end-line="344" selection-end-column="8" />
               <folding>
                 <element signature="e#16#27#0" expanded="true" />
-                <element signature="e#4040#7407#0" expanded="false" />
-                <element signature="e#7510#7749#0" expanded="false" />
-                <element signature="e#7784#7917#0" expanded="false" />
-                <element signature="e#7945#8001#0" expanded="false" />
-                <element signature="e#8924#8957#0" expanded="false" />
-                <element signature="e#47720#50530#0" expanded="false" />
+                <element signature="e#7925#8084#0" expanded="false" />
+                <element signature="e#8115#8200#0" expanded="false" />
+                <element signature="e#8224#8280#0" expanded="false" />
+                <element signature="e#9119#9152#0" expanded="false" />
+                <element signature="e#48020#50830#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3315">
+              <caret line="818" column="29" lean-forward="false" selection-start-line="818" selection-start-column="17" selection-end-line="818" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#1291#19197#0" expanded="false" />
+                <element signature="e#1748#2621#0" expanded="false" />
+                <element signature="e#4249#4505#0" expanded="false" />
+                <element signature="e#6906#6957#0" expanded="false" />
+                <element signature="e#23353#23354#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -243,26 +493,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>immd</find>
-      <find>_collapsed_edge_dic</find>
-      <find>collaping_potential_node</find>
-      <find>add_no</find>
-      <find>NdexGraph</find>
-      <find>norm</find>
-      <find>notimp</find>
-      <find>_edge_dic_re</find>
-      <find>edge_dic_re</find>
-      <find>dict</find>
-      <find>dict\(</find>
-      <find>weight</find>
-      <find>get_glycoprofile_list</find>
-      <find>edge_corre</find>
-      <find>subs</find>
-      <find>collapsing_potential_node</find>
-      <find>merge_motif_dict_pipe</find>
-      <find>draw_glycan_cluster</find>
-      <find>subtree_of</find>
-      <find>extract_motif</find>
       <find>profile_mz_</find>
       <find>threshold</find>
       <find>one_vs_rest_t</find>
@@ -273,6 +503,26 @@
       <find>get_corr</find>
       <find>glycopro</find>
       <find>Glycoprofile</find>
+      <find>glypy.algorithms</find>
+      <find>__init__.source_address</find>
+      <find>link_replacement_composition_map</find>
+      <find>numer</find>
+      <find>glyco</find>
+      <find>glycan_dict_addr</find>
+      <find>get_glycoprofile_list</find>
+      <find>glycan_deconvoluting_pipdec</find>
+      <find>load_glytoucan_database</find>
+      <find>load</find>
+      <find>glycan_deconvoluting_pip</find>
+      <find>glycan_dic</find>
+      <find>glycan_obj_t</find>
+      <find>check</find>
+      <find>parse_table_to_dict</find>
+      <find>load_t</find>
+      <find>load_glycoprofile_name_to_id</find>
+      <find>profile_name</find>
+      <find>root_</find>
+      <find>substru</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -296,8 +546,8 @@
       <replace>collapsing_potential_node</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/src</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -328,16 +578,23 @@
         <option value="$PROJECT_DIR$/src/json_utility.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py" />
         <option value="$PROJECT_DIR$/src/nglycan_alignment.py" />
-        <option value="$PROJECT_DIR$/src/customize_motif_vec.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py" />
-        <option value="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
         <option value="$PROJECT_DIR$/src/CHO_GlycoProfile_Check.ipynb" />
-        <option value="$PROJECT_DIR$/src/extract_motif.py" />
-        <option value="$PROJECT_DIR$/src/glycan_io.py" />
         <option value="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
-        <option value="$PROJECT_DIR$/src/motif_class.py" />
-        <option value="$PROJECT_DIR$/src/glycan_profile.py" />
+        <option value="$PROJECT_DIR$/src/glypy/io/glycoct.py" />
+        <option value="$PROJECT_DIR$/src/glypy/io/format_constants_map.py" />
+        <option value="$PROJECT_DIR$/src/substructure/nglycan_composition.py" />
+        <option value="$PROJECT_DIR$/src/nglycan_composition.py" />
+        <option value="$PROJECT_DIR$/src/parameter.py" />
         <option value="$PROJECT_DIR$/src/__init__.py" />
+        <option value="$PROJECT_DIR$/src/test_glycan_io.py" />
+        <option value="$PROJECT_DIR$/src/customize_motif_vec.py" />
+        <option value="$PROJECT_DIR$/src/extract_motif.py" />
+        <option value="$PROJECT_DIR$/src/plot_glycan_utilities.py" />
+        <option value="$PROJECT_DIR$/src/motif_class.py" />
+        <option value="$PROJECT_DIR$/src/glycan_io.py" />
+        <option value="$PROJECT_DIR$/src/glycan_profile.py" />
+        <option value="$PROJECT_DIR$/src/initiator.py" />
       </list>
     </option>
   </component>
@@ -347,10 +604,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
-    <option name="height" value="877" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -417,6 +673,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -433,7 +692,41 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.glycan_profile">
+  <component name="RunManager" selected="Python tests.Nosetests in test_glycan_io.py">
+    <configuration name="Nosetests in test_glycan_io.py" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GlyCompare" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/src/test_glycan_io.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration name="glycan_io" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GlyCompare" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/glycan_io.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="glycan_profile" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -452,9 +745,16 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Python.glycan_profile" />
+      <item index="1" class="java.lang.String" itemvalue="Python.glycan_io" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Nosetests in test_glycan_io.py" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.glycan_profile" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Nosetests in test_glycan_io.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python.glycan_io" />
+        <item index="2" class="java.lang.String" itemvalue="Python.glycan_profile" />
       </list>
     </recent_temporary>
   </component>
@@ -471,20 +771,51 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 12h 25m 54s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 00m 00s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 01m 25s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 02m 42s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 04m 54s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 11m 42s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 14m 39s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 15m 47s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 15m 54s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_glycan_io_py - 2019.03.28 at 13h 17m 35s.xml">
+      <configuration name="Nosetests in test_glycan_io.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24749643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23962805" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17095852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39939025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -492,7 +823,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3241107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32317072" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -530,109 +861,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3930">
-          <caret line="282" column="8" lean-forward="false" selection-start-line="282" selection-start-column="8" selection-end-line="282" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/motif_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="35" column="39" lean-forward="false" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-          <folding>
-            <element signature="e#16#27#0" expanded="true" />
-            <element signature="e#4040#7407#0" expanded="false" />
-            <element signature="e#7510#7749#0" expanded="false" />
-            <element signature="e#7784#7917#0" expanded="false" />
-            <element signature="e#7945#8001#0" expanded="false" />
-            <element signature="e#8924#8957#0" expanded="false" />
-            <element signature="e#47720#50530#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="110" column="30" lean-forward="false" selection-start-line="110" selection-start-column="11" selection-end-line="110" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="56" column="33" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/motif_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2355">
-          <caret line="160" column="11" lean-forward="false" selection-start-line="159" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
-          <folding>
-            <element signature="e#16#27#0" expanded="true" />
-            <element signature="e#4040#7407#0" expanded="false" />
-            <element signature="e#7510#7749#0" expanded="false" />
-            <element signature="e#7784#7917#0" expanded="false" />
-            <element signature="e#7945#8001#0" expanded="false" />
-            <element signature="e#8924#8957#0" expanded="false" />
-            <element signature="e#47720#50530#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="171" column="58" lean-forward="false" selection-start-line="171" selection-start-column="58" selection-end-line="171" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/json_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5865">
-          <caret line="408" column="64" lean-forward="false" selection-start-line="408" selection-start-column="64" selection-end-line="408" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -729,20 +957,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-448">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/cfg_symbols.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/cfg_symbols.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10680">
@@ -785,13 +1001,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/draw_tree.py" />
     <entry file="file://$PROJECT_DIR$/src/glycan_profile_clustering.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -799,13 +1009,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/__init__.py" />
     <entry file="file://$PROJECT_DIR$/src/clustering_enrichment.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -820,90 +1024,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/algorithms/subtree_search/inclusion.py" />
+    <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="80" column="37" lean-forward="true" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+        <state relative-caret-position="3015">
+          <caret line="204" column="50" lean-forward="false" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glypy/algorithms/subtree_search/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glypy/io/format_constants_map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glypy/structure/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="253" column="0" lean-forward="true" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glypy/algorithms/subtree_search/inclusion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="187" column="28" lean-forward="true" selection-start-line="187" selection-start-column="28" selection-end-line="187" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glypy/plot/draw_tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="118" column="18" lean-forward="true" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glypy/plot/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parameter.py" />
+    <entry file="file://$PROJECT_DIR$/src/nglycan_composition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="896" column="49" lean-forward="false" selection-start-line="896" selection-start-column="49" selection-end-line="896" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="161" column="91" lean-forward="false" selection-start-line="161" selection-start-column="91" selection-end-line="161" selection-end-column="91" />
+        <state relative-caret-position="1305">
+          <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
           <folding>
-            <element signature="e#1#55#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/algorithms/subtree_search/inclusion.py">
+    <entry file="file://$PROJECT_DIR$/src/glypy/io/glycoct.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="124" column="53" lean-forward="false" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3885">
-          <caret line="264" column="92" lean-forward="false" selection-start-line="264" selection-start-column="92" selection-end-line="264" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/glycan_io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/motif_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7665">
-          <caret line="650" column="30" lean-forward="false" selection-start-line="650" selection-start-column="30" selection-end-line="650" selection-end-column="30" />
-          <folding>
-            <element signature="e#16#27#0" expanded="true" />
-            <element signature="e#4040#7407#0" expanded="false" />
-            <element signature="e#7510#7749#0" expanded="false" />
-            <element signature="e#7784#7917#0" expanded="false" />
-            <element signature="e#7945#8001#0" expanded="false" />
-            <element signature="e#8924#8957#0" expanded="false" />
-            <element signature="e#47720#50530#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/clustering_analysis_pip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3015">
-          <caret line="204" column="50" lean-forward="false" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10980">
-          <caret line="832" column="31" lean-forward="false" selection-start-line="832" selection-start-column="31" selection-end-line="832" selection-end-column="31" />
-          <folding>
-            <element signature="e#982#1919#0" expanded="false" />
-            <element signature="e#3547#3803#0" expanded="false" />
-            <element signature="e#6308#6359#0" expanded="false" />
-            <element signature="e#21418#22082#0" expanded="false" />
-            <element signature="e#25311#25312#0" expanded="false" />
-            <element signature="e#31948#37121#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="2324">
+          <caret line="1263" column="35" lean-forward="false" selection-start-line="1263" selection-start-column="35" selection-end-line="1263" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="1158">
+          <caret line="136" column="15" lean-forward="true" selection-start-line="136" selection-start-column="15" selection-end-line="136" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/customize_motif_vec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#12#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plot_glycan_utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="907">
+          <caret line="108" column="46" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_glycan_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glycan_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glycan_profile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="818" column="29" lean-forward="false" selection-start-line="818" selection-start-column="17" selection-end-line="818" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#1291#19197#0" expanded="false" />
+            <element signature="e#1748#2621#0" expanded="false" />
+            <element signature="e#4249#4505#0" expanded="false" />
+            <element signature="e#6906#6957#0" expanded="false" />
+            <element signature="e#23353#23354#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/motif_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4425">
+          <caret line="344" column="8" lean-forward="false" selection-start-line="344" selection-start-column="8" selection-end-line="344" selection-end-column="8" />
+          <folding>
+            <element signature="e#16#27#0" expanded="true" />
+            <element signature="e#7925#8084#0" expanded="false" />
+            <element signature="e#8115#8200#0" expanded="false" />
+            <element signature="e#8224#8280#0" expanded="false" />
+            <element signature="e#9119#9152#0" expanded="false" />
+            <element signature="e#48020#50830#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/initiator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
