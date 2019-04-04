@@ -16,7 +16,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     intermediate_address = os.path.join(working_addr, "intermediate_file/")
     plot_output_address = os.path.join(working_addr, "output_plot/")
     source_address = os.path.join(working_addr, "source_data/")
-    glycoct_dir = source_address
+    glycoct_dir = os.path.join(source_address, 'glycoct')
     name_to_id_addr = os.path.join(source_address, 'glycoprofile_name_to_glycan_id.json')
     abundance_table_addr = os.path.join(source_address, 'abundance_table.xls')
     external_profile_naming_addr = os.path.join(source_address, 'external_profile_naming.json')

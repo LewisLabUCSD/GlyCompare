@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__init__.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example_notebook/GlyCompare_Example_CHO.ipynb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/GlyCompare.iml" afterPath="$PROJECT_DIR$/.idea/GlyCompare.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/hmo/glycanHMO_dict.json" afterPath="$PROJECT_DIR$/example_data/hmo/glycanHMO_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/hmo/glycanHMO_motif_dict.json" afterPath="$PROJECT_DIR$/example_data/hmo/glycanHMO_motif_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/hmo/match_dict.json" afterPath="$PROJECT_DIR$/example_data/hmo/match_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/hmo/merged_motif_dict.json" afterPath="$PROJECT_DIR$/example_data/hmo/merged_motif_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/external_profile_naming.json" afterPath="$PROJECT_DIR$/example_data/test_cho/source_data/external_profile_naming.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoprofile_name_to_glycan_id.json" afterPath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoprofile_name_to_glycan_id.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/data/enzyme.json" afterPath="$PROJECT_DIR$/glycompare/glypy/io/data/enzyme.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_schematic.json" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_schematic.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_synonyms.json" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_synonyms.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/data/enzyme.json" afterPath="$PROJECT_DIR$/glycompare/glypy_new/io/data/enzyme.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/monosaccharide_schematic.json" afterPath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/monosaccharide_schematic.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/monosaccharide_synonyms.json" afterPath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/monosaccharide_synonyms.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/.ipynb_checkpoints/GlyCompare_Example_CHO-checkpoint.ipynb" afterPath="$PROJECT_DIR$/glycompare/.ipynb_checkpoints/GlyCompare_Example_CHO-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/clustering_analysis_pip.py" afterPath="$PROJECT_DIR$/glycompare/clustering_analysis_pip.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/initiator.py" afterPath="$PROJECT_DIR$/glycompare/initiator.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/glycompare/customize_motif_vec.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1827">
-              <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+              <caret line="122" column="24" lean-forward="false" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -57,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1305">
-              <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+              <caret line="87" column="17" lean-forward="false" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -77,11 +70,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3780">
-              <caret line="254" column="14" lean-forward="true" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+              <caret line="254" column="14" lean-forward="false" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -201,6 +214,8 @@
         <option value="$PROJECT_DIR$/src/initiator.py" />
         <option value="$PROJECT_DIR$/glycompare/clustering_analysis_pip.py" />
         <option value="$PROJECT_DIR$/src/clustering_analysis_pip.py" />
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/glycompare/initiator.py" />
       </list>
     </option>
   </component>
@@ -473,13 +488,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/nglycan_alignment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -724,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -751,7 +751,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/customize_motif_vec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1827">
-          <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+          <caret line="122" column="24" lean-forward="false" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -761,7 +761,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1305">
-          <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+          <caret line="87" column="17" lean-forward="false" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -781,7 +781,23 @@
     <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3780">
-          <caret line="254" column="14" lean-forward="true" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+          <caret line="254" column="14" lean-forward="false" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
           <folding />
         </state>
       </provider>

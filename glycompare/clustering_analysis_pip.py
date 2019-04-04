@@ -12,7 +12,6 @@ import __init__
 import motif_class
 from  importlib import reload
 import matplotlib.pyplot as plt
-import NBT_motif_match_motifvec
 # sns.palplot(sns.color_palette("RdBu_r", 7))
 import json_utility
 import pandas as pd
