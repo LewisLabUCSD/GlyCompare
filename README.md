@@ -1,9 +1,8 @@
 # GlyCompare
-Comparing glycans, leveraging motif substructure arithmetic 
 
-## Paper link
-https://www.overleaf.com/16221947rjwhxdqwjbmq
+Bokan Bao*, Ben Kellman*, Austin Chiang, Austin York, Nathan E. Lewis
 
+Here, we present GlyCompare, a novel method wherein glycans from glycomic data are decomposed to a minimal set of intermediate substructures, thus incorporating shared intermediate glycan substructures into all comparisons of glycans. 
 
 ## Definition and nomenclature for variables in Glycompare:
   - Each keyword represents a defined type of variable. 
