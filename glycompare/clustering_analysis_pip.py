@@ -84,7 +84,7 @@ def draw_motif_cluster(g, df, name_prefix, color_threshold, fig_size=(10,35)):
     return cccluster_dict
 
 
-def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weights_dict, plot_rep=True, threshold_list=[0.5, 0.6, 0.7]):
+def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weights_dict, address, plot_rep=True, threshold_list=[0.5, 0.6, 0.7]):
     # vec_ = load_json(NBT_init.root_address + 'NBT_motif_vec.json')
     _count = 0
     for i in range(1, len(glyco_motif_cluster.keys()) + 1):
@@ -108,8 +108,8 @@ def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weigh
 
                 # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
             glycan_list = a_panel.get_reps(threshold_list=[0.51])
-            glycan_io.save_glycan(glycan_list[0], __init__.plot_output_address+name_prefix+str(i)+'.core.glycoct')
-            plot_glycan_utilities.plot_glycan(glycan_list[0], title=str(i), addr=__init__.plot_output_address+name_prefix+str(i)+'.core.eps')
+            glycan_io.save_glycan(glycan_list[0], address+name_prefix+str(i)+'.core.glycoct')
+            plot_glycan_utilities.plot_glycan(glycan_list[0], title=str(i), addr=address+name_prefix+str(i)+'.core.eps')
 
         # plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
         # plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in [0.51, 0.6, 0.7]])
@@ -117,7 +117,7 @@ def draw_glycan_cluster(glyco_motif_cluster, name_prefix, motif_vec, motif_weigh
 
 
 # print(len(cccluster_dict.keys()))
-def draw_profile_cluster(g, df, profile_name, name_prefix, color_threshold):
+def draw_profile_cluster(g, df, profile_name, name_prefix, color_threshold, address):
     """
     three profiles assss
     """
@@ -130,17 +130,17 @@ def draw_profile_cluster(g, df, profile_name, name_prefix, color_threshold):
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_col.linkage, distance_sort='descending',
                                              labels=[', '.join(i) for i in zip(col_list, profile_name)],
                                              color_threshold=color_threshold, orientation='left', leaf_font_size=25.)
-    plt.savefig(__init__.plot_output_address + name_prefix + 'profile_cluster.png')
+    plt.savefig(address + name_prefix + 'profile_cluster.png')
     return {}
 
 
 """The following are pipelines"""
 
 
-def draw_glycan_clustermap(df_ncore, name_prefix, metric="braycurtis"):
+def draw_glycan_clustermap(df_ncore, name_prefix, address, metric="braycurtis"):
     # draw clustermap
     g = sns.clustermap(df_ncore, metric=metric)
-    g.savefig(__init__.plot_output_address + name_prefix + 'clustermap.png')
+    g.savefig(address + name_prefix + 'clustermap.png')
     return g
     # draw profiles
 
@@ -189,65 +189,66 @@ def draw_glycan_clustermap(df_ncore, name_prefix, metric="braycurtis"):
 #     motif_with_n_glycan_core_all_motif(motif_, existed_table, weight_dict)
 #     motif_with_n_glycan_core(motif_, existed_table, weight_dict)
 
-def get_abd_table_pip(match_dict_addr=__init__.json_address + "match_dict.json"):
-    # load CHO paper abundance table
-    mz_abd_table = glycan_profile.load_cho_mz_abundance(cho_addr=__init__.source_address + 'nbt.3280_cho.txt',
-                                                        mz_abd_addr=__init__.source_address + 'glycan_table.xls')
-    # load glycoprofile Mass Spectrum m/z and glycan structure info
-    profile_mz_to_id = glycan_profile.load_glycan_profile_dic()
-    # normalize CHO abundance table
-    norm_mz_abd_dict = glycan_profile.get_norm_mz_abd_table(mz_abd_table,
-                                                            norm_abd_table_dict_addr=__init__.json_address + "norm_mz_abd_dict.json")
-    # load match_dict
-    match_dict = json_utility.load_json(match_dict_addr)
-    # digitalize the glycoprofile
-    glycoprofile_list = glycan_profile.get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict)
-    # generate table
-    table_generator = glycan_profile.MotifAbdTableGenerator(glycoprofile_list)
-    motif_abd_table = table_generator.table_against_wt_relative_abd()
-    return motif_abd_table
+# def get_abd_table_pip(match_dict_addr=__init__.json_address + "match_dict.json"):
+#     # load CHO paper abundance table
+#     mz_abd_table = glycan_profile.load_cho_mz_abundance(cho_addr=__init__.source_address + 'nbt.3280_cho.txt',
+#                                                         mz_abd_addr=__init__.source_address + 'glycan_table.xls')
+#     # load glycoprofile Mass Spectrum m/z and glycan structure info
+#     profile_mz_to_id = glycan_profile.load_glycan_profile_dic()
+#     # normalize CHO abundance table
+#     norm_mz_abd_dict = glycan_profile.get_norm_mz_abd_table(mz_abd_table,
+#                                                             norm_abd_table_dict_addr=__init__.json_address + "norm_mz_abd_dict.json")
+#     # load match_dict
+#     match_dict = json_utility.load_json(match_dict_addr)
+#     # digitalize the glycoprofile
+#     glycoprofile_list = glycan_profile.get_glycoprofile_list(profile_mz_to_id, norm_mz_abd_dict, match_dict)
+#     # generate table
+#     table_generator = glycan_profile.MotifAbdTableGenerator(glycoprofile_list)
+#     motif_abd_table = table_generator.table_against_wt_relative_abd()
+#     return motif_abd_table
 
+#
+# def motif_with_n_glycan_core(motif_lib, existed_table, color_threshold=0.95):
+#     weight_dict = motif_class.get_weight_dict(existed_table)
+#     dropper = motif_class.NodesDropper(motif_lib, weight_dict)
+#     dropper.drop_node()
+#     print("", len(dropper.drop_node()))
+#     df_ncore = existed_table[existed_table.index.isin(dropper.nodes_kept)]
+#     """ with n_glycan_core using jaccard for binary and use braycurtis for float
+#     """
+#     df_ncore.to_csv(__init__.json_address + r"abundance_matrix.txt")
+#     name_prefix = 'dropped'
+#     g = draw_glycan_clustermap(df_ncore, color_threshold, name_prefix)
+#     draw_profile_cluster(g, df_ncore, profile_name, name_prefix, color_threshold)
+#     cccluster_dict = draw_motif_cluster(g, df_ncore, name_prefix, color_threshold=0.23)
 
-def motif_with_n_glycan_core(motif_lib, existed_table, color_threshold=0.95):
-    weight_dict = motif_class.get_weight_dict(existed_table)
-    dropper = motif_class.NodesDropper(motif_lib, weight_dict)
-    dropper.drop_node()
-    print("", len(dropper.drop_node()))
-    df_ncore = existed_table[existed_table.index.isin(dropper.nodes_kept)]
-    """ with n_glycan_core using jaccard for binary and use braycurtis for float
-    """
-    df_ncore.to_csv(__init__.json_address + r"abundance_matrix.txt")
-    name_prefix = 'dropped'
-    g = draw_glycan_clustermap(df_ncore, color_threshold, name_prefix)
-    draw_profile_cluster(g, df_ncore, profile_name, name_prefix, color_threshold)
-    cccluster_dict = draw_motif_cluster(g, df_ncore, name_prefix, color_threshold=0.23)
-
-
-def pipe_motif_ana_with_motif_existance():
-    """ for every glycan use the motif existance vec(0/1) to represent the existance of the motif
-        the abundance of the motif in a profile is represented by the sum of weight*existence
-    """
-
-    motif_abd_table = get_abd_table_pip()
-
-    motif_lib = motif_class.MotifLabNGlycan(
-        json_utility.load_json(__init__.merged_motif_dict_addr))  # unicarbkb_motifs_12259.json
-
-    weight_dict = motif_class.get_weight_dict(motif_abd_table)
-    dropper = motif_class.NodesDropper(motif_lib, weight_dict)
-    dropper.drop_node()
-    print("", len(dropper.drop_node()))
-    df_ncore = motif_abd_table[motif_abd_table.index.isin(dropper.nodes_kept)]
-    # draw plot
-    # motif_with_n_glycan_core_all_motif(motif_, _table, weight_dict)
-    """ with n_glycan_core using jaccard for binary and use braycurtis for float
-    """
-    df_ncore.to_csv(__init__.json_address + r"abundance_matrix.txt")
-    name_prefix = 'dropped'
-    g = draw_glycan_clustermap(df_ncore, name_prefix=name_prefix)
-    draw_profile_cluster(g, df_ncore, profile_name, name_prefix, color_threshold=0.95)
-    cccluster_dict = draw_motif_cluster(g, df_ncore, name_prefix, color_threshold=0.23)
-
+#
+# def pipe_motif_ana_with_motif_existance():
+#     """ for every glycan use the motif existance vec(0/1) to represent the existance of the motif
+#         the abundance of the motif in a profile is represented by the sum of weight*existence
+#     """
+#
+#     motif_abd_table = get_abd_table_pip()
+#
+#     motif_lib = motif_class.MotifLabNGlycan(
+#         json_utility.load_json(__init__.merged_motif_dict_addr))  # unicarbkb_motifs_12259.json
+#
+#     weight_dict = motif_class.get_weight_dict(motif_abd_table)
+#     dropper = motif_class.NodesDropper(motif_lib, weight_dict)
+#     dropper.drop_node()
+#     print("", len(dropper.drop_node()))
+#     df_ncore = motif_abd_table[motif_abd_table.index.isin(dropper.nodes_kept)]
+#     # draw plot
+#     # motif_with_n_glycan_core_all_motif(motif_, _table, weight_dict)
+#     """ with n_glycan_core using jaccard for binary and use braycurtis for float
+#     """
+#     df_ncore.to_csv(__init__.json_address + r"abundance_matrix.txt")
+#     name_prefix = 'dropped'
+#     g = draw_glycan_clustermap(df_ncore, name_prefix=name_prefix)
+#     draw_profile_cluster(g, df_ncore, profile_name, name_prefix, color_threshold=0.95)
+#     cccluster_dict = draw_motif_cluster(g, df_ncore, name_prefix, color_threshold=0.23)
+#
 
 if __name__ == '__main__':
-    pipe_motif_ana_with_motif_existance()
+    # pipe_motif_ana_with_motif_existance()
+    pass

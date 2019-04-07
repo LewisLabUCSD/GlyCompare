@@ -1,45 +1,56 @@
-import __init__
 import os
 
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+import __init__
 import customize_motif_vec
 import extract_motif
 import glycan_io
 import glycan_profile
 import json_utility
 import motif_class
-from glycan_io import *
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 
 def load_para_keywords(project_name, working_addr, **kwargs):
-    intermediate_address = os.path.join(working_addr, "intermediate_file/")
-    plot_output_address = os.path.join(working_addr, "output_plot/")
-    source_address = os.path.join(working_addr, "source_data/")
-    glycoct_dir = os.path.join(source_address, 'glycoct')
-    name_to_id_addr = os.path.join(source_address, 'glycoprofile_name_to_glycan_id.json')
-    abundance_table_addr = os.path.join(source_address, 'abundance_table.xls')
-    external_profile_naming_addr = os.path.join(source_address, 'external_profile_naming.json')
+    """
+    generate all necessary intermediate files
+    :param project_name:
+    :param working_addr:
+    :param kwargs: any other parameter might be used
+    :return: a comprehensive para dict
+    """
+    # for i in
+    intermediate_dir = os.path.join(working_addr, "intermediate_file/")
+    plot_output_dir = os.path.join(working_addr, "output_plot/")
+    source_dir = os.path.join(working_addr, "source_data/")
+    glycoct_dir = os.path.join(working_addr, 'glycoct/')
 
-    glycan_dict_addr = os.path.join(intermediate_address, project_name + '_glycan_dict.json')
-    glycan_motif_dict_addr = os.path.join(intermediate_address, project_name + '_glycan_motif_dict.json')
-    motif_dict_addr = os.path.join(intermediate_address, project_name + "_motif_dict.json")
-    matched_dict_addr = os.path.join(intermediate_address, project_name + "_match_dict.json")
-    motif_abd_table_addr = os.path.join(intermediate_address, project_name + "_motif_abd_table.csv")
-    substructure_abd_table_addr = os.path.join(intermediate_address, project_name + '_substructure_abd_table.csv')
-    raw_abd_zscore_plot_addr = os.path.join(plot_output_address, 'raw_abundance_zscore.eps')
+    name_to_id_addr = os.path.join(source_dir, 'glycoprofile_name_to_glycan_id.json')
+    # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
+    external_profile_naming_addr = os.path.join(source_dir, 'external_profile_naming.json')
 
+    glycan_dict_addr = os.path.join(intermediate_dir, project_name + '_glycan_dict.json')
+    glycan_motif_dict_addr = os.path.join(intermediate_dir, project_name + '_glycan_motif_dict.json')
+    motif_dict_addr = os.path.join(intermediate_dir, project_name + "_motif_dict.json")
+    matched_dict_addr = os.path.join(intermediate_dir, project_name + "_match_dict.json")
+    motif_abd_table_addr = os.path.join(intermediate_dir, project_name + "_motif_abd_table.csv")
+    substructure_abd_table_addr = os.path.join(intermediate_dir, project_name + '_substructure_abd_table.csv')
+    raw_abd_zscore_plot_addr = os.path.join(plot_output_dir, 'raw_abundance_zscore.eps')
+    glycoprofile_list_addr = os.path.join(intermediate_dir, project_name + "_glycoprofile_list.json")
     simple_profile = False
     simple_naming = False
     external_profile_naming = False
     para_keyword = {'project_name': project_name,
                     'working_addr': working_addr,
                     'glycoct_dir': glycoct_dir,
-                    'source_address': source_address,
-                    'intermediate_address': intermediate_address,
-                    'plot_output_address': plot_output_address,
+                    'source_dir': source_dir,
+                    'intermediate_dir': intermediate_dir,
+                    'plot_output_dir': plot_output_dir,
                     'glycan_dict_addr': glycan_dict_addr,
-                    'abundance_table_addr': abundance_table_addr,
+                    # 'abundance_table_addr': abundance_table_addr,
                     'glycan_motif_dict_addr': glycan_motif_dict_addr,
                     'motif_dict_addr': motif_dict_addr,
                     'substructure_abd_table_addr': substructure_abd_table_addr,
@@ -51,65 +62,87 @@ def load_para_keywords(project_name, working_addr, **kwargs):
                     'external_profile_naming': external_profile_naming,
                     'name_to_id_addr': name_to_id_addr,
                     'raw_abd_zscore_plot_addr': raw_abd_zscore_plot_addr,
-
+                    'glycoprofile_list_addr': glycoprofile_list_addr
                     }
     for key, para in kwargs.items():
         para_keyword[key] = para
     return para_keyword
 
 
-def creat_files(keyword_dict):
+def _create_files(file_dir_list):
+    """
+    create the files needed
+    :param keyword_dict:
+    :return:
+    """
     # exact_Ture = True
-    intermediate_address = keyword_dict['intermediate_address']
-    plot_output_address = keyword_dict['plot_output_address']
-    source_address = keyword_dict['source_address']
+    # intermediate_address = keyword_dict['intermediate_dir']
+    # plot_output_address = keyword_dict['plot_output_address']
+    # source_address = keyword_dict['source_address']
+    # source_address = keyword_dict['source_address']
 
     """create all dir for files"""
-    os.mkdir(plot_output_address)
-    os.mkdir(intermediate_address)
-    os.mkdir(source_address)
-    print("created", plot_output_address)
-    print("created", intermediate_address)
-    print("created", source_address)
-    print("Successfully created the directory need")
+    for i in file_dir_list:
+        if not os.path.isdir(i):
+            os.mkdir(i)
+            print("created", i)
 
 
-def check_exist(dirnames):
+
+def _find_dir(keywords_dict):
+    checked_list = []
+    for i in keywords_dict.keys():
+        if i.find('_dir') != -1:
+            checked_list.append(keywords_dict[i])
+    return checked_list
+
+
+def _check_exist(checked_list):
     """check all dir"""
     print("Check if the required files exist")
-
-    for i in ["intermediate_file", "output_plot", "source_data"]:
-        if i not in dirnames:
-            print("files doesn't exist")
+    for i in checked_list:
+        if not os.path.isdir(i):
+            print("files doesn't exist", i)
             return False
     print("files checked")
     return True
 
 
 def check_init_dir(keywords_dict):
+    """
+    check if the working directory exists, if new ask to transfer the
+
+    :param keywords_dict:
+    :return:
+    """
     working_addr = keywords_dict['working_addr']
     if os.path.isdir(working_addr):
         pass
     else:
-        try:
-            os.mkdir(working_addr)
-        except OSError:
-            print("Creation of the directory %s failed" % working_addr)
-        else:
-            print("Successfully created the directory %s " % working_addr)
+        # print(working_addr)
+        os.mkdir(working_addr)
+        print("Successfully created the directory %s " % working_addr)
 
-    for (dirpath, dirnames, filenames) in os.walk(working_addr):
-        if not check_exist(dirnames):
-            creat_files(working_addr)
-        break
-    __init__.root_ = keywords_dict['working_addr']
-    __init__.intermediate_address = keywords_dict["intermediate_address"]
-    __init__.plot_output_address = keywords_dict['plot_output_address']
-    __init__.source_address = keywords_dict['source_address']
-    print("set", __init__.plot_output_address)
-    print("set", __init__.json_address)
-    print("set", __init__.source_address)
-    print("set created the directory need")
+    check_dir_list = _find_dir(keywords_dict)
+    # print(check_dir_list)
+    if not _check_exist(check_dir_list):
+        _create_files(check_dir_list)
+    assert _check_exist(check_dir_list), 'files created unsuccessfully'
+    print("Successfully created the directory need, please add the source file is the directory")
+
+
+        # break
+    # __init__.intermediate_address = keywords_dict["intermediate_address"]
+    # __init__.plot_output_address = keywords_dict['plot_output_address']
+    # __init__.source_address = keywords_dict['source_address']
+    # print("set", __init__.plot_output_address)
+    # print("set", __init__.json_address)
+    # print("set", __init__.source_address)
+
+    # print("set created the directory need")
+    # print("set", keywords_dict["intermediate_address"])
+    # print("set", keywords_dict['plot_output_address'])
+    # print("set", keywords_dict['source_address'])
 
 
 #
@@ -144,15 +177,15 @@ def load_structure_pip(keywords_dict, data_type, structure_loader):
         # project_name = kwargs['project_name']
         if data_type == "glycan_dict":
             glycan_dict = structure_loader
-            assert check_glycan_dict(glycan_dict), "Wrong structure_loader"
+            assert glycan_io.check_glycan_dict(glycan_dict), "Wrong structure_loader"
 
         elif data_type == "glytoucanid":
             glycan_dict = {}
             if 'glytoucan_db_addr' not in keywords_dict.keys():
                 assert False, 'need glytoucan_db_addr'
-            glytoucan_db = load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
+            glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
-                _re = load_glycan_obj_from_glytoucan(i, glytoucan_db)
+                _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
                 if _re:
                     glycan_dict[i] = _re
 
@@ -161,7 +194,7 @@ def load_structure_pip(keywords_dict, data_type, structure_loader):
                 assert False, 'need glycoct_dir'
             glycoct_dir = keywords_dict['glycoct_dir']
             glycan_dict = {}
-            _glycan_dict = load_glycan_obj_from_glycoct_file(glycoct_dir)
+            _glycan_dict = glycan_io.load_glycan_obj_from_glycoct_file(glycoct_dir)
             try:
                 for j in structure_loader:
                     _j = j
@@ -180,13 +213,13 @@ def load_structure_pip(keywords_dict, data_type, structure_loader):
             # print('isany', kwargs['glycoct_dir'])
             glycoct_dir = keywords_dict['glycoct_dir']
             glycan_dict = {}
-            _glycoct_glycan_dict = load_glycan_obj_from_glycoct_file(glycoct_dir)
+            _glycoct_glycan_dict = glycan_io.load_glycan_obj_from_glycoct_file(glycoct_dir)
             print('end loading glycoct from ', glycoct_dir)
             # print(glycan_dict)
-            glytoucan_db = load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
+            glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
                 if i not in _glycoct_glycan_dict.keys():
-                    _re = load_glycan_obj_from_glytoucan(i, glytoucan_db)
+                    _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
                     if _re:
                         glycan_dict[i] = _re
                     else:
@@ -196,8 +229,8 @@ def load_structure_pip(keywords_dict, data_type, structure_loader):
             print('end loading glytoucan db total', len(glycan_dict.keys()), 'are loaded')
         else:
             assert False, 'the Wrong type'
-        store_json(keywords_dict['glycan_dict_addr'],
-                   glycan_obj_to_glycan_str(glycan_dict))
+        json_utility.store_json(keywords_dict['glycan_dict_addr'],
+                                glycan_io.glycan_obj_to_glycan_str(glycan_dict))
         print(keywords_dict['glycan_dict_addr'])
         return glycan_dict
     except KeyError:
@@ -233,7 +266,7 @@ def glycan_deconvoluting_pip(keywords_dict, forced=False):
             print('finished merge motif_dic')
 
         else:
-            merge_motif_dict = glycan_io.glycan_str_to_glycan_obj(load_json(motif_dict_addr))
+            merge_motif_dict = glycan_io.glycan_str_to_glycan_obj(glycan_io.load_json(motif_dict_addr))
             print('loaded merged motif_dic')
 
         if forced or not os.path.isfile(matched_dict_addr):
@@ -244,7 +277,7 @@ def glycan_deconvoluting_pip(keywords_dict, forced=False):
         print('cannot find the glycan_dict file')
 
 
-def glyco_vector_pip(keywords_dict, simple_profile=False, simple_naming=False,
+def glyco_vector_pip(keywords_dict, abd_table, simple_profile=False, simple_naming=False,
                      external_profile_naming=False, forced=False, ):
     """
     required file
@@ -256,23 +289,19 @@ def glyco_vector_pip(keywords_dict, simple_profile=False, simple_naming=False,
     :return:
     """
     name_to_id_addr = keywords_dict['name_to_id_addr']
-    abundance_table_addr = keywords_dict['abundance_table_addr']
+
+    naming_abd_dict, profile_columns = glycan_io.abd_table_to_dict(abd_table)
 
     """generating the glycoprofile naming"""
 
     matched_dict_addr = keywords_dict['matched_dict_addr']
     external_profile_naming_addr = keywords_dict['external_profile_naming_addr']
-    motif_dict_addr = keywords_dict['motif_dict_addr']
     # motif_abd_table_addr = keywords_dict['motif_abd_table_addr']
     substructure_abd_table_addr = keywords_dict['substructure_abd_table_addr']
+    glycoprofile_list_addr = keywords_dict['glycoprofile_list_addr']
 
     if forced or not os.path.isfile(substructure_abd_table_addr):
-        if os.path.isfile(name_to_id_addr) \
-                and os.path.isfile(abundance_table_addr) \
-                and os.path.isfile(matched_dict_addr) \
-                and os.path.isfile(motif_dict_addr):
-
-            naming_abd_dict, profile_columns = glycan_io.load_table_to_dict(abundance_table_addr, loader=pd.read_excel)
+        if os.path.isfile(matched_dict_addr):
             if simple_profile:
                 if simple_naming:
                     """the easiest way just duplicate everything"""
@@ -280,9 +309,10 @@ def glyco_vector_pip(keywords_dict, simple_profile=False, simple_naming=False,
                     naming = list(naming_abd_dict.keys())
                     for i in profile_columns:
                         profile_naming_to_id[i] = dict(zip(naming, naming))
+                    # print(profile_naming_to_id)
                 else:
                     name_to_id_addr = keywords_dict['name_to_id_addr']
-                    name_to_id = load_json(name_to_id_addr)
+                    name_to_id = glycan_io.load_json(name_to_id_addr)
                     _ = list(name_to_id.keys())
                     if type(_[0]) == dict:
                         profile_naming_to_id = glycan_io.load_json(name_to_id_addr)
@@ -291,7 +321,10 @@ def glyco_vector_pip(keywords_dict, simple_profile=False, simple_naming=False,
                         for i in profile_columns:
                             profile_naming_to_id[i] = name_to_id
             else:
-                profile_naming_to_id = glycan_io.load_glycoprofile_name_to_id(name_to_id_addr)
+                if os.path.isfile(name_to_id_addr):
+                    profile_naming_to_id = glycan_io.load_glycoprofile_name_to_id(name_to_id_addr)
+                else:
+                    assert False, 'missing one of them' + name_to_id_addr
 
             if external_profile_naming:
                 if os.path.isfile(external_profile_naming_addr):
@@ -308,25 +341,27 @@ def glyco_vector_pip(keywords_dict, simple_profile=False, simple_naming=False,
                                                                      naming_abd_dict,
                                                                      match_dict,
                                                                      profile_columns,
-                                                                     profile_name, get_existance=True)
+                                                                     profile_name,
+                                                                     glycoprofile_list_addr,
+                                                                     get_existance=True)
             table_generator = glycan_profile.MotifAbdTableGenerator(glycoprofile_list)
             substructure_abd_table = table_generator.table_against_wt_relative_abd()
             substructure_abd_table.to_csv(substructure_abd_table_addr)
         else:
             assert False, 'missing one of them' + \
-                          '\n'.join([name_to_id_addr,
-                                     abundance_table_addr,
-                                     matched_dict_addr,
+                          '\n'.join([matched_dict_addr,
                                      external_profile_naming_addr,
-                                     motif_dict_addr]) + '\n' + \
-                          '\n'.join([str(xx) for xx in [os.path.isfile(name_to_id_addr),
-                                                        os.path.isfile(abundance_table_addr),
-                                                        os.path.isfile(matched_dict_addr),
+                                     ]) + '\n' + \
+                          '\n'.join([str(xx) for xx in [os.path.isfile(matched_dict_addr),
                                                         os.path.isfile(external_profile_naming_addr),
-                                                        os.path.isfile(motif_dict_addr)]])
+                                                        ]])
     else:
         substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
         print('loaded substructure_abd_table')
+
+    motif_dict_addr = keywords_dict['motif_dict_addr']
+    assert os.path.isfile(motif_dict_addr), 'missing ' + motif_dict_addr
+
     motif_dict = glycan_io.load_motif_dict_from_json(motif_dict_addr)
     _motif_lab = motif_class.MotifLabwithCore(motif_dict)  # unicarbkb_motifs_12259.json
     _motif_lab.get_dependence_tree_core()
@@ -383,19 +418,3 @@ def parse_meta_table(addr, *kwargs):
 
 def parse_with_name(name_dict):
     pass
-
-
-def get_motif_abundance_table():
-    translation_list = []
-    for i in list(motif_data):
-        if translation_table[i] in list(glycan_data):
-            translation_list.append(translation_table[i])
-    motif_data.columns = translation_list
-    # gets each data set in similar sorted order
-    sorted_motif_data = motif_data.sort_index(axis=1)
-    sorted_motif_data.head()
-    motif_abundance = pd.DataFrame(data=np.dot(sorted_motif_data, sorted_glycan_data_array.transpose()))
-
-
-import numpy as np
-from glycan_profile import Glycoprofile

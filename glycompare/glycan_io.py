@@ -103,7 +103,7 @@ def load_match_dict_from_json(addr):
     return load_json(addr)
 
 
-def load_glycan_obj_from_database(topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct):
+def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=glycoct):
     """
         each line in topology_list is defined as m/z, glycan_id
 
@@ -134,7 +134,10 @@ def load_glycan_obj_from_database(topology_list_addr, output_file=__init__.glyca
             glycan_str_dict[glycan_id] = _glycan_str
             glycan_dict[glycan_id] = loader.loads(_glycan_str)
     print("There are ", _count, "glycan id found; ", _loaded, "glycans loaded")
-    store_json(output_file, glycan_str_dict)
+    if output_file=="":
+        pass
+    else:
+        store_json(output_file, glycan_str_dict)
     return glycan_dict
 
 
@@ -176,8 +179,46 @@ def glycan_str_to_glycan_obj(a_dict_of_glycan_str):
         return a_dict
 
 
-def load_table_to_dict(addr, loader=pd.read_excel):
-    return abd_table_to_dict(loader(addr, index_col=0))
+def load_table_to_dict(addr):
+    return abd_table_to_dict(load_table(addr))
+
+
+def load_table(addr, rep=None):
+    """
+    require the table: column is glycan, row is glycoprofile
+    :param addr:
+    :return:
+    """
+    _format = addr.split('.')[-1]
+    if _format == 'xls':
+        _table = pd.read_excel(addr, index_col=0)
+    elif _format in ['csv', 'txt']:
+        f = open(addr, 'r')
+        f.readline()
+        a = f.readline()
+        f.close()
+        if a.find(',') != -1:
+            _table = pd.read_csv(addr, index_col=0, sep=',')
+        elif a.find('\t') != -1:
+            _table = pd.read_csv(addr, index_col=0, sep='\t')
+        else:
+            assert False, 'Error in load_table_to_dict, sep is not , or tab'
+    else:
+        print('format is unrecognizable, will try pd.read_csv')
+        f = open(addr, 'r')
+        f.readline()
+        a = f.readline()
+        f.close()
+        if a.find(',') != -1:
+            _table = pd.read_csv(addr, index_col=0, sep=',')
+        elif a.find('\t') != -1:
+            _table = pd.read_csv(addr, index_col=0, sep='\t')
+        else:
+            assert False, 'Error in load_table_to_dict, sep is neither , nor tab'
+    if rep:
+        return _table.replace(rep, 0)
+    else:
+        return _table
 
 
 def abd_table_to_dict(abd_table):
@@ -288,7 +329,7 @@ def load_glytoucan_database(addr):
     return load_json(addr)
 
 
-def load_glycan_obj_from_glycoct(glycan_id, address=__init__.source_address):
+def load_glycan_obj_from_glycoct(glycan_id, address):
     _gly_stu = load_glycan_str_from_glycoct(glycan_id, address)
     if _gly_stu == '':
         return None
@@ -296,7 +337,7 @@ def load_glycan_obj_from_glycoct(glycan_id, address=__init__.source_address):
         return glycoct.loads(_gly_stu)
 
 
-def load_glycan_str_from_glycoct(glycan_id, address=__init__.source_address):
+def load_glycan_str_from_glycoct(glycan_id, address):
     try:
         if Path(os.path.join(address, glycan_id)).exists():
             f = open(os.path.join(address, glycan_id))
