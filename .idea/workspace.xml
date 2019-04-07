@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/1417.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/1754.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2244.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2401.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2605.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2605.2.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2646.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2693.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2693.2.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2693.3.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/2967.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3055.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3055.2.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3143.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3212.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3416.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3416.2.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3416.3.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3457.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3592.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3661.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3865.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/3953.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/4041.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/4402.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/4490.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/4587.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/4675.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/4851.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/5312.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/glycoct/5486.1.glycoct_condensed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/GlyCompare_Example_CHO.ipynb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/intermediate_file/test_cho_glycan_dict.json" afterPath="$PROJECT_DIR$/example_data/test_cho/intermediate_file/test_cho_glycan_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/GlyCompare_Example_CHO-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/GlyCompare_Example_CHO-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/library_building_for_cho.ipynb" afterPath="$PROJECT_DIR$/example_notebook/library_building_for_cho.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/.ipynb_checkpoints/GlyCompare_Example_CHO-checkpoint.ipynb" afterPath="$PROJECT_DIR$/glycompare/.ipynb_checkpoints/GlyCompare_Example_CHO-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/__init__.py" afterPath="$PROJECT_DIR$/glycompare/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/clustering_analysis_pip.py" afterPath="$PROJECT_DIR$/glycompare/clustering_analysis_pip.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/extract_motif.py" afterPath="$PROJECT_DIR$/glycompare/extract_motif.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glycan_io.py" afterPath="$PROJECT_DIR$/glycompare/glycan_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glycan_profile.py" afterPath="$PROJECT_DIR$/glycompare/glycan_profile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/initiator.py" afterPath="$PROJECT_DIR$/glycompare/initiator.py" />
-    </list>
+    <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,8 +87,8 @@
       <file leaf-file-name="initiator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="286" column="25" lean-forward="true" selection-start-line="286" selection-start-column="25" selection-end-line="286" selection-end-column="25" />
+            <state relative-caret-position="711">
+              <caret line="281" column="7" lean-forward="false" selection-start-line="281" selection-start-column="7" selection-end-line="281" selection-end-column="7" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -487,7 +443,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24320458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24320458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -821,8 +777,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="286" column="25" lean-forward="true" selection-start-line="286" selection-start-column="25" selection-end-line="286" selection-end-column="25" />
+        <state relative-caret-position="711">
+          <caret line="281" column="7" lean-forward="false" selection-start-line="281" selection-start-column="7" selection-end-line="281" selection-end-column="7" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
