@@ -195,6 +195,7 @@ def load_structure_pip(keywords_dict, data_type, structure_loader):
             glycoct_dir = keywords_dict['glycoct_dir']
             glycan_dict = {}
             _glycan_dict = glycan_io.load_glycan_obj_from_glycoct_file(glycoct_dir)
+            assert type(structure_loader) is list, 'structure_loader should be a list of glycan_id'
             try:
                 for j in structure_loader:
                     _j = j

@@ -61,14 +61,6 @@ anomer_symbol_map = {
 }
 
 
-def output_glycan_motif_vec_to_file():
-    vec_dict = load_json(output_motif_dic_degree_list_addr)
-    motif_ = motif_class.GlycanMotifLib(vec_dict)
-    set_address = __init__.motif_plot_address
-    for idex, i in enumerate(motif_.motif_vec):
-        _ = plot_glycan(i, center=True)
-        plt.savefig(set_address + str(idex) + '.png')
-
 
 def plot_glycan_profile(a_profile, glycan_dict):
     _a = len(a_profile.keys())
@@ -121,9 +113,14 @@ def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
         plt.savefig(addr)
 
 
-def plot_glycan_dict(a_glycan_dict):
+def plot_glycan_dict(a_glycan_dict, single=True):
+
     a_keys = list(a_glycan_dict.keys())
-    plot_glycan_list([a_glycan_dict[i] for i in a_keys], idex_list=a_keys)
+    if single:
+        for i in a_keys:
+            plot_glycan(a_glycan_dict[i],title=i)
+    else:
+        plot_glycan_list([a_glycan_dict[i] for i in a_keys], idex_list=a_keys)
 
 
 def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=True, label=True,

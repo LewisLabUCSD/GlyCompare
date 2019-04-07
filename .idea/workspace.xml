@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/customize_motif_vec.py" afterPath="$PROJECT_DIR$/glycompare/customize_motif_vec.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/extract_motif.py" afterPath="$PROJECT_DIR$/glycompare/extract_motif.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glycan_profile.py" afterPath="$PROJECT_DIR$/glycompare/glycan_profile.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/initiator.py" afterPath="$PROJECT_DIR$/glycompare/initiator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +22,7 @@
       <file leaf-file-name="clustering_analysis_pip.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
+            <state relative-caret-position="15">
               <caret line="71" column="58" lean-forward="false" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
               <folding />
             </state>
@@ -57,8 +56,8 @@
       <file leaf-file-name="glycan_io.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4976">
-              <caret line="365" column="10" lean-forward="true" selection-start-line="365" selection-start-column="10" selection-end-line="365" selection-end-column="10" />
+            <state relative-caret-position="227">
+              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -66,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="-1575">
               <caret line="790" column="18" lean-forward="false" selection-start-line="790" selection-start-column="18" selection-end-line="790" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -88,14 +87,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2883">
-              <caret line="246" column="23" lean-forward="false" selection-start-line="246" selection-start-column="23" selection-end-line="246" selection-end-column="23" />
+            <state relative-caret-position="151">
+              <caret line="248" column="49" lean-forward="true" selection-start-line="248" selection-start-column="49" selection-end-line="248" selection-end-column="49" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plot_glycan_utilities.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="122" column="4" lean-forward="false" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -227,10 +236,11 @@
         <option value="$PROJECT_DIR$/glycompare/clustering_analysis_pip.py" />
         <option value="$PROJECT_DIR$/glycompare/__init__.py" />
         <option value="$PROJECT_DIR$/glycompare/glycan_io.py" />
-        <option value="$PROJECT_DIR$/glycompare/initiator.py" />
         <option value="$PROJECT_DIR$/glycompare/customize_motif_vec.py" />
         <option value="$PROJECT_DIR$/glycompare/extract_motif.py" />
         <option value="$PROJECT_DIR$/glycompare/glycan_profile.py" />
+        <option value="$PROJECT_DIR$/glycompare/initiator.py" />
+        <option value="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" />
       </list>
     </option>
   </component>
@@ -679,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="108" column="46" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/test_glycan_io.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -705,14 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="71" column="58" lean-forward="false" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -740,16 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2883">
-          <caret line="246" column="23" lean-forward="false" selection-start-line="246" selection-start-column="23" selection-end-line="246" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/customize_motif_vec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1113">
@@ -770,22 +755,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1575">
+          <caret line="790" column="18" lean-forward="false" selection-start-line="790" selection-start-column="18" selection-end-line="790" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4976">
-          <caret line="365" column="10" lean-forward="true" selection-start-line="365" selection-start-column="10" selection-end-line="365" selection-end-column="10" />
+        <state relative-caret-position="227">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
+    <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="790" column="18" lean-forward="false" selection-start-line="790" selection-start-column="18" selection-end-line="790" selection-end-column="18" />
+        <state relative-caret-position="15">
+          <caret line="71" column="58" lean-forward="false" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="122" column="4" lean-forward="false" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="248" column="49" lean-forward="true" selection-start-line="248" selection-start-column="49" selection-end-line="248" selection-end-column="49" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
