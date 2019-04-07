@@ -269,25 +269,26 @@ def check_motif_dict_length(a_dict):
     return sum([len(a_dict[i]) for i in a_dict.keys()])
 
 
-def customizing_motif_vec_pip():
-    """ merge the substructure of all glycans into motif dict"""
-    print('start merging')
-    glycan_motif_dict = glycan_io.glycan_str_to_glycan_obj(
-        load_json(__init__.glycan_motif_dict_addr))
-
-    merged_motif_dict = merge_motif_dict_pipe(glycan_motif_dict,
-                                              output_merged_motif_dict_addr=__init__.merged_motif_dict_addr)
-
-    """ Start motif matching"""
-    print('start motif match')
-    merged_motif_dict = glycan_io.glycan_str_to_glycan_obj(load_json(__init__.merged_motif_dict_addr))
-    match_dict = motif_matching_wrapper(merged_motif_dict,
-                                        glycan_motif_dict,
-                                        matched_glycan_dict_addr=__init__.output_matched_dict_addr)
+# def customizing_motif_vec_pip():
+#     """ merge the substructure of all glycans into motif dict"""
+#     print('start merging')
+#     glycan_motif_dict = glycan_io.glycan_str_to_glycan_obj(
+#         load_json(__init__.glycan_motif_dict_addr))
+#
+#     merged_motif_dict = merge_motif_dict_pipe(glycan_motif_dict,
+#                                               output_merged_motif_dict_addr=__init__.merged_motif_dict_addr)
+#
+#     """ Start motif matching"""
+#     print('start motif match')
+#     merged_motif_dict = glycan_io.glycan_str_to_glycan_obj(load_json(__init__.merged_motif_dict_addr))
+#     match_dict = motif_matching_wrapper(merged_motif_dict,
+#                                         glycan_motif_dict,
+#                                         matched_glycan_dict_addr=__init__.output_matched_dict_addr)
 
     # nbt_table = pd.read_table(input_profile_addr)
     # a_profile = build_profiles(nbt_glycan_dict, nbt_table)
 
 
 if __name__ == '__main__':
-     customizing_motif_vec_pip()
+    # customizing_motif_vec_pip()
+    pass

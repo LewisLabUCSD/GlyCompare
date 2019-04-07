@@ -10,6 +10,7 @@ import glycan_io
 import __init__
 from json_utility import load_json, store_json
 
+
 # def extract_motif(glycoct_obj, idex=0):
 #     # print('start getmotif')
 #     _frag_motif_list = {}
@@ -96,7 +97,7 @@ def extract_motif(a_glycan, branch=5):
         else:
             extracted_motif_dic[str(len(_frag_gly))].append(_frag_gly)
     # print('ab')
-    extracted_motif_dic[str(len(a_glycan))]=[a_glycan]
+    extracted_motif_dic[str(len(a_glycan))] = [a_glycan]
     # print('ac')
     return extracted_motif_dic
 
@@ -116,15 +117,13 @@ def extract_motif_wrapper(a_name, a_glycan_str, motif_dic):
         motif_dic[a_name] = extract_motif(a_glycan_str)
         end_time = time.time()
         print(a_name, len(motif_dic[a_name]), end_time - start_time)
-                # print('has_motif', motif_dic[_name])
-                #     for j in motif_dic.keys():
-                #         print(j, len(motif_dic[j]))
+        # print('has_motif', motif_dic[_name])
+        #     for j in motif_dic.keys():
+        #         print(j, len(motif_dic[j]))
     except TypeError:
-            print(a_name, 'has error')
+        print(a_name, 'has error')
     except KeyboardInterrupt:
-            print('break')
-
-
+        print('break')
 
 
 def get_motif_pip(glycan_dict, gly_len, output_file):
@@ -152,9 +151,9 @@ def get_motif_pip(glycan_dict, gly_len, output_file):
         """ using get motif with count wrapper
             Also check exists wrapper
         """
-        result=pool.apply_async(extract_motif_wrapper, args=(i, glycan_dict[i], motif_dic))
+        result = pool.apply_async(extract_motif_wrapper, args=(i, glycan_dict[i], motif_dic))
     result.get()
-        # print('finished ', idex)
+    # print('finished ', idex)
     # print("closing poll")
     pool.close()
     # print('joining pool')
@@ -172,7 +171,7 @@ def get_motif_pip(glycan_dict, gly_len, output_file):
         str_motif[i] = {}
         for j in glycan_motif_dic[i]:
             str_motif[i][j] = [str(k) for k in glycan_motif_dic[i][j]]
-    if output_file!='':
+    if output_file != '':
         store_json(output_file, str_motif)
     return glycan_motif_dic
 
@@ -181,6 +180,7 @@ def main():
     # glycan_dict = glycan_io.load_glycan_obj_from_database(topology_list_addr=__init__.topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct)
     # glycan_motif_dic = get_motif_pip(glycan_dict=glycan_dict, gly_len=23, output_file=__init__.glycan_motif_dict_addr)
     pass
+
 
 if __name__ == '__main__':
     main()

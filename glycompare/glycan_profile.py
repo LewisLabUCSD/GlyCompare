@@ -1,21 +1,9 @@
 import pandas as pd
-import scipy
-import seaborn as sns
-
-sns.set(color_codes=True)
+import numpy as np
+from matplotlib import pyplot as plt
 
 from json_utility import *
-from glypy.io import glycoct, iupac
-from matplotlib import pyplot as plt
-import numpy as np
-import __init__
 import plot_glycan_utilities
-
-# GLOBAL_X = __init__.json_address + r'data_dic_finnn.json'
-# GLOBAL_TOPOLOTGY_LIST = __init__.source_address + r"Glycan_topolog_list.txt"
-# root_ = __init__.source_address
-# source_address = __init__.source_address
-
 
 
 def load_glycoprofile_mz_glycan_map():
@@ -41,6 +29,7 @@ def output_glycoprofile_naming_map(glycoprofile_naming_dict, addr):
         for j in glycoprofile_naming_dict[i]:
             file.write('\t'.join([i, j, glycoprofile_naming_dict[i][j]]) + "\n")
     file.close()
+
 
 #
 # def load_glycan_profile_dic():
@@ -601,13 +590,6 @@ def output_glycoprofile_naming_map(glycoprofile_naming_dict, addr):
 #     return glycan_profile
 #
 
-def load_glyco_table():
-    """
-    start from 2d table
-    :return:
-    """
-    pass
-
 
 # def load_mz_glycan_dict(addr=__init__.json_address + "NBT_mz_dict_glycan_glycoct.json"):
 #     """
@@ -805,6 +787,9 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
                           get_existance=True):
     """combine glycan m/z with motif existances, convert the counts 1+/0 into 1/0 in each glycan
     Glycan motifs are modified with
+    :param profile_name_order:
+    :param get_existance:
+    :param glyprofile_list_addr:
     :param profile_naming_to_id:
     :param norm_mz_abd_dict:
     :param match_dict:
