@@ -20,7 +20,9 @@ from glypy.composition import Composition, calculate_mass
 from glypy.composition.structure_composition import monosaccharide_composition
 from glypy.composition.structure_composition import modification_compositions
 
-from .constants import Anomer, Configuration, Stem, SuperClass, Modification, RingType
+from .constants import (
+    Anomer, Configuration, Stem, SuperClass, Modification, RingType, UnknownPosition,
+    NoPosition)
 from .substituent import Substituent
 from .link import Link
 from .base import SaccharideBase
@@ -54,6 +56,7 @@ def _get_standard_composition(monosaccharide):
     '''
     base = monosaccharide_composition[monosaccharide.superclass.name]
     modifications = list(monosaccharide.modifications.items())
+    double_bond_count = 0
     for mod_pos, mod_val in modifications:
         # Don't set the reducing end here
         if isinstance(mod_val, ReducedEnd):
@@ -63,11 +66,15 @@ def _get_standard_composition(monosaccharide):
         elif mod_val is Modification.aldi:  # pragma: no cover
             monosaccharide.reducing_end = True
             continue
+        if mod_val == Modification.en:
+            double_bond_count += 1
+            if double_bond_count % 2 == 0:
+                continue
         # Using global constant modification
         try:
             base += modification_compositions[mod_val](mod_pos)
         # Using object-oriented modification
-        except:  # pragma: no cover
+        except Exception:  # pragma: no cover
             base += mod_val.composition
     return base
 
@@ -136,61 +143,6 @@ def _traverse_debug(monosaccharide, visited=None, apply_fn=ident_op):  # pragma:
             yield grandchild
 
 
-"""
-def graph_clone(monosaccharide, visited=None):
-    '''
-    Low-level depth-first duplication method for unwrapped residue graphs
-
-    Parameters
-    ----------
-    residue: :class:`Monosaccharide`
-        The root of the graph to clone
-    visited: set or None
-        The collection of node ids to ignore, having already visited them. If |None|, it defaults
-        to the empty set.
-
-    Returns
-    -------
-    :class:`Monosaccharide`:
-        The root of a newly duplicated and identical residue graph
-    '''
-    llen = len
-    index = {}
-    visited = set() if visited is None else visited
-    clone_root = monosaccharide.clone(prop_id=True)
-    index[clone_root.id] = clone_root
-    node_stack = deque([(clone_root, monosaccharide)])
-    node_stack_append = node_stack.append
-    node_stack_pop = node_stack.pop
-    while llen(node_stack) > 0:
-        clone, ref = node_stack_pop()
-        if ref.id in visited:
-            continue
-        visited.add(ref.id)
-        links = [link for pos, link in ref.links.items()]
-        for link in links:
-            terminal = link[ref]
-
-            if terminal.id in visited:
-                continue
-            # Handle cycles where the same node is linked many times
-            if terminal.id in index:
-                clone_terminal = index[terminal.id]
-                clone_terminal.maybe_cyclic = True
-                cyclewarning()
-            else:
-                index[terminal.id] = clone_terminal = terminal.clone(prop_id=True)
-            if link.is_child(terminal):
-                link.clone(clone, clone_terminal)
-            else:
-                link.clone(clone_terminal, clone)
-
-            node_stack_append((clone_terminal, terminal))
-    return clone_root
-
-"""
-
-
 def graph_clone(monosaccharide, visited=None):
     '''
     Low-level depth-first duplication method for unwrapped residue graphs
@@ -230,7 +182,7 @@ def graph_clone(monosaccharide, visited=None):
             # Handle cycles where the same node is linked many times
             if terminal.id in index:
                 clone_terminal = index[terminal.id]
-                clone_terminal.maybe_cyclic = True
+                # clone_terminal.maybe_cyclic = True
                 cyclewarning()
             else:
                 index[terminal.id] = clone_terminal = terminal.clone(prop_id=True)
@@ -326,28 +278,28 @@ class Monosaccharide(SaccharideBase):
     Attributes
     ----------
     anomer: :class:`Anomer`
-        An entry of :class:`~glypy.structure.constants.Anomer` that corresponds to the linkage type
+        An entry of :class:`~.Anomer` that corresponds to the linkage type
         of the carbohydrate backbone. Is an entry of a class based on :class:`Enum`
-    superclass: :class:`SuperClass`
-        An entry of :class:`~glypy.structure.constants.SuperClass` that corresponds to the number of
+    superclass: :class:`~.SuperClass`
+        An entry of :class:`~.SuperClass` that corresponds to the number of
         carbons in the carbohydrate backbone of the monosaccharide. Controls the base composition of the
         instance and the number of positions open to be linked to or modified. Is an entry of a class
-        based on :class:`Enum`
-    configuration: :class:`Configuration` or {'d', 'l', 'x', 'missing', None}
+        based on :class:`~.Enum`
+    configuration: :class:`~.Configuration` or {'d', 'l', 'x', 'missing', None}
         An entry of |Configuration| which corresponds to the optical
         stereomer state of the instance. Is an entry of a class based on :class:`Enum`. May possess
         more than one value.
-    stem: :class:`Stem`
+    stem: :class:`~.Stem`
         Corresponds to the bond conformation of the carbohydrate backbone. Is an entry of a class based
-        on :class:`Enum`. May possess more than one value.
+        on :class:`~.Enum`. May possess more than one value.
     ring_start: |int|
-        The index of the carbon of the carbohydrate backbone that starts a ring. A value of `-1`, `'x'`, or
-        |None| corresponds to an unknown start. A value of `0` refers to a linear chain.
+        The index of the carbon of the carbohydrate backbone that starts a ring. A value of ``-1``, ``'x'``, or
+        |None| corresponds to an unknown start. A value of ``0`` refers to a linear chain.
     ring_end:  |int|
-        The index of the carbon of the carbohydrate backbone that ends a ring. A value of `-1`, `'x'`, or
-        |None| corresponds to an unknown ends. A value of `0` refers to a linear chain.
-    reducing_end: :class:`int`
-        The index of the carbon which hosts the reducing end.
+        The index of the carbon of the carbohydrate backbone that ends a ring. A value of ``-1``, ``'x'``, or
+        |None| corresponds to an unknown ends. A value of ``0`` refers to a linear chain.
+    reducing_end: :class:`ReducedEnd`
+        The reducing end terminal group of the monosaccharide if the monosaccharide is uncyclized
     modifications: |OrderedMultiMap|
         The mapping of sites to |Modification| entries. Directly modifies the instance's :attr:`composition`
     links: |OrderedMultiMap|
@@ -366,8 +318,16 @@ class Monosaccharide(SaccharideBase):
     '''
     _serializers = {}
 
+    __slots__ = (
+        "id", "_anomer", "_configuration", "_stem", "_superclass",
+        "ring_start", "ring_end", "links", "substituent_links",
+        "modifications", "composition",
+        "_reducing_end", "_degree",
+        "_checked_for_reduction"
+    )
+
     def __init__(self, anomer=None, configuration=None, stem=None,
-                 superclass=None, ring_start=None, ring_end=None,
+                 superclass=None, ring_start=UnknownPosition, ring_end=UnknownPosition,
                  modifications=None, links=None, substituent_links=None,
                  composition=None, reduced=None, id=None, fast=False):
 
@@ -460,9 +420,18 @@ class Monosaccharide(SaccharideBase):
         Does not copy any :attr:`links` as this would cause recursive duplication of the entire |Glycan|
         graph.
 
+        Parameters
+        ----------
+        prop_id: :class:`bool`
+            Whether to copy :attr:`id` from ``self`` to the new instance
+        fast: :class:`bool`
+            Whether to use the fast-path initialization process in :meth:`Monosaccharide.__init__`
+        monosaccharide_type: :class:`type`
+            A subclass of :class:`Monosaccharide` to use
+
         Returns
         -------
-        Monosaccharide
+        :class:`Monosaccharide`
 
         '''
         if monosaccharide_type is None:
@@ -474,7 +443,7 @@ class Monosaccharide(SaccharideBase):
                     continue
                 try:
                     modifications[site] = mod
-                except:  # pragma: no cover
+                except Exception:  # pragma: no cover
                     modifications[site] = mod.clone()
 
         monosaccharide = monosaccharide_type(
@@ -497,14 +466,16 @@ class Monosaccharide(SaccharideBase):
     @property
     def ring_type(self):
         """The size of the ring-shape of the carbohydrate, as computed
-        by ring_end - ring_start.
+        by :attr:`ring_end` - :attr:`ring_start`.
 
         Returns
         -------
-        EnumValue:
-            The appropriate value of :class:`.RingType`
+        :class:`~.EnumValue`:
+            The appropriate value of :class:`~.RingType`
         """
-
+        null_positions = (UnknownPosition, NoPosition)
+        if self.ring_start in null_positions or self.ring_end in null_positions:
+            return RingType.x
         try:
             diff = self.ring_end - self.ring_start
             if diff == 4:
@@ -649,15 +620,18 @@ class Monosaccharide(SaccharideBase):
         '''
         slots, unknowns = self._backbone_occupancy_list()
 
+        null_positions = [
+            UnknownPosition, 'x', NoPosition
+        ]
         open_slots = []
-        can_determine_positions = unknowns > 0 or (self.ring_end in [-1, 'x', None])
+        can_determine_positions = unknowns > 0 or (self.ring_end in null_positions)
 
         for i in range(len(slots)):
             if slots[i] <= max_occupancy and (i + 1) != self.ring_end:
                 open_slots.append(
-                    (i + 1) if not can_determine_positions else -1)
+                    (i + 1) if not can_determine_positions else UnknownPosition)
 
-        if self.ring_end in [-1, 'x', None]:
+        if self.ring_end in null_positions:
             open_slots.pop()
 
         return open_slots, unknowns
@@ -665,12 +639,13 @@ class Monosaccharide(SaccharideBase):
     def _backbone_occupancy_list(self):
         slots = [0] * self.superclass.value
         unknowns = 0
+        null_positions = (UnknownPosition, 'x')
         for pos, obj in chain(self.modifications.items(),
                               self.links.items(),
                               self.substituent_links.items()):
             if obj == Modification.keto:
                 continue
-            if pos in {-1, 'x'}:  # pragma: no cover
+            if pos in null_positions:  # pragma: no cover
                 unknowns += 1
             else:
                 slots[pos - 1] += 1
@@ -682,10 +657,10 @@ class Monosaccharide(SaccharideBase):
         for i, occupied in enumerate(slots, start=1):
             if occupied:
                 occupied_sites.append(i)
-        if self.ring_end != -1:
+        if self.ring_end != UnknownPosition:
             occupied_sites.append(self.ring_end)
         for i in range(unknowns):
-            occupied_sites.append(-1)
+            occupied_sites.append(UnknownPosition)
         return occupied_sites
 
     def total_attachement_sites(self):
@@ -716,10 +691,12 @@ class Monosaccharide(SaccharideBase):
 
         '''
 
-        if (position > self.superclass.value) or (position < 1 and position not in {'x', -1, None}):
+        null_positions = (UnknownPosition, NoPosition, 'x')
+
+        if (position > self.superclass.value) or (position < 1 and position not in null_positions):
             raise IndexError("Index out of bounds")
         # The unknown position is always available
-        if position in {-1, 'x'}:  # pragma: no cover
+        if position in (UnknownPosition, 'x'):  # pragma: no cover
             return 0
         n_occupants = len(self.links[position]) +\
             len(self.modifications[position]) +\
@@ -766,7 +743,7 @@ class Monosaccharide(SaccharideBase):
                 self.composition += modification_compositions[modification](position)
                 self.modifications[position] = Modification[modification]
             # OO Modification
-            except:  # pragma: no cover
+            except Exception:  # pragma: no cover
                 self.composition += modification.composition
                 self.modifications[position] = modification
         return self
@@ -795,7 +772,7 @@ class Monosaccharide(SaccharideBase):
         :class:`Monosaccharide`:
             `self`, for chain calls
         '''
-        if position > self.superclass.value or position < 0 and position not in {'x', -1}:
+        if position > self.superclass.value or position < 0 and position not in (UnknownPosition, 'x'):
             raise IndexError("Index out of bounds")
         try:
             self.modifications.pop(position, modification)
@@ -809,7 +786,7 @@ class Monosaccharide(SaccharideBase):
                 self.composition = self.composition - \
                     modification_compositions[modification](position)
             # OO Modification
-            except:  # pragma: no cover
+            except Exception:  # pragma: no cover
                 self.composition = self.composition - modification.composition
         return self
 
@@ -909,7 +886,7 @@ class Monosaccharide(SaccharideBase):
         :class:`Monosaccharide`:
             `self`, for chain calls
         '''
-        if position > self.superclass.value or position < 0 and position not in {-1, 'x'}:
+        if position > self.superclass.value or position < 0 and position not in (UnknownPosition, 'x'):
             raise IndexError("Index out of bounds")
         if isinstance(substituent, basestring):
             substituent = Substituent(substituent)
@@ -1018,7 +995,7 @@ class Monosaccharide(SaccharideBase):
         :class:`Monosaccharide`:
             `self`, for chain calls
         '''
-        if position > self.superclass.value or position < 0 and position not in {-1, 'x'}:
+        if position > self.superclass.value or position < 0 and position not in (UnknownPosition, 'x'):
             raise IndexError("Index out of bounds")
         link_obj = None
         if len(self.links[position]) > 1:
@@ -1038,7 +1015,18 @@ class Monosaccharide(SaccharideBase):
         cls._serializers[name] = method
 
     def serialize(self, name='glycoct'):
-        return self._serializers[name](self)
+        """Convert this object into text using the requested textual encoding
+
+        Parameters
+        ----------
+        name: :class:`str`, optional
+            The name of the textual encoding, e.g. "glycoct" or "iupac"
+
+        Returns
+        -------
+        :class:`str`
+        """
+        return self._serializers[name.lower()](self)
 
     def _flat_equality(self, other, lengths=True):
         '''
@@ -1152,7 +1140,7 @@ class Monosaccharide(SaccharideBase):
             cntr += 1
             for b_pos, b_substituent in b_substituents:
                 if b_pos in taken_b:
-                    if b_pos != -1:  # pragma: no cover
+                    if b_pos != UnknownPosition:  # pragma: no cover
                         continue
                     else:  # pragma: no cover
                         if unknown_cntr < b_num_unknown:
@@ -1186,12 +1174,24 @@ class Monosaccharide(SaccharideBase):
     def __ne__(self, other):
         return not (self == other)
 
-    # def __repr__(self):  # pragma: no cover
-    #     return self.to_glycoct().replace("\n", ' ')
     __repr__ = serialize
 
     def __getstate__(self):
-        return self.__dict__
+        state = dict()
+        state['_anomer'] = self._anomer
+        state['_superclass'] = self._superclass
+        state['_stem'] = self._stem
+        state['_configuration'] = self._configuration
+        state['_degree'] = self._degree
+        state['ring_start'] = self.ring_start
+        state['ring_end'] = self.ring_end
+        state['id'] = self.id
+        state['modifications'] = self.modifications
+        state['links'] = self.links
+        state['substituent_links'] = self.substituent_links
+        state['composition'] = self.composition
+        state['_reducing_end'] = self._reducing_end
+        return state
 
     def __setstate__(self, state):
         '''
@@ -1199,10 +1199,10 @@ class Monosaccharide(SaccharideBase):
         modification models.
         '''
         self._checked_for_reduction = False
-        self.anomer = state['_anomer']
-        self.superclass = state['_superclass']
-        self.stem = state['_stem']
-        self.configuration = state['_configuration']
+        self._anomer = state['_anomer']
+        self._superclass = state['_superclass']
+        self._stem = state['_stem']
+        self._configuration = state['_configuration']
         self._degree = state.get("_degree")
         self.ring_start = state['ring_start']
         self.ring_end = state['ring_end']
@@ -1379,7 +1379,16 @@ class Monosaccharide(SaccharideBase):
         return self._degree
 
     def __iter__(self):
-        return self.children()
+        return iter(self.children())
+
+    def has_undefined_linkages(self):
+        for link in self.links.values():
+            if link.parent_position == UnknownPosition or link.child_position == UnknownPosition:
+                return True
+        for link in self.substituent_links.values():
+            if link.parent_position == UnknownPosition or link.child_position == UnknownPosition:
+                return True
+        return False
 
 
 class ReducedEnd(object):
@@ -1650,3 +1659,47 @@ def build_monosaccharide_occupancy(cls, monosaccharide):
 
 MonosaccharideOccupancy.build = classmethod(
     build_monosaccharide_occupancy)
+
+
+class AnnotatedMonosaccharide(Monosaccharide):
+    __slots__ = ('annotations', )
+
+    def __init__(self, anomer=None, configuration=None, stem=None,
+                 superclass=None, ring_start=UnknownPosition, ring_end=UnknownPosition,
+                 modifications=None, links=None, substituent_links=None,
+                 composition=None, reduced=None, id=None, fast=False, annotations=None):
+        super(AnnotatedMonosaccharide, self).__init__(
+            anomer, configuration, stem, superclass, ring_start, ring_end,
+            modifications, links, substituent_links, composition, reduced,
+            id, fast)
+        if annotations is None:
+            annotations = {}
+        self.annotations = annotations
+
+    def __getstate__(self):
+        state = super(AnnotatedMonosaccharide, self).__getstate__()
+        state['annotations'] = self.annotations
+        return state
+
+    def __setstate__(self, state):
+        super(AnnotatedMonosaccharide, self).__setstate__(state)
+        self.annotations = state.get("annotations", {})
+
+    def clone(self, prop_id=False, fast=True, monosaccharide_type=None):
+        '''
+        Copies just this |Monosaccharide| and its |Substituent|s, creating a separate instance
+        with the same data. All mutable data structures are duplicated and distinct from the original.
+
+        Does not copy any :attr:`links` as this would cause recursive duplication of the entire |Glycan|
+        graph.
+
+        Returns
+        -------
+        Monosaccharide
+
+        '''
+        if monosaccharide_type is None:
+            monosaccharide_type = self.__class__
+        monosaccharide = super(AnnotatedMonosaccharide, self).clone(prop_id, fast, monosaccharide_type)
+        monosaccharide.annotations = self.annotations.copy()
+        return monosaccharide

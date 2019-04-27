@@ -52,8 +52,6 @@ class TextFileParserBase(object):
 class FastaLikeFileParser(TextFileParserBase):
     format_name = 'fasta'
 
-    __metaclass__ = FormatRegisteringMeta
-
     def __init__(self, file_spec, processor):
         super(FastaLikeFileParser, self).__init__()
         self.state = ParserState.defline
@@ -92,14 +90,12 @@ class FastaLikeFileParser(TextFileParserBase):
         d = self.processor(''.join(self.sequence_chunks))
         name = self.defline
         root_node = root(d)
-        return NamedGlycan(name=name, root=root_node, index_method=None)
+        return NamedGlycan(name=name, root=root_node, index_method='dfs')
 
 
 @add_metaclass(FormatRegisteringMeta)
 class StructurePerLineParser(TextFileParserBase):
     format_name = 'line'
-
-    __metaclass__ = FormatRegisteringMeta
 
     def __init__(self, file_spec, processor):
         super(StructurePerLineParser, self).__init__()
@@ -127,3 +123,12 @@ class ParserInterface(TextFileParserBase):
     @classmethod
     def loads(cls, text, file_type='line'):
         return cls(StringIO(text), file_type=file_type)
+
+    @classmethod
+    def load(cls, fd, file_type='line'):
+        reader = cls(fd, file_type=file_type)
+        data = list(reader)
+        if len(data) == 1:
+            return data[0]
+        else:
+            return data

@@ -1,9 +1,5 @@
 import logging
 import json
-try:
-    from itertools import izip_longest
-except:
-    from itertools import zip_longest as izip_longest
 from collections import defaultdict
 
 logger = logging.getLogger(__name__)
@@ -17,17 +13,24 @@ def _str_dump_multimap(mm):  # pragma: no cover
 
 
 class MultiMap(object):
+    __slots__ = ['contents', 'clean']
+
     '''Implements a simple MultiMap data structure on top of a dictionary of lists'''
     def __init__(self, **kwargs):
         self.contents = defaultdict(list)
         for k, v in kwargs.items():
             self.contents[k].append(v)
+        self.invalidate()
+
+    def invalidate(self):
+        self.clean = False
 
     def __getitem__(self, key):
         return self.contents[key]
 
     def __setitem__(self, key, value):
         self.contents[key].append(value)
+        self.invalidate()
 
     def pop(self, key, value):
         '''
@@ -43,6 +46,7 @@ class MultiMap(object):
         objs.pop(objs.index(value))
         if len(objs) == 0:
             self.contents.pop(key)
+        self.invalidate()
         return len(objs)
 
     def popv(self, value):
@@ -50,6 +54,7 @@ class MultiMap(object):
             if value in self[k]:
                 self.pop(k, value)
                 return len(self[k])
+        self.invalidate()
         return None
 
     def __iter__(self):
@@ -121,6 +126,7 @@ class MultiMap(object):
     def update(self, mapping):
         for k, v in mapping.items():
             self[k] = v
+        self.invalidate()
 
     def has_value(self, value):
         for v in self.values():
@@ -128,12 +134,34 @@ class MultiMap(object):
                 return True
         return False
 
+    def __reduce__(self):
+        return self.__class__, (), self.__getstate__()
+
+    def __getstate__(self):
+        return self.contents
+
+    def __setstate__(self, state):
+        self.contents = state
+        self.invalidate()
+
+    def copy(self):
+        new = self.__class__()
+        for k, v in self.items():
+            new[k].extend(v)
+        return new
+
+    def clone(self):
+        return self.copy()
+
 
 class OrderedMultiMap(MultiMap):
     '''
     Implements a simple MultiMap data structure on top of a dictionary of lists
     that remembers the order keys were first inserted in.
     '''
+
+    __slots__ = ['key_order', ]
+
     def __init__(self, **kwargs):
         self.contents = defaultdict(list)
         self.key_order = []
@@ -141,6 +169,7 @@ class OrderedMultiMap(MultiMap):
             if k not in self.key_order:
                 self.key_order.append(k)
             self.contents[k].append(v)
+        self.invalidate()
 
     def __iter__(self):
         '''
@@ -179,6 +208,14 @@ class OrderedMultiMap(MultiMap):
         if key not in self.key_order:
             self.key_order.append(key)
         self.contents[key].append(value)
+        self.invalidate()
 
     def __repr__(self):  # pragma: no cover
         return ''.join((repr(self.key_order), '\n', _str_dump_multimap(self)))
+
+    def __getstate__(self):
+        return self.contents, self.key_order
+
+    def __setstate__(self, state):
+        self.contents, self.key_order = state
+        self.invalidate()

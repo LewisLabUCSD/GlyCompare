@@ -129,15 +129,21 @@ class {name}(object):
         {self_fields} = {args}
     def __getitem__(self, idx):
         return getattr(self, fields[idx])
+    def __setitem__(self, idx, value):
+        return setattr(self, fields[idx], value)
     def __getstate__(self):
         return ({self_fields})
     def __setstate__(self, state):
         {self_fields} = state
     def __repr__(self):
-        rep = "<{name}"
+        rep = "{name}("
+        i = 0
         for f in {fields!r}:
-            rep += " " + f + "=" + str(getattr(self, f))
-        rep += ">"
+            if i != 0:
+                rep += ", "
+            i += 1
+            rep += f + "=" + str(getattr(self, f))
+        rep += ")"
         return rep
     def __eq__(self, other):
         for f in {fields!r}:

@@ -123,7 +123,7 @@ def plot_glycan_dict(a_glycan_dict, single=True):
         plot_glycan_list([a_glycan_dict[i] for i in a_keys], idex_list=a_keys)
 
 
-def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=True, label=True,
+def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', center=True, label=False,
                 symbol_nomenclature='cfg', layout='balanced', layout_args=None, **kwargs):
     '''
     Draw the parent outlink position and the child anomer symbol

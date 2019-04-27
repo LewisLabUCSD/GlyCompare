@@ -39,6 +39,7 @@ class CFGNomenclature(SymbolicNomenclatureBase):
 
     class ResidueColor(Enum):
         gal = rgb2hex((255 / 255., 255 / 255., 0 / 255.))  # yellow
+        lyx = rgb2hex((255 / 255., 255 / 255., 0 / 255.))  # yellow
         glc = rgb2hex((0 / 255., 0 / 255., 255 / 255.))  # blue
         man = rgb2hex((0, 200 / 255., 50 / 255.))  # green
         fuc = rgb2hex((255 / 255., 0 / 255., 0 / 255.))  # red
@@ -138,7 +139,7 @@ class CFGNomenclature(SymbolicNomenclatureBase):
 
             return self.ResidueShape.circle
         elif "pen" in [monosaccharide.superclass]:
-            if 'xyl' in monosaccharide.stem:
+            if 'xyl' in monosaccharide.stem or 'lyx' in monosaccharide.stem:
                 return self.ResidueShape.star
         return self.ResidueShape.generic
 
@@ -160,6 +161,8 @@ class CFGNomenclature(SymbolicNomenclatureBase):
         elif 'man' in monosaccharide.stem:
             return self.ResidueShape.right_bisected_diamond
         elif 'ido' in monosaccharide.stem:
+            return self.ResidueShape.bottom_bisected_diamond
+        else:
             return self.ResidueShape.bottom_bisected_diamond
 
     def draw_circle(self, ax, x, y, color, scale=0.1):
@@ -264,10 +267,10 @@ class CFGNomenclature(SymbolicNomenclatureBase):
         return self.draw_horizontal_bisected_diamond(ax, x, y, color, scale, 'right')
 
     def draw_top_bisected_diamond(self, ax, x, y, color, scale=0.1):
-        return self.draw_vertical_bisected_diamond(ax, x, y, color, scale, 'bottom')
+        return self.draw_vertical_bisected_diamond(ax, x, y, color, scale, 'top')
 
     def draw_bottom_bisected_diamond(self, ax, x, y, color, scale=0.1):
-        return self.draw_vertical_bisected_diamond(ax, x, y, color, scale, 'top')
+        return self.draw_vertical_bisected_diamond(ax, x, y, color, scale, 'bottom')
 
     def draw_vertical_bisected_diamond(self, ax, x, y, color, scale=0.1, side=None):
         lower_verts = (np.array([
@@ -299,12 +302,17 @@ class CFGNomenclature(SymbolicNomenclatureBase):
         upper_path = Path(upper_verts, codes).transformed(
             Affine2D().translate(x, y).rotate_deg_around(x, y, 45))
 
+        try:
+            color = color.value
+        except AttributeError:
+            color = 'white'
+
         if side == 'top':
-            top_color = color.value
+            top_color = color
             bottom_color = 'white'
         elif side == 'bottom':
             top_color = 'white'
-            bottom_color = color.value
+            bottom_color = color
         patch = patches.PathPatch(
             lower_path, facecolor=bottom_color, lw=line_weight, zorder=2)
         a = ax.add_patch(patch)
@@ -339,12 +347,18 @@ class CFGNomenclature(SymbolicNomenclatureBase):
             Path.LINETO,
             Path.CLOSEPOLY,
         ]
+
+        try:
+            color = color.value
+        except AttributeError:
+            color = 'white'
+
         if side == 'left':
-            left_color = color.value
+            left_color = color
             right_color = 'white'
         elif side == 'right':
             left_color = 'white'
-            right_color = color.value
+            right_color = color
         left_path = Path(left_verts, codes).transformed(
             Affine2D().translate(x, y).rotate_deg_around(x, y, -45))
         right_path = Path(right_verts, codes).transformed(
@@ -362,7 +376,7 @@ class CFGNomenclature(SymbolicNomenclatureBase):
         # return a, b
 
     def draw_star(self, ax, x, y, color, scale=0.1):
-        path = Path(Path.unit_regular_star(5, 0.3).vertices * scale, Path.unit_regular_star(5, 0.3).codes)
+        path = Path(Path.unit_regular_star(5, 0.45).vertices * scale, Path.unit_regular_star(5, 0.45).codes)
         trans = Affine2D().translate(x, y)
         t_path = path.transformed(trans)
         patch = patches.PathPatch(

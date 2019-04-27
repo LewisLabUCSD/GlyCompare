@@ -9,7 +9,7 @@ import matplotlib.patches as patches
 from matplotlib.transforms import Affine2D
 
 from .common import MonosaccharidePatch
-from .geometry import centroid
+from .geometry import centroid, bounding_box
 
 from glypy.utils.enum import Enum
 
@@ -79,22 +79,35 @@ def draw_triangle(ax, x, y, color, scale=0.1):
 
 
 def line_to(ax, sx, sy, ex, ey, zorder=1, color=None, lw=1):
-        if color is None:
-            color = default_line_color
-        vertices = [
-            (sx, sy),
-            (ex, ey),
-            (0, 0)
-        ]
-        codes = [
-            Path.MOVETO,
-            Path.LINETO,
-            Path.STOP
-        ]
-        path = Path(vertices, codes)
-        patch = patches.PathPatch(path, color=color, lw=lw, zorder=zorder)
-        ax.add_patch(patch)
-        return patch
+    if color is None:
+        color = default_line_color
+    vertices = [
+        (sx, sy),
+        (ex, ey),
+        (0, 0)
+    ]
+    codes = [
+        Path.MOVETO,
+        Path.LINETO,
+        Path.STOP
+    ]
+    path = Path(vertices, codes)
+    patch = patches.PathPatch(path, color=color, lw=lw, zorder=zorder)
+    ax.add_patch(patch)
+    return patch
+
+
+def line_along(ax, points, zorder=1, color=None, lw=1):
+    if color is None:
+        color = default_line_color
+    vertices = list(points)
+    vertices.append([0, 0])
+    codes = [Path.MOVETO] + [Path.LINETO] * (len(points) - 1)
+    codes.append(Path.STOP)
+    path = Path(vertices, codes)
+    patch = patches.PathPatch(path, edgecolor=color, facecolor='none', lw=lw, zorder=zorder)
+    ax.add_patch(patch)
+    return patch
 
 
 def transform_around_coords(x, y, xorigin, yorigin, transform):
@@ -125,13 +138,36 @@ class SymbolicNomenclatureBase(object):
     def draw(monosaccharide, x, y, ax, tree_node=None, scale=0.1, annotation_transform=None, **kwargs):
         raise NotImplementedError()
 
+    def _get_horizontal_alignment(self, kwargs):
+        value = kwargs.get("ha")
+        if value is not None:
+            return value
+        value = kwargs.get("horizontal_alignment")
+        return value
+
+    def _get_vertical_alignment(self, kwargs):
+        value = kwargs.get("va")
+        if value is not None:
+            return value
+        value = kwargs.get("vertical_alignment")
+        return value
+
     def draw_text(self, ax, x, y, text, scale=0.1, center=False, **kwargs):
         fs = kwargs.get("fontsize", 2) * scale * .25
         t_path = TextPath((x, y), s=text, size=fs)
-        if center:
+        ha = self._get_horizontal_alignment(kwargs)
+        if center or ha == 'center':
             cx, cy = centroid(t_path)
             tf = Affine2D()
             tf.translate(x - cx, y - cy)
+            t_path = t_path.transformed(tf)
+        va = self._get_vertical_alignment(kwargs)
+        if va == 'bottom':
+            bbox = bounding_box(t_path)
+            ymin = bbox.y0
+            cx, cy = centroid(t_path)
+            tf = Affine2D()
+            tf.translate(0, cy - ymin)
             t_path = t_path.transformed(tf)
         patch = patches.PathPatch(t_path, facecolor="black", lw=line_weight / 20., zorder=4)
         a = ax.add_patch(patch)

@@ -39,7 +39,18 @@ link_replacement_composition_map = {
     "d": Composition("OH"),  # The Hydroxyl group of the target Carbon is lost
     "h": Composition(H=1),  # The Hydrogen of the target Carbon is lost
     "n": Composition(H=1),  # Non-sugar unit recieves bond
-    "x": Composition({})  # Unknown
+    "x": Composition({}),  # Unknown
+    "u": Composition({}) # modified by Bokan 3/7 unknown
+}
+
+
+linkage_type_map = {
+    'o': constants.LinkageType.backbone_oxygen,
+    'd': constants.LinkageType.backbone_oxygen,
+    'h': constants.LinkageType.backbone_hydrogen,
+    'n': constants.LinkageType.other,
+    'x': constants.LinkageType.x,
+    'u': constants.LinkageType.x
 }
 
 

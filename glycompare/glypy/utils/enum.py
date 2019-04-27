@@ -4,26 +4,32 @@ from six import add_metaclass
 try:
     intern
 except NameError:
-    from sys import intern
-
-debug = False
+    from sys import intern # pylint: disable=no-name-in-module
 
 
-@total_ordering
 class EnumValue(object):
     '''Represents a wrapper around an value with a name to identify it and
     more rich comparison logic. A value of an enumerated type'''
+
+    __slots__ = ('group', 'name', 'value', 'names', '_hash')
+
     def __init__(self, group, name, value, other_names=None):
         self.name = intern(name)
         self.value = value
         self.names = {name} | (other_names or set())
         self.group = group
+        self._hash = None
 
     def __hash__(self):
-        return hash(self.name)
+        if self._hash is None:
+            self._hash = hash(self.name)
+        return self._hash
 
     def __index__(self):  # pragma: no cover
         return self.value
+
+    def __int__(self):
+        return int(self.value)
 
     def __eq__(self, other):
         try:
@@ -36,6 +42,18 @@ class EnumValue(object):
         except AttributeError:
             return self.value == other or other in self.names
 
+    def __and__(self, other):
+        return self.value & other
+
+    def __or__(self, other):
+        return self.value | other
+
+    def __rand__(self, other):
+        return self.value & other
+
+    def __ror__(self, other):
+        return self.value | other
+
     def __ne__(self, other):
         return not self == other
 
@@ -43,6 +61,9 @@ class EnumValue(object):
         return "<{group_name} {name}:{value}>".format(name=self.name,
                                                       group_name=self.group.__name__,
                                                       value=self.value)
+
+    def __str__(self):
+        return self.name
 
     def __reduce__(self):
         return self.group, (self.name,)
@@ -65,6 +86,25 @@ class EnumValue(object):
 
     def __lt__(self, other):
         return self.value < other.value
+
+    def __gt__(self, other):
+        return self.value > other.value
+
+    def __le__(self, other):
+        return self.value <= other.value
+
+    def __ge__(self, other):
+        return self.value >= other.value
+
+    def int_value(self):
+        return (int(self.value))
+
+try:
+    _EnumValue = EnumValue
+    _has_c = True
+    from glypy.utils.cenum import EnumValue
+except ImportError:
+    _has_c = False
 
 
 debug = False
@@ -135,7 +175,7 @@ class EnumMeta(type):
         return val
 
     def __getitem__(self, k):
-        return self.translate(k)
+        return self.translate(k)  # pylint: disable=no-value-for-parameter
 
     def __setattr__(self, k, v):
         """Intercept attribute assignment, wrapping values in
@@ -153,9 +193,9 @@ class EnumMeta(type):
             v.names.add(k)
             super(EnumMeta, self).__setattr__(k, v)
         else:
-            name = self.name(v)
+            name = self.name(v)  # pylint: disable=no-value-for-parameter
             if name is not None:
-                self[name].add_name(k)
+                self[name].add_name(k)  # pylint: disable=unsubscriptable-object
             else:
                 super(EnumMeta, self).__setattr__(k, EnumValue(self, k, v))
 
@@ -190,7 +230,7 @@ class EnumMeta(type):
         if k in self.__dict__:
             return self.__dict__[k]
         elif k in self.__dict__.values():
-            return self[self.name(k)]
+            return self[self.name(k)]  # pylint: disable=unsubscriptable-object,no-value-for-parameter
         else:
             raise KeyError("Could not translate {0} through {1}".format(k, self))
 
@@ -203,6 +243,14 @@ class EnumMeta(type):
         return "<Enum {0}>".format(self.__name__)
 
     __call__ = translate
+
+
+try:
+    _EnumMeta = EnumMeta
+    _has_c = True
+    from glypy.utils.cenum import EnumMeta
+except ImportError:
+    _has_c = False
 
 
 @add_metaclass(EnumMeta)

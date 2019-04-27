@@ -3,17 +3,19 @@ from uuid import uuid4
 from collections import Iterable
 
 from glypy.composition import Composition
-from glypy.utils import uid, basestring
+from glypy.utils import uid, basestring, make_struct
 from .base import SaccharideBase, SubstituentBase
+from .constants import UnknownPosition, LinkageType
 
-default_parent_loss = Composition(O=1, H=1)
+
+default_parent_loss = Composition({"O": 1, "H": 1})
 default_child_loss = Composition(H=1)
 
-unknown_position_set = {-1}
+
+linkage_configuration = make_struct("linkage_configuration", ("parent", "child", "parent_position", "child_position"))
 
 
 class Link(object):
-
     '''
     Represents the linkage between two molecules, described as an edge in a graph with optional
     directedness semantics.
@@ -33,8 +35,17 @@ class Link(object):
 
     '''
 
-    def __init__(self, parent, child, parent_position=-1, child_position=-1,
-                 parent_loss=None, child_loss=None, id=None, attach=True):
+    __slots__ = (
+        "parent", "child", "parent_position", "child_position",
+        "parent_loss", "child_loss", "id",
+        "label", "_attached",
+        "parent_linkage_type",
+        "child_linkage_type"
+    )
+
+    def __init__(self, parent, child, parent_position=UnknownPosition, child_position=UnknownPosition,
+                 parent_loss=None, child_loss=None, id=None, attach=True, parent_linkage_type=None,
+                 child_linkage_type=None):
         '''
         Defines a bond between `parent` and `child` between the molecule positions specified.
         The bond may represent a partial loss of elemental composition from the parent and/or child
@@ -42,7 +53,7 @@ class Link(object):
 
         Instantiating the |Link| object will automatically attach it to its endpoints, mutating them
         unless `attach=False`. If not attached on instantiation, the bond can be realized by calling
-        :meth:`Link.apply()` at a later time.
+        :meth:`Link.apply` at a later time.
 
         Parameters
         ----------
@@ -81,6 +92,8 @@ class Link(object):
         self.child_position = child_position
         self.parent_loss = parent_loss
         self.child_loss = child_loss
+        self.parent_linkage_type = parent_linkage_type or LinkageType.unknown
+        self.child_linkage_type = child_linkage_type or LinkageType.unknown
         self.id = id
         self.label = None
         self._attached = False
@@ -102,6 +115,10 @@ class Link(object):
         :attr:`composition` and insert a reference to :obj:`self` into their :attr:`links` or :attr:`substituent_links`
         as appropriate.
 
+        This performs no position availability validation. If there is a possibility that either the parent or child
+        position may be occupied, they should be tested using :meth:`~.Monosaccharide.is_occupied` prior to calling
+        this method.
+
         Sets :attr:`_attached` to |True|
 
         See also
@@ -109,6 +126,8 @@ class Link(object):
         :meth:`Link.break_link`
         :meth:`Link.reconnect`
         :meth:`Link.refund`
+        :meth:`~.Monosaccharide.is_occupied`
+        :meth:`~.Substituent.is_occupied`
 
         '''
         # assert not self.is_attached(), ("Cannot apply an already attached link")
@@ -168,10 +187,20 @@ class Link(object):
         -------
         bool
         '''
-        # return isinstance(self.child, SubstituentBase) and isinstance(
-        #     self.parent, SaccharideBase)
         return (self.child.node_type is SubstituentBase.node_type) and\
             (self.parent.node_type is SaccharideBase.node_type)
+
+    def is_bridge_link(self):
+        '''
+        If :attr:`parent` is a |Substituent| and :attr:`child` is a |Monosaccharide|, then `self`
+        is a *bridge_link*
+
+        Returns
+        -------
+        bool
+        '''
+        return (self.parent.node_type is SubstituentBase.node_type) and\
+            (self.child.node_type is SaccharideBase.node_type)
 
     def is_parent(self, mol):
         '''
@@ -209,7 +238,9 @@ class Link(object):
                     parent_loss=self.parent_loss,
                     child_loss=self.child_loss,
                     id=self.id if prop_id else uuid4().int,
-                    attach=attach)
+                    attach=attach,
+                    parent_linkage_type=self.parent_linkage_type,
+                    child_linkage_type=self.child_linkage_type)
 
     def _get_parent_configuration(self):
         # Possible problem since Monosaccharide objects do not define __hash__
@@ -411,6 +442,40 @@ class Link(object):
             rep += "[ ]"
         return rep
 
+    def __getstate__(self):
+        state = {}
+        state["parent"] = self.parent
+        state["child"] = self.child
+        state["parent_position"] = self.parent_position
+        state["child_position"] = self.child_position
+        state["parent_loss"] = self.parent_loss
+        state["child_loss"] = self.child_loss
+        state["id"] = self.id
+        state["label"] = self.label
+        state["_attached"] = self._attached
+        state['parent_linkage_type'] = self.parent_linkage_type
+        state['child_linkage_type'] = self.child_linkage_type
+        return state
+
+    def __setstate__(self, state):
+        self.parent = state["parent"]
+        self.child = state["child"]
+        self.parent_position = state["parent_position"]
+        self.child_position = state["child_position"]
+        self.parent_loss = state["parent_loss"]
+        self.child_loss = state["child_loss"]
+        self.id = state["id"]
+        self.label = state["label"]
+        self._attached = state["_attached"]
+        try:
+            self.parent_linkage_type = state['parent_linkage_type']
+        except KeyError:
+            self.parent_linkage_type = LinkageType.unknown
+        try:
+            self.child_linkage_type = state['child_linkage_type']
+        except KeyError:
+            self.child_linkage_type = LinkageType.unknown
+
 
 class LinkMaskContext(object):
     '''
@@ -447,8 +512,15 @@ class LinkMaskContext(object):
 
 
 class AmbiguousLink(Link):
-    def __init__(self, parent, child, parent_position=(-1,), child_position=(-1,),
-                 parent_loss=None, child_loss=None, id=None, attach=True):
+
+    __slots__ = (
+        "parent_choices", "parent_position_choices",
+        "child_choices", "child_position_choices"
+    )
+
+    def __init__(self, parent, child, parent_position=(UnknownPosition,), child_position=(UnknownPosition,),
+                 parent_loss=None, child_loss=None, id=None, attach=True, parent_linkage_type=None,
+                 child_linkage_type=None):
         if not isinstance(parent, (list, tuple)):
             parent = [parent]
         if not isinstance(child, (list, tuple)):
@@ -469,7 +541,22 @@ class AmbiguousLink(Link):
             self.child_choices[0],
             self.parent_position_choices[0],
             self.child_position_choices[0],
-            parent_loss, child_loss, id, attach)
+            parent_loss, child_loss, id, attach,
+            parent_linkage_type, child_linkage_type)
+
+    def __getstate__(self):
+        state = super(AmbiguousLink, self).__getstate__()
+        state['parent_choices'] = self.parent_choices
+        state['parent_position_choices'] = self.parent_position_choices
+        state['child_choices'] = self.child_choices
+        state['child_position_choices'] = self.child_position_choices
+
+    def __setstate__(self, state):
+        super(AmbiguousLink, self).__setstate__(state)
+        self.parent_choices = state['parent_choices']
+        self.parent_position_choices = state['parent_position_choices']
+        self.child_choices = state['child_choices']
+        self.child_position_choices = state['child_position_choices']
 
     def has_ambiguous_linkage(self):
         return len(self.parent_position_choices) > 1 or len(self.child_position_choices) > 1
@@ -477,12 +564,12 @@ class AmbiguousLink(Link):
     def has_ambiguous_termini(self):
         return len(self.parent_choices) > 1 or len(self.child_choices) > 1
 
-    def iterconfiguration(self, attach=False):  # pragma: no cover
+    def iterconfiguration(self, attach=False):
         configurations = self._configuration_crossproduct()
         for parent_o, child_o, parent_position_o, child_position_o in configurations:
             if attach:
                 self.reconfigure(parent_o, child_o, parent_position_o, child_position_o)
-            yield parent_o, child_o, parent_position_o, child_position_o
+            yield linkage_configuration(parent_o, child_o, parent_position_o, child_position_o)
 
     def _configuration_crossproduct(self):
         configurations = itertools.product(self.parent_choices, self.child_choices,
@@ -527,34 +614,44 @@ class AmbiguousLink(Link):
 
     def _find_open_position_single(self, parent, child):
         open_parent_sites, _ = parent.open_attachment_sites()
-        if -1 in open_parent_sites:
-            open_parent_sites += self.parent_position_choices
-        parent_site_options = list((set(open_parent_sites) | {-1}) & set(self.parent_position_choices))
+        parent_has_unknown_position = False
+        if UnknownPosition in open_parent_sites:
+            open_parent_sites += list(set(self.parent_position_choices) - set(parent.occupied_attachment_sites()))
+            parent_has_unknown_position = True
+        parent_site_options = list((set(open_parent_sites) | {UnknownPosition}) & set(self.parent_position_choices))
         if parent_site_options:
             parent_site = parent_site_options[0]
         else:
-            return None
+            if parent_has_unknown_position and open_parent_sites:
+                parent_site = UnknownPosition
+            else:
+                return None
         open_child_sites, _ = child.open_attachment_sites()
-        if -1 in open_child_sites:
-            open_child_sites += self.child_position_choices
-        child_site_options = list((set(open_child_sites) | {-1}) & set(self.child_position_choices))
+        child_has_unknown_position = False
+        if UnknownPosition in open_child_sites:
+            open_child_sites += list(set(self.child_position_choices) - set(child.occupied_attachment_sites()))
+            child_has_unknown_position = True
+        child_site_options = list((set(open_child_sites) | {UnknownPosition}) & set(self.child_position_choices))
         if child_site_options:
             child_site = child_site_options[0]
         else:
-            return None
+            if child_has_unknown_position and open_child_sites:
+                child_site = UnknownPosition
+            else:
+                return None
         return parent_site, child_site
 
     def _find_open_position_multiple(self, parent, child):  # pragma: no cover
         '''Debugging purposes only
         '''
         open_parent_sites, _ = parent.open_attachment_sites()
-        if -1 in open_parent_sites:
+        if UnknownPosition in open_parent_sites:
             open_parent_sites += self.parent_position_choices
-        parent_site_options = list((set(open_parent_sites) | {-1}) & set(self.parent_position_choices))
+        parent_site_options = list((set(open_parent_sites) | {UnknownPosition}) & set(self.parent_position_choices))
         open_child_sites, _ = child.open_attachment_sites()
-        if -1 in open_child_sites:
+        if UnknownPosition in open_child_sites:
             open_child_sites += self.child_position_choices
-        child_site_options = list((set(open_child_sites) | {-1}) & set(self.child_position_choices))
+        child_site_options = list((set(open_child_sites) | {UnknownPosition}) & set(self.child_position_choices))
         return parent_site_options, child_site_options
 
     def _find_open_position_combinations(self):

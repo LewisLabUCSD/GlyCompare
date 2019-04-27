@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 
-def load_glycoprofile_name_to_id(addr, naming='mz',_format='json'):
+def load_glycoprofile_name_to_id(addr, naming='mz', _format='json'):
     """ glycan_profile = {'1': {'2244': 'G04483SK',
                                 '2605': 'G30460NZ',
                                 '2967': 'G17689DH',
@@ -53,7 +53,7 @@ def load_glycoprofile_name_to_id(addr, naming='mz',_format='json'):
 def output_glycoprofile_name_to_id(addr, glycoprofile_naming_dict, _formate='json'):
     if _formate == 'gff':
         file = open(addr, 'w')
-        file.write('\t'.join(['profile', 'mz', 'glycan_id'])+"\n")
+        file.write('\t'.join(['profile', 'mz', 'glycan_id']) + "\n")
         for i in glycoprofile_naming_dict:
             for j in glycoprofile_naming_dict[i]:
                 file.write('\t'.join([i, j, glycoprofile_naming_dict[i][j]]) + "\n")
@@ -134,12 +134,16 @@ def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=gly
             glycan_str_dict[glycan_id] = _glycan_str
             glycan_dict[glycan_id] = loader.loads(_glycan_str)
     print("There are ", _count, "glycan id found; ", _loaded, "glycans loaded")
-    if output_file=="":
+    if output_file == "":
         pass
     else:
         store_json(output_file, glycan_str_dict)
     return glycan_dict
 
+
+def output_dict_to_glycoct(dict, addr):
+    for i, j in dict.items():
+        out_glycan_obj_as_glycoct(j,i,addr)
 
 def load_glycan_obj_from_glycoct_file(dir_address):
     """

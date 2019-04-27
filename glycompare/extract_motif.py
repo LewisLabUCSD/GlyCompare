@@ -144,6 +144,7 @@ def get_motif_pip(glycan_dict, gly_len, output_file):
     motif_dic = manager.dict()
     print('start parallel parsing', len(glycan_dict), 'glycans')
     pool = multiprocessing.Pool(processes=__init__.num_processors)
+    pool_list = []
     for idex, i in enumerate(glycan_dict):
         if len(glycan_dict[i]) > gly_len:
             print(i, 'larger than max')
@@ -151,8 +152,8 @@ def get_motif_pip(glycan_dict, gly_len, output_file):
         """ using get motif with count wrapper
             Also check exists wrapper
         """
-        result = pool.apply_async(extract_motif_wrapper, args=(i, glycan_dict[i], motif_dic))
-    result.get()
+        pool_list.append(pool.apply_async(extract_motif_wrapper, args=(i, glycan_dict[i], motif_dic)))
+    result_list = [xx.get() for xx in pool_list]
     # print('finished ', idex)
     # print("closing poll")
     pool.close()

@@ -1,37 +1,27 @@
 '''
 A GlycoCT (Condensed) parser.
-Supports RES, LIN, and un-nested REP sections.
-
-.. code-block:: python
-
-    >>>from glypy.io import glycoct
-    >>>glycoct.loads("""RES
-    1b:o-dman-HEX-0:0|1:aldi
-    2b:a-lido-HEX-1:5|6:a
-    3s:sulfate
-    LIN
-    1:1o(3+1)2d
-    2:2o(2+1)3n
-    3:2o(4+1)4d
-    """)
-    >>>
 '''
 
 import re
 import warnings
 from collections import defaultdict, Counter, deque, namedtuple, OrderedDict
 from functools import cmp_to_key
-import zlib
+
+try:
+    from collections import Iterator
+except ImportError:
+    from collections.abc import Iterator
 
 from glypy.utils import (
     opener, StringIO, root as rootp, tree as treep,
     make_counter, invert_dict, uid,
     RootProtocolNotSupportedError)
 from glypy.utils.multimap import OrderedMultiMap
-from glypy.structure import monosaccharide, substituent, glycan, Modification, constants
+from glypy.structure import monosaccharide, substituent, glycan, Modification, constants, UnknownPosition, NoPosition
 from glypy.structure.link import Link, AmbiguousLink
 from .format_constants_map import (anomer_map, superclass_map,
-                                   link_replacement_composition_map, modification_map)
+                                   link_replacement_composition_map,
+                                   modification_map, linkage_type_map)
 from .file_utils import ParserError
 from .tree_builder_utils import (
     decorate_tree,
@@ -39,7 +29,7 @@ from .tree_builder_utils import (
     find_root,
     try_int,
     StructurePrecisionEnum,
-    AbstractGraphEntryEnum)
+    AbstractGraphEntryEnum, NodeCollection)
 from glypy.composition import Composition
 
 try:
@@ -84,12 +74,12 @@ alternative_start = "a"
 #: Pattern for parsing the lines of the RES section corresponding
 #: to individual |Monosaccharide| residues
 res_pattern = re.compile(
-    '''
+    r'''
     (?P<anomer>[abxo])?
     (?P<conf_stem>(?:-[dlx][a-z]+)+)?-?
     (?P<superclass>[A-Z]+)-?
     (?P<indices>[0-9x]+:[0-9x]+)
-    (?P<modifications>(\|[0-9x]+:[0-9a-z]+)+)?
+    (?P<modifications>(\|[0-9x,]+:[0-9a-z]+)+)?
     ''', re.VERBOSE)
 
 #: Pattern for parsing the potentially repeated |Configuration| and |Stem|
@@ -98,18 +88,18 @@ conf_stem_pattern = re.compile(r'(?P<config>[dlx])(?P<stem>[a-z]+)')
 
 #: Pattern for parsing modifications found on monosaccharide residue
 #: lines in the RES section
-modification_pattern = re.compile(r"\|?(\d+):([^\|;\n]+)")
+modification_pattern = re.compile(r"\|?([0-9,x]+):([^\|;\n]+)")
 
 
 #: Pattern for parsing |Link| lines found in the LIN section
 link_pattern = re.compile(
     r'''(?P<doc_index>\d+)?:
     (?P<parent_residue_index>\d+)
-    (?P<parent_atom_replaced>[odhnx])
+    (?P<parent_atom_replaced>[odhnxu])
     \((?P<parent_attachment_position>-?[0-9\-\|]+)[\+\-]
         (?P<child_attachment_position>-?[0-9\-\|]+)\)
     (?P<child_residue_index>\d+)
-    (?P<child_atom_replaced>[odhnx])
+    (?P<child_atom_replaced>[odhnxu])
         ''', re.VERBOSE)
 
 
@@ -131,7 +121,7 @@ rep_header_pattern = re.compile(
     (?P<internal_linkage>.+)
     =(?P<lower_multitude>-?\d+)-(?P<higher_multitude>-?\d+)''', re.VERBOSE)
 
-repeat_line_pattern = re.compile("^(?P<graph_index>\d+)r:r(?P<repeat_index>\d+)")
+repeat_line_pattern = re.compile(r"^(?P<graph_index>\d+)r:r(?P<repeat_index>\d+)")
 
 und_header_pattern = re.compile(r'''UND(?P<und_index>\d+):
     (?P<major>\d+(\.\d*)?):
@@ -139,10 +129,10 @@ und_header_pattern = re.compile(r'''UND(?P<und_index>\d+):
     ''', re.VERBOSE)
 
 und_link_pattern = re.compile(r'''
-    (?P<parent_atom_replaced>[odhnx])
+    (?P<parent_atom_replaced>[odhnxu])
     \((?P<parent_attachment_position>-?[0-9\-\|]+)[\+\-]
         (?P<child_attachment_position>-?[0-9\-\|]+)\)
-    (?P<child_atom_replaced>[odhnx])
+    (?P<child_atom_replaced>[odhnxu])
     ''', re.VERBOSE)
 
 
@@ -151,6 +141,9 @@ class GlycoCTError(ParserError):
 
 
 class GlycoCTSectionUnsupported(GlycoCTError):
+    '''Indicates that the GlycoCT parser has encountered a section that
+    it does not know how to parse.
+    '''
     pass
 
 
@@ -237,7 +230,7 @@ class GlycoCTGraph(object):
         self.graph[id] = value
 
     def form_link(self, parent, child, parent_position, child_position, parent_loss,
-                  child_loss, id=None):
+                  child_loss, parent_linkage_type=None, child_linkage_type=None, id=None):
         if parent.node_type is Substituent.node_type and\
                 child.node_type is Monosaccharide.node_type:
             warnings.warn(
@@ -249,13 +242,15 @@ class GlycoCTGraph(object):
             link_obj = AmbiguousLink(
                 parent, child, parent_position=list(map(int, parent_position)),
                 child_position=list(map(int, child_position)), parent_loss=parent_loss,
-                child_loss=child_loss, id=id)
+                child_loss=child_loss, id=id, parent_linkage_type=parent_linkage_type,
+                child_linkage_type=child_linkage_type)
             link_obj.find_open_position()
         else:
             link_obj = Link(
                 parent, child, parent_position=int(parent_position[0]),
                 child_position=int(child_position[0]), parent_loss=parent_loss,
-                child_loss=child_loss)
+                child_loss=child_loss, parent_linkage_type=parent_linkage_type,
+                child_linkage_type=child_linkage_type)
         return link_obj
 
     def deferred_retrieval(self, id, direction=None):
@@ -313,51 +308,6 @@ class GlycoCTGraph(object):
         roots = self.find_root_nodes()
         visited = self.visit(roots[0])
         return len(visited) >= len(self)
-
-
-class NodeCollection(object):
-
-    @classmethod
-    def from_node(cls, root):
-        nodes = []
-        for node in monosaccharide.traverse(root):
-            nodes.append(node)
-            try:
-                for _, subst in node.substituents():
-                    nodes.append(subst)
-            except AttributeError:
-                pass
-        return cls(nodes)
-
-    def __init__(self, nodes):
-        self.nodes = list(nodes)
-        self.root = self.nodes[0]
-
-    def __iter__(self):
-        return monosaccharide.traverse(self.root)
-
-    def deindex(self):
-        base = uid()
-        for i, node in enumerate(self.nodes):
-            node.id += base
-            node.id *= -1
-
-    def reindex(self):
-        for i, node in enumerate(self.nodes):
-            node.id = i + 1
-
-    def clone(self, *args, **kwargs):
-        root = monosaccharide.graph_clone(self.root)
-        return self.from_node(root)
-
-    def get(self, key):
-        for node in self.nodes:
-            if node.id == key:
-                return node
-        raise IndexError(key)
-
-    def __root__(self):
-        return self.root
 
 
 class GlycoCTGraphStack(GlycoCTGraph):
@@ -629,10 +579,12 @@ class RepeatedGlycoCTSubgraph(GlycoCTSubgraph):
 
         parent_residue_index = self.terminal_node_index
         parent_atom_replaced = link_replacement_composition_map[self.internal_linkage["parent_atom_replaced"]]
+        parent_linkage_type = linkage_type_map[self.internal_linkage["parent_atom_replaced"]]
         parent_attachment_position = self.internal_linkage["parent_attachment_position"]
 
         child_residue_index = self.origin_node_index
         child_atom_replaced = link_replacement_composition_map[self.internal_linkage["child_atom_replaced"]]
+        child_linkage_type = linkage_type_map[self.internal_linkage["child_atom_replaced"]]
         child_attachment_position = self.internal_linkage["child_attachment_position"]
 
         op_stack = []
@@ -648,7 +600,10 @@ class RepeatedGlycoCTSubgraph(GlycoCTSubgraph):
                 (self.form_link, [parent_node, child_node],
                  dict(parent_position=parent_attachment_position,
                       child_position=child_attachment_position,
-                      parent_loss=parent_atom_replaced, child_loss=child_atom_replaced)))
+                      parent_loss=parent_atom_replaced,
+                      child_loss=child_atom_replaced,
+                      parent_linkage_type=parent_linkage_type,
+                      child_linkage_type=child_linkage_type)))
 
         for op in op_stack:
             f, args, kwargs = op
@@ -738,10 +693,18 @@ class RepeatedGlycoCTSubgraph(GlycoCTSubgraph):
 UndeterminedProbability = namedtuple("UndeterminedProbability", "major minor")
 
 
-class UnderdeterminedRecord(GlycoCTSubgraph):
+LinkageSpecification = namedtuple(
+    "LinkageSpecification", [
+        "id", "parent_residue_index", "parent_atom_replaced", "parent_attachment_position",
+        "child_residue_index", "child_atom_replaced", "child_attachment_position",
+        "parent_linkage_type", "child_linkage_type"
+    ])
+
+
+class UndeterminedGlycoCTSubgraph(GlycoCTSubgraph):
     def __init__(self, und_index, probability=None, parent_ids=None,
                  subtree_linkages=None, graph=None, parent=None):
-        super(UnderdeterminedRecord, self).__init__(graph, parent)
+        super(UndeterminedGlycoCTSubgraph, self).__init__(graph, parent)
         if probability is None:
             probability = UndeterminedProbability(100., 100.)
         if parent_ids is None:
@@ -815,11 +778,45 @@ def extract_composition(parser):
     return store
 
 
-class GlycoCTReader(GlycoCTGraphStack):
-    '''
-    Simple State-Machine parser for condensed GlycoCT representations. Yields
-    |Glycan| instances.
-    '''
+class GlycoCTReader(GlycoCTGraphStack, Iterator):
+    """Parse :title-reference:`GlycoCT{condensed}` text data into |Glycan| objects.
+
+    The parser implements the :class:`Iterator` interface, yielding successive glycans
+    from a text stream separated by empty lines.
+
+    The parser can understand fully specified and partially ambiguous structures.
+    When :attr:`allow_repeats` is |True| and a ``REP`` section is encountered, it
+    will be expanded to its minimum multiplicity, or 1 if the minimum is unknown.
+    ``UND`` sections will be connected to the main graph by :class:`~.AmbiguousLink`
+    instead of :class:`~.Link` objects.
+
+    Attributes
+    ----------
+    allow_repeats : :class:`bool`
+        Whether or not to permit ``REP`` sections. Defaults to |True|
+    completes : :class:`bool`
+        Whether or not to translate the built graph into a |Glycan| object. Defaults
+        to |True|
+    handle : file-like
+        The text file being read from
+    in_repeat : :class:`bool`
+        Indicates the parser is currently parsing a ``REP`` section's sub-graph
+    in_undetermined : bool
+        Indicates the parser is currently parsing a ``UND`` section's sub-graph
+    postponed : list
+        Holds all the deferred operations for the top-most graph as :class:`callable`
+        objects
+    root : :class:`Monosaccharide`
+        The root node of the produced graph
+    state : str
+        The current state of the parser's state machine
+    structure_class : type
+        The |Glycan| sub-class to produce
+    repeats : dict
+        Maps RES section index to :class:`RepeatedGlycoCTSubgraph`
+    undetermineds : dict
+        Maps UND section index to :class:`UndeterminedGlycoCTSubgraph`
+    """
 
     @classmethod
     def loads(cls, glycoct_str, structure_class=Glycan, allow_repeats=True):
@@ -828,14 +825,6 @@ class GlycoCTReader(GlycoCTGraphStack):
         return cls(rep, structure_class=structure_class, allow_repeats=allow_repeats)
 
     def __init__(self, stream, structure_class=Glycan, allow_repeats=True, completes=True):
-        '''
-        Creates a parser of condensed GlycoCT.
-
-        Parameters
-        ----------
-        stream: basestring or file-like
-            A path to a file or a file-like object to be processed
-        '''
         super(GlycoCTReader, self).__init__()
 
         self._state = None
@@ -925,7 +914,11 @@ class GlycoCTReader(GlycoCTGraphStack):
         modifications = OrderedMultiMap()
         if mods is not None:
             for p, mod in modification_pattern.findall(mods):
-                modifications[try_int(p)] = modification_map[mod]
+                positions = p.split(",")
+                if len(positions) > 1:
+                    warnings.warn("Multi-site Modifications are not fully supported")
+                for p in positions:
+                    modifications[try_int(p)] = modification_map[mod]
 
         is_reduced = "aldi" in modifications[1]
         if is_reduced:
@@ -944,7 +937,7 @@ class GlycoCTReader(GlycoCTGraphStack):
         configuration_ = tuple(Configuration[c] for c in config)
 
         ring_start_, ring_end_ = [
-            try_int(i) for i in residue_dict["indices"].split(":")]
+            (try_int(i) if i != 'x' else UnknownPosition) for i in residue_dict["indices"].split(":")]
 
         anomer_ = anomer_map[residue_dict['anomer']]
         super_class_ = superclass_map[residue_dict['superclass']]
@@ -1015,12 +1008,22 @@ class GlycoCTReader(GlycoCTGraphStack):
 
         parent_atom_replaced = link_replacement_composition_map[link_dict["parent_atom_replaced"]]
         parent_attachment_position = list(map(int, link_dict["parent_attachment_position"].split("|")))
+        try:
+            parent_linkage_type = linkage_type_map[link_dict['parent_atom_replaced']]
+        except KeyError:
+            parent_linkage_type = constants.LinkageType.x
 
         child_atom_replaced = link_replacement_composition_map[link_dict["child_atom_replaced"]]
         child_attachment_position = list(map(int, link_dict["child_attachment_position"].split("|")))
+        try:
+            child_linkage_type = linkage_type_map[link_dict['child_atom_replaced']]
+        except KeyError:
+            child_linkage_type = constants.LinkageType.x
 
-        return (id, parent_residue_index, parent_atom_replaced, parent_attachment_position,
-                child_residue_index, child_atom_replaced, child_attachment_position)
+        return LinkageSpecification(
+            id, parent_residue_index, parent_atom_replaced, parent_attachment_position,
+            child_residue_index, child_atom_replaced, child_attachment_position,
+            parent_linkage_type, child_linkage_type)
 
     def handle_linkage(self, line):
         '''
@@ -1036,7 +1039,8 @@ class GlycoCTReader(GlycoCTGraphStack):
         a |Link| object.
         '''
         id, parent_residue_index, parent_atom_replaced, parent_attachment_position,\
-            child_residue_index, child_atom_replaced, child_attachment_position = self.parse_link(line)
+            child_residue_index, child_atom_replaced, child_attachment_position,\
+            parent_linkage_type, child_linkage_type = self.parse_link(line)
 
         parent = self.get_node(parent_residue_index)
         child = self.get_node(child_residue_index)
@@ -1090,7 +1094,8 @@ class GlycoCTReader(GlycoCTGraphStack):
             self.form_link(
                 parent, child,
                 parent_position=parent_attachment_position, child_position=child_attachment_position,
-                parent_loss=parent_atom_replaced, child_loss=child_atom_replaced, id=id)
+                parent_loss=parent_atom_replaced, child_loss=child_atom_replaced, id=id,
+                parent_linkage_type=parent_linkage_type, child_linkage_type=child_linkage_type)
 
     def handle_repeat_stub(self, line):
         if not self.allow_repeats:
@@ -1144,6 +1149,7 @@ class GlycoCTReader(GlycoCTGraphStack):
         subtree_linkages = []
         match = und_link_pattern.search(subtree_linkage_line.split(":")[1])
         if match is None:
+            print('233')
             raise GlycoCTError("Could not interpret UND SubtreeLinkage %r at line %d" % (
                 subtree_linkage_line, self._source_line))
         else:
@@ -1160,7 +1166,7 @@ class GlycoCTReader(GlycoCTGraphStack):
 
         und_index = int(header_dict['und_index'])
         prob = UndeterminedProbability(float(header_dict['major']), float(header_dict['minor']))
-        record = UnderdeterminedRecord(
+        record = UndeterminedGlycoCTSubgraph(
             und_index, prob, parent_ids=ids,
             subtree_linkages=subtree_linkages, parent=self)
         self.undetermineds[und_index] = record
@@ -1277,6 +1283,21 @@ def read(stream, structure_class=Glycan, allow_repeats=True):
 
 
 def load(stream, structure_class=Glycan, allow_repeats=True, allow_multiple=True):  # pragma: no cover
+    """Read all structures from the provided text stream.
+
+    Parameters
+    ----------
+    stream : file-like
+        The text stream to parse structures from
+    structure_class : type, optional
+        :class:`~.Glycan` subclass to use
+    allow_repeats : bool, optional
+        Whether or not to allow ``REP`` sections
+
+    Returns
+    -------
+    :class:`~.Glycan` or :class:`list` of :class:`~.Glycan`
+    """
     g = GlycoCTReader(stream, structure_class=structure_class, allow_repeats=allow_repeats)
     first = next(g)
     if not allow_multiple:
@@ -1291,27 +1312,25 @@ def load(stream, structure_class=Glycan, allow_repeats=True, allow_multiple=True
         return first
 
 
-def loads(glycoct_str, structure_class=Glycan, allow_repeats=True, allow_multiple=True):
-    '''
-    A convenience wrapper for :meth:`GlycoCTReader.loads`
+def loads(text, structure_class=Glycan, allow_repeats=True, allow_multiple=True):
+    """Read all structures from the provided text string.
 
-    As additional convenience, this function does not return an
-    iterator over glycans, and returns a single instance if only
-    one is present, or a list of instances otherwise.
-    '''
+    Parameters
+    ----------
+    text : str
+        The text to parse structures from
+    structure_class : type, optional
+        :class:`~.Glycan` subclass to use
+    allow_repeats : bool, optional
+        Whether or not to allow ``REP`` sections
 
-    g = GlycoCTReader.loads(glycoct_str, structure_class=structure_class, allow_repeats=allow_repeats)
-    first = next(g)
-    if not allow_multiple:
-        return first
-    second = None
-    try:
-        second = next(g)
-        collection = [first, second]
-        collection.extend(g)
-        return collection
-    except StopIteration:
-        return first
+    Returns
+    -------
+    :class:`~.Glycan` or :class:`list` of :class:`~.Glycan`
+    """
+
+    text_buffer = StringIO(text)
+    return load(text_buffer, structure_class, allow_repeats, allow_multiple)
 
 
 def detect_glycoct(string):
@@ -1366,27 +1385,71 @@ class DictTree(object):
 
 
 class GlycoCTWriterBase(object):
+    """Summary
+
+    Attributes
+    ----------
+    buffer : file-like
+        The buffer to write structures to. If :attr:`nobuffer` is |True|,
+        this will be a :class:`~.StringIO` object which will be returned
+        on each write.
+    dependencies : :class:`defaultdict` of :class:`dict`
+        Track the relationships between child nodes and their parents.
+        Used during linkage writing
+    full : :class:`bool`
+        Whether or not to traverse :class:`~.Monosaccharide`-:class:`~.Monosaccharide`
+        linkages.
+    index_to_residue : :class:`DictTree`
+        A state-specific mapping from index to :attr:`~.Monosaccharide.id`.
+    lin_accumulator : list
+        Accumulator list of :class:`~.Link` objects.
+    lin_counter : function
+        A stateful counter which when called returns the next
+        integer in a sequence used to index entries in the `LIN` section
+    nobuffer : bool
+        Whether or not the writer was initialized with a write-able buffer
+    res_counter : function
+        A stateful counter which when called returns the next
+        integer in a sequence used to index entries in the `RES` section
+    residue_to_index : :class:`DictTree`
+        A state-specific mapping from :attr:`~.Monosaccharide.id` to index.
+    state : str
+        The current state of the writer
+    structure : :class:`~.SaccharideCollection`
+        The structure currently being written. May be a :class:`~.Monosaccharide`,
+        :class:`~.Glycan`, :class:`~.GlycanComposition`.
+    und_counter : function
+        A stateful counter which when called returns the next
+        integer in a sequence used to index `UND` sections.
+    """
+
     def __init__(self, structure=None, buffer=None, full=True):
         self.nobuffer = False
         if buffer is None:
-            buffer = StringIO()
             self.nobuffer = True
+            buffer = StringIO()
 
         self.buffer = buffer
         self.structure = structure
         self.full = full
 
         self.state = START
+        self._initialize_counters()
+        self._initialize_index_tree()
+        self._initialize_link_trackers()
 
+    def _initialize_counters(self):
         self.res_counter = make_counter()
         self.lin_counter = make_counter()
         self.und_counter = make_counter()
 
+    def _initialize_index_tree(self):
         # Look-ups for mapping RES nodes to objects by section index and id,
         # respectively
         self.index_to_residue = DictTree(self.state)
         self.residue_to_index = DictTree(self.state)
 
+    def _initialize_link_trackers(self):
         # Accumulator for linkage indices and mapping linkage indices to
         # dependent RES indices
         self.lin_accumulator = []
@@ -1413,16 +1476,9 @@ class GlycoCTWriterBase(object):
 
     def _reset(self):
         self.state = START
-        self.res_counter = make_counter()
-        self.lin_counter = make_counter()
-        self.und_counter = make_counter()
-
-        self.index_to_residue = DictTree(self.state)
-        self.residue_to_index = DictTree(self.state)
-
-        self.lin_accumulator = []
-        self.dependencies = defaultdict(dict)
-
+        self._initialize_counters()
+        self._initialize_index_tree()
+        self._initialize_link_trackers()
         if self.nobuffer:
             self.buffer = StringIO()
 
@@ -1461,7 +1517,7 @@ class GlycoCTWriterBase(object):
     def handle_substituent(self, substituent):
         return "s:{0}".format(substituent.name.replace("_", "-"))
 
-    def handle_monosaccharide(self, monosaccharide):
+    def _format_monosaccharide(self, monosaccharide):
         residue_template = "{ix}b:{anomer}{conf_stem}{superclass}-{ring_start}:{ring_end}{modifications}"
 
         # This index is reused many times
@@ -1471,21 +1527,25 @@ class GlycoCTWriterBase(object):
         anomer = invert_anomer_map[monosaccharide.anomer]
         conf_stem = ''.join("-{0}{1}".format(c.name, s.name)
                             for c, s in zip(monosaccharide.configuration, monosaccharide.stem))
-        if None in monosaccharide.configuration or None in monosaccharide.stem:
+        if None in monosaccharide.configuration and None in monosaccharide.stem:
             conf_stem = ''
         superclass = "-" + invert_superclass_map[monosaccharide.superclass]
 
         modifications = '|'.join(
             "{0}:{1}".format(k, v.name) for k, v in monosaccharide.modifications.items())
-
+        null_positions = (UnknownPosition, NoPosition)
         modifications = "|" + modifications if modifications != "" else ""
-        ring_start = monosaccharide.ring_start if monosaccharide.ring_start is not None else 'x'
-        ring_end = monosaccharide.ring_end if monosaccharide.ring_end is not None else 'x'
+        ring_start = monosaccharide.ring_start if monosaccharide.ring_start not in null_positions else 'x'
+        ring_end = monosaccharide.ring_end if monosaccharide.ring_end not in null_positions else 'x'
 
         # The complete monosaccharide residue line
         residue_str = residue_template.format(ix=monosaccharide_index, anomer=anomer, conf_stem=conf_stem,
                                               superclass=superclass, modifications=modifications,
                                               ring_start=ring_start, ring_end=ring_end)
+        return residue_str, monosaccharide_index
+
+    def handle_monosaccharide(self, monosaccharide):
+        residue_str, monosaccharide_index = self._format_monosaccharide(monosaccharide)
         res = [residue_str]
         lin = []
         visited_subst = dict()
@@ -2044,31 +2104,10 @@ class OrderRespectingGlycoCTWriter(GlycoCTWriterBase):
         self.link_queue = deque()
 
     def handle_monosaccharide(self, monosaccharide):
-        residue_template = "{ix}b:{anomer}{conf_stem}{superclass}-{ring_start}:{ring_end}{modifications}"
-
-        # This index is reused many times
-        monosaccharide_index = self.res_counter()
+        residue_str, monosaccharide_index = self._format_monosaccharide(monosaccharide)
 
         self.index_to_residue[monosaccharide_index] = monosaccharide
         self.residue_to_index[monosaccharide.id] = monosaccharide_index
-
-        # Format individual fields
-        anomer = invert_anomer_map[monosaccharide.anomer]
-        conf_stem = ''.join("-{0}{1}".format(c.name, s.name)
-                            for c, s in zip(monosaccharide.configuration, monosaccharide.stem))
-        superclass = "-" + invert_superclass_map[monosaccharide.superclass]
-
-        modifications = '|'.join(
-            "{0}:{1}".format(k, v.name) for k, v in monosaccharide.modifications.items())
-
-        modifications = "|" + modifications if modifications != "" else ""
-        ring_start = monosaccharide.ring_start if monosaccharide.ring_start is not None else 'x'
-        ring_end = monosaccharide.ring_end if monosaccharide.ring_end is not None else 'x'
-
-        # The complete monosaccharide residue line
-        residue_str = residue_template.format(ix=monosaccharide_index, anomer=anomer, conf_stem=conf_stem,
-                                              superclass=superclass, modifications=modifications,
-                                              ring_start=ring_start, ring_end=ring_end)
 
         link_collection = list(monosaccharide.substituent_links.values())
         if self.full:
@@ -2135,9 +2174,9 @@ GlycoCTWriter = OrderRespectingGlycoCTWriter
 
 def dump(structure, buffer=None):
     '''
-    Serialize the |Glycan| graph object into condensed GlycoCT, using
+    Serialize the |Glycan| into :title-reference:`GlycoCT{condensed}`, using
     `buffer` to store the result. If `buffer` is |None|, then the
-    function will operate on a newly created :class:`~glypy.utils.StringIO` object.
+    function will operate on a newly created :class:`StringIO` object.
 
     Parameters
     ----------
@@ -2145,12 +2184,11 @@ def dump(structure, buffer=None):
         The structure to serialize
     buffer: file-like or None
         The stream to write the serialized structure to. If |None|, uses an instance
-        of `StringIO`
+        of :class:`StringIO`
 
     Returns
     -------
     file-like or str if ``buffer`` is :const:`None`
-
     '''
     from glypy import GlycanComposition
     if isinstance(structure, GlycanComposition):
@@ -2158,16 +2196,29 @@ def dump(structure, buffer=None):
     return GlycoCTWriter(structure, buffer).dump()
 
 
-def dumps(structure, full=True):
+def dumps(structure):
+    '''
+    Serialize the |Glycan| into :title-reference:`GlycoCT{condensed}`, returning
+    the text as a string.
+
+    Parameters
+    ----------
+    structure: |Glycan|
+        The structure to serialize
+
+    Returns
+    -------
+    str
+    '''
     from glypy import GlycanComposition
     if isinstance(structure, GlycanComposition):
         return GlycanCompositionGlycoCTWriter(structure, None).dump()
-    return GlycoCTWriter(structure, None, full=full).dump()
+    return GlycoCTWriter(structure, None).dump()
 
 
 def _postprocessed_single_monosaccharide(monosaccharide, convert=True):
     if convert:
-        monostring = dumps(monosaccharide, full=False)
+        monostring = GlycoCTWriterBase(monosaccharide, None, full=False).dump()
     else:
         monostring = monosaccharide
     monostring = monostring.replace("\n", " ")
@@ -2184,109 +2235,3 @@ Glycan.register_serializer("glycoct", dumps)
 
 def canonicalize(structure):
     return loads(dumps(structure))
-
-
-class DistinctGlycanSet(object):
-
-    def __init__(self, structures=None):
-        if structures is None:
-            structures = []
-        self.raw_data_buffer = set()
-
-        if isinstance(structures, DistinctGlycanSet):
-            self.update(structures)
-        else:
-            for structure in structures:
-                self.add(structure)
-
-    def add(self, structure):
-        key = self._transform_text(
-            self._structure_to_text(structure))
-        if key in self.raw_data_buffer:
-            return key
-        self.raw_data_buffer.add(key)
-        return key
-
-    def _structure_to_text(self, structure):
-        return dumps(structure)
-
-    def _text_to_structure(self, text):
-        return loads(text)
-
-    def _transform_text(self, text):
-        return zlib.compress(text)
-
-    def _untransform_text(self, compressed):
-        return zlib.decompress(compressed)
-
-    def encode(self, structure):
-        return self._transform_text(self._structure_to_text(structure))
-
-    def add_encoded(self, encoded):
-        self.raw_data_buffer.add(encoded)
-
-    def has_encoded(self, encoded):
-        return encoded in self.raw_data_buffer
-
-    def pop(self):
-        text = self._untransform_text(self.raw_data_buffer.pop())
-        return self._text_to_structure(text)
-
-    def __len__(self):
-        return len(self.raw_data_buffer)
-
-    def __iter__(self):
-        for compressed in self.raw_data_buffer:
-            yield self._text_to_structure(
-                self._untransform_text(compressed))
-
-    def __contains__(self, structure):
-        text = self._structure_to_text(structure)
-        compressed = self._transform_text(text)
-        return compressed in self.raw_data_buffer
-
-    @classmethod
-    def from_buffer_slice(cls, buffer_slice):
-        inst = cls()
-        inst.raw_data_buffer.update(buffer_slice)
-        return inst
-
-    def update(self, other):
-        if isinstance(other, DistinctGlycanSet):
-            self.raw_data_buffer.update(other.raw_data_buffer)
-        else:
-            for x in other:
-                self.add(x)
-
-    def partition(self, nchunks=2):
-        buffer_sequence = list(self.raw_data_buffer)
-        n = len(buffer_sequence)
-        chunk_size = max(int(n / nchunks), 1)
-        i = 0
-        chunks = []
-        while i < n:
-            chunk = buffer_sequence[i:i + chunk_size]
-            i += chunk_size
-            chunks.append(self.from_buffer_slice(chunk))
-        return chunks
-
-    def remove_all(self, other):
-        if not isinstance(other, DistinctGlycanSet):
-            other = DistinctGlycanSet(other)
-        self.raw_data_buffer -= other.raw_data_buffer
-
-    def __sub__(self, other):
-        return self.from_buffer_slice(
-            self.raw_data_buffer - other.raw_data_buffer)
-
-    def __and__(self, other):
-        return self.from_buffer_slice(
-            self.raw_data_buffer & other.raw_data_buffer)
-
-    def __or__(self, other):
-        return self.from_buffer_slice(
-            self.raw_data_buffer | other.raw_data_buffer)
-
-    def __ior__(self, other):
-        self.raw_data_buffer.update(other.raw_data_buffer)
-        return self

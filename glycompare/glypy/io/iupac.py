@@ -1,10 +1,13 @@
 import re
 import warnings
 
-from collections import deque
+from collections import deque, namedtuple
+from functools import partial
+
 from glypy.structure import (
     Monosaccharide, Glycan, Link, AmbiguousLink,
-    Substituent, constants, named_structures)
+    Substituent, constants, named_structures, UnknownPosition)
+from glypy.composition import Composition
 from glypy.composition.structure_composition import substituent_compositions
 from glypy.composition.composition_transform import has_derivatization, derivatize
 from glypy.io import format_constants_map
@@ -17,12 +20,28 @@ from glypy.io.file_utils import ParserInterface, ParserError
 # A static copy of monosaccharide names to structures for copy-free comparison
 monosaccharide_reference = {k: v for k, v in named_structures.monosaccharides.items()}
 
+special_base_types = {
+    # "Neu5Ac", "Neu5Gc", "Neu",
+    # "Kdn", "Kdo",
+    "Oli", "Tyv",
+    "Psi", "Fru", "Sor", "Tag",
+    "Xul", "Sed"
+}
+
+special_base_types = {
+    s: monosaccharide_reference[s]
+    for s in special_base_types
+}
+
+special_base_type_resolver = identity.MonosaccharideIdentifier(special_base_types)
 
 anomer_map_from = dict(format_constants_map.anomer_map)
 anomer_map_from['?'] = anomer_map_from.pop('x')
 anomer_map_to = invert_dict(anomer_map_from)
 anomer_map_from['beta'] = anomer_map_from['b']
 anomer_map_from['alpha'] = anomer_map_from['a']
+anomer_map_from[u"\u03B1"] = anomer_map_from['a']
+anomer_map_from[u"\u03B2"] = anomer_map_from['b']
 
 
 Stem = constants.Stem
@@ -59,20 +78,64 @@ substituents_map_to["acetyl"] = "Ac"
 substituents_map_to["glycolyl"] = "Gc"
 substituents_map_to["fluoro"] = "F"
 substituents_map_to["amino"] = "N"
+substituents_map_to['phosphate'] = 'P'
 
 substituents_map_from = invert_dict(substituents_map_to)
+substituents_map_from['Phosphate'] = 'phosphate'
+
+_modification_map_to = {
+    'deoxy': 'd',
+}
+
+
+_substituent_replacement_rules = {
+    'NeuAc': [
+        ('n_acetyl', 'acetyl')
+    ],
+    'NeuGc': [
+        ('n_glycolyl', 'glycolyl')
+    ],
+    'Neu': [
+        ('amino', None)
+    ]
+}
 
 
 class SubstituentSerializer(object):
-    def __init__(self, monosaccharides=None):
+    """Build the textual encoding for the relevant substituents for
+    a provided monosaccharide.
+
+    Attributes
+    ----------
+    monosaccharide_reference : :class:`dict`
+        Map base type to :class:`~.Monosaccharide`
+    """
+
+    def __init__(self, monosaccharides=None, substitution_rules=None):
         if monosaccharides is None:
             monosaccharides = monosaccharide_reference
+        if substitution_rules is None:
+            substitution_rules = _substituent_replacement_rules
         self.monosaccharide_reference = monosaccharides
+        self.substitution_rules = substitution_rules
 
-    def __call__(self, residue, monosaccharide_reference=None, **kwargs):
-        return self.resolve_substituents(residue, monosaccharide_reference)
+    def __call__(self, residue, **kwargs):
+        """Alias for :meth:`resolve_substituents`
+        """
+        return self.resolve_substituents(residue, **kwargs)
 
     def serialize_substituent(self, substituent):
+        """Obtain an IUPAC-compatible name for ``substituent``
+
+        Parameters
+        ----------
+        substituent : :class:`~.Substituent`
+            The subsituent group to get the name for
+
+        Returns
+        -------
+        :class:`str`
+        """
         name = substituent.name
         if name in substituents_map_to:
             part = substituents_map_to[name]
@@ -82,13 +145,22 @@ class SubstituentSerializer(object):
             substituents_map_from[part] = name
         return part
 
-    def resolve_substituents(self, residue, monosaccharides=None):
-        if monosaccharides is None:
-            monosaccharides = self.monosaccharide_reference
+    def resolve_substituents(self, residue, **kwargs):
+        """Build a textual encoding of the substituent list for ``residue``.
+
+        Parameters
+        ----------
+        residue : :class:`~.Monosaccharide`
+            The residue to build the substituent list for
+
+        Returns
+        -------
+        :class:`str`
+        """
         substituent = ""
         multi = False
-        for name, pos in self.get_relevant_substituents(residue, monosaccharides):
-            if pos in {-1, None}:
+        for name, pos in self.get_relevant_substituents(residue):
+            if pos in {UnknownPosition, None}:
                 pos = ""
             if name in substituents_map_to:
                 part = substituents_map_to[name]
@@ -104,38 +176,47 @@ class SubstituentSerializer(object):
                 multi = True
         return substituent
 
-    def get_relevant_substituents(self, residue, monosaccharides=None):
+    def _test_for_replacement(self, residue, reference, positions, substituents, replacements, exact=False):
+        if identity.is_a(residue, reference, exact=exact, short_circuit=True):
+            self._substituent_replacement(positions, substituents, replacements)
+
+    def _substituent_replacement(self, positions, substituents, pairs):
+        for target, replacement in pairs:
+            try:
+                i = substituents.index(target)
+                substituents.pop(i)
+                j = positions.pop(i)
+                if replacement is not None:
+                    substituents.insert(i, replacement)
+                    positions.insert(i, j)
+            except Exception:  # pragma: no cover
+                pass
+
+    def get_relevant_substituents(self, residue):
         '''
         Retrieve the set of substituents not implicitly included
         in the base type's symbol name.
+
+        Certain base types have implied substituent groups or partial substituent
+        groups. For example, from the perspective of :mod:`glypy`, "n-acetyl" is
+        a discrete unit, but from a structural perspective it is a substituted amine
+        group that was later acetylated. The "Neu" base type implies an amination of
+        carbon 5. In "Neu5Ac", the amine at carbon 5 is acetylated, but because the
+        amine is implied, the N of the "NAc" signifier is omitted.
+
+        In IUPAC's trivial coding, substituents are listed following
+        the base type, with each substituent encoded as an optional position
+        specifier followed immediately by a shortened version of the substituent group's
+        name. The first substituent immediately follows the base type, and subsequent
+        substituent groups are enclosed in parentheses.
         '''
-        if monosaccharides is None:
-            monosaccharides = self.monosaccharide_reference
+        monosaccharides = self.monosaccharide_reference
         positions = [p for p, sub in residue.substituents() if not sub._derivatize]
         substituents = [sub.name for p, sub in residue.substituents() if not sub._derivatize]
-        if identity.is_a(residue, monosaccharides["NeuAc"], exact=False, short_circuit=True):
-            try:
-                i = substituents.index("n_acetyl")
-                substituents.pop(i)
-                j = positions.pop(i)
-                substituents.insert(i, "acetyl")
-                positions.insert(i, j)
-            except Exception:  # pragma: no cover
-                pass
-        elif identity.is_a(residue, monosaccharides["NeuGc"], exact=False, short_circuit=True):
-            try:
-                i = substituents.index("n_glycolyl")
-                substituents.pop(i)
-                j = positions.pop(i)
-                substituents.insert(i, "glycolyl")
-                positions.insert(i, j)
-            except Exception:  # pragma: no cover
-                pass
-        elif identity.is_a(residue, monosaccharides["Neu"], exact=False, short_circuit=True):
-            i = substituents.index("amino")
-            substituents.pop(i)
-            positions.pop(i)
 
+        for reference_name, replacements in self.substitution_rules.items():
+            reference = monosaccharides[reference_name]
+            self._test_for_replacement(residue, reference, positions, substituents, replacements)
         return zip(substituents, positions)
 
 
@@ -143,7 +224,34 @@ resolve_substituent = SubstituentSerializer()
 
 
 class ModificationSerializer(object):
+    """Build the textual encoding for the relevant modifications for
+    a provided monosaccharide base type.
+    """
+
     def extract_modifications(self, modifications, base_type):
+        """Build a string representing the relevant modifications for.
+
+        Certain base types imply a collection of modifications by default. These
+        modifications should not be included in the textual encoding.
+
+        In IUPAC's trivial coding, modifications are specified as a comma-separated
+        list preceding the base definition with an optional position designation linked
+        by a dash character to the modification name. For example "deoxy" and "?-deoxy"
+        both signify a deoxidation at an unknown position, and "6-deoxy" indicates the
+        deoxidation appears at carbon 6.
+
+        Parameters
+        ----------
+        modifications : :class:`~.MultiMap`
+            A mapping between position and modifications
+        base_type : :class:`str`
+            The monosaccharide base type to build the list for. Uses
+            a hard-coded list of modifications
+
+        Returns
+        -------
+        :class:`str`
+        """
         buff = []
         template = '{position}-{name}'
         pos_mod_pairs = list(modifications.items())
@@ -160,7 +268,7 @@ class ModificationSerializer(object):
                 except Exception:  # pragma: no cover
                     pass
 
-        elif "Fuc" in base_type:
+        elif "Fuc" in base_type or "Qui" in base_type or "Rha" in base_type:
             for mod in [Modification.d]:
                 pop_ix = mods.index(mod)
                 pos.pop(pop_ix)
@@ -168,13 +276,18 @@ class ModificationSerializer(object):
 
         pos_mod_pairs = zip(pos, mods)
         for pos, mod in pos_mod_pairs:
-            if pos != -1:
+            if pos != UnknownPosition:
                 buff.append(template.format(position=pos, name=mod.name))
             else:
                 buff.append(mod.name)
-        return ','.join(buff)
+        out = ','.join(buff)
+        if out:
+            out += '-'
+        return out
 
     def __call__(self, modifications, base_type):
+        """An alias for :meth:`extract_modifications`
+        """
         return self.extract_modifications(modifications, base_type)
 
 
@@ -182,7 +295,47 @@ extract_modifications = ModificationSerializer()
 
 
 class ModificationDeserializer(object):
+    """Parses modification signifiers from text into position, :class:`~.Modification` pairs
+
+    Attributes
+    ----------
+    modification_map : :class:`dict`
+        Mapping from text representation to :class:`~.Modification` to provide additional
+        names for the existing modification name mapping.
+    """
+
+    def __init__(self, modification_map=None):
+        if modification_map is None:
+            modification_map = _modification_map_to.copy()
+        else:
+            t = _modification_map_to.copy()
+            t.update(modification_map)
+            modification_map = t
+        self.modification_map = modification_map
+
     def parse_modifications(self, modification_string):
+        """Parses the text for site-modification definitions.
+
+        In IUPAC's trivial coding, modifications are specified as a comma-separated
+        list preceding the base definition with an optional position designation linked
+        by a dash character to the modification name. For example "deoxy" and "?-deoxy"
+        both signify a deoxidation at an unknown position, and "6-deoxy" indicates the
+        deoxidation appears at carbon 6.
+
+        Parameters
+        ----------
+        modification_string : str
+
+        Returns
+        -------
+        list:
+            The list of (position, modification) pairs parsed from the string
+
+        Raises
+        ------
+        IUPACError:
+            If the modification signifier cannot be translated
+        """
         buff = modification_string.split(",")
         pairs = []
         for token in buff:
@@ -191,15 +344,19 @@ class ModificationDeserializer(object):
             try:
                 pos, mod = token.split("-")
             except Exception:
-                pos = -1
+                pos = UnknownPosition
                 mod = token
             try:
-                pairs.append((int(pos), Modification[mod]))
+                mod_t = self.modification_map.get(mod, mod)
+                pos = int(pos)
+                pairs.append((pos, Modification[mod_t]))
             except KeyError:
                 raise IUPACError("Could not determine modification from %s" % modification_string)
         return pairs
 
     def __call__(self, modification_string):
+        """An alias for :meth:`parse_modifications`
+        """
         return self.parse_modifications(modification_string)
 
 
@@ -207,6 +364,18 @@ parse_modifications = ModificationDeserializer()
 
 
 class MonosaccharideSerializer(object):
+    """Serialize a :class:`~.Monosaccharide` object to IUPAC text
+
+    Attributes
+    ----------
+    modification_extractor: :class:`ModificationSerializer`
+        Convert modifications to a text list
+    monosaccharide_reference : :class:`dict`
+        Map base type to :class:`~.Monosaccharide`
+    substituent_resolver : :class:`SubstituentSerializer`
+        Convert substituents to a text list
+    """
+
     def __init__(self, monosaccharides=None, substituent_resolver=None, modification_extractor=None):
         if monosaccharides is None:
             monosaccharides = monosaccharide_reference
@@ -218,9 +387,7 @@ class MonosaccharideSerializer(object):
             modification_extractor = ModificationSerializer()
         self.modification_extractor = modification_extractor
 
-    def resolve_special_base_type(self, residue, monosaccharide_reference=None):
-        if monosaccharide_reference is None:
-            monosaccharide_reference = self.monosaccharide_reference
+    def resolve_special_base_type(self, residue):
         if residue.superclass == SuperClass.non:
             if residue.stem == (Stem.gro, Stem.gal):
                 substituents = [sub.name for p, sub in residue.substituents() if not sub._derivatize]
@@ -243,10 +410,18 @@ class MonosaccharideSerializer(object):
                    Modification.keto in residue.modifications[2] and\
                    Modification.d in residue.modifications[3]:
                     return "Kdo"
-        elif residue.stem == (Stem.gal,) and residue.configuration == (Configuration.l,):
+        elif residue.stem == (Stem.gal,):
             if Modification.d in residue.modifications.values():
                 return "Fuc"
-
+        elif residue.stem == (Stem.man,):
+            if Modification.d in residue.modifications.values():
+                return "Rha"
+        elif residue.stem == (Stem.glc,):
+            if Modification.d in residue.modifications.values():
+                return "Qui"
+        query = special_base_type_resolver.query(residue)
+        if query:
+            return special_base_type_resolver.name_map[query]
         return None
 
     def monosaccharide_to_iupac(self, residue):
@@ -280,8 +455,55 @@ class MonosaccharideSerializer(object):
 
 
 class DerivatizationAwareMonosaccharideSerializer(MonosaccharideSerializer):
+    """A derivatization aware version of :class:`MonosaccharideSerializer` which
+    deviates from the standard IUPAC code to encode derivatization.
+
+    If a :class:`~.Monosaccharide` object has a derivatizing substituent attached to
+    it, as detected by :func:`~.has_derivatization`, those substituent groups will
+    normally be ignored. With this subclass, a single entry will be appended to the
+    monosaccharide encoding joined by an "^" character. For example a permethylated
+    hexose would be written "Hex^Me".
+    """
+
     def monosaccharide_to_iupac(self, residue):
         string = super(DerivatizationAwareMonosaccharideSerializer, self).monosaccharide_to_iupac(residue)
+        deriv = has_derivatization(residue)
+        if deriv:
+            string = "%s^%s" % (string, self.substituent_resolver.serialize_substituent(deriv))
+        return string
+
+
+class SimpleMonosaccharideSerializer(DerivatizationAwareMonosaccharideSerializer):
+    def monosaccharide_to_iupac(self, residue):
+        """
+        Encode a subset of traits of a :class:`Monosaccharide`-like object
+        using a limited subset of the IUPAC three letter code.
+
+        Parameters
+        ----------
+        residue: :class:`~Monosaccharide`
+            The object to be encoded
+
+        Returns
+        -------
+        str
+        """
+        template = "{modification}{base_type}{substituent}"
+        modification = ""
+        base_type = self.resolve_special_base_type(residue)
+        if base_type is None:
+            if len(residue.stem) == 1 and residue.stem[0] is not Stem.Unknown:
+                base_type = residue.stem[0].name.title()
+            else:
+                base_type = residue.superclass.name.title()
+        modification = self.modification_extractor(residue.modifications, base_type)
+        substituent = self.substituent_resolver(residue)
+        string = template.format(
+            modification=modification,
+            base_type=base_type,
+            substituent=substituent
+        )
+
         deriv = has_derivatization(residue)
         if deriv:
             string = "%s^%s" % (string, self.substituent_resolver.serialize_substituent(deriv))
@@ -292,35 +514,84 @@ monosaccharide_to_iupac = MonosaccharideSerializer()
 resolve_special_base_type = monosaccharide_to_iupac.resolve_special_base_type
 
 
-class GlycanSerializer(object):
-    def __init__(self, monosaccharide_serializer=None, open_edge='-(', close_edge=')-',
-                 open_branch='[', close_branch=']'):
-        if monosaccharide_serializer is None:
-            monosaccharide_serializer = MonosaccharideSerializer()
-        self.monosaccharide_serializer = monosaccharide_serializer
-
+class LinkageSerializer(object):
+    def __init__(self, open_edge='-(', close_edge=')-', open_branch='[', close_branch=']'):
         self.open_edge = open_edge
         self.close_edge = close_edge
         self.open_branch = open_branch
         self.close_branch = close_branch
 
-    def glycan_to_iupac(self, structure=None, attach=None, is_branch=False):
-        '''
-        Translate a |Glycan| structure into IUPAC Three Letter Code.
+    def format_linkage(self, linkage):
+        text = "{oe}{attach}-{linkage_pos}{ce}".format(
+            linkage_pos=linkage.parent_position if linkage.parent_position != UnknownPosition else "?",
+            attach=linkage.child_position if linkage.child_position != UnknownPosition else "?",
+            oe=self.open_edge, ce=self.close_edge)
+        return text
+
+    def format_branch(self, branch):
+        branch = '{ob}{branch}{cb}'.format(
+            branch=''.join(branch),
+            ob=self.open_branch,
+            cb=self.close_branch
+        )
+        return branch
+
+
+class SimpleLinkageSerializer(LinkageSerializer):
+    def __init__(self, open_edge="(", close_edge=")", open_branch="[", close_branch="]"):
+        super(SimpleLinkageSerializer, self).__init__(open_edge, close_edge, open_branch, close_branch)
+
+    def format_linkage(self, linkage):
+        template = "{oe}{anomer}{attach}-{linkage_pos}{ce}"
+        text = template.format(
+            oe=self.open_edge, anomer=anomer_map_to.get(linkage.child.anomer, "?"),
+            linkage_pos=linkage.parent_position if linkage.parent_position != UnknownPosition else "?",
+            attach=linkage.child_position if linkage.child_position != UnknownPosition else "?",
+            ce=self.close_edge)
+        return text
+
+
+class GlycanSerializer(object):
+    """Converts a :class:`~.Glycan` structure to IUPAC format.
+
+    Also works on individual :class:`~.Monosaccharide` objects, but
+    will traverse any links they have to other nodes.
+
+    Attributes
+    ----------
+    linkage_serializer : :class:`LinkageSerializer`
+        An object that converts a :class:`~.Link` object into text
+    monosaccharide_serializer : :class:`MonosaccharideSerializer`
+        An object that converts a :class:`~.Monosaccharide` object into text
+    """
+
+    def __init__(self, monosaccharide_serializer=None, linkage_serializer=None):
+        if monosaccharide_serializer is None:
+            monosaccharide_serializer = MonosaccharideSerializer()
+        if linkage_serializer is None:
+            linkage_serializer = LinkageSerializer()
+        self.monosaccharide_serializer = monosaccharide_serializer
+        self.linkage_serializer = linkage_serializer
+
+    def branch_to_iupac(self, structure=None, attach=None, is_branch=False):
+        '''Translate a |Glycan| structure's branch into IUPAC Three Letter Code.
         Recursively operates on branches.
 
         Parameters
         ----------
-        structure: Glycan or Monosaccharide
+        structure: :class:`~.Glycan` or :class:`~.Monosaccharide`
             The glycan to be translated. Translation starts from `glycan.root` if `structure`
-            is a |Glycan|.
+            is a |Glycan|. May also be a :class:`~.Monosaccharide` which is the root of a
+            branch of the overall structure.
         attach: int
             The point from the structure tree is attached to its parent. Used for recursively
             handling branches. Defaults to |None|.
+        is_branch: :class:`bool`
+            Whether this structure contains the root of the overall structure or a branch
 
         Returns
         -------
-        deque
+        :class:`collections.deque`
         '''
         base = structure.root if isinstance(structure, Glycan) else structure
         stack = [(attach, base)]
@@ -329,10 +600,7 @@ class GlycanSerializer(object):
             outedge, node = stack.pop()
             link = ""
             if outedge is not None:
-                link = "{oe}{attach}-{outedge_pos}{ce}".format(
-                    outedge_pos=outedge.parent_position if outedge.parent_position != -1 else "?",
-                    attach=outedge.child_position if outedge.child_position != -1 else "?",
-                    oe=self.open_edge, ce=self.close_edge)
+                link = self.linkage_serializer.format_linkage(outedge)
             # Branch linkage does not start with leading dash
             if is_branch and link[-1] == '-':
                 link = link[:-1]
@@ -342,11 +610,8 @@ class GlycanSerializer(object):
             children = list((p, link) for p, link in node.links.items() if link.is_parent(node))
             if len(children) > 1:
                 for pos, link in children[:-1]:
-                    branch = '{ob}{branch}{cb}'.format(
-                        branch=''.join(self.glycan_to_iupac(link.child, link, is_branch=True)),
-                        ob=self.open_branch,
-                        cb=self.close_branch
-                    )
+                    branch = self.linkage_serializer.format_branch(
+                        self.branch_to_iupac(link.child, link, is_branch=True))
                     outstack.appendleft(branch)
                 pos, link = children[-1]
                 stack.append((link, link.child))
@@ -355,28 +620,60 @@ class GlycanSerializer(object):
                 stack.append((link, link.child))
         return outstack
 
+    def glycan_to_iupac(self, structure, **kwargs):
+        '''Translate a |Glycan| structure's branch into IUPAC Three Letter Code.structure
+
+        Calls :meth:`branch_to_iupac`, a recursive function.
+
+        Parameters
+        ----------
+        structure: Glycan or Monosaccharide
+            The glycan to be translated. Translation starts from `glycan.root` if `structure`
+            is a |Glycan|.
+
+        Returns
+        -------
+        :class:`str`
+        '''
+        return ''.join(self.branch_to_iupac(structure))
+
     def __call__(self, structure):
-        return ''.join(self.glycan_to_iupac(structure))
+        """An alias for :meth:`glycan_to_iupac`
+        """
+        return self.glycan_to_iupac(structure)
 
 
 glycan_to_iupac = GlycanSerializer()
 
+glycan_to_iupac_simple = GlycanSerializer(SimpleMonosaccharideSerializer(), SimpleLinkageSerializer())
 
-def to_iupac(structure):
+
+def to_iupac(structure, dialect=None):
     """Translate `structure` into its textual representation using IUPAC Three Letter Code
 
     Parameters
     ----------
     structure : |Glycan| or |Monosaccharide|
         The structure to be translated
-
+    dialect: :class:`str`
+        One of "extended" or "simple", controlling whether the long-form linkage
+        and monosaccharide notation is used, or the more compact simplified form
+        is used. Defaults to "extended".
     Returns
     -------
     |str|
+
+    See Also
+    --------
+    :class:`GlycanSerializer`
     """
+    if dialect is None:
+        dialect = 'extended'
     if isinstance(structure, Monosaccharide):
         return monosaccharide_to_iupac(structure)
     else:
+        if dialect == 'simple':
+            return glycan_to_iupac_simple(structure)
         return glycan_to_iupac(structure)
 
 
@@ -405,7 +702,7 @@ class SubstituentDeserializer(object):
             if len(split_part) == 3:
                 _, position, name = split_part
             else:
-                position = -1
+                position = UnknownPosition
                 name = split_part[0]
             try:
                 name = (substituents_map_from[name])
@@ -436,44 +733,67 @@ class SubstituentDeserializer(object):
 substituent_from_iupac = SubstituentDeserializer()
 
 
-def parse_linkage_position(position_string):
-    if position_string == '?':
-        return -1
-    elif '/' in position_string:
-        return list(map(int, position_string.split('/')))[0]
-    else:
-        return int(position_string)
+LinkageSpecification = namedtuple("LinkageSpecification", ("child_position", "parent_position", "has_ambiguity"))
 
 
-def parse_linkage_structure(linkage_string):
-    if linkage_string is None:
-        return None
-    match = re.search(
-        r"\((?P<child_linkage>[0-9?/]+)->?(?P<parent_linkage>[0-9?/]+)?\)?",
-        linkage_string)
-    if match is None:
-        raise ValueError(linkage_string)
-    # has_ambiguity = "/" in linkage_string
-    has_ambiguity = False
-    match_groups = match.groupdict()
-    child_linkage = match_groups['child_linkage']
-    if child_linkage is not None:
-        child_linkage = parse_linkage_position(child_linkage)
-    parent_linkage = match_groups['parent_linkage']
-    if parent_linkage is not None:
-        parent_linkage = parse_linkage_position(parent_linkage)
-    return child_linkage, parent_linkage, has_ambiguity
+class LinkageDeserializer(object):
+    pattern = re.compile(r"\((?P<child_linkage>[0-9?/]+)->?(?P<parent_linkage>[0-9?/]+)?\)?")
+
+    def parse(self, linkage_string):
+        if linkage_string is None:
+            return None
+        match = self.pattern.search(linkage_string)
+        if match is None:
+            raise ValueError(linkage_string)
+        has_ambiguity = "/" in linkage_string
+        match_groups = match.groupdict()
+        child_linkage = match_groups['child_linkage']
+        if child_linkage is not None:
+            child_linkage = self.parse_position(child_linkage)
+        parent_linkage = match_groups['parent_linkage']
+        if parent_linkage is not None:
+            parent_linkage = self.parse_position(parent_linkage)
+        return LinkageSpecification(child_linkage, parent_linkage, has_ambiguity)
+
+    def parse_position(self, position_string):
+        if position_string == '?':
+            return UnknownPosition
+        elif '/' in position_string:
+            return list(map(int, position_string.split('/')))
+        else:
+            return int(position_string)
+
+    def __call__(self, linkage_string):
+        return self.parse(linkage_string)
+
+
+class SimpleLinkageDeserializer(LinkageDeserializer):
+    pattern = re.compile(r"""\((?P<anomer>[abo?])
+                             (?P<child_linkage>[0-9?/]+)->?
+                             (?P<parent_linkage>[0-9?/]+)?\)?""",
+                         re.VERBOSE)
+
+
+parse_linkage_structure = LinkageDeserializer()
 
 
 class MonosaccharideDeserializer(object):
-    pattern = re.compile(r'''(?:(?P<anomer>[abo?]|alpha|beta)-)?
-                         (?P<configuration>[LD?])-
-                         (?P<modification>[a-z0-9_\-,]*)
-                         (?P<base_type>[^-]{3}?)
-                         (?P<ring_type>[xpfo?])?
-                         (?P<substituent>[^-]*?)
-                         (?P<linkage>-\([0-9?/]+->?[0-9?/]+\)-?)?
-                         $''', re.VERBOSE)
+    _pattern = r'''(?:(?P<anomer>[abo?]|alpha|beta|\u03B1|\u03B2)-)?
+                   (?P<configuration>[LD?])-
+                   (?P<modification>[a-z0-9_\-,]*?)
+                   (?P<base_type>(?:[A-Z][a-z]{2}?|(?:[a-z]{3}[A-Z][a-z]{2})))
+                   (?P<ring_type>[xpfo?])?
+                   (?P<substituent>[^-]*?)
+                   (?P<linkage>-\([0-9?/]+->?[0-9?/]+\)-?)?
+                   $'''
+    try:
+        # convert to unicode for Py2
+        _pattern = _pattern.decode("raw_unicode_escape")
+    except AttributeError:
+        pass
+    pattern = re.compile(_pattern, re.VERBOSE | re.UNICODE)
+
+    linkage_parser = parse_linkage_structure
 
     def __init__(self, modification_parser=None, substituent_parser=None):
         if modification_parser is None:
@@ -494,14 +814,16 @@ class MonosaccharideDeserializer(object):
         return match_dict
 
     def ring_bounds(self, residue, ring_type):
-        if ring_type == 'p':
+        if residue.ring_start == UnknownPosition:
+            residue.ring_end = UnknownPosition
+        elif ring_type == 'p':
             residue.ring_end = residue.ring_start + 4
         elif ring_type == 'f':
             residue.ring_end = residue.ring_start + 3
         elif ring_type == 'o':
             residue.ring_end = residue.ring_start = 0
         else:
-            residue.ring_end = residue.ring_start = None
+            residue.ring_end = residue.ring_start = UnknownPosition
 
     def build_residue(self, match_dict):
         try:
@@ -512,14 +834,26 @@ class MonosaccharideDeserializer(object):
         configuration = match_dict["configuration"].lower()
         ring_type = match_dict['ring_type']
 
-        modification = match_dict['modification']
+        modification = (match_dict['modification'] or '').rstrip("-")
 
         linkage = match_dict.get("linkage")
+        original_base_type = base_type
+        # alternate carbon backbone size encoded as stem{3}Superclass{3}
+        # instead of Stem{3}
+        if len(base_type) == 6:
+            superclass_type = base_type[3:].lower()
+            base_type = base_type[:3].title()
+        else:
+            superclass_type = None
         try:
             residue = named_structures.monosaccharides[base_type]
         except KeyError:
-            raise IUPACError("Unknown Residue Base-type %r" % (base_type,))
+            raise IUPACError("Unknown Residue Base-type %r" % (original_base_type,))
         base_is_modified = len(residue.substituent_links) + len(residue.modifications) > 0
+        if superclass_type is not None:
+            residue.superclass = superclass_type
+            residue.ring_start = UnknownPosition
+            residue.ring_end = UnknownPosition
 
         if len(residue.configuration) == 1:
             residue.configuration = (configuration,)
@@ -534,7 +868,7 @@ class MonosaccharideDeserializer(object):
         i = 0
         for position, substituent in self.substituent_parser(substituent_string):
             i += 1
-            if position == -1 and base_is_modified:
+            if position == UnknownPosition and base_is_modified:
                 # Guess at what the user might mean using base_type
                 if base_type == "Neu" and substituent in ["acetyl", "glycolyl"] and i == 1:
                     position = 5
@@ -586,18 +920,27 @@ class MonosaccharideDeserializer(object):
         for pos, mod in self.modification_parser(modification_string):
             residue.add_modification(mod, pos)
 
+    def parse_linkage_structure(self, linkage):
+        return self.linkage_parser(linkage)
+
     def monosaccharide_from_iupac(self, monosaccharide_str, parent=None):
         match_dict = self.extract_pattern(monosaccharide_str)
         residue, linkage = self.build_residue(match_dict)
-        linkage = parse_linkage_structure(linkage)
+        linkage = self.parse_linkage_structure(linkage)
 
         self.add_monosaccharide_bond(residue, parent, linkage)
         return residue, linkage
 
     def add_monosaccharide_bond(self, residue, parent, linkage):
         if parent is not None and linkage != ():
-            parent.add_monosaccharide(
-                residue, position=linkage[1], child_position=linkage[0])
+            if linkage.has_ambiguity:
+                bond = AmbiguousLink(
+                    parent, residue, parent_position=linkage.parent_position,
+                    child_position=linkage.child_position,
+                    parent_loss=Composition("H"), child_loss=Composition("OH"))
+                bond.find_open_position()
+            else:
+                parent.add_monosaccharide(residue, position=linkage[1], child_position=linkage[0])
 
     def __call__(self, monosaccharide_str, parent=None):
         return self.monosaccharide_from_iupac(monosaccharide_str, parent=parent)
@@ -607,52 +950,32 @@ class MonosaccharideDeserializer(object):
 
 
 class DerivatizationAwareMonosaccharideDeserializer(MonosaccharideDeserializer):
-    pattern = re.compile(r'''(?:(?P<anomer>[abo?]|alpha|beta)-)?
-                             (?P<configuration>[LD?])-
-                             (?P<modification>[a-z0-9_\-,]*)
-                             (?P<base_type>[^-]{3}?)
-                             (?P<ring_type>[xpfo?])?
-                             (?P<substituent>[^-]*?)
-                             (?P<derivatization>\^[^\s-]*?)?
-                             (?P<linkage>-\([0-9?/]+->?[0-9?/]+\)-?)?$''', re.VERBOSE)
+    _pattern = r'''(?:(?P<anomer>[abo?]|alpha|beta|\u03B1|\u03B2)-)?
+                   (?P<configuration>[LD?])-
+                   (?P<modification>[a-z0-9_\-,]*)
+                   (?P<base_type>[^-]{3}?)
+                   (?P<ring_type>[xpfo?])?
+                   (?P<substituent>[^-]*?)
+                   (?P<derivatization>\^[^\s-]*?)?
+                   (?P<linkage>-\([0-9?/]+->?[0-9?/]+\)-?)?$'''
+    try:
+        # convert to unicode for Py2
+        _pattern = _pattern.decode("raw_unicode_escape")
+    except AttributeError:
+        pass
+    pattern = re.compile(_pattern, re.VERBOSE | re.UNICODE)
 
     def add_monosaccharide_bond(self, residue, parent, linkage):
-        # if parent is not None and linkage is not None:
-        #     child_linkage, parent_linkage, is_ambiguous = linkage
-        #     try:
-        #         if is_ambiguous:
-        #             AmbiguousLink(parent, residue, parent_linkage, child_linkage)
-        #         else:
-        #             Link(parent, residue, parent_linkage, child_linkage)
-        #     except ValueError:
-        #         if is_ambiguous:
-        #             if isinstance(parent_linkage, list):
-        #                 parent_linkage_q = parent_linkage[0]
-        #             else:
-        #                 parent_linkage_q = parent_linkage
-        #             if isinstance(child_linkage, list):
-        #                 child_linkage_q = child_linkage[0]
-        #             else:
-        #                 child_linkage_q = child_linkage
-        #         else:
-        #             parent_linkage_q = parent_linkage
-        #             child_linkage_q = child_linkage
-
-        #         if not is_ambiguous:
-        #             parent_substituent_links_at_site = parent.substituent_links[parent_linkage_q]
-        #             if (parent_substituent_links_at_site and parent_substituent_links_at_site[0].child._derivatize):
-        #                 parent.drop_substituent(parent_linkage_q, parent_substituent_links_at_site[0].child)
-        #             residue_substituent_links_at_site = residue.substituent_links[child_linkage_q]
-        #             if residue_substituent_links_at_site and residue_substituent_links_at_site[0].child._derivatize:
-        #                 residue.drop_substituent(child_linkage_q, residue_substituent_links_at_site[0].child)
-
-        #         if is_ambiguous:
-        #             AmbiguousLink(parent, residue, parent_linkage, child_linkage)
-        #         else:
-        #             Link(parent, residue, parent_linkage, child_linkage)
         if parent is not None and linkage != ():
             try:
-                parent.add_monosaccharide(residue, position=linkage[1], child_position=linkage[0])
+                if linkage.has_ambiguity:
+                    bond = AmbiguousLink(
+                        parent, residue, parent_position=linkage.parent_position,
+                        child_position=linkage.child_position,
+                        parent_loss=Composition("H"), child_loss=Composition("OH"))
+                    bond.find_open_position()
+                else:
+                    parent.add_monosaccharide(residue, position=linkage[1], child_position=linkage[0])
             except ValueError:
                 parent_substituent_links_at_site = parent.substituent_links[linkage[1]]
                 if (parent_substituent_links_at_site and parent_substituent_links_at_site[0].child._derivatize):
@@ -661,7 +984,14 @@ class DerivatizationAwareMonosaccharideDeserializer(MonosaccharideDeserializer):
                 if residue_substituent_links_at_site and residue_substituent_links_at_site[0].child._derivatize:
                     residue.drop_substituent(linkage[0], residue_substituent_links_at_site[0].child)
 
-                parent.add_monosaccharide(residue, position=linkage[1], child_position=linkage[0])
+                if linkage.has_ambiguity:
+                    bond = AmbiguousLink(
+                        parent, residue, parent_position=linkage.parent_position,
+                        child_position=linkage.child_position,
+                        parent_loss=Composition("H"), child_loss=Composition("OH"))
+                    bond.find_open_position()
+                else:
+                    parent.add_monosaccharide(residue, position=linkage[1], child_position=linkage[0])
 
     def apply_derivatization(self, residue, deriv):
         if deriv.startswith("^"):
@@ -674,7 +1004,7 @@ class DerivatizationAwareMonosaccharideDeserializer(MonosaccharideDeserializer):
     def monosaccharide_from_iupac(self, monosaccharide_str, parent=None):
         match_dict = self.extract_pattern(monosaccharide_str)
         residue, linkage = self.build_residue(match_dict)
-        linkage = parse_linkage_structure(linkage)
+        linkage = self.parse_linkage_structure(linkage)
 
         self.add_monosaccharide_bond(residue, parent, linkage)
 
@@ -688,7 +1018,7 @@ class DerivatizationAwareMonosaccharideDeserializer(MonosaccharideDeserializer):
         for node in glycan:
             neg_capacity = -node._remaining_capacity()
             if neg_capacity > 0:
-                unknowns = node.substituent_links[-1]
+                unknowns = node.substituent_links[UnknownPosition]
                 to_remove = []
                 for unknown in unknowns:
                     if unknown.child.node_type is Substituent.node_type and unknown.child._derivatize:
@@ -702,28 +1032,49 @@ class DerivatizationAwareMonosaccharideDeserializer(MonosaccharideDeserializer):
                 if neg_capacity > 0:
                     raise ValueError("Could not completely remove overload from %s" % (node,))
 
-    def strip_derivatization(self, residue_str):
+    def strip_derivatization(self, residue_str, **kwargs):
         base = residue_str.rsplit("^")[0]
-        return self(base)
+        return self(base, **kwargs)
 
 
-class CondensedMonosaccharideDeserializer(object):
-    pattern = re.compile(r'''(?:
-                         (?P<modification>[a-z0-9_\-,]*)
-                         (?P<base_type>[^-]{3}?)
-                         (?P<substituent>[^-]*?)
-                         (?P<linkage>-\((?P<anomer>[ab?])[0-9?]->?[0-9?]\)-?)?
-                         )$''', re.VERBOSE)
+class SimpleMonosaccharideDeserializer(DerivatizationAwareMonosaccharideDeserializer):
+    pattern = re.compile(
+        r'''(?P<modification>[a-z0-9_\-,]*)
+            (?P<base_type>(?:[A-Z][a-z]{2}?|(?:[a-z]{3}[A-Z][a-z]{2})))
+            (?P<substituent>[^-]*?)
+            (?P<derivatization>\^[^\s-]*?)?
+            (?P<linkage>-?\((?P<anomer>[ab?o]?)[0-9?/]+->?[0-9?/]+\)-?)?$''', re.VERBOSE)
+
+    linkage_parser = SimpleLinkageDeserializer()
+
+    def parse_linkage_structure(self, linkage):
+        return self.linkage_parser(linkage)
+
+    def build_residue(self, match_dict):
+        base_type = match_dict["base_type"]
+        modification = (match_dict['modification'] or '').rstrip("-")
+
+        try:
+            residue = named_structures.monosaccharides[base_type]
+        except KeyError:
+            raise IUPACError("Unknown Residue Base-type %r" % (base_type,))
+        base_is_modified = len(residue.substituent_links) + len(residue.modifications) > 0
+
+        self.set_modifications(residue, modification)
+        self.set_substituents(residue, match_dict['substituent'], base_is_modified, base_type)
+        linkage = match_dict.get("linkage")
+        return residue, linkage
 
 
 monosaccharide_from_iupac = MonosaccharideDeserializer()
 
 
 class GlycanDeserializer(object):
-    def __init__(self, monosaccharide_deserializer=None):
+    def __init__(self, monosaccharide_deserializer=None, set_default_positions=True):
         if monosaccharide_deserializer is None:
             monosaccharide_deserializer = MonosaccharideDeserializer()
         self.monosaccharide_deserializer = monosaccharide_deserializer
+        self.set_default_positions = set_default_positions
 
     new_branch_open = re.compile(r"(\]-?)$")
 
@@ -779,17 +1130,42 @@ class GlycanDeserializer(object):
                     raise IUPACError("Could not identify residue '...{}' at {}".format(text[-30:], len(text)))
         res = structure_class(root=root)
         self.monosaccharide_deserializer.finalize(res)
-        return res.reindex()
+        res.reindex()
+        if self.set_default_positions:
+            self.set_default_positions_for_common_cases(res)
+        return res
 
     def __call__(self, text, **kwargs):
         return self.glycan_from_iupac(text, **kwargs)
 
+    def set_default_positions_for_common_cases(self, glycan):
+        for node in glycan:
+            candidates = []
+            for pos, link in list(node.substituent_links.items()):
+                if pos == UnknownPosition:
+                    candidates.append(link)
+            for candidate in candidates:
+                substituent = candidate.to(node)
+                position = None
+                if substituent.name == 'n_acetyl':
+                    if node.superclass == SuperClass.hex:
+                        position = 2
+                    elif node.superclass == SuperClass.non:
+                        position = 5
+                if position is None:
+                    continue
+                if not node.is_occupied(position):
+                    candidate.break_link(refund=True)
+                    candidate.parent_position = position
+                    candidate.apply()
+        return glycan
 
-def set_default_positions(glycan):
+
+def set_default_positions(glycan):  # pragma: nocover
     for node in glycan:
         candidates = []
         for pos, link in list(node.substituent_links.items()):
-            if pos == -1:
+            if pos == UnknownPosition:
                 candidates.append(link)
         for candidate in candidates:
             substituent = candidate.to(node)
@@ -810,23 +1186,44 @@ def set_default_positions(glycan):
 
 glycan_from_iupac = GlycanDeserializer()
 
+glycan_from_iupac_simple = GlycanDeserializer(SimpleMonosaccharideDeserializer())
 
-def from_iupac(text, structure_class=Glycan, resolve_default_positions=True, **kwargs):
+
+def from_iupac(text, structure_class=Glycan, resolve_default_positions=True, dialect=None, **kwargs):
     """Parse the given text into an instance of |Glycan|. If there is only a single monosaccharide
     in the output, just the Monosaccharide instance is returned.
 
     Parameters
     ----------
     text : |str|
+        The text to parser
+    resolve_default_positions: :class:`bool`
+        Whether to assume default positions for common monosaccharide modifiers
+        that are omitted for brevity, such as the postion of n-acetyl on HexNAc.
+    dialect: :class:`str`
+        One of "extended" or "simple", controlling whether the long-form linkage
+        and monosaccharide notation is used, or the more compact simplified form
+        is used. Defaults to "extended".
+    **kwargs:
+        Forwarded to :func:`glycan_from_iupac`
 
     Returns
     -------
     |Glycan| or |Monosaccharide|
         If the resulting structure is just a single monosaccharide, the returned value is a Monosaccharide.
     """
-    res = glycan_from_iupac(text, structure_class=structure_class, **kwargs)
-    if resolve_default_positions:
-        set_default_positions(res)
+    if dialect is None:
+        dialect = 'extended'
+    if dialect != 'simple':
+        res = glycan_from_iupac(
+            text, structure_class=structure_class,
+            set_default_positions=resolve_default_positions,
+            **kwargs)
+    else:
+        res = glycan_from_iupac_simple(
+            text, structure_class=structure_class,
+            set_default_positions=resolve_default_positions,
+            **kwargs)
     if len(res) > 1:
         return res
     else:
@@ -843,5 +1240,17 @@ class IUPACParser(ParserInterface):
         return structure
 
 
+load = IUPACParser.load
+
+
 Monosaccharide.register_serializer("iupac", dumps)
 Glycan.register_serializer("iupac", dumps)
+
+_dumps_simple = partial(dumps, dialect='simple')
+_dumps_extended = partial(dumps, dialect='extended')
+
+Monosaccharide.register_serializer("iupac_simple", _dumps_simple)
+Glycan.register_serializer("iupac_simple", _dumps_simple)
+
+Monosaccharide.register_serializer("iupac_extended", _dumps_extended)
+Glycan.register_serializer("iupac_extended", _dumps_extended)

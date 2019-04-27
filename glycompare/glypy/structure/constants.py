@@ -251,3 +251,17 @@ class Stereocoding(Enum):
 
 
 Stereocoding.h.add_name('0')
+
+
+UnknownPosition = -1
+NoPosition = None
+
+
+class LinkageType(Enum):
+    backbone_oxygen = 0
+    backbone_hydrogen = 1
+    other = 2
+    unknown = None
+
+
+LinkageType.unknown.add_name('x')

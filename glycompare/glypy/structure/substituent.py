@@ -1,6 +1,8 @@
 from glypy.composition.structure_composition import substituent_compositions
+
 from .base import SubstituentBase
 from .link import Link
+from .constants import UnknownPosition
 
 from glypy.utils import uid
 from glypy.composition import Composition, calculate_mass
@@ -20,7 +22,7 @@ class DerivatizePathway(object):
 
     @classmethod
     def register(cls, name, can_nh_derivatize, is_nh_derivatizable):
-        derivatize_info[name.replace("-", "_")] = DerivatizePathway(can_nh_derivatize, is_nh_derivatizable)
+        derivatize_info[Substituent.internalize_name(name)] = DerivatizePathway(can_nh_derivatize, is_nh_derivatizable)
 
 
 attachment_composition_info = {
@@ -28,15 +30,18 @@ attachment_composition_info = {
     "methyl": Composition("H"),
     "n_acetyl": Composition("OH"),
     "n_glycolyl": Composition("OH"),
+    "n_sulfate": Composition("OH"),
     "amino": Composition("OH"),
+    "imino": Composition("OH"),
     "anhydro": Composition("H"),
-    "dimethylamine": Composition("OH")
+    "dimethylamine": Composition("OH"),
+    "phosphate": Composition("H")
 }
 default_attachment_composition = Composition("H")
 
 
 derivatize_info = {
-    "acetyl": DerivatizePathway(True, False),
+    "acetyl": DerivatizePathway(False, False),
     "amino": DerivatizePathway(True, False),
     "anhydro": DerivatizePathway(True, False),
     "bromo": DerivatizePathway(True, False),
@@ -101,7 +106,7 @@ def register(name, composition, can_nh_derivatize=None, is_nh_derivatizable=None
         The shared composition that will be lost from the parent molecule when forming
         a bond with substituents of this type.
     """
-    name = name.replace("-", "_")
+    name = Substituent.internalize_name(name)
     substituent_compositions[name] = composition.clone()
     attachment_composition_info[name] = attachment_composition if attachment_composition is not None\
         else default_attachment_composition
@@ -118,14 +123,14 @@ def unregister(name):
     name : str
         The name to un-register
     """
-    name = name.replace("-", "_")
+    name = Substituent.internalize_name(name)
     substituent_compositions.pop(name)
     attachment_composition_info.pop(name)
     derivatize_info.pop(name)
 
 
 def is_registered(name):
-    name = name.replace("-", "_")
+    name = Substituent.internalize_name(name)
     return name in substituent_compositions
 
 
@@ -158,9 +163,15 @@ class Substituent(SubstituentBase):
         not for external use. See :meth:`order`.
 
     '''
-
     register = staticmethod(register)
     unregister = staticmethod(unregister)
+
+    __slots__ = (
+        "_name", "links", "composition", "id",
+        "can_nh_derivatize", "is_nh_derivatizable",
+        "_derivatize", "attachment_composition",
+        "_degree"
+    )
 
     def __init__(self, name, links=None, composition=None, id=None,
                  can_nh_derivatize=None, is_nh_derivatizable=None, derivatize=False,
@@ -195,6 +206,10 @@ class Substituent(SubstituentBase):
         self.attachment_composition = attachment_composition if attachment_composition is not None\
             else attachment_composition_info.get(self.name, default_attachment_composition)
 
+    @staticmethod
+    def internalize_name(name):
+        return name.replace('-', '_')
+
     @property
     def name(self):
         return self._name
@@ -211,7 +226,7 @@ class Substituent(SubstituentBase):
             The name being set
 
         '''
-        self._name = value.replace("-", "_")
+        self._name = self.internalize_name(value)
 
     def __repr__(self):  # pragma: no cover
         return "<Substituent {name}>".format(name=self._name)
@@ -339,12 +354,29 @@ class Substituent(SubstituentBase):
         return mass
 
     def __getstate__(self):
-        return self.__dict__
+        state = {
+            "_name": self._name,
+            "links": self.links,
+            "composition": self.composition,
+            "id": self.id,
+            "can_nh_derivatize": self.can_nh_derivatize,
+            "is_nh_derivatizable": self.is_nh_derivatizable,
+            "_derivatize": self._derivatize,
+            "attachment_composition": self.attachment_composition,
+            "_degree": self._degree
+        }
+        return state
 
     def __setstate__(self, state):
-        self.__dict__.update(state)
+        self._name = state['_name']
+        self.links = state['links']
+        self.composition = state['composition']
+        self.id = state['id']
+        self.can_nh_derivatize = state['can_nh_derivatize']
+        self.is_nh_derivatizable = state['is_nh_derivatizable']
+        self._derivatize = state['_derivatize']
+        self.attachment_composition = state['attachment_composition']
         self._degree = state.get("_degree", len(self.links))
-        self._derivatize = state.get("_derivatize", False)
 
     def clone(self, prop_id=True):
         '''
@@ -397,7 +429,7 @@ class Substituent(SubstituentBase):
             comp = comp + sub.total_composition()
         return comp
 
-    def children(self, links=False):
+    def children(self, links=False, bridging=False):
         '''
         Returns an iterator over the :class:`Monosaccharide`s which are considered
         the descendants of ``self``.
@@ -407,8 +439,12 @@ class Substituent(SubstituentBase):
             if link.is_child(self):
                 continue
             if links:
+                if bridging and not link.is_bridge_link():
+                    continue
                 result.append((pos, link))
             else:
+                if bridging and not link.is_bridge_link():
+                    continue
                 result.append((pos, link.child))
         return result
 
@@ -427,6 +463,12 @@ class Substituent(SubstituentBase):
                 result.append((pos, link.parent))
         return result
 
+    def is_bridge(self):
+        for pos, link in self.children(links=True):
+            if link.is_bridge():
+                return True
+        return False
+
     def attachment_composition_loss(self):
         return self.attachment_composition.clone()
 
@@ -443,3 +485,9 @@ class Substituent(SubstituentBase):
         if has_substituent_link == 0:
             comp += self.attachment_composition
         return comp
+
+    def has_undefined_linkages(self):
+        for link in self.links.values():
+            if link.parent_position == UnknownPosition or link.child_position == UnknownPosition:
+                return True
+        return False

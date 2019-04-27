@@ -121,8 +121,8 @@ class MaximumCommonSubgraphSolver(object):
 
         Parameters
         ----------
-        node_a: Monosaccharide
-        node_b: Monosaccharide
+        node_a: :class:`~.Monosaccharide`
+        node_b: :class:`~.Monosaccharide`
         exact: bool
             Whether or not to take exact matches, or just take the best
             pairing. If `exact` = |True| and there is no exact match, the
@@ -209,8 +209,8 @@ def n_saccharide_similarity(self, other, n=2, exact=False):
 
     Parameters
     ----------
-    self: Glycan
-    other: Glycan
+    self: :class:`~.Glycan`
+    other: :class:`~.Glycan`
     n: int
         Size of the fragment saccharide to consider. Defaults to *2*
     exact: bool
@@ -263,11 +263,11 @@ def distinct_fragments(self, other, fragmentation_parameters=None):
 
     Parameters
     ----------
-    self: Glycan or list
-    other : Glycan or list
-        Glycan objects whose fragments will be compared or lists of Fragment
+    self: :class:`~.Glycan` or list
+    other : :class:`~.Glycan` or list
+        :class:`~.Glycan` objects whose fragments will be compared or lists of Fragment
         to compare.
-    fragmentation_parameters : dict, optional
+    fragmentation_parameters : :class:`dict`, optional
         If `self` and `other` are |Glycan| objects, these parameters will be used
         to call :meth:`Glycan.fragments`.
 
@@ -303,7 +303,7 @@ class Treelet(object):
 
     Attributes
     ----------
-    frontier_ids : set
+    frontier_ids : :class:`set`
         The id values of the nodes from the parent :class:`~.Glycan` which
         are children of members of :attr:`subtree`
     subtree : :class:`~.Glycan`
@@ -317,7 +317,8 @@ class Treelet(object):
     @classmethod
     def from_monosaccharide(cls, monosaccharide):
         monosaccharide = root(monosaccharide)
-        subtree = Glycan(monosaccharide.clone(prop_id=True))
+        subtree = Glycan(
+            monosaccharide.clone(prop_id=True), index_method=None)
         frontier_ids = set()
         for pos, child in monosaccharide.children():
             frontier_ids.add(child.id)
@@ -350,7 +351,7 @@ class Treelet(object):
     def expand(self, reference, frontier_id):
         node = reference.get(frontier_id)
         new_node = node.clone(prop_id=True)
-        tree = self.subtree.clone()
+        tree = self.subtree.clone(index_method=None)
         for pos, link in node.parents(True):
             new_parent = tree.get(link.parent.id)
             link.clone(new_parent, new_node)

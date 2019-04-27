@@ -203,7 +203,7 @@ def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_ad
 #        'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
 #        'EPO266(fut8)']
 # len(aaa)
-#
+# #
 # aaa_re = ['WT',
 #           'mgat4A',
 #           'mgat4A.mgat4B',
@@ -238,7 +238,7 @@ def get_motif_dict_degree_list_pipe(glycan_dict, output_motif_dic_degree_list_ad
 #           'EPO261.mgat2.mgat4A.mgat4B.mgat5.',
 #           'EPO263.mgat2.st3gal4.st3gal6.magt4A.mgat4B.mgat5.',
 #           'EPO266.fut8.']
-#
+# #
 # ########################################################################################
 # # part 4
 # # # for getting glycan stats, check glycan_stats.py

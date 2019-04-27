@@ -1,5 +1,6 @@
 
 class MoleculeBase(object):
+    __slots__ = ()
     _order = 0
     node_type = object()
 
@@ -13,13 +14,20 @@ class MoleculeBase(object):
         '''
         return self._order
 
+    def has_undefined_linkages(self):
+        return True
+
+    def copy(self, *args, **kwargs):
+        return self.clone(*args, **kwargs)
+
 
 class SaccharideBase(MoleculeBase):
+    __slots__ = ()
     node_type = object()
-    pass
 
 
 class SaccharideCollection(SaccharideBase):
+    __slots__ = ()
 
     def _derivatized(self, substituent, id_base):
         pass
@@ -29,10 +37,12 @@ class SaccharideCollection(SaccharideBase):
 
 
 class SubstituentBase(MoleculeBase):
+    __slots__ = ()
     node_type = object()
     pass
 
 
 class ModificationBase(MoleculeBase):
+    __slots__ = ()
     node_type = object()
     pass

@@ -88,7 +88,6 @@ def _create_files(file_dir_list):
             print("created", i)
 
 
-
 def _find_dir(keywords_dict):
     checked_list = []
     for i in keywords_dict.keys():
@@ -131,7 +130,7 @@ def check_init_dir(keywords_dict):
     print("Successfully created the directory need, please add the source file is the directory")
 
 
-        # break
+    # break
     # __init__.intermediate_address = keywords_dict["intermediate_address"]
     # __init__.plot_output_address = keywords_dict['plot_output_address']
     # __init__.source_address = keywords_dict['source_address']
@@ -278,8 +277,8 @@ def glycan_deconvoluting_pip(keywords_dict, forced=False):
         print('cannot find the glycan_dict file')
 
 
-def glyco_vector_pip(keywords_dict, abd_table, simple_profile=False, simple_naming=False,
-                     external_profile_naming=False, forced=False, ):
+def abd_table_pip(keywords_dict, abd_table, simple_profile=False, simple_naming=False,
+                  external_profile_naming=False, forced=False, ):
     """
     required file
     :param keywords_dict:
@@ -310,7 +309,7 @@ def glyco_vector_pip(keywords_dict, abd_table, simple_profile=False, simple_nami
                     naming = list(naming_abd_dict.keys())
                     for i in profile_columns:
                         profile_naming_to_id[i] = dict(zip(naming, naming))
-                    # print(profile_naming_to_id)
+                        # print(profile_naming_to_id)
                 else:
                     name_to_id_addr = keywords_dict['name_to_id_addr']
                     name_to_id = glycan_io.load_json(name_to_id_addr)
@@ -359,15 +358,28 @@ def glyco_vector_pip(keywords_dict, abd_table, simple_profile=False, simple_nami
     else:
         substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
         print('loaded substructure_abd_table')
+    return glycoprofile_list
 
+
+def motif_vec_pip(keywords_dict, epitope=False):
     motif_dict_addr = keywords_dict['motif_dict_addr']
     assert os.path.isfile(motif_dict_addr), 'missing ' + motif_dict_addr
+    substructure_abd_table_addr = keywords_dict['substructure_abd_table_addr']
+    assert os.path.isfile(substructure_abd_table_addr), 'missing' + substructure_abd_table_addr
 
+    substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
     motif_dict = glycan_io.load_motif_dict_from_json(motif_dict_addr)
-    _motif_lab = motif_class.MotifLabwithCore(motif_dict)  # unicarbkb_motifs_12259.json
-    _motif_lab.get_dependence_tree_core()
-    a_node_state = motif_class.NodesState(_motif_lab.motif_dep_tree_core,
-                                          motif_class.get_weight_dict(substructure_abd_table))
+
+    if epitope:
+        _motif_lab = motif_class.MotifLab(motif_dict)
+        _motif_lab.get_dependence_tree_all()
+        a_node_state = motif_class.NodesState(_motif_lab.motif_dep_tree,
+                                              motif_class.get_weight_dict(substructure_abd_table))
+    else:
+        _motif_lab = motif_class.MotifLabwithCore(motif_dict)  # unicarbkb_motifs_12259.json
+        _motif_lab.get_dependence_tree_core()
+        a_node_state = motif_class.NodesState(_motif_lab.motif_dep_tree_core,
+                                              motif_class.get_weight_dict(substructure_abd_table))
     return a_node_state
 
     # return None

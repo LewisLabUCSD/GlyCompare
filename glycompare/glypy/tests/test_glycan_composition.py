@@ -5,6 +5,8 @@ from glypy.composition import composition_transform
 from glypy.structure import glycan_composition
 from glypy import monosaccharides, Substituent, glycans
 
+from .common import pickle
+
 water_mass = glypy.Composition("H2O").mass
 
 GlycanComposition = glycan_composition.GlycanComposition
@@ -16,7 +18,7 @@ FrozenMonosaccharideResidue = glycan_composition.FrozenMonosaccharideResidue
 
 class IUPACLiteTests(unittest.TestCase):
     def test_parse_identity(self):
-        items = ["Glc2NAc", "Neu5Ac", "Fuc", "6-dHex"]
+        items = ["Glc2NAc", "Neu5Ac", "Fuc", "6-d-Hex", "#Ammonia#H3N1"]
         for item in items:
             term = glycan_composition.from_iupac_lite(item)
             deparse = glycan_composition.to_iupac_lite(term)
@@ -66,6 +68,11 @@ class MonosaccharideResidueTests(unittest.TestCase):
         self.assertAlmostEqual(acidic_hexose1.mass() - hexose.mass(), 13.9792, 3)
         self.assertAlmostEqual(acidic_hexose2.mass() - hexose.mass(), 13.9792, 3)
 
+    def test_pickle(self):
+        case = glycan_composition.MonosaccharideResidue.from_iupac_lite("HexNAc")
+        test = pickle.loads(pickle.dumps(case))
+        self.assertEqual(case, test)
+
 
 class FrozenMonosaccharideResidueTests(unittest.TestCase):
     def test_from_monosaccharide(self):
@@ -110,6 +117,11 @@ class FrozenMonosaccharideResidueTests(unittest.TestCase):
         hexose = glycan_composition.FrozenMonosaccharideResidue.from_iupac_lite("Hex")
         self.assertAlmostEqual(acidic_hexose1.mass() - hexose.mass(), 13.9792, 3)
         self.assertAlmostEqual(acidic_hexose2.mass() - hexose.mass(), 13.9792, 3)
+
+    def test_pickle(self):
+        case = glycan_composition.MonosaccharideResidue.from_iupac_lite("HexNAc")
+        test = pickle.loads(pickle.dumps(case))
+        self.assertEqual(case, test)
 
 
 class GlycanCompositionTests(unittest.TestCase):
@@ -208,6 +220,28 @@ class GlycanCompositionTests(unittest.TestCase):
     def test_parse_derivatized_reduced(self):
         x = self.GlycanCompositionType.parse('{Fuc^Me:1; Hex^Me:5; HexNAc^Me:4; Neu5NAc^Me:1}$C1H4')
         self.assertAlmostEqual(x.mass(), 2598.3402, 4)
+
+    def test_pickle(self):
+        x = self.GlycanCompositionType.parse('{Fuc:1; Hex:5; HexNAc:4; Neu5NAc:1; @sulfate:1}')
+        self.assertEqual(x, pickle.loads(pickle.dumps(x)))
+
+    def test_unsaturated(self):
+        x = self.GlycanCompositionType.parse("{Xyl:1; a,enHex:1; Hex:1; HexS:1; aHex:1; HexNAc(S):1}")
+        self.assertAlmostEqual(x.mass(), 1171.205, 3)
+
+    def test_query(self):
+        x = self.GlycanCompositionType.parse("{GlcNAc:5; Man:3; Gal:2; NeuAc:2}")
+        self.assertEqual(x.query("Man"), 3)
+        self.assertEqual(x.query("Hex"), 5)
+
+    def test_reinterpret(self):
+        x = self.GlycanCompositionType.parse("{GlcNAc:5; Man:3; Gal:2; NeuAc:2}")
+        y = x.reinterpret([
+            x._key_parser("Hex"),
+            x._key_parser("dHex")
+        ])
+        self.assertAlmostEqual(x.mass(), y.mass(), 5)
+        self.assertEqual(len(y), 3)
 
 
 class FrozenGlycanCompositionTests(GlycanCompositionTests):

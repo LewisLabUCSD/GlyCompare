@@ -27,6 +27,8 @@ class SNFGNomenclature(CFGNomenclature):
         Stem.tal: ResidueColor.light_blue,
         Stem.ido: ResidueColor.brown,
         Stem.xyl: ResidueColor.orange,
+        Stem.lyx: ResidueColor.yellow,
+        Stem.x: ResidueColor.generic,
     }
 
     def residue_color(self, monosaccharide):
