@@ -2,267 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/_subtree_search.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/ccomposition.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/ccomposition.cpython-35m-darwin.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/glycan_composition.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/enzyme.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_schematic.hjson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_synonyms.hjson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/_c/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/_c/compat.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/_c/compat.pxd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/_c/count_table.pxd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/_c/count_table.pyx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/canonicalize.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/database.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/similarity.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/storage.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/subtree_search/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/subtree_search/common_subgraph.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/algorithms/subtree_search/inclusion.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/atomic_data.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/ccomposition.pxd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/ccomposition.pyx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/compat.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/compat.pxd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/composition.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/composition_transform.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/mass_dict.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/molecular_graph.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/composition/structure_composition.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/enzyme/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/enzyme/ec.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/enzyme/glycome.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/enzyme/graph.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/enzyme/pathways.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/_glycordf.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/data/enzyme.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/data/fetch_definitions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/data/glycordf.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/data/make_enzyme_json.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/file_utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/format_constants_map.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/glycoct.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/glycoct_xml.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/glycomedb.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/glyspace.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/iupac.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/linear_code.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/monosaccharidedb.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/find_synonyms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/monosaccharide_schematic.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/data/monosaccharide_synonyms.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/identity.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/nomenclature/synonyms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/tree_builder_utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/basetype_conversion.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/carbon_descriptors.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/node_type.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/parser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/substituent_conversion.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/io/wurcs/writer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/buchheim.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/cfg_symbols.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/common.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/draw_tree.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/fragment_annotation.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/geometry.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/iupac_symbols.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/snfg_symbols.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/symbolic_nomenclature.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/plot/topological_layout.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/constants.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/crossring_fragments.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/data/glycans.hjson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/data/monosaccharides.hjson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/data/motifs.hjson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/fragment.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/glycan.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/glycan_composition.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/link.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/modification.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/monosaccharide.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/named_structures.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/stereochemistry.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/structure/substituent.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/common.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_composition.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_databases.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_enzyme.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_glycan.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_glycan_composition.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_glycoct.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_glyspace.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_iupac.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_lazy.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_linear_code.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_link.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_monosaccharide.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_nomenclature.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_plots.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_similarity_algorithms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_subtree_search.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/test_wurcs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/tests/tests_legacy.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/cenum.pxd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/cenum.pyx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/enum.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/lazy.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/utils/multimap.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/glypy_new/version.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/source_data/abundance_table.xls" afterPath="$PROJECT_DIR$/example_data/test_cho/source_data/abundance_table.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/output_plot/raw_abundance_zscore.eps" afterPath="$PROJECT_DIR$/example_data/test_iscience/output_plot/raw_abundance_zscore.eps" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/1417.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/1417.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/1754.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/1754.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2244.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2244.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2401.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2401.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2605.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2605.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2605.2.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2605.2.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2646.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2646.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2693.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2693.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2693.2.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2693.2.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2693.3.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2693.3.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/2967.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/2967.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3055.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3055.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3055.2.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3055.2.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3143.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3143.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3212.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3212.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3416.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3416.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3416.2.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3416.2.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3416.3.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3416.3.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3457.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3457.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3592.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3592.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3661.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3661.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3865.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3865.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/3953.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/3953.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/4041.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/4041.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/4402.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/4402.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/4490.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/4490.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/4587.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/4587.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/4675.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/4675.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/4851.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/4851.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/5312.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/5312.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/glycoct/5486.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/test_cho/glycoct/5486.1.glycoct_condensed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_cho/intermediate_file/test_cho_glycan_dict.json" afterPath="$PROJECT_DIR$/example_data/test_cho/intermediate_file/test_cho_glycan_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_glycan_motif_dict.json" afterPath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_glycan_motif_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_glycoprofile_list.json" afterPath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_glycoprofile_list.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_match_dict.json" afterPath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_match_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_motif_abd_table.csv" afterPath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_motif_abd_table.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_motif_dict.json" afterPath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_motif_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_substructure_abd_table.csv" afterPath="$PROJECT_DIR$/example_data/test_iscience/intermediate_file/test_iscience_substructure_abd_table.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/test_cho-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/test_cho-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/test_iscience-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/test_iscience-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/test_cho.ipynb" afterPath="$PROJECT_DIR$/example_notebook/test_cho.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/test_iscience.ipynb" afterPath="$PROJECT_DIR$/example_notebook/test_iscience.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/__init__.py" afterPath="$PROJECT_DIR$/glycompare/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/extract_motif.py" afterPath="$PROJECT_DIR$/glycompare/extract_motif.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glycan_io.py" afterPath="$PROJECT_DIR$/glycompare/glycan_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/canonicalize.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/canonicalize.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/database.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/similarity.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/similarity.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/subtree_search/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/subtree_search/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/subtree_search/common_subgraph.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/subtree_search/common_subgraph.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/algorithms/subtree_search/inclusion.py" afterPath="$PROJECT_DIR$/glycompare/glypy/algorithms/subtree_search/inclusion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/atomic_data.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/atomic_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/base.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/ccomposition.pxd" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/ccomposition.pxd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/ccomposition.pyx" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/ccomposition.pyx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/compat.h" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/compat.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/compat.pxd" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/compat.pxd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/composition.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/composition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/composition_transform.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/composition_transform.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/mass_dict.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/mass_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/composition/structure_composition.py" afterPath="$PROJECT_DIR$/glycompare/glypy/composition/structure_composition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/data/enzyme.json" afterPath="$PROJECT_DIR$/glycompare/glypy/io/data/enzyme.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/file_utils.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/file_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/format_constants_map.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/format_constants_map.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/glycoct.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/glycoct.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/glycoct_xml.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/glycoct_xml.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/glycomedb.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/glycomedb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/glyspace.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/glyspace.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/iupac.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/iupac.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/linear_code.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/linear_code.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_schematic.json" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_schematic.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_synonyms.json" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/data/monosaccharide_synonyms.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/identity.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/identity.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/synonyms.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/nomenclature/synonyms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/io/tree_builder_utils.py" afterPath="$PROJECT_DIR$/glycompare/glypy/io/tree_builder_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/buchheim.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/buchheim.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/cfg_symbols.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/cfg_symbols.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/common.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/common.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/draw_tree.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/draw_tree.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/fragment_annotation.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/fragment_annotation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/geometry.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/geometry.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/iupac_symbols.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/iupac_symbols.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/snfg_symbols.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/snfg_symbols.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/symbolic_nomenclature.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/symbolic_nomenclature.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/plot/topological_layout.py" afterPath="$PROJECT_DIR$/glycompare/glypy/plot/topological_layout.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/base.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/constants.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/crossring_fragments.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/crossring_fragments.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/data/glycans.hjson" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/data/glycans.hjson" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/data/monosaccharides.hjson" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/data/monosaccharides.hjson" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/data/motifs.hjson" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/data/motifs.hjson" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/fragment.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/fragment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/glycan.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/glycan.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/glycan_composition.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/glycan_composition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/link.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/link.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/modification.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/modification.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/monosaccharide.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/monosaccharide.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/named_structures.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/named_structures.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/stereochemistry.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/stereochemistry.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/structure/substituent.py" afterPath="$PROJECT_DIR$/glycompare/glypy/structure/substituent.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/common.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/common.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_composition.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_composition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_databases.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_databases.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_glycan.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_glycan.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_glycan_composition.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_glycan_composition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_glycoct.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_glycoct.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_glyspace.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_glyspace.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_iupac.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_iupac.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_lazy.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_lazy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_linear_code.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_linear_code.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_link.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_link.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_monosaccharide.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_monosaccharide.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_nomenclature.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_nomenclature.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_plots.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_plots.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_similarity_algorithms.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_similarity_algorithms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/test_subtree_search.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/test_subtree_search.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/tests/tests_legacy.py" afterPath="$PROJECT_DIR$/glycompare/glypy/tests/tests_legacy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/utils/__init__.py" afterPath="$PROJECT_DIR$/glycompare/glypy/utils/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/utils/base.py" afterPath="$PROJECT_DIR$/glycompare/glypy/utils/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/utils/compat.py" afterPath="$PROJECT_DIR$/glycompare/glypy/utils/compat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/utils/enum.py" afterPath="$PROJECT_DIR$/glycompare/glypy/utils/enum.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/utils/lazy.py" afterPath="$PROJECT_DIR$/glycompare/glypy/utils/lazy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/utils/multimap.py" afterPath="$PROJECT_DIR$/glycompare/glypy/utils/multimap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glypy/version.py" afterPath="$PROJECT_DIR$/glycompare/glypy/version.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/initiator.py" afterPath="$PROJECT_DIR$/glycompare/initiator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -281,7 +22,7 @@
       <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
+            <state relative-caret-position="2280">
               <caret line="162" column="9" lean-forward="false" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -314,14 +55,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-412">
-              <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+            <state relative-caret-position="3270">
+              <caret line="231" column="40" lean-forward="false" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_cho.ipynb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/example_notebook/test_cho.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="1" />
             </state>
           </provider>
         </entry>
@@ -458,6 +208,7 @@
         <option value="$PROJECT_DIR$/glycompare/initiator.py" />
         <option value="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" />
         <option value="$PROJECT_DIR$/glycompare/glycan_io.py" />
+        <option value="$PROJECT_DIR$/example_notebook/test_cho.ipynb" />
       </list>
     </option>
   </component>
@@ -511,7 +262,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -534,6 +284,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -675,17 +426,17 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26108727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26466382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -730,7 +481,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py" />
     <entry file="file://$PROJECT_DIR$/glycompare/.ipynb_checkpoints/demo-checkpoint.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -918,7 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -947,9 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11250">
           <caret line="755" column="24" lean-forward="false" selection-start-line="755" selection-start-column="24" selection-end-line="755" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,15 +731,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3855">
           <caret line="263" column="20" lean-forward="false" selection-start-line="263" selection-start-column="20" selection-end-line="263" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
+        <state relative-caret-position="2280">
           <caret line="162" column="9" lean-forward="false" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
@@ -1003,11 +746,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412">
-          <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+        <state relative-caret-position="3270">
+          <caret line="231" column="40" lean-forward="false" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example_notebook/test_cho.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
         </state>
       </provider>
     </entry>
