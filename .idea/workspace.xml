@@ -2,8 +2,518 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/test_cho.ipynb" afterPath="$PROJECT_DIR$/example_notebook/test_cho.ipynb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1009.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1010.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1011.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1012.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1025.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1026.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1027.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1028.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1029.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1030.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1031.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1032.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1033.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/104.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1046.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1047.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1048.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1049.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1050.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1051.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1052.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1059.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1060.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1061.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1062.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1063.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1064.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1065.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1066.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1109.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1110.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1111.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1118.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1119.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1121.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1122.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1130.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1133.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1134.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1148.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/115.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1151.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1153.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1154.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1158.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1159.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1160.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1161.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1164.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1165.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1167.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1169.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1171.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1172.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1174.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1176.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1177.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1185.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1186.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1196.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1197.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1198.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1199.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/120.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1200.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1201.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1202.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1203.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1204.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1217.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1218.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1219.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1220.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1221.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1222.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1223.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1224.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1225.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1226.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1227.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1228.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1236.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1237.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1238.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1239.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1241.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1242.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1243.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1247.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1248.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1249.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1250.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1251.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1252.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1296.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1301.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1302.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1303.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1312.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1314.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1316.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1317.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1323.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1325.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1326.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1327.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1330.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1332.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1334.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1336.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1338.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1339.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1341.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1342.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1346.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1347.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1357.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1358.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1359.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1360.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1361.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1369.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1370.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1371.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1372.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1373.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1374.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1375.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1376.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1377.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1378.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1379.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1380.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1388.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1389.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1390.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1391.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1392.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1393.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1394.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1395.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1396.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1397.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1398.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1399.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1403.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1404.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1405.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1406.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1407.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1408.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1410.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1411.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1412.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1455.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1458.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1463.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1465.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1469.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1471.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1473.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1474.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1476.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1478.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1485.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1486.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1487.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1488.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1489.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/149.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1497.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1498.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1499.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1500.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1501.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1502.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1503.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1504.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1505.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/151.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1510.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1511.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1513.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1514.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1515.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1516.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1517.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1518.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1519.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1520.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1521.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1525.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1526.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1527.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1528.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1529.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1530.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1531.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1532.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1533.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1534.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1535.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1571.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1574.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1576.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1578.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1583.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1584.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1588.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1589.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1590.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1591.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1592.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1593.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1594.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1595.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1596.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1601.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1602.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1603.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1604.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1605.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1606.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1607.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1608.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1609.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1610.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1611.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1612.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1613.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1614.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1615.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1616.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1617.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1618.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/163.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1643.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1646.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1647.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1651.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1652.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1653.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1654.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1655.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1656.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1657.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1658.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1659.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1660.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1661.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1662.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1663.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1664.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1665.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1666.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1667.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/167.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/168.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1681.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1682.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1683.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1684.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1685.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1686.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1687.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1688.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1689.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1690.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1695.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1696.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1697.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1698.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/1700.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/173.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/184.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/212.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/213.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/214.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/215.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/216.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/217.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/227.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/231.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/232.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/237.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/238.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/249.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/252.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/254.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/287.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/288.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/300.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/301.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/302.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/303.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/304.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/314.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/315.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/316.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/320.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/321.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/322.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/328.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/332.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/335.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/336.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/337.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/339.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/340.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/341.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/343.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/344.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/365.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/399.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/401.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/402.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/403.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/414.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/415.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/416.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/417.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/422.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/424.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/425.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/426.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/429.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/430.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/438.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/439.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/440.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/443.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/444.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/445.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/446.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/447.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/448.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/449.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/450.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/451.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/452.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/454.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/460.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/463.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/485.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/486.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/487.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/497.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/51.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/520.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/545.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/546.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/547.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/548.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/549.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/550.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/556.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/558.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/560.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/562.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/563.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/567.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/571.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/574.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/575.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/576.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/577.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/578.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/579.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/580.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/581.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/582.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/583.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/584.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/585.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/586.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/587.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/588.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/589.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/598.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/599.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/602.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/605.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/606.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/631.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/632.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/633.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/634.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/641.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/642.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/643.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/646.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/648.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/663.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/673.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/681.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/682.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/683.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/684.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/713.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/714.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/721.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/722.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/723.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/724.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/726.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/727.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/729.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/731.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/738.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/739.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/740.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/741.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/742.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/743.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/744.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/745.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/746.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/747.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/748.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/749.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/750.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/767.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/768.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/77.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/770.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/771.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/774.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/776.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/777.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/778.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/798.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/799.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/800.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/801.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/805.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/806.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/807.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/808.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/810.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/812.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/813.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/814.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/817.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/827.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/837.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/838.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/839.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/84.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/840.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/853.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/854.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/855.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/856.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/865.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/866.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/867.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/868.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/869.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/870.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/871.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/908.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/909.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/910.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/914.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/915.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/923.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/924.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/925.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/926.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/927.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/928.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/929.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/930.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/931.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/932.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/935.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/938.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/956.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/958.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/959.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/961.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/962.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/965.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/966.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/967.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/978.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/979.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/981.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/982.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/983.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/984.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/987.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/988.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/989.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/990.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/993.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/994.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/996.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/glycompare/substructure/998.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/customize_motif_vec.py" afterPath="$PROJECT_DIR$/glycompare/customize_motif_vec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/extract_motif.py" afterPath="$PROJECT_DIR$/glycompare/extract_motif.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/initiator.py" afterPath="$PROJECT_DIR$/glycompare/initiator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/motif_class.py" afterPath="$PROJECT_DIR$/glycompare/motif_class.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +529,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2280">
-              <caret line="162" column="9" lean-forward="false" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
+            <state relative-caret-position="84">
+              <caret line="121" column="7" lean-forward="true" selection-start-line="121" selection-start-column="7" selection-end-line="121" selection-end-column="7" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -34,7 +544,7 @@
       <file leaf-file-name="glycan_io.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4905">
+            <state relative-caret-position="5025">
               <caret line="335" column="12" lean-forward="false" selection-start-line="335" selection-start-column="12" selection-end-line="335" selection-end-column="12" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -46,7 +556,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3435">
+            <state relative-caret-position="3450">
               <caret line="230" column="28" lean-forward="false" selection-start-line="230" selection-start-column="28" selection-end-line="230" selection-end-column="28" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -58,7 +568,7 @@
       <file leaf-file-name="initiator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3270">
+            <state relative-caret-position="3465">
               <caret line="231" column="40" lean-forward="false" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -67,7 +577,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_cho.ipynb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_cho.ipynb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example_notebook/test_cho.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
@@ -97,7 +607,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>numer</find>
       <find>glyco</find>
       <find>glycan_dict_addr</find>
       <find>get_glycoprofile_list</find>
@@ -127,6 +636,7 @@
       <find>_get</find>
       <find>abd_table_pip</find>
       <find>outpu</find>
+      <find>substructure</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -152,6 +662,7 @@
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/src</dir>
+      <dir>$PROJECT_DIR$/glycompare</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -218,9 +729,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="330" />
+    <option name="y" value="-918" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -262,6 +775,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,8 +798,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -423,27 +936,27 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="330" y="-918" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26466382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26824033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3221393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3221393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -701,7 +1214,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3435">
+        <state relative-caret-position="3450">
           <caret line="230" column="28" lean-forward="false" selection-start-line="230" selection-start-column="28" selection-end-line="230" selection-end-column="28" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -719,7 +1232,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4905">
+        <state relative-caret-position="5025">
           <caret line="335" column="12" lean-forward="false" selection-start-line="335" selection-start-column="12" selection-end-line="335" selection-end-column="12" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
@@ -734,19 +1247,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2280">
-          <caret line="162" column="9" lean-forward="false" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3270">
+        <state relative-caret-position="3465">
           <caret line="231" column="40" lean-forward="false" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -758,6 +1261,16 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="121" column="7" lean-forward="true" selection-start-line="121" selection-start-column="7" selection-end-line="121" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

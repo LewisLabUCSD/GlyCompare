@@ -43,6 +43,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     simple_profile = False
     simple_naming = False
     external_profile_naming = False
+
     para_keyword = {'project_name': project_name,
                     'working_addr': working_addr,
                     'glycoct_dir': glycoct_dir,
@@ -237,7 +238,7 @@ def load_structure_pip(keywords_dict, data_type, structure_loader):
         print("No such glycan")
 
 
-def glycan_deconvoluting_pip(keywords_dict, forced=False):
+def glycan_deconvoluting_pip(keywords_dict, linkage_specific, forced=False):
     # project_name = keywords_dict['project_name']
     # working_addr = keywords_dict['working_addr']
     # intermediate_address = keywords_dict['intermediate_address']
@@ -261,8 +262,10 @@ def glycan_deconvoluting_pip(keywords_dict, forced=False):
             print('loaded existed motif_dic')
         print('start merge motif_dict')
         if forced or not os.path.isfile(motif_dict_addr):
-            merge_motif_dict = customize_motif_vec.merge_motif_dict_pipe(glycan_motif_dic, motif_dict_addr,
-                                                                         glycan_dict)
+            merge_motif_dict = customize_motif_vec.merge_motif_dict_pipe(glycan_motif_dict=glycan_motif_dic,
+                                                                         glycan_dict=glycan_dict,
+                                                                         linkage_specific= linkage_specific,
+                                                                         output_merged_motif_dict_addr=motif_dict_addr)
             print('finished merge motif_dic')
 
         else:
@@ -270,8 +273,10 @@ def glycan_deconvoluting_pip(keywords_dict, forced=False):
             print('loaded merged motif_dic')
 
         if forced or not os.path.isfile(matched_dict_addr):
-            motif_occurance_vector_dict = customize_motif_vec.motif_matching_wrapper(merge_motif_dict, glycan_motif_dic,
-                                                                                     matched_dict_addr)
+            motif_occurance_vector_dict = customize_motif_vec.motif_matching_wrapper(motif_dict=merge_motif_dict,
+                                                                                     glycan_motif_dict=glycan_motif_dic,
+                                                                                     linkage_specific=linkage_specific,
+                                                                                     matched_glycan_dict_addr=matched_dict_addr)
         print('finished glycan deconvolution')
     else:
         print('cannot find the glycan_dict file')
@@ -358,10 +363,10 @@ def abd_table_pip(keywords_dict, abd_table, simple_profile=False, simple_naming=
     else:
         substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
         print('loaded substructure_abd_table')
-    return glycoprofile_list
+    # return glycoprofile_list
 
 
-def motif_vec_pip(keywords_dict, epitope=False):
+def motif_vec_pip(keywords_dict, linkage_specific, epitope=False):
     motif_dict_addr = keywords_dict['motif_dict_addr']
     assert os.path.isfile(motif_dict_addr), 'missing ' + motif_dict_addr
     substructure_abd_table_addr = keywords_dict['substructure_abd_table_addr']
@@ -371,15 +376,17 @@ def motif_vec_pip(keywords_dict, epitope=False):
     motif_dict = glycan_io.load_motif_dict_from_json(motif_dict_addr)
 
     if epitope:
-        _motif_lab = motif_class.MotifLab(motif_dict)
+        _motif_lab = motif_class.MotifLab(motif_dict, linkage_specific)
         _motif_lab.get_dependence_tree_all()
-        a_node_state = motif_class.NodesState(_motif_lab.motif_dep_tree,
-                                              motif_class.get_weight_dict(substructure_abd_table))
+        a_node_state = motif_class.NodesState(dependence_tree=_motif_lab.motif_dep_tree,
+                                              motif_weight=motif_class.get_weight_dict(substructure_abd_table),
+                                              linkage_specific=linkage_specific)
     else:
-        _motif_lab = motif_class.MotifLabwithCore(motif_dict)  # unicarbkb_motifs_12259.json
+        _motif_lab = motif_class.MotifLabwithCore(motif_dict, linkage_specific)  # unicarbkb_motifs_12259.json
         _motif_lab.get_dependence_tree_core()
-        a_node_state = motif_class.NodesState(_motif_lab.motif_dep_tree_core,
-                                              motif_class.get_weight_dict(substructure_abd_table))
+        a_node_state = motif_class.NodesState(dependence_tree=_motif_lab.motif_dep_tree_core,
+                                              motif_weight=motif_class.get_weight_dict(substructure_abd_table),
+                                              linkage_specific=linkage_specific)
     return a_node_state
 
     # return None

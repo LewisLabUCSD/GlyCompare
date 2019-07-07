@@ -34,7 +34,7 @@ from json_utility import load_json, store_json
 #     return _frag_motif_list
 
 
-def clean_duplicate(a_motif_dict):
+def clean_duplicate(a_motif_dict, linkage_specific):
     """
 
     :param a_motif_dict: remove the duplicates in a motif_dict_degree_list
@@ -47,7 +47,7 @@ def clean_duplicate(a_motif_dict):
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
-                if subtree_of(_check_list[ldex], _check_list[jdex], exact=__init__.exact_Ture) == 1:
+                if subtree_of(_check_list[ldex], _check_list[jdex], exact=linkage_specific) == 1:
                     del _check_list[jdex]
                 else:
                     jdex += 1
@@ -55,23 +55,6 @@ def clean_duplicate(a_motif_dict):
         a_motif_dict[i] = _check_list
     return a_motif_dict
 
-
-#
-# def clean_duplicate_with_root(_frag_motif_dict):
-#     for i in _frag_motif_dict.keys():
-#         # print(i)
-#         ldex = 0
-#         _check_list = _frag_motif_dict[i]
-#         while ldex < len(_check_list):
-#             jdex = ldex + 1
-#             while jdex < len(_check_list):
-#                 if subtree_of(_check_list[ldex], _check_list[jdex], True) == 1:
-#                     del _check_list[jdex]
-#                 else:
-#                     jdex += 1
-#             ldex += 1
-#         _frag_motif_dict[i] = _check_list
-#     return _frag_motif_dict
 
 
 def extract_motif(a_glycan, branch=5):
@@ -126,7 +109,7 @@ def extract_motif_wrapper(a_name, a_glycan_str, motif_dic):
         print('break')
 
 
-def get_motif_pip(glycan_dict, gly_len, output_file):
+def get_motif_pip(glycan_dict, gly_len, output_file, num_processors=__init__.num_processors):
     """Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
     If prior=False, it will generate glycan motif for all glycan in glytoucan database
     1. load  {glyacn_id: glycan_str}
@@ -143,7 +126,7 @@ def get_motif_pip(glycan_dict, gly_len, output_file):
     manager = multiprocessing.Manager()
     motif_dic = manager.dict()
     print('start parallel parsing', len(glycan_dict), 'glycans')
-    pool = multiprocessing.Pool(processes=__init__.num_processors)
+    pool = multiprocessing.Pool(processes=num_processors)
     pool_list = []
     for idex, i in enumerate(glycan_dict):
         if len(glycan_dict[i]) > gly_len:

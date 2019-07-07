@@ -69,7 +69,7 @@ from json_utility import *
 #         profile_obj_list.append(glycan_profile_obj(glycan_id_, mz_, abundance_, weighted_matrix))
 
 
-def _duplicate_cleaning_wrapper(degree, motif_list, cleaned_motif_dic):
+def _duplicate_cleaning_wrapper(degree, motif_list, cleaned_motif_dic, linkage_specific):
     """
     :param degree: complexity degree
     :param motif_list: a list of Glycan
@@ -87,7 +87,7 @@ def _duplicate_cleaning_wrapper(degree, motif_list, cleaned_motif_dic):
                 # print(isinstance(_check_list[jdex], glypy.Glycan))
                 # print(isinstance(_check_list[ldex], glypy.Glycan))
 
-                if not subtree_of(_check_list[jdex], _check_list[ldex], exact=__init__.exact_Ture) is None:
+                if not subtree_of(_check_list[jdex], _check_list[ldex], exact=linkage_specific) is None:
                     del _check_list[jdex]
                 # elif not subtree_of(_check_list[ldex], _check_list[jdex]) is None:
                 #     _check_list[ldex] = _check_list[ldex]
@@ -131,7 +131,7 @@ def merge_glycan_motif_dict_to_motif_dict(glycan_motif_dict, glycan_dict, combin
     return _motif_dic
 
 
-def merge_motif_dict_pipe(glycan_motif_dict, output_merged_motif_dict_addr, glycan_dict):
+def merge_motif_dict_pipe(glycan_motif_dict, glycan_dict, linkage_specific, output_merged_motif_dict_addr="" , num_processors=__init__.num_processors):
     """
     merge the substructure of all glycans into motif dict
     :param glycan_motif_dict: {degree: [motif1, motif2, ... ]} /NBT_glycan_dict_degree_list_glycoct_for_motif
@@ -153,11 +153,11 @@ def merge_motif_dict_pipe(glycan_motif_dict, output_merged_motif_dict_addr, glyc
 
     _motif_degree = list(_motif_dic.keys())
     sorted_len_motif_degree = sorted(_motif_degree, key=lambda x: len(_motif_dic[x]), reverse=True)
-    pool = multiprocessing.Pool(processes=__init__.num_processors)
+    pool = multiprocessing.Pool(processes=num_processors)
     manager = multiprocessing.Manager()
     cleaned_motif_dic = manager.dict()
     for i in sorted_len_motif_degree:
-        pool.apply_async(_duplicate_cleaning_wrapper, args=(i, _motif_dic[i], cleaned_motif_dic))
+        pool.apply_async(_duplicate_cleaning_wrapper, args=(i, _motif_dic[i], cleaned_motif_dic, linkage_specific,))
 
     # print("closing poll")
     pool.close()
@@ -176,11 +176,12 @@ def merge_motif_dict_pipe(glycan_motif_dict, output_merged_motif_dict_addr, glyc
     #     motif_dict_str[i] = [str(j) for j in motif_dict[i]]
 
     motif_dict_str = glycan_io.glycan_obj_to_glycan_str(motif_dict)
-    store_json(output_merged_motif_dict_addr, motif_dict_str)
+    if output_merged_motif_dict_addr != "":
+        store_json(output_merged_motif_dict_addr, motif_dict_str)
     return motif_dict
 
 
-def match_motif(motif_vec, _glycan_motif_dict):
+def match_motif(motif_vec, _glycan_motif_dict, linkage_specific):
     """
     :param motif_vec: customized motif vec
     :param glycan_motif_dict: extracted_motif_dic returned from the extract_motif
@@ -203,7 +204,7 @@ def match_motif(motif_vec, _glycan_motif_dict):
         while _iter < len(glycan_motif_dict[str(_len)]):
             # print(type(j), type(i))
 
-            if not subtree_of(j, glycan_motif_dict[str(_len)][_iter], exact=__init__.exact_Ture) is None:
+            if not subtree_of(j, glycan_motif_dict[str(_len)][_iter], exact=linkage_specific) is None:
                 # print('yes')
                 match_vec[jdex] += 1
                 del glycan_motif_dict[str(_len)][_iter]
@@ -213,7 +214,7 @@ def match_motif(motif_vec, _glycan_motif_dict):
     return match_vec
 
 
-def match_motif_for_pip(motif_vec, glycan_motif_dict, glycan_id, match_dict, idex=0):
+def match_motif_for_pip(motif_vec, glycan_motif_dict, glycan_id, match_dict, linkage_specific, idex=0):
     """
     :param motif_vec: customized motif vec
     :param glycan_motif_dict: extracted_motif_dic returned from the extract_motif
@@ -224,16 +225,17 @@ def match_motif_for_pip(motif_vec, glycan_motif_dict, glycan_id, match_dict, ide
     """
     # make duplicate
     try:
-        match_vec = match_motif(motif_vec, glycan_motif_dict)
+        match_vec = match_motif(motif_vec, glycan_motif_dict, linkage_specific=linkage_specific)
         match_dict[glycan_id] = match_vec[:]
     except:
         print('error', idex)
     print('finished ', idex)
 
 
-def motif_matching_wrapper(motif_dict, glycan_motif_dict, matched_glycan_dict_addr):
+def motif_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specific, matched_glycan_dict_addr="", num_processors=__init__.num_processors):
     """
     match the glycan_motif_dict_degree_list to motif vec
+    :param num_processors:
     :param motif_dict: {degree: [motif1, motif2, ...]}  /NBT_motif_dic_degree_list
     :param glycan_motif_dict: {degree: [motif1, motif2, ...]} /NBT_glycan_dict_degree_list_glycoct_for_motif
     :param matched_glycan_dict_addr: output_addr /NBT_fixed_gylcan_name_list
@@ -248,12 +250,12 @@ def motif_matching_wrapper(motif_dict, glycan_motif_dict, matched_glycan_dict_ad
         motif_vec = motif_dict
     # store_json(output_motif_vec_addr, [str(i) for i in motif_vec])
     print('get motif vec, the length is ', len(motif_vec))
-    pool = multiprocessing.Pool(processes=__init__.num_processors)
+    pool = multiprocessing.Pool(processes=num_processors)
     manager = multiprocessing.Manager()
     match_dict = manager.dict()  # {motif_name:[scores]}
     for idex, i in enumerate(glycan_motif_dict):
         print('start processing', i)
-        pool.apply_async(match_motif_for_pip, args=(motif_vec, glycan_motif_dict[i], i, match_dict, idex))
+        pool.apply_async(match_motif_for_pip, args=(motif_vec, glycan_motif_dict[i], i, match_dict, linkage_specific, idex))
     print("closing poll")
     pool.close()
     print('joining pool')
@@ -261,7 +263,8 @@ def motif_matching_wrapper(motif_dict, glycan_motif_dict, matched_glycan_dict_ad
     print('converting dict')
     a_motif_dic = dict(match_dict)
     # print(a_motif_dic)
-    store_json(matched_glycan_dict_addr, a_motif_dic)
+    if matched_glycan_dict_addr=="":
+        store_json(matched_glycan_dict_addr, a_motif_dic)
     return a_motif_dic
 
 

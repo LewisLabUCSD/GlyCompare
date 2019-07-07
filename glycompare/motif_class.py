@@ -88,7 +88,7 @@ sns.set(color_codes=True)
 #     return _frag_motif_list
 
 
-def clean_duplicate(_frag_motif_list):
+def clean_duplicate(_frag_motif_list, exact_ture=__init__.exact_Ture):
     for i in _frag_motif_list.keys():
         # print(i)
         ldex = 0
@@ -96,7 +96,7 @@ def clean_duplicate(_frag_motif_list):
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
-                if subtree_of(_check_list[ldex], _check_list[jdex], __init__.exact_Ture) == 1 and subtree_of(
+                if subtree_of(_check_list[ldex], _check_list[jdex], exact_ture) == 1 and subtree_of(
                         _check_list[jdex],
                         _check_list[ldex]) == 1:
                     del _check_list[jdex]
@@ -123,7 +123,8 @@ class MotifLab():
         1b:b-dman-HEX-1:5
         LIN""")
 
-    def __init__(self, motif_):
+    def __init__(self, motif_, linkage_specific):
+        self.linkage_specific = linkage_specific
         if type(motif_) == dict:
             print(type(list(motif_.keys())[0]))
             dict_keys = sorted([int(i) for i in motif_.keys()])
@@ -186,7 +187,7 @@ class MotifLab():
                 """
                 _dep_tree[j] = []
                 for k in a_motif_dict[i - 1]:
-                    if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=__init__.exact_Ture) == 1:
+                    if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=self.linkage_specific) == 1:
                         _dep_tree[k].append(j)
                         edge_list.append((k, j))
         return _dep_tree, edge_list
@@ -261,16 +262,18 @@ _man2 = glycoct.loads("""
         RES
         1b:a-dman-HEX-1:5
         LIN""")
+
+
 class MotifLabwithCore(MotifLab):
     """
     store vec
     """
-    def __init__(self, motif_, glycan_core=nglycan_core):
+    def __init__(self, motif_, glycan_core, linkage_specific):
         """
         self.motif_dict stores the id of the self.motif_vec
         :param motif_: motif vec or motif dict_degree_list:
         """
-
+        # self.linkage_specific = linkage_specific
         if type(glycan_core) == str:
             self.glycan_core = glycoct.loads(glycan_core)
         else:
@@ -279,7 +282,7 @@ class MotifLabwithCore(MotifLab):
         plot_glycan_utilities.plot_glycan(self.glycan_core)
         assert isinstance(self.glycan_core, glypy.structure.glycan.Glycan)
         assert motif_, "motif vector is empty"
-        MotifLab.__init__(self, motif_)
+        MotifLab.__init__(self, motif_, linkage_specific)
         self.motif_dict_with_core = {}
         self.motif_dep_tree_core = {}
         self.motif_with_core_list = []
@@ -333,7 +336,7 @@ class MotifLabwithCore(MotifLab):
                     motif j in i degree/motif in i-1 degree
                     """
                     # print(subtree_of(self.glycan_core, self.motif_vec[j], exact=__init__.exact_Ture))
-                    if subtree_of(self.glycan_core, self.motif_vec[j], exact=__init__.exact_Ture) == 1:
+                    if subtree_of(self.glycan_core, self.motif_vec[j], exact=self.linkage_specific) == 1:
                         self.motif_dict_with_core[i].append(j)
                         self.motif_with_core_list.append(j)
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
@@ -366,7 +369,8 @@ def get_weight_dict(motif_abd_table):
 class NodesState():
     threshold = 200
 
-    def __init__(self, dependence_tree, motif_weight):
+    def __init__(self, dependence_tree, motif_weight, linkage_specific):
+        self.linkage_specific=linkage_specific
         self.dep_tree = dependence_tree
         self.nodes_sta = []
         self.zero_value = []
@@ -404,6 +408,15 @@ class NodesState():
         self.collapsed_edge_attri = {}
 
     def upload_network(self, edges, nodes, edge_attri={}, node_attri={}, add_notimp_edge=True):
+        """Will upload the network and manually annotate the node and edges
+        red node are nodes kept in motif_vector
+        blue/dark grey node are nodes can be used
+        light grey nodes are nodes removed
+
+        blue edges: the nodes are collapsed base on the rule
+        grey edges: not important nodes
+        """
+
         node_list = list(nodes)
         edge_list = list(edges)
         # G=nx.Graph(G)
@@ -446,6 +459,11 @@ class NodesState():
         return G
 
     def _update_intermediate_node(self, if_collapsing=False):
+        """
+        update the node attributes
+        :param if_collapsing:
+        :return:
+        """
         if not if_collapsing:
             for i in self.nodes:
 
@@ -453,7 +471,9 @@ class NodesState():
                     if i in self.edge_dic_re:
                         if self._check_dep_re(i, self.edge_dic_re[i]):
                             self.node_attri[i]['kept'] = 'immd'
+
                         else:
+
                             self.node_attri[i]['kept'] = 'med_root'
                     else:
                         self.node_attri[i]['kept'] = 'root'
@@ -468,7 +488,7 @@ class NodesState():
                 ttest
                 """
         """ drop parrellel is only for clustering """
-
+        print('_a.nodes', len(self.nodes))
         node_mean, node_var = self.get_node_sta()
         node_corr, node_pvalue = self.get_node_value()
         # node_pvalue =_a.get_node_value(method='one_vs_rest_t')
@@ -541,7 +561,7 @@ class NodesState():
                 for j in range(i, len(mod_nodes)):
                     if j == i: continue
                     if motif_vec:
-                        _re = subtree_of(motif_vec[mod_nodes[i]], motif_vec[mod_nodes[j]], exact=__init__.exact_Ture)
+                        _re = subtree_of(motif_vec[mod_nodes[i]], motif_vec[mod_nodes[j]], exact=self.linkage_specific)
                         if _re:
                             check_through = True
                             # print(mod_nodes[i], mod_nodes[j], _re, self.get_value_unnormed(mod_nodes[i], mod_nodes[j], self.get_corr))
@@ -814,6 +834,7 @@ class NodesState():
         return False
 
     def _drop_nodes_with_weight_zero(self):
+        print("Start dropping nodes with weight zero, nodes count:", len(self.nodes))
         for i in list(self.motif_weight.keys()):
             if sum(self.motif_weight[i]) == 0:
                 self.zero_value.append(i)
@@ -822,7 +843,7 @@ class NodesState():
         for i in sorted(list(self.zero_value)):
             self.edges = [x for x in self.edges if i not in x]
 
-        print('Nodes dropped', self.zero_value, )
+        print('Nodes left', self.zero_value, )
         print(len(self.nodes), len(self.edges))
         # def _drop_nodes(self, nodes_list):
         # self.nodes =
