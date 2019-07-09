@@ -282,7 +282,7 @@ def glycan_deconvoluting_pip(keywords_dict, linkage_specific, forced=False):
         print('cannot find the glycan_dict file')
 
 
-def abd_table_pip(keywords_dict, abd_table, simple_profile=False, simple_naming=False,
+def glycoprofile_pip(keywords_dict, abd_table, simple_profile=False, simple_naming=False,
                   external_profile_naming=False, forced=False, ):
     """
     required file
