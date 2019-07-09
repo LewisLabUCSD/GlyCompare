@@ -23,8 +23,8 @@ The GlyCompare framework provides several tools that account for the influence o
 Pipeline guide.
 
 ### Create a new session and all data are required in ,/source_data/
-- An abundance table (1.1) is necessary to run the full GlyCompare pipeline, if the glytoucan_id for each glycan is specified. For example, [iscience_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/test_iscience/source_data/abundace_table.csv). Complex data need more, [epo_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/). 
-- 1.1. abundance_table.xls. An abundance_table has column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id or custimized: m/z, hplc). 
+
+- 1.1. abundance_table.xls. An abundance_table has column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id or custimized: m/z, hplc). An abundance table (1.1) is necessary to run the full GlyCompare pipeline, if the glytoucan_id for each glycan is specified. For example, [iscience_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/test_iscience/source_data/abundace_table.csv). Complex data need more, [epo_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/).
     
     
 
