@@ -28,15 +28,15 @@ Pipeline guide.
     
     
 
-- 1.2. (optional) external_profile_naming.json. Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use. i.e. [example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/external_profile_naming.json)
+- 1.2. (optional) external_profile_naming.json. Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use. i.e. [paper_epo/source_data/external_profile_naming.json](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/external_profile_naming.json)
     
     
 
-- 1.3. (optional) glycan_identifier_to_glytoucan_id.json. If the glycan identifiers in abundance_table.xls are not glytoucan_id (if uses m/z or costumized id). See 2.4. [example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json)
+- 1.3. (optional) glycan_identifier_to_glytoucan_id.json. If the glycan identifiers in abundance_table.xls are not glytoucan_id (if uses m/z or costumized id). See 2.4. [paper_epo/source_data/glycan_identifier_to_glytoucan_id.json](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json)
     
     
 - 1.4. (optinal) source_data/glycoct/. If part of glycan structures are manually curated, we need a source_data/glycoct/ directory to store all of them.
-     i.e. [glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct)
+     i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct)
 
 
 ### There are several parameter should be set up first
