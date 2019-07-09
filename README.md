@@ -21,20 +21,20 @@ The GlyCompare framework provides several tools that account for the influence o
 
 
 ### Data required should be put in source/
-    An abundance table (1.1) is necessary to run the full GlyCompare pipeline, if the glytoucan_id for each glycan is specified. For example, [tool_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/test_iscience/source_data/abundace_table.csv). Complex data might need all of them. 
-    An abundance_table has column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id or custimized: m/z, hplc). 
-    1.1. abundance_table.xls
+  An abundance table (1.1) is necessary to run the full GlyCompare pipeline, if the glytoucan_id for each glycan is specified. For example, [tool_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/test_iscience/source_data/abundace_table.csv). Complex data might need all of them. 
+  An abundance_table has column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id or custimized: m/z, hplc). 
+  1.1. abundance_table.xls
     
 
-    Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use:
-    1.2. (optional) external_profile_naming.json
+  Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use:
+  1.2. (optional) external_profile_naming.json
     
 
-    If the glycan identifiers in abundance_table.xls are not glytoucan_id (if uses m/z or costumized id). See 2.4.
-    1.3. (optional) glycan_identifier_to_glytoucan_id.json
+  If the glycan identifiers in abundance_table.xls are not glytoucan_id (if uses m/z or costumized id). See 2.4.
+  1.3. (optional) glycan_identifier_to_glytoucan_id.json
     
-    If part of glycan structures are manually curated, we need a source_data/glycoct/ directory to store all of them.
-    1.4. (optinal) source_data/glycoct/ i.e. [glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct)
+  If part of glycan structures are manually curated, we need a source_data/glycoct/ directory to store all of them.
+  1.4. (optinal) source_data/glycoct/ i.e. [glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct)
 
 
 ### There are several parameter should be set up first
