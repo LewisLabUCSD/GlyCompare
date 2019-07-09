@@ -7,13 +7,15 @@ num_processors = 8
 
 print("""
 ### An abundance table (1.1) is necessary to run the full GlyCompare pipeline:
+    The abundance_table have column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id, or custimized: m/z, hplc)
     1.1. abundance_table.xls
 
     Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use:
     1.2. (optional) external_profile_naming.json
 
-    If there is ambiguity between id in abundance_table.xls, (if uses m/z) and id for glycan structure (Glytoucan ID). See 2.4.
-    1.3. (optional) glycoprofile_name_to_glycan_id.json
+    If the glycan identifiers in abundance_table.xls are not glytoucan_id (if uses m/z or costumized). See 2.4.
+    1.3. (optional) glycan_identifier_to_glytoucan_id.json
+
 
 ### There are several parameter should be set up first
     2.1. working_addr : root working dir
@@ -26,10 +28,11 @@ print("""
         True if they use the mz, hplc naming or self-created naming rather than glytoucan_id in abundance table.
         
     2.5. complex_profile: 
-        False, if m/z to structure matching is 1:1 across all considered glycoprofiles. This will occur when there are
-        no isomers and glycoprofile_name_to_glycan_id.json (1.3) does not need to be specified. 
-        If there are isomers, set complex_profile to True, indicating that one m/z can map to multiple 
-        structures. Each m/z-structure matching must be specified in glycoprofile_name_to_glycan_id.json (1.3)
+        False, if glycan identifiers in abundance_table.xls is not glytoucan_id.
+        
+        True, if a glycan identifier, for example m/z, in abundance_table.xls has isomers, the m/z-structure matching 
+        must be specified in glycan_identifier_to_glytoucan_id.json (1.3)
+        
     #    glycan_profile['5'] = {
     #         "2244": "G04483SK",
     #         "2605": "G30460NZ",
