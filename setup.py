@@ -9,7 +9,7 @@ required = ["glypy"]
 
 setuptools.setup(
      name='glycompare',  
-     version='0.1',
+     version='0.2',
      install_requires=required,
      author="B.B., B.P.K",
      author_email="bobao@eng.ucsd.edu",
