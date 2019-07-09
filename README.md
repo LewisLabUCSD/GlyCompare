@@ -28,7 +28,7 @@ Pipeline guide.
     
     
 
-- 1.2. (optional) external_profile_naming.json. Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use:
+- 1.2. (optional) external_profile_naming.json. Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use. i.e. [example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/external_profile_naming.json)
     
     
 
