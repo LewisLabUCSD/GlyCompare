@@ -46,11 +46,11 @@ Pipeline guide.
 
     2.3. __init__.num_processors: number of processes needed
 
-    2.4. complex_naming: 
-        True if they use the mz, hplc naming or self-created naming rather than glytoucan_id in abundance table.
+    2.4. need_external_profile_naming: 
+        True if customized profile naming rather than glytoucan_id in abundance table.
         
-    2.5. complex_profile: 
-        False, if glycan identifiers in abundance_table.xls is not glytoucan_id.
+    2.5. need_glycan_identifier_remap: 
+        False, if glycan identifiers in abundance_table.xls is glytoucan_id.
         
         True, if a glycan identifier, for example m/z, in abundance_table.xls has isomers, the m/z-structure matching 
         must be specified in glycan_identifier_to_glytoucan_id.json (1.3)
