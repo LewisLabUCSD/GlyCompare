@@ -7,7 +7,7 @@ import pandas as pd
 
 import __init__
 import customize_motif_vec
-import extract_motif
+import extract_substructure
 import glycan_io
 import glycan_profile
 import json_utility
@@ -253,8 +253,8 @@ def glycan_deconvoluting_pip(keywords_dict, linkage_specific, forced=False):
         print('start glycan_dict')
         if forced or not os.path.isfile(glycan_motif_dict_addr):
             glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_dict_addr)
-            glycan_motif_dic = extract_motif.get_motif_pip(glycan_dict=glycan_dict, gly_len=23,
-                                                           output_file=glycan_motif_dict_addr)
+            glycan_motif_dic = extract_substructure.extract_substructure_pip(glycan_dict=glycan_dict, gly_len=23,
+                                                                             output_file=glycan_motif_dict_addr)
             print('finished parse motif_dic')
         else:
             glycan_motif_dic = glycan_io.load_glycan_motif_dict_from_json(glycan_motif_dict_addr)

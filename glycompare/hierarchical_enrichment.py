@@ -1,5 +1,5 @@
 import customize_motif_vec
-import extract_motif
+import extract_substructure
 import motif_class
 import __init__
 import json_utility

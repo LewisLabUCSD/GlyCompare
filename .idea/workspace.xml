@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/__init__.py" afterPath="$PROJECT_DIR$/glycompare/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/glycompare/customize_motif_vec.py" afterPath="$PROJECT_DIR$/glycompare/merge_substructures_vec_pip.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/glycompare/extract_motif.py" afterPath="$PROJECT_DIR$/glycompare/extract_substructures_pip.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/glycompare/glycan_profile.py" afterPath="$PROJECT_DIR$/glycompare/glycoprofile_pip.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/glycompare/motif_class.py" afterPath="$PROJECT_DIR$/glycompare/select_motifs_pip.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/hierarchical_enrichment.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/hierarchical_enrichment.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/initiator.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/initiator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/test_glycan_io.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/test_glycan_io.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/Fig4_Fig5_hmo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/Fig4_Fig5_hmo_analysis.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/hierarchical_enrichment.py" afterPath="$PROJECT_DIR$/glycompare/hierarchical_enrichment.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/initiator.py" afterPath="$PROJECT_DIR$/glycompare/initiator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/test_glycan_io.py" afterPath="$PROJECT_DIR$/glycompare/test_glycan_io.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="extract_motif.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
+      <file leaf-file-name="extract_substructures_pip.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures_pip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="226">
+              <caret line="111" column="19" lean-forward="false" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -42,18 +53,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customize_motif_vec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/customize_motif_vec.py">
+      <file leaf-file-name="merge_substructures_vec_pip.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/merge_substructures_vec_pip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
+            <state relative-caret-position="1322">
               <caret line="198" column="49" lean-forward="false" selection-start-line="198" selection-start-column="49" selection-end-line="198" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="motif_class.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/motif_class.py">
+      <file leaf-file-name="select_motifs_pip.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/select_motifs_pip.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="682">
               <caret line="87" column="29" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="87" selection-end-column="29" />
@@ -65,14 +76,14 @@
       <file leaf-file-name="clustering_analysis_pip.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
+            <state relative-caret-position="797">
               <caret line="156" column="21" lean-forward="false" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="64">
@@ -84,8 +95,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="glycan_profile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
+      <file leaf-file-name="glycoprofile_pip.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/glycoprofile_pip.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
               <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="160" selection-end-column="7" />
@@ -94,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="initiator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="219">
+              <caret line="240" column="4" lean-forward="false" selection-start-line="240" selection-start-column="4" selection-end-line="240" selection-end-column="4" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -127,7 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>glycan_dict_addr</find>
       <find>get_glycoprofile_list</find>
       <find>glycan_deconvoluting_pipdec</find>
       <find>load_glytoucan_database</find>
@@ -157,6 +167,7 @@
       <find>outpu</find>
       <find>substructure</find>
       <find>__ini</find>
+      <find>motif_class</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -178,6 +189,9 @@
       <replace>self.collapsed_node</replace>
       <replace>self.collapsed_edge_attri</replace>
       <replace>collapsing_potential_node</replace>
+      <replace>merge_substructure_vec_pip</replace>
+      <replace>merge_substructures_vec_pip</replace>
+      <replace>select_motifs_pip</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -191,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/NBT_data_processing_pip.py" />
         <option value="$PROJECT_DIR$/src/init_env.py" />
         <option value="$PROJECT_DIR$/src/get_motif_server_version.py" />
         <option value="$PROJECT_DIR$/src/gc_customized_motif_vec.py" />
@@ -240,8 +253,9 @@
         <option value="$PROJECT_DIR$/example_notebook/test_cho.ipynb" />
         <option value="$PROJECT_DIR$/glycompare/glycan_stats.py" />
         <option value="$PROJECT_DIR$/glycompare/motif_class.py" />
-        <option value="$PROJECT_DIR$/glycompare/initiator.py" />
         <option value="$PROJECT_DIR$/glycompare/__init__.py" />
+        <option value="$PROJECT_DIR$/glycompare/extract_substructures_pip.py" />
+        <option value="$PROJECT_DIR$/glycompare/initiator.py" />
       </list>
     </option>
   </component>
@@ -252,8 +266,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="253" />
-    <option name="y" value="115" />
+    <option name="x" value="686" />
+    <option name="y" value="265" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
@@ -458,8 +472,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="253" y="115" width="1440" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="686" y="265" width="1440" height="877" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -467,10 +480,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26824033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26824033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3221393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32147563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30758226" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -739,54 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/extract_motif.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/motif_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="87" column="29" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="87" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/glycan_profile.py">
+    <entry file="file://$PROJECT_DIR$/glycompare/glycoprofile_pip.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="160" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/customize_motif_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="198" column="49" lean-forward="false" selection-start-line="198" selection-start-column="49" selection-end-line="198" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="156" column="21" lean-forward="false" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -797,6 +766,50 @@
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="69" selection-end-column="76" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures_pip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="111" column="19" lean-forward="false" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/merge_substructures_vec_pip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1322">
+          <caret line="198" column="49" lean-forward="false" selection-start-line="198" selection-start-column="49" selection-end-line="198" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis_pip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="797">
+          <caret line="156" column="21" lean-forward="false" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/select_motifs_pip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="87" column="29" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="87" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/initiator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="240" column="4" lean-forward="false" selection-start-line="240" selection-start-column="4" selection-end-line="240" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -131,7 +131,7 @@ def merge_glycan_motif_dict_to_motif_dict(glycan_motif_dict, glycan_dict, combin
     return _motif_dic
 
 
-def merge_motif_dict_pipe(glycan_motif_dict, glycan_dict, linkage_specific, output_merged_motif_dict_addr="" , num_processors=__init__.num_processors):
+def merge_substructure_dict_pip(glycan_motif_dict, glycan_dict, linkage_specific, output_merged_motif_dict_addr="", num_processors=__init__.num_processors):
     """
     merge the substructure of all glycans into motif dict
     :param glycan_motif_dict: {degree: [motif1, motif2, ... ]} /NBT_glycan_dict_degree_list_glycoct_for_motif
@@ -232,7 +232,7 @@ def match_motif_for_pip(motif_vec, glycan_motif_dict, glycan_id, match_dict, lin
     print('finished ', idex)
 
 
-def motif_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specific, matched_glycan_dict_addr="", num_processors=__init__.num_processors):
+def substructure_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specific, matched_glycan_dict_addr="", num_processors=__init__.num_processors):
     """
     match the glycan_motif_dict_degree_list to motif vec
     :param num_processors:
