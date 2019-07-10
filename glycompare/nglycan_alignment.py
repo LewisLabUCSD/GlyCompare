@@ -22,7 +22,6 @@ class glycan_model():
 # 2s:n-acetyl
 # LIN
 # 1:1d(5+1)2n""")
-
     def __init__(self):
         """ a plain model"""
         # self.motif_vec = motif_vec

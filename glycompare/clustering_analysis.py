@@ -4,56 +4,14 @@ import nglycan_alignment
 import plot_glycan_utilities
 
 sns.set_palette("RdBu_r", 7)
-import time
-import numpy as np
-import glycan_profile
-import customize_motif_vec
+
 import __init__
-import motif_class
-from  importlib import reload
+
+# from  importlib import reload
 import matplotlib.pyplot as plt
 # sns.palplot(sns.color_palette("RdBu_r", 7))
-import json_utility
-import pandas as pd
 import scipy
-from glypy.io import glycoct
 import glycan_io
-import numpy as np
-
-# profile_name = ['WT',
-#                 'mgat4A',
-#                 'mgat4A/mgat4B',
-#                 'mgat5',
-#                 'mgat4A/mgat4B/mgat5',
-#                 'B4GalT1',
-#                 'B4GalT2',
-#                 'B4GalT3',
-#                 'B4GalT4',
-#                 'B4GalT1/B4GalT2',
-#                 'B4GalT1/B4GalT3',
-#                 'B3gnt1',
-#                 'B3gnt2',
-#                 'st3gal3',
-#                 'st3gal4',
-#                 'st3gal6',
-#                 'st3gal3/st3gal4',
-#                 'st3gal4/st3gal6',
-#                 'KI_ST6GalNAc1/st3gal4/st3gal6',
-#                 'B3gnt2/mgat4a/mgat4b/mgat5',
-#                 'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-#                 'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-#                 'EPO48(mgat3)',
-#                 'EPO143(mgat4C)',
-#                 'EPO174(mgat2)',
-#                 'EPO200(B4galt1/B4galt2/B4galt3)',
-#                 'EPO275(B3gnt8)',
-#                 'EPO78(mgat4B)',
-#                 'EPO104(mgat5B)',
-#                 'EPO127(mgat1)',
-#                 'EPO259(mgat2/st3gal4/st3gal6)',
-#                 'EPO261(mgat2/mgat4A/mgat4B/mgat5)',
-#                 'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
-#                 'EPO266(fut8)']
 
 
 def draw_motif_cluster(g, df, name_prefix, color_threshold, fig_size=(10,35)):
@@ -71,9 +29,6 @@ def draw_motif_cluster(g, df, name_prefix, color_threshold, fig_size=(10,35)):
     #     plt.show()
     plt.savefig(r"./" + name_prefix + 'motif_cluster.png')
     cccluster_dict = {}
-    # for i in zip(scipy.cluster.hierarchy.fcluster(g.dendrogram_row.linkage, t=color_threshold, criterion='distance'),df.index.tolist()):
-    #     print(i)
-
 
     for i, j in zip(scipy.cluster.hierarchy.fcluster(g.dendrogram_row.linkage, t=color_threshold, criterion='distance'),
                     df.index.tolist()):
@@ -135,8 +90,6 @@ def draw_profile_cluster(g, df, profile_name, name_prefix, color_threshold, addr
 
 
 """The following are pipelines"""
-
-
 def draw_glycan_clustermap(df_ncore, name_prefix, address, metric="braycurtis"):
     # draw clustermap
     g = sns.clustermap(df_ncore, metric=metric)

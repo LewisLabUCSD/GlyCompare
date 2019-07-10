@@ -4,7 +4,7 @@ from glypy.io import glycoct, iupac
 
 import __init__
 import glycan_io
-import initiator
+import pipeline_functions
 import os
 
 """assertEqual(a, b)	a == b	 
@@ -66,18 +66,18 @@ class test_glycan_io(unittest.TestCase):
                              glycan_io.glycan_obj_to_glycan_str(self.a_glycan_dict))
 
     def test_load_structure_pip(self):
-        b_glycan_dict = initiator.load_structures_pip(project_name="test",
-                                                      working_dir=root_,
-                                                      data_type='glycan_dict',
-                                                      structure_loader=self.a_glycan_dict)
-        c_glycan_dict = initiator.load_structures_pip(project_name="test",
-                                                      working_dir=root_,
-                                                      data_type='used',
-                                                      structure_loader=self.a_glycan_dict)
-        d_glycan_dict = initiator.load_structures_pip(project_name="test",
-                                                      working_dir=root_,
-                                                      data_type='used',
-                                                      structure_loader=self.a_glycan_dict)
+        b_glycan_dict = pipeline_functions.load_glycans_pip(project_name="test",
+                                                            working_dir=root_,
+                                                            data_type='glycan_dict',
+                                                            structure_loader=self.a_glycan_dict)
+        c_glycan_dict = pipeline_functions.load_glycans_pip(project_name="test",
+                                                            working_dir=root_,
+                                                            data_type='used',
+                                                            structure_loader=self.a_glycan_dict)
+        d_glycan_dict = pipeline_functions.load_glycans_pip(project_name="test",
+                                                            working_dir=root_,
+                                                            data_type='used',
+                                                            structure_loader=self.a_glycan_dict)
         self.assertDictEqual(self.a_glycan_dict,
                              b_glycan_dict, "Should be glypy glycan")
         self.assertSequenceEqual(self.a_glycan_dict['nglycan_core'],
