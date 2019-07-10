@@ -88,7 +88,7 @@ sns.set(color_codes=True)
 #     return _frag_motif_list
 
 
-def clean_duplicate(_frag_motif_list, exact_ture=__init__.exact_Ture):
+def clean_duplicate(_frag_motif_list, linkage_specific):
     for i in _frag_motif_list.keys():
         # print(i)
         ldex = 0
@@ -96,7 +96,7 @@ def clean_duplicate(_frag_motif_list, exact_ture=__init__.exact_Ture):
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
-                if subtree_of(_check_list[ldex], _check_list[jdex], exact_ture) == 1 and subtree_of(
+                if subtree_of(_check_list[ldex], _check_list[jdex], linkage_specific) == 1 and subtree_of(
                         _check_list[jdex],
                         _check_list[ldex]) == 1:
                     del _check_list[jdex]
