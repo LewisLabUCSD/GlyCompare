@@ -43,14 +43,16 @@ glycan_dict = pipeline_functions.load_structure_pip(keywords_dict=keywords_dict,
                                            data_type='mix', 
                                            structure_loader=structure_loader)
 
-## find substructure present in the data
-substructure_vector_dict=pipeline_functions.extract_and_merge_substructures_pip(keywords_dict, linkage_specific=False, forced=False)
+## extract substructure and generate substructure vector
+substructure_vector_dict = pipeline_functions.extract_and_merge_substructures_pip(keywords_dict, linkage_specific=False, forced=False)
 
 
-## calculate substructure and motif abundance
-abd_table = glycan_io.load_table(os.path.join(keywords_dict['source_dir'], 'abundance_table.xls'))
-glycoprofile_vector_table=pipeline_functions.glycoprofile_pip(keywords_dict, abd_table, external_profile_naming=True, forced=False)
-motif_abd_table = pipeline_functions.select_motifs_pip(keywords_dict, linkage_specific=linkage_specific, epitope=True)
+## calculate substructure abundance -> glycoprofile vector 
+glycan_abd_table = glycan_io.load_table(os.path.join(keywords_dict['source_dir'], 'abundance_table.xls'))
+glycoprofile_vector_table = pipeline_functions.glycoprofile_pip(keywords_dict, glycan_abd_table, external_profile_naming=True, forced=False)
+
+## select motif and get motif abundance -> glyco-motif vector
+glyco_motif_vector_table = pipeline_functions.select_motifs_pip(keywords_dict, linkage_specific=linkage_specific, epitope=False)
 
 ## cluster and determine representative motifs
 pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
