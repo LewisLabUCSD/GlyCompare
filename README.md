@@ -6,7 +6,7 @@ Here, we present GlyCompare, a novel method wherein glycans from glycomic data a
 To improve naming conventions, we are spending the day refactoring some of our function names. Please note that several top level function names should change in the next 24 hours.
 
 ## Citation
-Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A. Mohammad, Morey W. Haymond, Lars Bode, and Nathan E. Lewis. 2019. “****Correcting for Sparsity and Non-Independence in Glycomic Data through a System Biology Framework.****” bioRxiv. https://doi.org/10.1101/693507.
+Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A. Mohammad, Morey W. Haymond, Lars Bode, and Nathan E. Lewis. 2019. “****Correcting for Sparsity and Non-Independence in Glycomic Data through a Systems Biology Framework.****” bioRxiv. https://doi.org/10.1101/693507.
 
 ### Demonstrations & Manuscript Analyses
 - [All demos](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_notebook)
