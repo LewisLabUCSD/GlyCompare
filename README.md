@@ -96,7 +96,7 @@ Glycompare provides several complete pipelines that several major pre-prescribed
 
 ## Initialization
 
-Pipeline functions include: ```load_glycan_pip```, ```extract_and_merge_substructures_pip```, ```glycoprofile_pip```, ```select_motifs_pip```, ```profile_clustering_pip```
+Pipeline functions include: ```load_glycan_pip```, ```extract_and_merge_substructures_pip```, ```glycoprofile_pip```, ```select_motifs_pip```, ```clustering_analysis_pip```
 Most require a set of core inputs we centralize in the ```keyword_dict``` which can be initialized using the load parameter function.
 
 ### ```load_para_keywords```
@@ -266,7 +266,7 @@ motif_abd_table,a_node_state = pipeline_functions.select_motifs_pip(keywords_dic
 ```
 
 ## Clustering
-### ```profile_clustering_pip```
+### ```clustering_analysis_pip```
 
 **Description:** Clusters the motif abundance table and extracts representative motifs for each cluster
 
@@ -274,9 +274,12 @@ motif_abd_table,a_node_state = pipeline_functions.select_motifs_pip(keywords_dic
 - keywords_dict: dict, keyword pipeline variable dictionary from ```load_para_keywords``` function
 - motif_abd_table: real matrix, a matrix of motif abundances with motifs in the rows and samples in the columns.
 
-**Output:**
+**Plot:**
+- substructure_representative:
+- glycoprofile_cluster:
 - rep_str: dict, dictionary of representative structures
 - raw_abd_zscore_plot: figure, a biscluster of substructure abundance saved at 'raw_abundance_zscore.eps' 
+
 
 **Example:**
 From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
