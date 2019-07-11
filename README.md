@@ -10,8 +10,9 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 
 ### Demonstrations & Manuscript Analyses
 - [All demos](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_notebook)
-- [Figure 2 & 3](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
-- [Figure 4 & 5](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_analysis.ipynb)
+- [Figure 2 & 3, glycoprofile processing and analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+- [Figure 4 & 5, glycoprofile processing](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_analysis.ipynb)
+- [Figure 4 & 5, glycoprofile analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
 
 ## Installation
 Requirements and dependencies
@@ -293,4 +294,4 @@ pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
 ```
 
 ## Statistical Analysis 
-Statistical analyses are not yet incorperate in the package. The analysese performed can be found at [example_notebook/Fig4_Fig5_hmo_stats.r](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_hmo_stats.r)
+Statistical analyses are not yet incorperate in the package. The analysese performed can be found at [example_notebook/Fig4_Fig5_hmo_stats.r](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.r)
