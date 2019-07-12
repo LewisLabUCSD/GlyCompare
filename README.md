@@ -294,4 +294,4 @@ pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
 ```
 
 ## Statistical Analysis 
-Statistical analyses are not yet incorperate in the package. The analysese performed can be found at [example_notebook/Fig4_Fig5_hmo_stats.r](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.r)
+Statistical analyses are not yet incorperate in the package. The analysese performed can be found at [example_notebook/Fig4_Fig5_hmo_stats.r](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
