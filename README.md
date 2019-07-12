@@ -63,7 +63,11 @@ pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
 
 The GlyCompare framework provides several tools that account for the influence of the glycan substructure network in the analysis of glycomic data. However, for its effective use, there are two primary requirements for the data it processes. First, the tools require that the glycan is stored in a tree-like structure. Thus, neither cyclic nor glycan with undefined topology in glycoCT format can be processed. Second, during the substructure matching, in terms of the linkage specificity, the code can only handle two types of substructure analysis. One has the exact linkage specification, and one ignores all linkage specification and only accounts for topology. Currently, our tool cannot handle partial ambiguity in linkages of a glycan. The code and the manual are freely available and will be continually developed to enable its accessibility to all types of scientists. 
 
-# Basic Workflow: Environment setup & Pipeline Functions
+------------
+------------
+------------
+
+# Complete Description of Environment setup & Pipeline Functions
 
 Glycompare provides several complete pipelines that several major pre-prescribed functions of Glycompare. 
 
