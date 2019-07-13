@@ -19,14 +19,32 @@ Requirements and dependencies
 - python 3+
 - glypy
 - anaconda3 (for pandas, numpy, seaborn)
+- git-lfs (can be installed with homebrew or ```sudo apt install git-lfs```
 
-Glycompare can be installed directly from pip using
 
+<!-- Glycompare can be installed directly from pip using
 ```pip3 install glycompare```
+-->
 
+#### Install from github
 The package can also be installed locally using
 
-```python install setup.py```
+```bash
+# get the repo
+git clone https://github.com/LewisLabUCSD/GlyCompare.git
+# enter the repo
+cd GlyCompare
+# get the large files (~150MB)
+git lfs pull
+# install glycompare
+python install setup.py
+```
+
+#### Install from PyPI
+
+Installation via pip is under construction. Please do not attempt to install via PyPI (7/12/19)
+
+# Pipeline Overview
 
 ![workflow](GlyCompare_flow.png)
 
