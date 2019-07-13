@@ -37,7 +37,7 @@ cd GlyCompare
 # get the large files (~150MB)
 git lfs pull
 # install glycompare
-python install setup.py
+python3 install setup.py
 ```
 
 #### Install from PyPI
