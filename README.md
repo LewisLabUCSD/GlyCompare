@@ -3,7 +3,7 @@
 Here, we present GlyCompare, a novel method wherein glycans from glycomic data are decomposed to a minimal set of intermediate substructures, thus incorporating shared intermediate glycan substructures into all comparisons of glycans. 
 
 ## Refactoring Notice 7/10/19
-To improve naming conventions, we are spending the day refactoring some of our function names. Please note that several top level function names should change in the next 24 hours.
+To improve naming conventions, we are spending a few day refactoring some of our function names. Please note that several top level function names should change in the next few days. We will remove this notice as soon as we are done.
 
 ## Citation
 Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A. Mohammad, Morey W. Haymond, Lars Bode, and Nathan E. Lewis. 2019. “****Correcting for Sparsity and Non-Independence in Glycomic Data through a Systems Biology Framework.****” bioRxiv. https://doi.org/10.1101/693507.
@@ -18,7 +18,7 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 Requirements and dependencies
 - python 3+
 - glypy
-- anaconda3 (for pandas, numpy, seaborn, networkx==2.1, ndex)
+- anaconda3 (for pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
 - git-lfs (can be installed with homebrew or ```sudo apt install git-lfs```
 
 
