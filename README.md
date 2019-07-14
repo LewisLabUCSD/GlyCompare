@@ -34,7 +34,7 @@ The package can also be installed locally using
 git clone https://github.com/LewisLabUCSD/GlyCompare.git
 # enter the repo
 cd GlyCompare
-# get the large files (~150MB)
+# get the large files (~150MB including the glycompare db [glytoucan_db_addr])
 git lfs pull
 # install glycompare
 python3 install setup.py
@@ -42,7 +42,15 @@ python3 install setup.py
 
 #### Install from PyPI
 
-Installation via pip is under construction. Please do not attempt to install via PyPI (7/12/19)
+To install via PyPI, using pip3
+
+```bash
+# install glycompare
+pip3 install glycompare
+
+# download the glytoucan db (the path to this db is glytoucan_db_addr)
+wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/glytoucan_database.json
+```
 
 # Pipeline Overview
 
