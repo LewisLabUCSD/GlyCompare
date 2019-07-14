@@ -1,5 +1,7 @@
 import getopt
 import sys
+import pipeline_functions
+import merge_substructure_vec
 
 
 # root_ = "/Users/apple/PycharmProjects/GlyCompare/"

@@ -1,6 +1,15 @@
 import getopt
 import sys
-
+import glycompare.pipeline_functions
+import merge_substructure_vec
+import glycan_io
+import json_utility
+import nglycan_alignment
+import plot_glycan_utilities
+import clustering_analysis
+import extract_substructures
+import process_glycoprofiles
+import test_glycan_io
 
 # root_ = "/Users/apple/PycharmProjects/GlyCompare/"
 num_processors = 8
