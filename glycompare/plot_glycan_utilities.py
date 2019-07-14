@@ -1,4 +1,3 @@
-from json_utility import load_json
 from glypy.plot.draw_tree import *
 from glypy.plot.buchheim import buchheim
 from glypy.plot.topological_layout import layout as topological

@@ -1,12 +1,12 @@
 import glypy
 from glypy import Glycan
-from json_utility import load_json, store_json
-import __init__
 from glypy.io import glycoct, iupac
 from pathlib import Path
 import os
 import pandas as pd
 import numpy as np
+
+from . import json_utility
 
 
 def load_glycoprofile_name_to_id(addr, naming='mz', _format='json'):
@@ -44,7 +44,7 @@ def load_glycoprofile_name_to_id(addr, naming='mz', _format='json'):
                 assert naming_list[index] not in profile_naming_dict[profile].keys()
                 profile_naming_dict[profile][naming_list[index]] = glycan_id_list[index]
     elif _format == 'json':
-        profile_naming_dict = load_json(addr)
+        profile_naming_dict = json_utility.load_json(addr)
     else:
         assert False, "wrong format"
     return profile_naming_dict
@@ -59,7 +59,7 @@ def output_glycoprofile_name_to_id(addr, glycoprofile_naming_dict, _formate='jso
                 file.write('\t'.join([i, j, glycoprofile_naming_dict[i][j]]) + "\n")
         file.close()
     elif _formate == "json":
-        store_json(addr, glycoprofile_naming_dict)
+        json_utility.store_json(addr, glycoprofile_naming_dict)
 
 
 def load_glycan_dict_from_json(addr):
@@ -69,7 +69,7 @@ def load_glycan_dict_from_json(addr):
     :return: a glycan_dict
     """
     # if prior:
-    a = load_json(addr)
+    a = json_utility.load_json(addr)
     return glycan_str_to_glycan_obj(a)
     # return glycan_dict
 
@@ -81,7 +81,7 @@ def load_motif_dict_from_json(addr):
     :return: a glycan_dict
     """
     # if prior:
-    a = load_json(addr)
+    a = json_utility.load_json(addr)
     return glycan_str_to_glycan_obj(a)
 
 
@@ -91,7 +91,7 @@ def load_glycan_motif_dict_from_json(addr):
     :param addr:
     :return: a glycan dict
     """
-    a = load_json(addr)
+    a = json_utility.load_json(addr)
     return glycan_str_to_glycan_obj(a)
 
 
@@ -100,7 +100,7 @@ def load_match_dict_from_json(addr):
     :param addr:
     :return: a glycan dict
     """
-    return load_json(addr)
+    return json_utility.load_json(addr)
 
 
 def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=glycoct):
@@ -137,13 +137,14 @@ def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=gly
     if output_file == "":
         pass
     else:
-        store_json(output_file, glycan_str_dict)
+        json_utility.store_json(output_file, glycan_str_dict)
     return glycan_dict
 
 
 def output_dict_to_glycoct(dict, addr):
     for i, j in dict.items():
-        out_glycan_obj_as_glycoct(j,i,addr)
+        out_glycan_obj_as_glycoct(j, i, addr)
+
 
 def load_glycan_obj_from_glycoct_file(dir_address):
     """
@@ -247,7 +248,7 @@ def abd_table_to_dict(abd_table):
     mz_abd_dict = {}
     for idex, i in enumerate(mz_list):
         mz_abd_dict[str(i)] = list(_matrix[idex, :][:])
-    # store_json(norm_abd_table_dict_addr, mz_abd_dict)
+    # json_utility.store_json(norm_abd_table_dict_addr, mz_abd_dict)
 
     return mz_abd_dict, [str(i) for i in abd_table.columns.tolist()]
 
@@ -330,7 +331,7 @@ def check_motif_dict(a_motif_dict):
 
 def load_glytoucan_database(addr):
     print('loading glytoucan_database from ', addr)
-    return load_json(addr)
+    return json_utility.load_json(addr)
 
 
 def load_glycan_obj_from_glycoct(glycan_id, address):

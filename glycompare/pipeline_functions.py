@@ -1,18 +1,14 @@
 import os
-
 import seaborn as sns
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
-import __init__
-import merge_substructure_vec
-import extract_substructures
-import glycan_io
-import process_glycoprofiles
-import json_utility
-import clustering_analysis
-from clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
+from . import merge_substructure_vec
+from . import extract_substructures
+from . import glycan_io
+from . import process_glycoprofiles
+from . import json_utility
+from . import clustering_analysis
+from .clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
 
 
 import select_motifs

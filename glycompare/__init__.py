@@ -1,6 +1,6 @@
 import getopt
 import sys
-import glycompare.pipeline_functions
+import pipeline_functions
 import merge_substructure_vec
 import glycan_io
 import json_utility

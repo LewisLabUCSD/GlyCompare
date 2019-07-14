@@ -1,10 +1,9 @@
-import glypy
 from glypy.algorithms.subtree_search.inclusion import subtree_of
 from glypy.io import glycoct
 import multiprocessing
-import __init__
-import glycan_io
-from json_utility import *
+from . import __init__
+from . import glycan_io
+from . import json_utility
 
 
 # def profile_loader(profile_dict, name):
@@ -177,7 +176,7 @@ def merge_substructure_dict_pip(glycan_motif_dict, glycan_dict, linkage_specific
 
     motif_dict_str = glycan_io.glycan_obj_to_glycan_str(motif_dict)
     if output_merged_motif_dict_addr != "":
-        store_json(output_merged_motif_dict_addr, motif_dict_str)
+        json_utility.store_json(output_merged_motif_dict_addr, motif_dict_str)
     return motif_dict
 
 
@@ -264,7 +263,7 @@ def substructure_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specifi
     return_matched_dic = dict(match_dict)
     # print(return_matched_dic)
     if matched_glycan_dict_addr != "":
-        store_json(matched_glycan_dict_addr, return_matched_dic)
+        json_utility.store_json(matched_glycan_dict_addr, return_matched_dic)
 
     return return_matched_dic
 

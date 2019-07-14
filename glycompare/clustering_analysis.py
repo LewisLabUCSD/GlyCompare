@@ -1,18 +1,12 @@
 import seaborn as sns
-
-import nglycan_alignment
-import plot_glycan_utilities
-
-sns.set_palette("RdBu_r", 7)
-
-import __init__
-
-# from  importlib import reload
 import matplotlib.pyplot as plt
-# sns.palplot(sns.color_palette("RdBu_r", 7))
 import scipy
-import glycan_io
 
+from . import nglycan_alignment
+from . import plot_glycan_utilities
+from . import glycan_io
+
+sns.set_palette("RdBu_r", 40)
 
 def draw_motif_cluster(g, df, color_threshold, address="", fig_size=(10, 35)):
     plt.figure(figsize=fig_size)
