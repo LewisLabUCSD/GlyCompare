@@ -1,37 +1,11 @@
-import glypy
 from glypy.algorithms.subtree_search.inclusion import subtree_of
-from glypy.io import glycoct
 from glypy.structure.glycan import fragment_to_substructure
-from glypy import Glycan
 import time
 import multiprocessing
 
-import glycan_io
-import __init__
-from json_utility import load_json, store_json
-
-
-# def extract_motif(glycoct_obj, idex=0):
-#     # print('start getmotif')
-#     _frag_motif_list = {}
-#     # fig, axes = plt.subplots(6,9)
-#     # fig.set_size_inches(14,6)
-#     start_time = time.time()
-#     for i in glycoct_obj.fragments(max_cleavages=5):
-#         _frag_gly = fragment_to_substructure(i, glycoct_obj)
-#         # plot(_frag_gly)
-#         if not len(_frag_gly) in _frag_motif_list.keys():
-#             _frag_motif_list[len(_frag_gly)] = [glycoct.loads(str(_frag_gly))]
-#         else:
-#             _frag_motif_list[len(_frag_gly)].append(glycoct.loads(str(_frag_gly)))
-#     mid_time = time.time()
-#     # print('start clean duplicate')
-#     _frag_motif_list = clean_duplicate(_frag_motif_list)
-#     end_time = time.time()
-#     print(idex, len(glycoct_obj), end_time - mid_time, mid_time - start_time)
-#     # print('finished getmotif')
-#
-#     return _frag_motif_list
+from . import glycan_io
+from . import __init__
+from . import json_utility
 
 
 def clean_duplicate(a_motif_dict, linkage_specific):
@@ -63,13 +37,8 @@ def extract_motif(a_glycan, branch=5):
     :param branch:
     :return:
     """
-    # print('start getmotif')
     extracted_motif_dic = {}
-    # print('aa1')
-    # print(a_glycan)
-    # a_glycan=glycoct.loads(a_glycan)
-    # print(isinstance(a_glycan, Glycan))
-    # print('ab')
+
     for i in a_glycan.fragments(max_cleavages=branch):
         # print('aaa')
         _frag_gly = fragment_to_substructure(i, a_glycan)
@@ -109,7 +78,7 @@ def extract_motif_wrapper(a_name, a_glycan_str, motif_dic):
         print('break')
 
 
-def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors=__init__.num_processors):
+def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors):
     """Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
     If prior=False, it will generate glycan motif for all glycan in glytoucan database
     1. load  {glyacn_id: glycan_str}
@@ -156,15 +125,15 @@ def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors=
         for j in glycan_motif_dic[i]:
             str_motif[i][j] = [str(k) for k in glycan_motif_dic[i][j]]
     if output_file != '':
-        store_json(output_file, str_motif)
+        json_utility.store_json(output_file, str_motif)
     return glycan_motif_dic
 
 
-def main():
-    # glycan_dict = glycan_io.load_glycan_obj_from_database(topology_list_addr=__init__.topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct)
-    # glycan_motif_dic = get_motif_pip(glycan_dict=glycan_dict, gly_len=23, output_file=__init__.glycan_motif_dict_addr)
-    pass
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     # glycan_dict = glycan_io.load_glycan_obj_from_database(topology_list_addr=__init__.topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct)
+#     # glycan_motif_dic = get_motif_pip(glycan_dict=glycan_dict, gly_len=23, output_file=__init__.glycan_motif_dict_addr)
+#     pass
+#
+#
+# if __name__ == '__main__':
+#     main()

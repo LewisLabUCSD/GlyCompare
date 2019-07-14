@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 
-from json_utility import *
-import plot_glycan_utilities
+from . import json_utility
+from . import plot_glycan_utilities
 
 
 def load_glycoprofile_mz_glycan_map():
@@ -699,50 +699,6 @@ def merge_unzero_vec(prof_n, dict_name_abundance_cross_profile, glycan_dict, gly
     return _temp_dict
 
 
-#
-# def combine_profile_mz_with_motif_abundance(a_glycan_profile, NBT_dict_name_abundance_cross_profile):
-#     """combine glycan m/z with motif hit, the maximum will be 4-8
-#     return profile_obj_list
-#     """
-#     print("start combine")
-#     NBT_glycan_match_existed_motif = load_json(__init__.json_address + r"NBT_glycan_match_existed_motif.json")
-#     profile_obj_list = []
-#     for _pro in range(1, len(a_glycan_profile) + 1):
-#         if _pro < 10:
-#             _id = '' + str(_pro)
-#         else:
-#             _id = 'Gly' + str(_pro)
-#             # print(_id)
-#         weighted_matrix = np.zeros((len(NBT_glycan_match_existed_motif["3865.1"])))
-#         # print(weighted_matrix.shape)
-#         abundance_ = []
-#         # glycan_hit_array_ = []
-#         mz_ = []
-#         glycan_id_ = []
-#         hit_matrix_ = []
-#         for i in sorted(list(a_glycan_profile[_id].keys())):
-#             # print(_pro, i)
-#             _name = a_glycan_profile[_id][i]
-#             mz_.append(i)
-#             glycan_id_.append(_name)
-#
-#             _bundance = NBT_dict_name_abundance_cross_profile[i][_pro - 1]
-#             # print(_pro, _bundance)
-#             _temp_hit_matrix = np.array(NBT_glycan_match_existed_motif[_name])
-#
-#             abundance_.append(_bundance)
-#             weighted_matrix += _temp_hit_matrix * _bundance
-#             hit_matrix_.append(list(_temp_hit_matrix))
-#         profile_obj_list.append(
-#             glycan_profile_obj(glycan_id_, mz_, abundance_, weighted_matrix, hit_matrix_, name=str(_pro - 1)))
-#     merged_profile_dict = {}
-#
-#     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
-#     for idex, i in enumerate(profile_obj_list):
-#         merged_profile_dict[idex] = i.get_dict()
-#     store_json(__init__.json_address + r"NBT_merged_profile_dict_merged.json", merged_profile_dict)
-#     return profile_obj_list
-
 def check_profile_naming_to_id(profile_naming_to_id):
     """
     :param profile_naming_to_id:
@@ -856,8 +812,8 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
     for idex, i in enumerate(glycoprofile_list):
         glycoprofile_output_list.append(i.get_dict())
-    store_json(glyprofile_list_addr, glycoprofile_output_list)
-    # store_json(addr_root + r"glycoprofile_list.json", glycoprofile_output_list)
+    json_utility.store_json(glyprofile_list_addr, glycoprofile_output_list)
+    # json_utility.store_json(addr_root + r"glycoprofile_list.json", glycoprofile_output_list)
     return glycoprofile_list
 
 

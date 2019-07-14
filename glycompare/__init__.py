@@ -1,18 +1,18 @@
 import getopt
 import sys
-import pipeline_functions
-import merge_substructure_vec
-import glycan_io
-import json_utility
-import nglycan_alignment
-import plot_glycan_utilities
-import clustering_analysis
-import extract_substructures
-import process_glycoprofiles
-import test_glycan_io
+from . import pipeline_functions
+from . import merge_substructure_vec
+from . import glycan_io
+from . import json_utility
+from . import nglycan_alignment
+from . import plot_glycan_utilities
+from . import clustering_analysis
+from . import extract_substructures
+from . import process_glycoprofiles
+from . import test_glycan_io
 
 # root_ = "/Users/apple/PycharmProjects/GlyCompare/"
-num_processors = 8
+# num_processors = 8
 
 print("""
 ### An abundance table (1.1) is necessary to run the full GlyCompare pipeline:

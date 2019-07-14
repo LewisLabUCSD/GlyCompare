@@ -1,19 +1,23 @@
 import copy
 import scipy
-from glypy.algorithms.subtree_search.inclusion import subtree_of
-import glypy.structure.glycan
+import pandas as pd
 import seaborn as sns
 from scipy.spatial import distance
-from glypy.io import glycoct
 import numpy as np
-import pandas as pd
 from scipy import stats
-import ndex
-from ndex.networkn import NdexGraph
-from . import plot_glycan_utilities
-import networkx as nx
-# G=NdexGraph(server='http://ndexbio.org',uuid='5514aa50-3bbf-11e8-8695-0ac135e8bacf',username='bobao@ucsd.edu',password='37~bO^#1D3')
 import warnings
+
+from glypy.algorithms.subtree_search.inclusion import subtree_of
+import glypy.structure.glycan
+from glypy.io import glycoct
+import ndex
+import networkx as nx
+from ndex.networkn import NdexGraph
+
+
+from . import plot_glycan_utilities
+
+# G=NdexGraph(server='http://ndexbio.org',uuid='5514aa50-3bbf-11e8-8695-0ac135e8bacf',username='bobao@ucsd.edu',password='37~bO^#1D3')
 
 warnings.filterwarnings('ignore')
 

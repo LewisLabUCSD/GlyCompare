@@ -1,21 +1,17 @@
 import os
-
 import seaborn as sns
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
-import __init__
-import merge_substructure_vec
-import extract_substructures
-import glycan_io
-import process_glycoprofiles
-import json_utility
-import clustering_analysis
-from clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
+from . import merge_substructure_vec
+from . import extract_substructures
+from . import glycan_io
+from . import process_glycoprofiles
+from . import json_utility
+from . import clustering_analysis
+from .clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
 
 
-import select_motifs
+from . import select_motifs
 
 
 def load_para_keywords(project_name, working_addr, **kwargs):
@@ -241,7 +237,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader):
         print("No such glycan")
 
 
-def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, forced=False):
+def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_processors, forced=False):
     # project_name = keywords_dict['project_name']
     # working_addr = keywords_dict['working_addr']
     # intermediate_address = keywords_dict['intermediate_address']
@@ -259,7 +255,8 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, forced=F
                     glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_dict_addr)
                     glycan_motif_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
                                                                                        gly_len=23,
-                                                                                       output_file=glycan_motif_dict_addr)
+                                                                                       output_file=glycan_motif_dict_addr,
+                                                                                       num_processors=num_processors)
                     print('finished parse motif_dic')
             else:
                     glycan_motif_dic = glycan_io.load_glycan_motif_dict_from_json(glycan_motif_dict_addr)
@@ -271,18 +268,20 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, forced=F
                     glycan_motif_dict=glycan_motif_dic,
                     glycan_dict=glycan_dict,
                     linkage_specific=linkage_specific,
+                    num_processors=num_processors,
                     output_merged_motif_dict_addr=motif_dict_addr)
                 print('finished merge motif_dic')
             else:
-                merge_motif_dict = glycan_io.glycan_str_to_glycan_obj(glycan_io.load_json(motif_dict_addr))
+                merge_motif_dict = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(motif_dict_addr))
                 print('loaded merged motif_dic')
 
             matched_dict = merge_substructure_vec.substructure_matching_wrapper(motif_dict=merge_motif_dict,
                                                                                 glycan_motif_dict=glycan_motif_dic,
                                                                                 linkage_specific=linkage_specific,
+                                                                                num_processors=num_processors,
                                                                                 matched_glycan_dict_addr=matched_dict_addr)
         else:
-            matched_dict = glycan_io.load_json(matched_dict_addr)
+            matched_dict = json_utility.load_json(matched_dict_addr)
         print('finished glycan deconvolution')
     else:
         assert False, 'cannot find the glycan_dict file'
@@ -325,10 +324,10 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_glyto
                     # print(glycan_identifier_to_glytoucan_id)
             else:
                 name_to_id_addr = keywords_dict['name_to_id_addr']
-                name_to_id = glycan_io.load_json(name_to_id_addr)
+                name_to_id = json_utility.load_json(name_to_id_addr)
                 _ = list(name_to_id.keys())
                 if type(_[0]) == dict:
-                    glycan_identifier_to_glytoucan_id = glycan_io.load_json(name_to_id_addr)
+                    glycan_identifier_to_glytoucan_id = json_utility.load_json(name_to_id_addr)
                 else:
                     glycan_identifier_to_glytoucan_id = {}
                     for i in profile_columns:

@@ -1,10 +1,10 @@
-from json_utility import load_json
+import matplotlib.pyplot as plt
+
 from glypy.plot.draw_tree import *
 from glypy.plot.buchheim import buchheim
 from glypy.plot.topological_layout import layout as topological
 from glypy.plot import cfg_symbols, iupac_symbols
 
-import matplotlib.pyplot as plt
 
 
 # def

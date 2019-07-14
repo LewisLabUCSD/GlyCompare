@@ -1,10 +1,9 @@
-import glypy
 from glypy.algorithms.subtree_search.inclusion import subtree_of
 from glypy.io import glycoct
 import multiprocessing
-import __init__
-import glycan_io
-from json_utility import *
+# from . import __init__
+from . import glycan_io
+from . import json_utility
 
 
 # def profile_loader(profile_dict, name):
@@ -131,7 +130,7 @@ def merge_glycan_motif_dict_to_motif_dict(glycan_motif_dict, glycan_dict, combin
     return _motif_dic
 
 
-def merge_substructure_dict_pip(glycan_motif_dict, glycan_dict, linkage_specific, output_merged_motif_dict_addr="", num_processors=__init__.num_processors):
+def merge_substructure_dict_pip(glycan_motif_dict, glycan_dict, linkage_specific, num_processors, output_merged_motif_dict_addr=""):
     """
     merge the substructure of all glycans into motif dict
     :param glycan_motif_dict: {degree: [motif1, motif2, ... ]} /NBT_glycan_dict_degree_list_glycoct_for_motif
@@ -177,7 +176,7 @@ def merge_substructure_dict_pip(glycan_motif_dict, glycan_dict, linkage_specific
 
     motif_dict_str = glycan_io.glycan_obj_to_glycan_str(motif_dict)
     if output_merged_motif_dict_addr != "":
-        store_json(output_merged_motif_dict_addr, motif_dict_str)
+        json_utility.store_json(output_merged_motif_dict_addr, motif_dict_str)
     return motif_dict
 
 
@@ -232,7 +231,7 @@ def match_motif_for_pip(motif_vec, glycan_motif_dict, glycan_id, match_dict, lin
     print('finished ', idex)
 
 
-def substructure_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specific, matched_glycan_dict_addr="", num_processors=__init__.num_processors):
+def substructure_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specific, num_processors, matched_glycan_dict_addr=""):
     """
     match the glycan_motif_dict_degree_list to motif vec
     :param num_processors:
@@ -264,7 +263,7 @@ def substructure_matching_wrapper(motif_dict, glycan_motif_dict, linkage_specifi
     return_matched_dic = dict(match_dict)
     # print(return_matched_dic)
     if matched_glycan_dict_addr != "":
-        store_json(matched_glycan_dict_addr, return_matched_dic)
+        json_utility.store_json(matched_glycan_dict_addr, return_matched_dic)
 
     return return_matched_dic
 

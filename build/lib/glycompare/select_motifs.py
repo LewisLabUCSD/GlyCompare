@@ -1,91 +1,27 @@
-# break glycoCT
-import time
 import copy
 import scipy
-from glypy.algorithms.subtree_search.inclusion import subtree_of
-from glypy.structure.glycan import fragment_to_substructure
-import glypy.structure.glycan
+import pandas as pd
 import seaborn as sns
 from scipy.spatial import distance
-from glypy.io import glycoct
-import __init__
 import numpy as np
-import pandas as pd
 from scipy import stats
-import ndex
-from ndex.networkn import NdexGraph
-import plot_glycan_utilities
-import networkx as nx
-# G=NdexGraph(server='http://ndexbio.org',uuid='5514aa50-3bbf-11e8-8695-0ac135e8bacf',username='bobao@ucsd.edu',password='37~bO^#1D3')
-import matplotlib.pyplot as plt
 import warnings
+
+from glypy.algorithms.subtree_search.inclusion import subtree_of
+import glypy.structure.glycan
+from glypy.io import glycoct
+import ndex
+import networkx as nx
+from ndex.networkn import NdexGraph
+
+
+from . import plot_glycan_utilities
+
+# G=NdexGraph(server='http://ndexbio.org',uuid='5514aa50-3bbf-11e8-8695-0ac135e8bacf',username='bobao@ucsd.edu',password='37~bO^#1D3')
 
 warnings.filterwarnings('ignore')
 
 sns.set(color_codes=True)
-# glyco_motif_list={}
-# glycoct_list = []
-# profile_name = ['WT',
-#                 'mgat4A',
-#                 'mgat4A/mgat4B',
-#                 'mgat5',
-#                 'mgat4A/mgat4B/mgat5',
-#                 'B4GalT1',
-#                 'B4GalT2',
-#                 'B4GalT3',
-#                 'B4GalT4',
-#                 'B4GalT1/B4GalT2',
-#                 'B4GalT1/B4GalT3',
-#                 'B3gnt1',
-#                 'B3gnt2',
-#                 'st3gal3',
-#                 'st3gal4',
-#                 'st3gal6',
-#                 'st3gal3/st3gal4',
-#                 'st3gal4/st3gal6',
-#                 'KI_ST6GalNAc1/st3gal4/st3gal6',
-#                 'B3gnt2/mgat4a/mgat4b/mgat5',
-#                 'st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-#                 'KI_ST6GalNAc1/st3gal4/st3gal6/mgat4a/mgat4b/mgat5',
-#                 'EPO48(mgat3)',
-#                 'EPO143(mgat4C)',
-#                 'EPO174(mgat2)',
-#                 'EPO200(B4galt1/B4galt2/B4galt3)',
-#                 'EPO275(B3gnt8)',
-#                 'EPO78(mgat4B)',
-#                 'EPO104(mgat5B)',
-#                 'EPO127(mgat1)',
-#                 'EPO259(mgat2/st3gal4/st3gal6)',
-#                 'EPO261(mgat2/mgat4A/mgat4B/mgat5)',
-#                 'EPO263(mgat2/st3gal4/st3gal6/magt4A/mgat4B/mgat5)',
-#                 'EPO266(fut8)']
-
-
-# len(aaa)
-
-#
-# def get_motif(glycoct_obj, idex=0):
-#     # print('start getmotif')
-#     _frag_motif_list = {}
-#     # fig, axes = plt.subplots(6,9)
-#     # fig.set_size_inches(14,6)
-#     start_time = time.time()
-#     for i in glycoct_obj.fragments(max_cleavages=len(glycoct_obj)):
-#         _frag_gly = fragment_to_substructure(i, glycoct_obj)
-#
-#         # plot(_frag_gly)
-#         if not len(_frag_gly) in _frag_motif_list.keys():
-#             _frag_motif_list[len(_frag_gly)] = [glycoct.loads(_frag_gly)]
-#         else:
-#             _frag_motif_list[len(_frag_gly)].append(glycoct.loads(_frag_gly))
-#     mid_time = time.time()
-#     # print('start clean duplicate')
-#     _frag_motif_list = clean_duplicate(_frag_motif_list)
-#     end_time = time.time()
-#     print(idex, len(glycoct_obj), end_time - mid_time, mid_time - start_time)
-#     # print('finished getmotif')
-#
-#     return _frag_motif_list
 
 
 def clean_duplicate(_frag_motif_list, linkage_specific):
@@ -159,7 +95,6 @@ class MotifLab():
 
     def dep_tree_to_edge_list(self, dep_tree):
         """
-
         :param dep_tree: motif_with_core_dependence_tree, motif_dependence_tree, motif_single_dependence_tree
         :return: edge_list
         """

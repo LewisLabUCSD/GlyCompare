@@ -1,5 +1,5 @@
 import glypy
-from glypy.io import glycoct
+# from glypy.io import glycoct
 
 # monosaccharides = glypy.monosaccharides
 mono_dic = {'M1': "bdMan",

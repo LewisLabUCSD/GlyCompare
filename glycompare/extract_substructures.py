@@ -78,7 +78,7 @@ def extract_motif_wrapper(a_name, a_glycan_str, motif_dic):
         print('break')
 
 
-def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors=__init__.num_processors):
+def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors):
     """Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
     If prior=False, it will generate glycan motif for all glycan in glytoucan database
     1. load  {glyacn_id: glycan_str}
