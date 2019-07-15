@@ -5,7 +5,7 @@ from setuptools import setup, find_packages, Extension
 # with open("README.md", "r") as fh:
 #     long_description = fh.read()
     
-required = ["glypy"]
+required = ["glypy","pandas","numpy","seaborn","networkx>=2,"ndex","xlrd>=1.2"]
 
 setuptools.setup(
      name='glycompare',  
