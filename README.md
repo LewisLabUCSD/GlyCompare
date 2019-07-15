@@ -18,7 +18,7 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 Requirements and dependencies
 - python 3+
 - glypy
-- anaconda3 (for pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
+- anaconda3 (for Cython, pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
 - git-lfs (can be installed with homebrew or ```sudo apt install git-lfs```
 
 
@@ -37,12 +37,12 @@ cd GlyCompare
 # get the large files (~150MB including the glycompare db [glytoucan_db_addr])
 git lfs pull
 # install glycompare
-python3 install setup.py
+python3 setup.py install
 ```
 
 If you don't have ```sudo``` privileges, you can run a local install by adding the ```--user``` tag to the install
 ```
-python3 install setup.py --user
+python3 setup.py install --user
 ```
 
 <!--
