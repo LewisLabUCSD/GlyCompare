@@ -40,6 +40,12 @@ git lfs pull
 python3 install setup.py
 ```
 
+If you don't have ```sudo``` privileges, you can run a local install by adding the ```--user``` tag to the install
+```
+python3 install setup.py --user
+```
+
+<!--
 #### Install from PyPI
 
 To install via PyPI, using pip3
@@ -51,6 +57,7 @@ pip3 install glycompare
 # download the glytoucan db (the path to this db is glytoucan_db_addr)
 wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/glytoucan_database.json
 ```
+-->
 
 # Pipeline Overview
 
