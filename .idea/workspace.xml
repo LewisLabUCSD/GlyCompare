@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/__init__.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/clustering_analysis.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/clustering_analysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/extract_substructures.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/extract_substructures.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/glycan_io.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/glycan_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/hierarchical_enrichment.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/hierarchical_enrichment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/merge_substructure_vec.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/merge_substructure_vec.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/pipeline_functions.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/pipeline_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/plot_glycan_utilities.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/process_glycoprofiles.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/process_glycoprofiles.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/select_motifs.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/select_motifs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/lib/glycompare/test_glycan_io.py" afterPath="$PROJECT_DIR$/build/lib/glycompare/test_glycan_io.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig2_Fig3_epo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig2_Fig3_epo_analysis-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/Fig2_Fig3_epo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/Fig2_Fig3_epo_analysis.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare.egg-info/PKG-INFO" afterPath="$PROJECT_DIR$/glycompare.egg-info/PKG-INFO" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/__init__.py" afterPath="$PROJECT_DIR$/glycompare/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/extract_substructures.py" afterPath="$PROJECT_DIR$/glycompare/extract_substructures.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/merge_substructure_vec.py" afterPath="$PROJECT_DIR$/glycompare/merge_substructure_vec.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/nglycan_alignment.py" afterPath="$PROJECT_DIR$/glycompare/nglycan_alignment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/pipeline_functions.py" afterPath="$PROJECT_DIR$/glycompare/pipeline_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" afterPath="$PROJECT_DIR$/glycompare/plot_glycan_utilities.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/select_motifs.py" afterPath="$PROJECT_DIR$/glycompare/select_motifs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,7 +25,7 @@
             <entry file="file://$PROJECT_DIR$/glycompare/nglycan_alignment.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="30">
-                  <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                  <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -66,7 +45,7 @@
             <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="73">
-                  <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                  <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -88,7 +67,7 @@
             <entry file="file://$PROJECT_DIR$/glycompare/merge_substructure_vec.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="60">
-                  <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+                  <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -122,7 +101,7 @@
             <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="15">
-                  <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+                  <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -132,7 +111,7 @@
             <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="195">
-                  <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+                  <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -142,7 +121,7 @@
             <entry file="file://$PROJECT_DIR$/glycompare/pipeline_functions.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="143">
-                  <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+                  <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
                   <folding>
                     <marker date="1563087369432" expanded="true" signature="12816:16914" ph="..." />
                     <marker date="1563087369432" expanded="true" signature="13635:16737" ph="..." />
@@ -163,7 +142,7 @@
           <file leaf-file-name="extract_substructures.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-121">
+                <state relative-caret-position="577">
                   <caret line="49" column="22" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#64#0" expanded="true" />
@@ -333,7 +312,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -538,7 +517,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1773163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -704,7 +683,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-121">
+        <state relative-caret-position="577">
           <caret line="49" column="22" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
@@ -717,7 +696,7 @@
         <state relative-caret-position="615">
           <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -733,7 +712,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -759,7 +738,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/merge_substructure_vec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -767,7 +746,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/nglycan_alignment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -775,7 +754,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/pipeline_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
           <folding>
             <marker date="1563087369432" expanded="true" signature="12816:16914" ph="..." />
             <marker date="1563087369432" expanded="true" signature="13635:16737" ph="..." />
@@ -791,7 +770,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -809,7 +788,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding />
         </state>
       </provider>
