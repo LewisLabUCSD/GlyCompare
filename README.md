@@ -2,9 +2,6 @@
 
 Here, we present GlyCompare, a novel method wherein glycans from glycomic data are decomposed to a minimal set of intermediate substructures, thus incorporating shared intermediate glycan substructures into all comparisons of glycans. 
 
-## Refactoring Notice 7/10/19
-To improve naming conventions, we are spending a few day refactoring some of our function names. Please note that several top level function names should change in the next few days. We will remove this notice as soon as we are done.
-
 ## Citation
 Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A. Mohammad, Morey W. Haymond, Lars Bode, and Nathan E. Lewis. 2019. “****Correcting for Sparsity and Non-Independence in Glycomic Data through a Systems Biology Framework.****” bioRxiv. https://doi.org/10.1101/693507.
 
@@ -173,6 +170,7 @@ keywords_dict = pipeline_functions.load_para_keywords(project_name, working_addr
 **Output:**
 - glycan_dict: dict, glypy.Glycan objects with glytoucan and/or m/z as keys.
 
+<!--
 **Approach:**
 ```
 if data_type=='used': # load from a local glycan_dict json
@@ -186,6 +184,7 @@ if data_type=='local_glycoct': # load from local glycoct files
 if data_type=='mix': # load from both local glycoct and glytoucanid
     :param glycoct_dir & glytoucan_database_addr (glytoucanid & local_glycoct)
 ```
+-->
 
 **Example:**
 
