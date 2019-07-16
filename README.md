@@ -18,7 +18,7 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 Requirements and dependencies
 - python 3+
 - glypy
-- anaconda3 (for pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
+- anaconda3 (for Cython, pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
 - git-lfs (can be installed with homebrew or ```sudo apt install git-lfs```
 
 
@@ -34,15 +34,30 @@ The package can also be installed locally using
 git clone https://github.com/LewisLabUCSD/GlyCompare.git
 # enter the repo
 cd GlyCompare
-# get the large files (~150MB)
+# get the large files (~150MB including the glycompare db [glytoucan_db_addr])
 git lfs pull
 # install glycompare
-python3 install setup.py
+python3 setup.py install
 ```
 
+If you don't have ```sudo``` privileges, you can run a local install by adding the ```--user``` tag to the install
+```
+python3 setup.py install --user
+```
+
+<!--
 #### Install from PyPI
 
-Installation via pip is under construction. Please do not attempt to install via PyPI (7/12/19)
+To install via PyPI, using pip3
+
+```bash
+# install glycompare
+pip3 install glycompare
+
+# download the glytoucan db (the path to this db is glytoucan_db_addr)
+wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/glytoucan_database.json
+```
+-->
 
 # Pipeline Overview
 
