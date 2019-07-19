@@ -15,7 +15,7 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 Requirements and dependencies
 - python 3+
 - glypy
-- anaconda3 (for Cython, pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
+- anaconda3 (for cython, pandas, numpy, seaborn, networkx==2.1, ndex, xlrd==1.2)
 - git-lfs (can be installed with homebrew or ```sudo apt install git-lfs```
 
 
