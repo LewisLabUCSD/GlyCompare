@@ -1,0 +1,5 @@
+RES
+1b:b-dglc-HEX-1:5
+2s:n-acetyl
+LIN
+1:1d(2+1)2n
