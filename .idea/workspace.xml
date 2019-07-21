@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/intermediate_file/paper_epo_glycoprofile_list.json" afterPath="$PROJECT_DIR$/example_data/paper_epo/intermediate_file/paper_epo_glycoprofile_list.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/motif_cluster.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/motif_cluster.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/pseudo_profile_clustering.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/pseudo_profile_clustering.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig2_Fig3_epo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig2_Fig3_epo_analysis-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_hmo/intermediate_file/paper_hmo_matched_dict.json" afterPath="$PROJECT_DIR$/example_data/paper_hmo/intermediate_file/paper_hmo_matched_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_hmo/intermediate_file/paper_hmo_motif_abd_table.csv" afterPath="$PROJECT_DIR$/example_data/paper_hmo/intermediate_file/paper_hmo_motif_abd_table.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig4_Fig5_hmo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig4_Fig5_hmo_analysis-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/Fig2_Fig3_epo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/Fig2_Fig3_epo_analysis.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/Fig4_Fig5_hmo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/Fig4_Fig5_hmo_analysis.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glycan_io.py" afterPath="$PROJECT_DIR$/glycompare/glycan_io.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/clustering_analysis.py" afterPath="$PROJECT_DIR$/glycompare/clustering_analysis.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/pipeline_functions.py" afterPath="$PROJECT_DIR$/glycompare/pipeline_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" afterPath="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/select_motifs.py" afterPath="$PROJECT_DIR$/glycompare/select_motifs.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +23,7 @@
     <SUITE FILE_PATH="coverage/GlyCompare$glycan_io.coverage" NAME="glycan_io Coverage Results" MODIFIED="1552068329728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.71132374">
+    <splitter split-orientation="horizontal" split-proportion="0.46810207">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="nglycan_alignment.py" pinned="false" current-in-tab="false">
@@ -89,10 +83,22 @@
           <file leaf-file-name="select_motifs.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="649">
-                  <caret line="520" column="43" lean-forward="true" selection-start-line="520" selection-start-column="43" selection-end-line="520" selection-end-column="43" />
+                <state relative-caret-position="305">
+                  <caret line="321" column="52" lean-forward="true" selection-start-line="321" selection-start-column="52" selection-end-line="321" selection-end-column="52" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="clustering_analysis.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="223">
+                  <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -105,15 +111,16 @@
                   <caret line="329" column="62" lean-forward="true" selection-start-line="329" selection-start-column="62" selection-end-line="329" selection-end-column="62" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
-                    <marker date="1563676706203" expanded="true" signature="13139:17314" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="13958:17137" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="17149:17277" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="17556:21648" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="19074:21348" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="21309:21348" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="21768:25123" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="24804:25060" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="25126:25130" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="13139:17314" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="13958:17137" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="17149:17277" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="17556:21748" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="18337:19063" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="19124:21448" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="21409:21448" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="21868:25232" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="24913:25169" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="25235:25239" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -136,17 +143,17 @@
           <file leaf-file-name="pipeline_functions.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/glycompare/pipeline_functions.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="409" column="9" lean-forward="true" selection-start-line="409" selection-start-column="9" selection-end-line="409" selection-end-column="9" />
+                <state relative-caret-position="292">
+                  <caret line="409" column="24" lean-forward="false" selection-start-line="409" selection-start-column="24" selection-end-line="409" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
-                    <marker date="1563676706203" expanded="true" signature="13139:17314" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="13958:17137" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="17149:17277" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="17556:21648" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="21768:25123" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="24804:25060" ph="..." />
-                    <marker date="1563676706203" expanded="true" signature="25126:25130" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="13139:17314" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="13958:17137" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="17149:17277" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="17556:21748" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="21868:25232" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="24913:25169" ph="..." />
+                    <marker date="1563687626978" expanded="true" signature="25235:25239" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -177,8 +184,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>outpu</find>
-      <find>substructure</find>
       <find>__ini</find>
       <find>motif_class</find>
       <find>load_tabl</find>
@@ -207,6 +212,8 @@
       <find>name_to_id_addr</find>
       <find>abd_table_to_dict</find>
       <find>drop_p</find>
+      <find>external_profile_naming_addr</find>
+      <find>ko gen</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -286,7 +293,6 @@
         <option value="$PROJECT_DIR$/glycompare/initiator.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/glycompare/__init__.py" />
         <option value="$PROJECT_DIR$/glycompare/test_glycan_io.py" />
-        <option value="$PROJECT_DIR$/glycompare/clustering_analysis.py" />
         <option value="$PROJECT_DIR$/glycompare/hierarchical_enrichment.py" />
         <option value="$PROJECT_DIR$/glycompare/extract_substructures.py" />
         <option value="$PROJECT_DIR$/glycompare/__init__.py" />
@@ -296,6 +302,7 @@
         <option value="$PROJECT_DIR$/glycompare/glycan_io.py" />
         <option value="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" />
         <option value="$PROJECT_DIR$/glycompare/select_motifs.py" />
+        <option value="$PROJECT_DIR$/glycompare/clustering_analysis.py" />
         <option value="$PROJECT_DIR$/glycompare/pipeline_functions.py" />
       </list>
     </option>
@@ -674,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/hierarchical_enrichment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -771,29 +771,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/pipeline_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
           <caret line="329" column="62" lean-forward="true" selection-start-line="329" selection-start-column="62" selection-end-line="329" selection-end-column="62" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1563676706203" expanded="true" signature="13139:17314" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="13958:17137" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="17149:17277" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="17556:21648" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="19074:21348" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="21309:21348" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="21768:25123" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="24804:25060" ph="..." />
-            <marker date="1563676706203" expanded="true" signature="25126:25130" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="13139:17314" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="13958:17137" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="17149:17277" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="17556:21748" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="18337:19063" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="19124:21448" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="21409:21448" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="21868:25232" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="24913:25169" ph="..." />
+            <marker date="1563687626978" expanded="true" signature="25235:25239" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="520" column="43" lean-forward="true" selection-start-line="520" selection-start-column="43" selection-end-line="520" selection-end-column="43" />
+        <state relative-caret-position="305">
+          <caret line="321" column="52" lean-forward="true" selection-start-line="321" selection-start-column="52" selection-end-line="321" selection-end-column="52" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
