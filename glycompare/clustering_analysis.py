@@ -13,7 +13,7 @@ def draw_motif_cluster(g, df, color_threshold, address="", fig_size=(10, 35)):
     plt.title('Hierarchical Clustering Profile', fontdict={'fontsize': 25})
     plt.xlabel('Distance', fontdict={'fontsize': 25})
     plt.rc_context({'lines.linewidth': 4})
-    plt.ylabel('KO Gene Name', fontdict={'fontsize': 25})
+    plt.ylabel('Samples', fontdict={'fontsize': 25})
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_row.linkage,
                                              # truncate_mode='lastp',show_contracted=True,p=50,
                                              labels=df.index,
