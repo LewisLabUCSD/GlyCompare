@@ -406,6 +406,8 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
                                                 linkage_specific=linkage_specific)
         node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict = a_node_state.nodes_dropping_pipe(
             drop_parellel=drop_parellel, drop_diff_abund=drop_diff_abund)
+        print(mod_nodes)
+        print(mod_edges)
 
     else:
         assert core != '', 'Should specify core'
@@ -419,6 +421,8 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
                                                 linkage_specific=linkage_specific)
         node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict = a_node_state.nodes_dropping_pipe(
             drop_parellel=drop_parellel, drop_diff_abund=drop_diff_abund)
+        print(mod_nodes)
+        print(mod_edges)
         #
         # motif_dict_addr = keywords_dict['motif_dict_addr']
         # assert os.path.isfile(motif_dict_addr), 'missing ' + motif_dict_addr
@@ -465,7 +469,7 @@ def clustering_analysis_pip(keywords_dict, motif_abd_table, select_profile_name=
         motif_abd_table.columns = selected_name_list
 
     else:
-        selected_name_list = motif_abd_table.colmuns
+        selected_name_list = motif_abd_table.columns.tolist()
 
     # df_ncore=pd.DataFrame(data=preprocessing.scale(df_ncore.transpose()).transpose(), index=df_ncore.index, columns=df_ncore.columns)
     # motif_abd_table.to_csv(os.path.join(keywords_dict['intermediate_dir'],
