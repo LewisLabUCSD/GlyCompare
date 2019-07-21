@@ -12,6 +12,7 @@ library(ggrepel)
 library(xtable)
 library(gee)
 library(geepack)
+library(igraph)
 
 library(effsize)
 library(ggpubr)
