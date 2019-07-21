@@ -10,11 +10,13 @@ from . import json_utility
 from . import clustering_analysis
 from .clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
 
-
 from . import select_motifs
 
 
 def load_para_keywords(project_name, working_addr, **kwargs):
+    # glycan_identifier_to_structure_id=False,
+    # already_glytoucan_id=False,
+    # external_profile_naming=False,
     """
     generate all necessary intermediate files
     :param project_name:
@@ -28,7 +30,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     source_dir = os.path.join(working_addr, "source_data/")
     glycoct_dir = os.path.join(working_addr, 'source_data/glycoct/')
 
-    name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_glytoucan_id.json')
+    name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_structure_id.json')
     # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
     external_profile_naming_addr = os.path.join(source_dir, 'external_profile_naming.json')
 
@@ -40,9 +42,9 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     substructure_abd_table_addr = os.path.join(intermediate_dir, project_name + '_substructure_abd_table.csv')
 
     glycoprofile_list_addr = os.path.join(intermediate_dir, project_name + "_glycoprofile_list.json")
-    simple_profile = False
-    simple_naming = False
-    external_profile_naming = False
+    # simple_profile = False
+    # simple_naming = False
+    # external_profile_naming = False
 
     para_keyword = {'project_name': project_name,
                     'working_addr': working_addr,
@@ -58,9 +60,9 @@ def load_para_keywords(project_name, working_addr, **kwargs):
                     'motif_abd_table_addr': motif_abd_table_addr,
                     'matched_dict_addr': matched_dict_addr,
                     'external_profile_naming_addr': external_profile_naming_addr,
-                    'simple_profile': simple_profile,
-                    'simple_naming': simple_naming,
-                    'external_profile_naming': external_profile_naming,
+                    # 'already_glytoucan_id': already_glytoucan_id,
+                    # 'glycan_identifier_to_structure_id': glycan_identifier_to_structure_id,
+                    # 'external_profile_naming': external_profile_naming,
                     'name_to_id_addr': name_to_id_addr,
                     'glycoprofile_list_addr': glycoprofile_list_addr
                     }
@@ -151,12 +153,12 @@ def check_init_dir(keywords_dict):
 #             assert isinstance(j, glypy.Glycan)
 
 
-def load_glycans_pip(keywords_dict, data_type, structure_loader):
+def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
     # project_name, structure_loader, data_type, glytoucan_db="", glycoct_address=""):
     """
     :param keywords_dict:
     :param data_type: one in [used, glycan_dict, glytoucanid, local_glycoct, mix]
-    :param structure_loader: a list of glycan name/customized id, or a glycan_dict
+    :param structure_loader: a list of glycan name/customized id, or a glycan_dict, or none
 
     load glycan from several type of data and extra parameter may required from keyword_dict:
     if used:
@@ -194,13 +196,17 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader):
             glycoct_dir = keywords_dict['glycoct_dir']
             glycan_dict = {}
             _glycan_dict = glycan_io.load_glycan_obj_from_glycoct_file(glycoct_dir)
-            assert type(structure_loader) is list, 'structure_loader should be a list of glycan_id'
-            try:
-                for j in structure_loader:
-                    _j = j
-                    glycan_dict[j] = _glycan_dict[j]
-            except KeyError:
-                print(_j, 'cannt find it in local dir')
+            # print(_glycan_dict)
+            if structure_loader is None:
+                glycan_dict = _glycan_dict
+            else:
+                assert type(structure_loader) is list, 'structure_loader should be a list of glycan_id'
+                try:
+                    for j in structure_loader:
+                        _j = j
+                        glycan_dict[j] = _glycan_dict[j]
+                except KeyError:
+                    print(_j, 'cannt find it in local dir')
             print('end loading glycoct from ', glycoct_dir)
 
         elif data_type == "used":
@@ -252,16 +258,16 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
         print('start glycan_dict')
         if forced or not os.path.isfile(matched_dict_addr):
             if forced or not os.path.isfile(glycan_motif_dict_addr):
-                    glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_dict_addr)
-                    glycan_motif_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
-                                                                                       gly_len=23,
-                                                                                       output_file=glycan_motif_dict_addr,
-                                                                                       num_processors=num_processors)
-                    print('finished parse motif_dic')
+                glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_dict_addr)
+                glycan_motif_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
+                                                                                   gly_len=23,
+                                                                                   output_file=glycan_motif_dict_addr,
+                                                                                   num_processors=num_processors)
+                print('finished parse motif_dic')
             else:
-                    glycan_motif_dic = glycan_io.load_glycan_motif_dict_from_json(glycan_motif_dict_addr)
-                    glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_dict_addr)
-                    print('loaded existed motif_dic')
+                glycan_motif_dic = glycan_io.load_glycan_motif_dict_from_json(glycan_motif_dict_addr)
+                glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_dict_addr)
+                print('loaded existed motif_dic')
             if forced or not os.path.isfile(motif_dict_addr):
                 print('start merge motif_dict')
                 merge_motif_dict = merge_substructure_vec.merge_substructure_dict_pip(
@@ -288,13 +294,13 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
     return matched_dict
 
 
-def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_glytoucan_id=False,
+def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_structure_id=False,
                      already_glytoucan_id=False,
                      external_profile_naming=False, forced=False, ):
     """
     required file
     :param keywords_dict:
-    :param unique_glycan_identifier_to_glytoucan_id:
+    :param unique_glycan_identifier_to_structure_id:
     :param external_profile_naming:
     :param already_glytoucan_id:
     :param forced:
@@ -314,27 +320,28 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_glyto
 
     # if forced or not os.path.isfile(substructure_abd_table_addr):
     if os.path.isfile(matched_dict_addr):
-        if unique_glycan_identifier_to_glytoucan_id:
+        if unique_glycan_identifier_to_structure_id:
             if already_glytoucan_id:
                 """the easiest way just duplicate everything"""
-                glycan_identifier_to_glytoucan_id = {}
+                glycan_identifier_to_structure_id = {}
                 naming = list(naming_abd_dict.keys())
                 for i in profile_columns:
-                    glycan_identifier_to_glytoucan_id[i] = dict(zip(naming, naming))
-                    # print(glycan_identifier_to_glytoucan_id)
+                    glycan_identifier_to_structure_id[i] = dict(zip(naming, naming))
+                    # print(glycan_identifier_to_structure_id)
             else:
+                print('duplicating naming')
                 name_to_id_addr = keywords_dict['name_to_id_addr']
                 name_to_id = json_utility.load_json(name_to_id_addr)
                 _ = list(name_to_id.keys())
                 if type(_[0]) == dict:
-                    glycan_identifier_to_glytoucan_id = json_utility.load_json(name_to_id_addr)
+                    glycan_identifier_to_structure_id = json_utility.load_json(name_to_id_addr)
                 else:
-                    glycan_identifier_to_glytoucan_id = {}
+                    glycan_identifier_to_structure_id = {}
                     for i in profile_columns:
-                        glycan_identifier_to_glytoucan_id[i] = name_to_id
+                        glycan_identifier_to_structure_id[i] = name_to_id
         else:
             if os.path.isfile(name_to_id_addr):
-                glycan_identifier_to_glytoucan_id = glycan_io.load_glycoprofile_name_to_id(name_to_id_addr)
+                glycan_identifier_to_structure_id = glycan_io.load_glycoprofile_name_to_id(name_to_id_addr)
             else:
                 assert False, 'missing one of them' + name_to_id_addr
 
@@ -349,7 +356,8 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_glyto
             profile_name = []
 
         match_dict = glycan_io.load_match_dict_from_json(matched_dict_addr)
-        glycoprofile_list = process_glycoprofiles.get_glycoprofile_list(glycan_identifier_to_glytoucan_id,
+        # print(naming_abd_dict)
+        glycoprofile_list = process_glycoprofiles.get_glycoprofile_list(glycan_identifier_to_structure_id,
                                                                         naming_abd_dict,
                                                                         match_dict,
                                                                         profile_columns,
@@ -373,8 +381,9 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_glyto
     return glycoprofile_vector_table, glycoprofile_list
 
 
-def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, select_col=[],
-                      core_substructure_index=-1):
+def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
+                      drop_parellel=False, drop_diff_abund=True, select_col=[],
+                      remove_core=True):
     motif_dict_addr = keywords_dict['motif_dict_addr']
     assert os.path.isfile(motif_dict_addr), 'missing ' + motif_dict_addr
     substructure_abd_table_addr = keywords_dict['substructure_abd_table_addr']
@@ -396,12 +405,12 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
                                                     substructure_abd_table[select_col]),
                                                 linkage_specific=linkage_specific)
         node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict = a_node_state.nodes_dropping_pipe(
-            drop_parellel=False, drop_diff_abund=True)
+            drop_parellel=drop_parellel, drop_diff_abund=drop_diff_abund)
 
     else:
-
+        assert core != '', 'Should specify core'
         _motif_lab = select_motifs.MotifLabwithCore(motif_=motif_dict,
-                                                    glycan_core=select_motifs.nglycan_core,
+                                                    glycan_core=core,
                                                     linkage_specific=linkage_specific)  # unicarbkb_motifs_12259.json
         _motif_lab.get_dependence_tree_core()
         a_node_state = select_motifs.NodesState(dependence_tree=_motif_lab.motif_dep_tree_core,
@@ -409,7 +418,7 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
                                                     substructure_abd_table[select_col]),
                                                 linkage_specific=linkage_specific)
         node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict = a_node_state.nodes_dropping_pipe(
-            drop_parellel=False, drop_diff_abund=True)
+            drop_parellel=drop_parellel, drop_diff_abund=drop_diff_abund)
         #
         # motif_dict_addr = keywords_dict['motif_dict_addr']
         # assert os.path.isfile(motif_dict_addr), 'missing ' + motif_dict_addr
@@ -429,9 +438,10 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
         #
         # # _collapsed_edge, _collapsed_node, _collapsed_dege_attri = _a.collapsing_potential_node()
         # #
-        if core_substructure_index != -1:
-            if core_substructure_index in mod_nodes:
-                mod_nodes.remove(core_substructure_index)
+        if remove_core:
+            if _motif_lab.core_index in mod_nodes:
+                mod_nodes.remove(_motif_lab.core_index)
+        # print("where it is", _motif_lab.core_index)
 
     motif_abd_table = substructure_abd_table[select_col][substructure_abd_table.index.isin(mod_nodes)]
     motif_abd_table_addr = keywords_dict['motif_abd_table_addr']

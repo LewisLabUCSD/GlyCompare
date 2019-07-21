@@ -156,7 +156,7 @@ def load_glycan_obj_from_glycoct_file(dir_address):
         for i in filenames:
             if i.find('.glycoct_condensed') != -1:
                 glycan_id = i[:i.find('.glycoct_condensed')]
-                print(glycan_id)
+                # print(i)
                 temp_i = load_glycan_str_from_glycoct(glycan_id, dir_address)
                 glycan_dict[glycan_id] = glycoct.loads(temp_i)
     return glycan_dict
@@ -234,7 +234,7 @@ def abd_table_to_dict(abd_table):
     """
     mz_list = list(abd_table.index)
     profile_list = list(abd_table.columns.values)
-    print('mz_list', len(mz_list), 'profile_list', len(profile_list))
+    print('abd_list', len(mz_list), 'profile_list', len(profile_list))
     lr_ = abd_table.shape[0]
     lc_ = abd_table.shape[1]
     print(lr_, lc_)
@@ -245,12 +245,12 @@ def abd_table_to_dict(abd_table):
     #     normalized_matrix[:, i] = filtered_matrix[:, i] / sum(filtered_matrix[:, i])
     # print(normal_weight_list)
     _matrix = np.array(abd_table)
-    mz_abd_dict = {}
+    id_abd_dict = {}
     for idex, i in enumerate(mz_list):
-        mz_abd_dict[str(i)] = list(_matrix[idex, :][:])
+        id_abd_dict[str(i)] = list(_matrix[idex, :][:])
     # json_utility.store_json(norm_abd_table_dict_addr, mz_abd_dict)
 
-    return mz_abd_dict, [str(i) for i in abd_table.columns.tolist()]
+    return id_abd_dict, [str(i) for i in abd_table.columns.tolist()]
 
 
 def glycan_obj_to_glycan_str(a_dict_to_glycan_str):
@@ -344,6 +344,7 @@ def load_glycan_obj_from_glycoct(glycan_id, address):
 
 def load_glycan_str_from_glycoct(glycan_id, address):
     try:
+        # print(glycan_id)
         if Path(os.path.join(address, glycan_id)).exists():
             f = open(os.path.join(address, glycan_id))
         elif Path(os.path.join(address, glycan_id + '.glycoct_condensed')).exists():
@@ -353,7 +354,7 @@ def load_glycan_str_from_glycoct(glycan_id, address):
         glycan_str = "".join(f.readlines())
 
     except FileNotFoundError:
-        print("This id: ", glycan_id, " not found, in ", address)
+        print("This id: ", glycan_id+".glycoct_condensed cannot be found, in ", address)
         glycan_str = ''
     return glycan_str
 

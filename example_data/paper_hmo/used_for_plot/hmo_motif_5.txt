@@ -1,0 +1,5 @@
+RES
+1b:x-dglc-HEX-1:5
+2b:b-dgal-HEX-1:5
+LIN
+1:1o(4+1)2d
