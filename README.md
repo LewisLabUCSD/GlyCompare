@@ -63,7 +63,7 @@ wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/
 ## Quick Example
 
 A quick run through the top-level functions using the [CHO-EPO data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
-```
+```python3
 import os
 import pandas as pd
 
