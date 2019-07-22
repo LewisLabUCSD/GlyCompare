@@ -77,9 +77,9 @@ def plot_glycan_profile(a_profile, glycan_dict):
         _x, _y = divmod(_count, _len)
         plot_glycan(glycan_dict[a_profile[i]], ax=axes[_x][_y], center=True, title=str(i))
         _count += 1
+from scipy import stats
 
-
-def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
+def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr='', label=False):
     """
     :param glycan_obj_list: a list of Glycan
     :param idex_list: a list of index for glycan (i.e. motif indexes)
@@ -101,9 +101,9 @@ def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr=''):
         #             print(divmod(_count, _a))
         _x, _y = divmod(_count, _len)
         if not idex_list:
-            plot_glycan(i, ax=axes[_x][_y], center=True, title=str(idex))
+            plot_glycan(i, ax=axes[_x][_y], center=True, title=str(idex), label=label)
         else:
-            plot_glycan(i, ax=axes[_x][_y], center=True, title=str(idex_list[idex]))
+            plot_glycan(i, ax=axes[_x][_y], center=True, title=str(idex_list[idex]), label=label)
         _count += 1
     if addr == '':
         pass
