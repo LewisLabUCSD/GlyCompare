@@ -44,6 +44,20 @@ marginal_rsquared<-function(mod,logit){
     return(mr2)
 }
 
+# cohens d
+# x; geeglm model
+# xn; name of independent variable
+chnD <- function(x,xn){
+    secretor = cohen.d(x$data[[xn]],factor(x$data$Secretor), pooled=TRUE, paired=FALSE, na.rm=T, 
+            hedges.correction = FALSE, conf.level = 0.95, noncentral = FALSE)$estimate
+    dpp = cohen.d(x$data[[xn]],cut(log(x$data$DPP),2), pooled=TRUE, paired=FALSE, na.rm=T, 
+            hedges.correction = FALSE, conf.level = 0.95, noncentral = FALSE)$estimate
+    inter_term = (as.numeric(cut(log(x$data$DPP),2))-1)*(as.numeric(factor(x$data$Secretor))-1)
+    inter = cohen.d(x$data[[xn]],factor(inter_term), pooled=TRUE, paired=FALSE, na.rm=T, 
+            hedges.correction = FALSE, conf.level = 0.95, noncentral = FALSE)$estimate
+    c(secretor,dpp,inter)
+}
+
 parseSummary.GEEpack <- function(mod,odsig=3,logit=FALSE){
     #sample size
     observation_count = length(mod$id)
@@ -93,8 +107,9 @@ parseSummary.GEEpack <- function(mod,odsig=3,logit=FALSE){
     xtab <- xtable(summary[,5:7])
     #print(xtable(summary(res)))
     singlevars = data.frame(
-        stat=c('Number of observations','Number of Clusters','Marginal R^2','Marginal Entropy','Degrees of Freedom',"Shapiro-Wilks P"),
-        value=c(observation_count,signif(group_count,odsig),signif(mr2,odsig),signif(mh,odsig),df,shapiro.wilks))
+        value=c(observation_count,signif(group_count,odsig),signif(mr2,odsig),signif(mh,odsig),df,shapiro.wilks),
+        row.names=c('Number of observations','Number of Clusters','Marginal R^2','Marginal Entropy','Degrees of Freedom',"Shapiro-Wilks P")
+    )
     xtab2<-xtable(singlevars)
 
     return(list(xtab,xtab2))
