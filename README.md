@@ -63,7 +63,13 @@ wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/
 ## Quick Example
 
 A quick run through the top-level functions using the [CHO-EPO data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
-```
+```python3
+import os
+import pandas as pd
+
+import glycompare
+from glycompare import pipeline_functions
+
 ## initialize session
 keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
 
