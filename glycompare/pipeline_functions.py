@@ -296,7 +296,7 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
 
 def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_structure_id=False,
                      already_glytoucan_id=False,
-                     external_profile_naming=False, forced=False , ):
+                     external_profile_naming=False, forced=False ):
     """
     required file
     :param keywords_dict:
