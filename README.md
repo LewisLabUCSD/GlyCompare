@@ -11,7 +11,7 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 - [Figure 4 & 5, glycoprofile processing](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_analysis.ipynb)
 - [Figure 4 & 5, glycoprofile analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
 
-## Installation
+## Installation (2-10 minutes)
 
 Glycompare was developed and tested in `Mac OS X` and `Ubuntu 18.04`
 
