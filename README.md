@@ -12,6 +12,9 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 - [Figure 4 & 5, glycoprofile analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
 
 ## Installation
+
+Glycompare was developed and tested in `Mac OS X` and `Ubuntu 18.04`
+
 Requirements and dependencies
 - python 3+
 - glypy
@@ -25,6 +28,7 @@ Requirements and dependencies
 
 #### Install from github
 The package can also be installed locally using
+
 
 ```bash
 # get the repo
@@ -66,33 +70,99 @@ A quick run through the top-level functions using the [CHO-EPO data](https://git
 ```python3
 import os
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+from copy import deepcopy
+from scipy.stats import yeojohnson, probplot, wilcoxon, norm
+from scipy import stats
 
-import glycompare
-from glycompare import pipeline_functions
+from glycompare import *
 
-## initialize session
-keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
+# parameter setting 
+# environment parameter setting 
+glycompare_addr = '<PATH_TO_GLYCOMPARE>/GlyCompare/'
+glytoucan_db_addr = os.path.join(glycompare_addr, 'glycompare','database', 'glytoucan_database.json')
+linkage_specific = False
+num_processors = 8
+# project parameter
+working_addr = os.path.join(glycompare_addr,'paper_epo/')
+project_name = "paper_epo"
+costumized_glycan_identifier = True
+external_profile_naming= True
+rerun = False 
+
+# initiator
+keywords_dict = pipeline_functions.load_para_keywords(project_name, working_addr, glytoucan_db_addr=glytoucan_db_addr)
+keywords_dict
+
+pipeline_functions.check_init_dir(keywords_dict)
+##
 
 ## initialize glycans
-meta_name = pd.read_csv(os.path.join('example_data/paper_epo/source_data','glycan_id_list.txt'), sep='\t')
+meta_name = pd.read_csv(os.path.join(working_addr,'source_data','glycan_id_list.txt'), sep='\t')
 structure_loader = meta_name['glycan_id'].tolist()
+data_type = 'mix'
 glycan_dict = pipeline_functions.load_glycans_pip(keywords_dict=keywords_dict,
-                                           data_type='mix', 
+                                           data_type=data_type, 
                                            structure_loader=structure_loader)
 
 ## extract substructure and generate substructure vector
-substructure_vector_dict = pipeline_functions.extract_and_merge_substrutures_pip(keywords_dict, linkage_specific=False, forced=False)
-
+matched_dict = pipeline_functions.extract_and_merge_substrutures_pip(keywords_dict, num_processors=num_processors,linkage_specific=linkage_specific, forced=rerun)
 
 ## calculate substructure abundance -> glycoprofile vector 
-glycan_abd_table = glycan_io.load_table(os.path.join(keywords_dict['source_dir'], 'abundance_table.xls'))
-glycoprofile_vector_table = pipeline_functions.glycoprofile_pip(keywords_dict, glycan_abd_table, external_profile_naming=True, forced=False)
+abd_table = glycan_io.load_table(os.path.join(keywords_dict['source_dir'], 'abundance_table.xls'))
+_, glycoprofile_list = pipeline_functions.glycoprofile_pip(keywords_dict, 
+                                                           abd_table, 
+                                                           unique_glycan_identifier_to_structure_id=False, 
+                                                           already_glytoucan_id=False,
+                                                           external_profile_naming=True, 
+                                                           forced=rerun)
 
+_name_dict = json_utility.load_json(keywords_dict['source_dir']+'external_profile_naming.json')
+selected_name_list = ["EPO127.mgat1.","EPO174.mgat2.","EPO266.fut8.","st3gal4.st3gal6.mgat4a.mgat4b.mgat5",
+  "KI_ST6GalNAc1.st3gal4.st3gal6.mgat4a.mgat4b.mgat5","mgat4A.mgat4B.mgat5","B3gnt2.mgat4a.mgat4b.mgat5",
+  "st3gal4.st3gal6","B4GalT1","B4GalT2","B4GalT3","WT","B4GalT4","EPO78.mgat4B.","mgat4A.mgat4B","mgat5"]
+
+select_col=[]
+_ = {}
+for i,j in _name_dict.items():
+    _[j] = i
+    
+for i in selected_name_list:
+    select_col.append(_[i])
+print(select_col)
+feature_name = []
+profile_name = []
+
+selected_profile = [30, 25, 34, 21, 22, 5, 20, 18, 6, 7, 8, 1, 9, 28, 3, 4]
+for i in selected_profile:
+    profile_name.append(_name_dict[str(i)])
+    for j in glycoprofile_list[i-1].glycan_id_list:
+        feature_name.append(j)
+
+feature_name = list(set(feature_name))
 ## select motif and get motif abundance -> glyco-motif vector
-glyco_motif_vector_table = pipeline_functions.select_motifs_pip(keywords_dict, linkage_specific=linkage_specific, epitope=False)
+core=select_motifs.nglycan_core
+motif_abd_table, motif_lab, merged_weights_dict=pipeline_functions.select_motifs_pip(keywords_dict, 
+                                                     linkage_specific=linkage_specific,   
+                                                     core=core,
+                                                     only_substructures_start_from_root=True,
+                                                     select_col= select_col)
 
 ## cluster and determine representative motifs
-pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
+glycoprofile_cluster_dict, glyco_motif_cluster_dict = pipeline_functions.clustering_analysis_pip(keywords_dict=keywords_dict, 
+                                           motif_abd_table=motif_abd_table, 
+                                           select_profile_name = selected_name_list)
+
+
+pipeline_functions.draw_substructure_representative_pip(glyco_motif_cluster=glyco_motif_cluster_dict,
+                                                        substructure_vec=motif_lab.motif_vec,
+                                                        motif_weights_dict=merged_weights_dict,
+                                                        plot_all_substructure=False,
+                                                        address_dir=keywords_dict['plot_output_dir'],
+                                                        threshold=0.51,
+                                                        plot_rep=True)
 
 ```
 
