@@ -1,7 +1,7 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 import scipy
-
 from . import nglycan_alignment
 from . import plot_glycan_utilities
 from . import glycan_io
@@ -13,7 +13,7 @@ def draw_motif_cluster(g, df, color_threshold, address="", fig_size=(10, 35)):
     plt.title('Hierarchical Clustering Profile', fontdict={'fontsize': 25})
     plt.xlabel('Distance', fontdict={'fontsize': 25})
     plt.rc_context({'lines.linewidth': 4})
-    plt.ylabel('KO Gene Name', fontdict={'fontsize': 25})
+    plt.ylabel('Samples', fontdict={'fontsize': 25})
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_row.linkage,
                                              # truncate_mode='lastp',show_contracted=True,p=50,
                                              labels=df.index,
@@ -39,6 +39,7 @@ def draw_substructure_representative(glyco_motif_cluster, substructure_vec, plot
                                      address_dir, threshold, plot_rep):
     # vec_ = load_json(NBT_init.root_address + 'NBT_motif_vec.json')
     _count = 0
+    repre_list =[]
     for i in range(1, len(glyco_motif_cluster.keys()) + 1):
         list_ = glyco_motif_cluster[i]
 
@@ -62,15 +63,16 @@ def draw_substructure_representative(glyco_motif_cluster, substructure_vec, plot
                 # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
 
                 # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
-            glycan_list = a_panel.get_reps(threshold=threshold)
-            glycan_io.out_glycan_obj_as_glycoct(glycan_list[0], str(i), address_dir)
-            plot_glycan_utilities.plot_glycan(glycan_list[0], title=str(i),
+            rep_glycan = a_panel.get_reps(threshold=threshold)
+            glycan_io.out_glycan_obj_as_glycoct(rep_glycan, glycan_addr = os.path.join(address_dir, str(i) + '.glycoct_condensed'))
+            plot_glycan_utilities.plot_glycan(rep_glycan, title=str(i),
                                               addr=address_dir + str(i) + '.representative.eps')
 
             # plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
             # plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in [0.51, 0.6, 0.7]])
             # plt.savefig()
-
+            repre_list.append(rep_glycan)
+    return repre_list
 
 # print(len(cccluster_dict.keys()))
 def draw_profile_cluster(g, df, profile_name, color_threshold, address=""):

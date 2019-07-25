@@ -1,1 +1,8 @@
+Cython
 glypy
+pandas
+numpy
+seaborn
+networkx>=2
+ndex
+xlrd>=1.2
