@@ -104,15 +104,14 @@ class glycan_model():
         return glypy.Glycan(root=root_mono)
 
     def get_reps(self, threshold):
-        return_list = []
         # for _thre in threshold_list:
         root_mono = glypy.monosaccharides["GlcNAc"]
         for i in self.panel.child:
             # print(i.name, i.count)
             if i.count / self.total_weight < threshold: continue
             root_mono.add_monosaccharide(self._helper_get_common(i, threshold))
-        return_list.append(glypy.Glycan(root=root_mono))
-        return return_list
+        a = glypy.Glycan(root=root_mono)
+        return a
 
     def _helper_get_common(self, a_glycan_mono, threshold):
         # print(mono_dic[a_glycan_mono.name])

@@ -382,11 +382,11 @@ def motif_vec_to_motif_dict(motif_vec):
     return motif_dict
 
 
-def out_glycan_obj_as_glycoct(a_glycan, glycan_id, dir_addr):
-    if dir_addr.find(glycan_id + '.glycoct_condensed') != -1:
+def out_glycan_obj_as_glycoct(a_glycan, glycan_addr):
+    if os.path.isfile(glycan_addr):
         print('file already exist, will not store')
     else:
-        glycan_addr = os.path.join(dir_addr, glycan_id + '.glycoct_condensed')
+
         _w = open(glycan_addr, 'w')
         _w.write(str(a_glycan))
         _w.close()
