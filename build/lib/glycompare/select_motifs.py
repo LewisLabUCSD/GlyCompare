@@ -14,7 +14,6 @@ import ndex
 import networkx as nx
 from ndex.networkn import NdexGraph
 
-
 from . import plot_glycan_utilities
 
 # G=NdexGraph(server='http://ndexbio.org',uuid='5514aa50-3bbf-11e8-8695-0ac135e8bacf',username='bobao@ucsd.edu',password='37~bO^#1D3')
@@ -145,6 +144,7 @@ class MotifLab():
             edge_list.extend([(i, j) for j in dep_tree[i]])
         return edge_list
 
+
 nglycan_core = """
 RES
 1b:x-dglc-HEX-1:5
@@ -203,12 +203,15 @@ class MotifLabwithCore(MotifLab):
     """
     store vec
     """
+
     def __init__(self, motif_, glycan_core, linkage_specific):
         """
         self.motif_dict stores the id of the self.motif_vec
         :param motif_: motif vec or motif dict_degree_list:
         """
         # self.linkage_specific = linkage_specific
+        self.core_index = -1
+
         if type(glycan_core) == str:
             self.glycan_core = glycoct.loads(glycan_core)
         else:
@@ -262,7 +265,7 @@ class MotifLabwithCore(MotifLab):
         print("start motif_with core")
         if self.motif_dict_with_core == {}:
             for i in sorted(list(self.motif_dict.keys())):
-                if len(self.glycan_core) >= i:
+                if len(self.glycan_core) > i:
                     continue
                 print("len", i)
                 self.motif_dict_with_core[i] = []
@@ -272,6 +275,11 @@ class MotifLabwithCore(MotifLab):
                     """
                     # print(subtree_of(self.glycan_core, self.motif_vec[j], exact=__init__.exact_Ture))
                     if subtree_of(self.glycan_core, self.motif_vec[j], exact=self.linkage_specific) == 1:
+                        if self.core_index == -1 and len(self.glycan_core) == i:
+                            # print('check core', self.motif_vec[j])
+                            if subtree_of(self.motif_vec[j], self.glycan_core, exact=self.linkage_specific) == 1:
+                                self.core_index = j
+                                # print('find it')
                         self.motif_dict_with_core[i].append(j)
                         self.motif_with_core_list.append(j)
             print("Finish the n-glycan match ", len(self.motif_with_core_list),
@@ -305,7 +313,7 @@ class NodesState():
     threshold = 200
 
     def __init__(self, dependence_tree, motif_weight, linkage_specific):
-        self.linkage_specific=linkage_specific
+        self.linkage_specific = linkage_specific
         self.dep_tree = dependence_tree
         self.nodes_sta = []
         self.zero_value = []
@@ -477,7 +485,6 @@ class NodesState():
             _counts = len(dep_count[i])
 
             for j in dep_count[i]:
-
                 merged_weights_dict[j] += merged_weights_dict[i] / _counts
             merged_weights_dict[i] = 0
         _weights = [merged_weights_dict[x] for x in merged_weights_dict.keys()]

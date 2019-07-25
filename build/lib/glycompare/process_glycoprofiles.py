@@ -754,7 +754,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
 
     profile_naming_to_id = check_profile_naming_to_id(profile_naming_to_id)
     profile_name_order = check_profile_naming_order(profile_name_order)
-
+    # print(profile_naming_to_id)
     if not external_profile_name:
         _ = list(profile_naming_to_id.keys())
         external_profile_name = dict(zip(_, _))
@@ -812,6 +812,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
     for idex, i in enumerate(glycoprofile_list):
         glycoprofile_output_list.append(i.get_dict())
+    # print(glycoprofile_output_list[0])
     json_utility.store_json(glyprofile_list_addr, glycoprofile_output_list)
     # json_utility.store_json(addr_root + r"glycoprofile_list.json", glycoprofile_output_list)
     return glycoprofile_list
@@ -847,7 +848,7 @@ class Glycoprofile():
         rt_ = {'profile_name': self.profile_name,
                'm/z_list': self.mz_id_list,
                'glycan_id_list': self.glycan_id_list,
-               'relative_abundance': list(self.relative_abundance),
+               # 'relative_abundance': list(self.relative_abundance),
                'match_vec_exist': self.match_vec_exist,
                'match_vec_weighted': list(self.match_vec_weighted),
                # 'hit_matrix': self.hit_matrix
