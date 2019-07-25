@@ -247,7 +247,7 @@ keywords_dict = pipeline_functions.load_para_keywords(project_name, working_addr
 **Output:**
 - glycan_dict: dict, glypy.Glycan objects with glytoucan and/or m/z as keys.
 
-<!--
+
 **Approach:**
 ```
 if data_type=='used': # load from a local glycan_dict json
@@ -261,7 +261,7 @@ if data_type=='local_glycoct': # load from local glycoct files
 if data_type=='mix': # load from both local glycoct and glytoucanid
     :param glycoct_dir & glytoucan_database_addr (glytoucanid & local_glycoct)
 ```
--->
+
 
 **Example:**
 
