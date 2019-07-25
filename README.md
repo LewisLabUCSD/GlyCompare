@@ -76,12 +76,12 @@ keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data
 ## initialize glycans
 meta_name = pd.read_csv(os.path.join('example_data/paper_epo/source_data','glycan_id_list.txt'), sep='\t')
 structure_loader = meta_name['glycan_id'].tolist()
-glycan_dict = pipeline_functions.load_structure_pip(keywords_dict=keywords_dict,
+glycan_dict = pipeline_functions.load_glycans_pip(keywords_dict=keywords_dict,
                                            data_type='mix', 
                                            structure_loader=structure_loader)
 
 ## extract substructure and generate substructure vector
-substructure_vector_dict = pipeline_functions.extract_and_merge_substructures_pip(keywords_dict, linkage_specific=False, forced=False)
+substructure_vector_dict = pipeline_functions.extract_and_merge_substrutures_pip(keywords_dict, linkage_specific=False, forced=False)
 
 
 ## calculate substructure abundance -> glycoprofile vector 
@@ -93,6 +93,7 @@ glyco_motif_vector_table = pipeline_functions.select_motifs_pip(keywords_dict, l
 
 ## cluster and determine representative motifs
 pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
+
 ```
 
 ## Disclaimer:
