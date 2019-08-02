@@ -24,10 +24,10 @@ class glycan_model():
 # 1:1d(5+1)2n""")
     def __init__(self):
         """ a plain model"""
-        # self.motif_vec = motif_vec
-        # self.motif_weight_dict = motif_weight
-        self.motif_weight_list = []
-        self.normed_motif_weight_list = []
+        # self.substructure_vec = substructure_vec
+        # self.substructure_weight_dict = substructure_weight
+        self.substructure_weight_list = []
+        self.normed_substructure_weight_list = []
         self.total_weight = 0
         self.panel = None
 
@@ -45,11 +45,11 @@ class glycan_model():
             each node have count, """
         if self.panel is None:
             self.panel = a_gly_dic
-            self.motif_weight_list = [a_gly_dic.count]
+            self.substructure_weight_list = [a_gly_dic.count]
             self.total_weight = a_gly_dic.count
         else:
             assert a_gly_dic.name == self.panel.name, 'root not match'
-            # _weight = self.motif_weight_dict[motif_index]
+            # _weight = self.substructure_weight_dict[substructure_index]
             self.panel.count += a_gly_dic.count
             for i in a_gly_dic.child:
                 _found = False
@@ -61,7 +61,7 @@ class glycan_model():
                         self._recur_glycan_walk(i, j)
                 if not _found:
                     self.panel.child.append(i)
-            self.motif_weight_list.append(a_gly_dic.count)
+            self.substructure_weight_list.append(a_gly_dic.count)
             self.total_weight += a_gly_dic.count
 
         # self.total_count += 1

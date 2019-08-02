@@ -15,12 +15,12 @@ from . import test_glycan_io
 # num_processors = 8
 
 print("""
-Thanks for using the GlyCompare, 
+Thanks for using the GlyCompare v1.0, 
 Please check our github for the latest update.
 
 
 Bokan & Ben,
-07/21/2019
+08/1/2019
 
 """)
 

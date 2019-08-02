@@ -74,7 +74,7 @@ def load_glycan_dict_from_json(addr):
     # return glycan_dict
 
 
-def load_motif_dict_from_json(addr):
+def load_substructure_dict_from_json(addr):
     """
 
     :param addr:
@@ -85,7 +85,18 @@ def load_motif_dict_from_json(addr):
     return glycan_str_to_glycan_obj(a)
 
 
-def load_glycan_motif_dict_from_json(addr):
+def load_substructure_vec_from_json(addr):
+    """
+
+    :param addr:
+    :return: a glycan_dict
+    """
+    # if prior:
+    a = json_utility.load_json(addr)
+    return glycan_str_to_glycan_obj(a)
+
+
+def load_glycan_substructure_dict_from_json(addr):
     """
 
     :param addr:
@@ -110,7 +121,7 @@ def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=gly
         1. get the glycanID from Glycan_topolog_list
         2. find glycan_id in glytoucan database: /root_address + r'data_dic_finnn.json'
         3. find glycan_id in self-generated local file: /__init__.json_address+glycan_id+".glycoct_condensed"
-        4. output a dict glycan_id str -> glycan_str str stored in: root_address + 'NBT_for_motif_extraction.json'
+        4. output a dict glycan_id str -> glycan_str str stored in: root_address + 'NBT_for_substructure_extraction.json'
         :return: glycan_dict
         """
     x = load_glytoucan_database()
@@ -252,6 +263,13 @@ def abd_table_to_dict(abd_table):
 
     return id_abd_dict, [str(i) for i in abd_table.columns.tolist()]
 
+def output_glycan_vec_to_glycoct_dict(a_glycan_vec, a_addr):
+    # a_dict = glycan_obj_to_glycan_str(a_glycan_vec)
+    json_utility.store_json(a_addr, glycan_obj_to_glycan_str(a_glycan_vec))
+
+def output_glycan_dict_to_glycoct_dict(a_glycan_vec, a_addr):
+    # a_dict = glycan_obj_to_glycan_str(a_glycan_vec)
+    json_utility.store_json(a_addr, glycan_obj_to_glycan_str(a_glycan_vec))
 
 def glycan_obj_to_glycan_str(a_dict_to_glycan_str):
     """
@@ -314,19 +332,19 @@ def check_glycan_dict(glycan_dict):
         assert isinstance(glycan_dict[i], Glycan), 'Failed glycan dict check, should be glypy.Glycan'
 
 
-def check_glycan_motif_dict(a_glycan_motif_dict):
-    for i in a_glycan_motif_dict:
+def check_glycan_substructure_dict(a_glycan_substructure_dict):
+    for i in a_glycan_substructure_dict:
         assert type(i) == str, 'glycan name is str'
-        for j in a_glycan_motif_dict[i]:
+        for j in a_glycan_substructure_dict[i]:
             assert type(j) == str, ('glycan degree are not str', j, type(j))
-            assert isinstance(a_glycan_motif_dict[i][j][0], glypy.Glycan)
+            assert isinstance(a_glycan_substructure_dict[i][j][0], glypy.Glycan)
 
 
-def check_motif_dict(a_motif_dict):
-    assert str(1) in a_motif_dict.keys(), 'a motif_dict without monossar'
-    for j in a_motif_dict.keys():
+def check_substructure_dict(a_substructure_dict):
+    assert str(1) in a_substructure_dict.keys(), 'a substructure_dict without monossar'
+    for j in a_substructure_dict.keys():
         assert type(j) == str, ('glycan degree are stored in degree, it stores', j, type(j))
-        assert isinstance(a_motif_dict[j][0], glypy.Glycan)
+        assert isinstance(a_substructure_dict[j][0], glypy.Glycan)
 
 
 def load_glytoucan_database(addr):
@@ -359,27 +377,27 @@ def load_glycan_str_from_glycoct(glycan_id, address):
     return glycan_str
 
 
-def motif_dict_to_motif_vec(motif_dict):
-    """convert the motif dictionary to vector"""
-    motif_vec = []
-    for i in sorted([int(j) for j in list(motif_dict.keys())]):
-        print(i, len(motif_dict[str(i)]))
-        motif_vec.extend(motif_dict[str(i)])
-    print(len(motif_vec))
-    return motif_vec
+def substructure_dict_to_substructure_vec(substructure_dict):
+    """convert the substructure dictionary to vector"""
+    substructure_vec = []
+    for i in sorted([int(j) for j in list(substructure_dict.keys())]):
+        print(i, len(substructure_dict[str(i)]))
+        substructure_vec.extend(substructure_dict[str(i)])
+    print(len(substructure_vec))
+    return substructure_vec
 
 
-def motif_vec_to_motif_dict(motif_vec):
-    """convert the motif vector to dictionary with degree as key"""
-    motif_dict = {}
-    for i in motif_vec:
+def substructure_vec_to_substructure_dict(substructure_vec):
+    """convert the substructure vector to dictionary with degree as key"""
+    substructure_dict = {}
+    for i in substructure_vec:
         # print(i,))
-        if len(i) not in motif_dict.keys():
-            motif_dict[len(i)] = [i]
+        if len(i) not in substructure_dict.keys():
+            substructure_dict[len(i)] = [i]
         else:
-            motif_dict[len(i)].append(i)
-    # print(len(motif_vec))
-    return motif_dict
+            substructure_dict[len(i)].append(i)
+    # print(len(substructure_vec))
+    return substructure_dict
 
 
 def out_glycan_obj_as_glycoct(a_glycan, glycan_addr):
