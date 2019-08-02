@@ -41,7 +41,7 @@
 # # exact_Ture = True
 # json_address = root_ + "generated_json_file/"
 # plot_output_address = root_ + "output_plot/"
-# motif_plot_address = root_ + "motif_plot/"
+# substructure_plot_address = root_ + "substructure_plot/"
 # source_address = root_ + "source_data/"
 # """
 #

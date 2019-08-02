@@ -8,16 +8,16 @@ from . import __init__
 from . import json_utility
 
 
-def clean_duplicate(a_motif_dict, linkage_specific):
+def clean_duplicate(a_substructure_dict, linkage_specific):
     """
 
-    :param a_motif_dict: remove the duplicates in a motif_dict_degree_list
+    :param a_substructure_dict: remove the duplicates in a substructure_dict_degree_list
     :return:
     """
-    for i in a_motif_dict.keys():
+    for i in a_substructure_dict.keys():
         # print(i)
         ldex = 0
-        _check_list = a_motif_dict[i]
+        _check_list = a_substructure_dict[i]
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
@@ -26,52 +26,52 @@ def clean_duplicate(a_motif_dict, linkage_specific):
                 else:
                     jdex += 1
             ldex += 1
-        a_motif_dict[i] = _check_list
-    return a_motif_dict
+        a_substructure_dict[i] = _check_list
+    return a_substructure_dict
 
 
 
-def extract_motif(a_glycan, branch=5):
+def extract_substructure(a_glycan, branch=5):
     """
     :param a_glycan: Glycan obj
     :param branch:
     :return:
     """
-    extracted_motif_dic = {}
+    extracted_substructure_dic = {}
 
     for i in a_glycan.fragments(max_cleavages=branch):
         # print('aaa')
         _frag_gly = fragment_to_substructure(i, a_glycan)
         # print('aab')
 
-        if not str(len(_frag_gly)) in extracted_motif_dic.keys():
-            extracted_motif_dic[str(len(_frag_gly))] = [_frag_gly]
+        if not str(len(_frag_gly)) in extracted_substructure_dic.keys():
+            extracted_substructure_dic[str(len(_frag_gly))] = [_frag_gly]
         else:
-            extracted_motif_dic[str(len(_frag_gly))].append(_frag_gly)
+            extracted_substructure_dic[str(len(_frag_gly))].append(_frag_gly)
     # print('ab')
-    extracted_motif_dic[str(len(a_glycan))] = [a_glycan]
+    extracted_substructure_dic[str(len(a_glycan))] = [a_glycan]
     # print('ac')
-    return extracted_motif_dic
+    return extracted_substructure_dic
 
 
-def extract_motif_wrapper(a_name, a_glycan_str, motif_dic):
+def extract_substructure_wrapper(a_name, a_glycan_str, substructure_dic):
     """
     :param idex: idex of Glycan in the list
     :param a_name: the ID of the Glycan
     :param a_glycan_str: Glycan obj
-    :param motif_dic: dict for storing the extracted motif dict
+    :param substructure_dic: dict for storing the extracted substructure dict
     :return:
     """
 
     try:
         print('start', a_name)
         start_time = time.time()
-        motif_dic[a_name] = extract_motif(a_glycan_str)
+        substructure_dic[a_name] = extract_substructure(a_glycan_str)
         end_time = time.time()
-        print(a_name, len(motif_dic[a_name]), end_time - start_time)
-        # print('has_motif', motif_dic[_name])
-        #     for j in motif_dic.keys():
-        #         print(j, len(motif_dic[j]))
+        print(a_name, len(substructure_dic[a_name]), end_time - start_time)
+        # print('has_substructure', substructure_dic[_name])
+        #     for j in substructure_dic.keys():
+        #         print(j, len(substructure_dic[j]))
     except TypeError:
         print(a_name, 'has error')
     except KeyboardInterrupt:
@@ -80,20 +80,20 @@ def extract_motif_wrapper(a_name, a_glycan_str, motif_dic):
 
 def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors):
     """Please set the prior=True to get the data file please run the NBT_GLYCAN_preprocess file
-    If prior=False, it will generate glycan motif for all glycan in glytoucan database
+    If prior=False, it will generate glycan substructure for all glycan in glytoucan database
     1. load  {glyacn_id: glycan_str}
     2. convert to glypy.glycan obj {glyacn_id: glycan_}
-    3. extract {glyacn_id: motif_dict}
-    4. save glycan_motif_dic
+    3. extract {glyacn_id: substructure_dict}
+    4. save glycan_substructure_dic
     :param glycan_dict:
     :param gly_len: the max degree of the glycan that can be processed
-    :param output_file: store str type of glycan_motif_dict
+    :param output_file: store str type of glycan_substructure_dict
     """
     # root = r'/Users/apple/PycharmProjects/'
     # multiprocess
     glycan_io.check_glycan_dict(glycan_dict)
     manager = multiprocessing.Manager()
-    motif_dic = manager.dict()
+    substructure_dic = manager.dict()
     print('start parallel parsing', len(glycan_dict), 'glycans')
     pool = multiprocessing.Pool(processes=num_processors)
     pool_list = []
@@ -101,10 +101,10 @@ def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors)
         if len(glycan_dict[i]) > gly_len:
             print(i, 'larger than max')
             continue
-        """ using get motif with count wrapper
+        """ using get substructure with count wrapper
             Also check exists wrapper
         """
-        pool_list.append(pool.apply_async(extract_motif_wrapper, args=(i, glycan_dict[i], motif_dic)))
+        pool_list.append(pool.apply_async(extract_substructure_wrapper, args=(i, glycan_dict[i], substructure_dic)))
     result_list = [xx.get() for xx in pool_list]
     # print('finished ', idex)
     # print("closing poll")
@@ -112,26 +112,26 @@ def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors)
     # print('joining pool')
     pool.join()
     print('finished pool')
-    print('glycan_dict', len(motif_dic))
-    glycan_motif_dic = dict(motif_dic)
+    print('glycan_dict', len(substructure_dic))
+    glycan_substructure_dic = dict(substructure_dic)
 
-    str_motif = {}
+    str_substructure = {}
     for i in glycan_dict:
         # if len(glycan_dict[i]) > gly_len: continue
-        if i not in glycan_motif_dic.keys():
+        if i not in glycan_substructure_dic.keys():
             print('missing', i)
             continue
-        str_motif[i] = {}
-        for j in glycan_motif_dic[i]:
-            str_motif[i][j] = [str(k) for k in glycan_motif_dic[i][j]]
+        str_substructure[i] = {}
+        for j in glycan_substructure_dic[i]:
+            str_substructure[i][j] = [str(k) for k in glycan_substructure_dic[i][j]]
     if output_file != '':
-        json_utility.store_json(output_file, str_motif)
-    return glycan_motif_dic
+        json_utility.store_json(output_file, str_substructure)
+    return glycan_substructure_dic
 
 
 # def main():
 #     # glycan_dict = glycan_io.load_glycan_obj_from_database(topology_list_addr=__init__.topology_list_addr, output_file=__init__.glycan_dict_addr, loader=glycoct)
-#     # glycan_motif_dic = get_motif_pip(glycan_dict=glycan_dict, gly_len=23, output_file=__init__.glycan_motif_dict_addr)
+#     # glycan_substructure_dic = get_substructure_pip(glycan_dict=glycan_dict, gly_len=23, output_file=__init__.glycan_substructure_dict_addr)
 #     pass
 #
 #

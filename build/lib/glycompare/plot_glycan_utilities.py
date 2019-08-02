@@ -82,7 +82,7 @@ from scipy import stats
 def plot_glycan_list(glycan_obj_list, idex_list=[], title='Glycans', addr='', label=False):
     """
     :param glycan_obj_list: a list of Glycan
-    :param idex_list: a list of index for glycan (i.e. motif indexes)
+    :param idex_list: a list of index for glycan (i.e. substructure indexes)
     :param title: str title
     :return:
     """
@@ -215,8 +215,8 @@ def plot_glycan(tree, title='', addr='', at=(0, 0), ax=None, orientation='h', ce
 
 #
 # if __name__ == '__main__':
-# #     output_glycan_motif_vec_to_file()
+# #     output_glycan_substructure_vec_to_file()
 #
 #
 # if __name__ == '__main__':
-#     output_glycan_motif_vec_to_file()
+#     output_glycan_substructure_vec_to_file()

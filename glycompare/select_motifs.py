@@ -23,11 +23,11 @@ warnings.filterwarnings('ignore')
 sns.set(color_codes=True)
 
 
-def clean_duplicate(_frag_motif_list, linkage_specific):
-    for i in _frag_motif_list.keys():
+def clean_duplicate(_frag_substructure_list, linkage_specific):
+    for i in _frag_substructure_list.keys():
         # print(i)
         ldex = 0
-        _check_list = _frag_motif_list[i]
+        _check_list = _frag_substructure_list[i]
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
@@ -39,8 +39,8 @@ def clean_duplicate(_frag_motif_list, linkage_specific):
                     jdex += 1
             # if not find_same:
             ldex += 1
-        _frag_motif_list[i] = _check_list
-    return _frag_motif_list
+        _frag_substructure_list[i] = _check_list
+    return _frag_substructure_list
 
 
 # glytoucan_data_base = load_json(r'/Users/apple/PycharmProjects/glycan_within_all_lectins.json')
@@ -50,51 +50,51 @@ def clean_duplicate(_frag_motif_list, linkage_specific):
 # #         print(i)
 # # # print(set([len(i) for i in glycoct_list]))
 # ten_glycan = glycoct.loads(glytoucan_data_base['G28566CQ']['GlycoCT'])
-# print(get_motif(ten_glycan))
+# print(get_substructure(ten_glycan))
 
-class MotifLab():
+class substructureLab():
     _man1 = glycoct.loads("""
         RES
         1b:b-dman-HEX-1:5
         LIN""")
 
-    def __init__(self, motif_, linkage_specific):
+    def __init__(self, substructure_, linkage_specific):
         self.linkage_specific = linkage_specific
-        if type(motif_) == dict:
-            print(type(list(motif_.keys())[0]))
-            dict_keys = sorted([int(i) for i in motif_.keys()])
-            self.motif_vec = []
+        if type(substructure_) == dict:
+            print(type(list(substructure_.keys())[0]))
+            dict_keys = sorted([int(i) for i in substructure_.keys()])
+            self.substructure_vec = []
             for i in dict_keys:
-                for j in motif_[str(i)]:
+                for j in substructure_[str(i)]:
                     if isinstance(j, type(self._man1)):
-                        self.motif_vec.append(j)
+                        self.substructure_vec.append(j)
                     else:
-                        self.motif_vec.append(glycoct.loads(j))
-            self.motif_dict = {}
-            for idex, i in enumerate(self.motif_vec):
-                if len(i) not in self.motif_dict.keys():
-                    self.motif_dict[len(i)] = [idex]
+                        self.substructure_vec.append(glycoct.loads(j))
+            self.substructure_dict = {}
+            for idex, i in enumerate(self.substructure_vec):
+                if len(i) not in self.substructure_dict.keys():
+                    self.substructure_dict[len(i)] = [idex]
                 else:
-                    self.motif_dict[len(i)].append(idex)
-        elif type(motif_) == list:
-            if isinstance(motif_[0], type(self._man1)):
-                self.motif_vec = motif_
+                    self.substructure_dict[len(i)].append(idex)
+        elif type(substructure_) == list:
+            if isinstance(substructure_[0], type(self._man1)):
+                self.substructure_vec = substructure_
             else:
-                self.motif_vec = [glycoct.loads(i) for i in motif_]
-            self.motif_dict = {}
-            for idex, i in enumerate(self.motif_vec):
-                if len(i) not in self.motif_dict.keys():
-                    self.motif_dict[len(i)] = [idex]
+                self.substructure_vec = [glycoct.loads(i) for i in substructure_]
+            self.substructure_dict = {}
+            for idex, i in enumerate(self.substructure_vec):
+                if len(i) not in self.substructure_dict.keys():
+                    self.substructure_dict[len(i)] = [idex]
                 else:
-                    self.motif_dict[len(i)].append(idex)
+                    self.substructure_dict[len(i)].append(idex)
         else:
             assert False, "should be either list or dict"
-        self.motif_list = [i for i in range(len(self.motif_vec))]
-        self.motif_dep_tree = {}
+        self.substructure_list = [i for i in range(len(self.substructure_vec))]
+        self.substructure_dep_tree = {}
 
     def dep_tree_to_edge_list(self, dep_tree):
         """
-        :param dep_tree: motif_with_core_dependence_tree, motif_dependence_tree, motif_single_dependence_tree
+        :param dep_tree: substructure_with_core_dependence_tree, substructure_dependence_tree, substructure_single_dependence_tree
         :return: edge_list
         """
         edge_list = []
@@ -103,25 +103,25 @@ class MotifLab():
                 edge_list.append((i, k))
         return edge_list
 
-    def build_dependence_tree(self, a_motif_dict):
-        """ connect motif to all parents"""
+    def build_dependence_tree(self, a_substructure_dict):
+        """ connect substructure to all parents"""
         print('start building dependence_tree')
         edge_list = []
         _dep_tree = {}
-        # self.motif_dep_tree = {}
-        for i in sorted(list(a_motif_dict.keys())):
+        # self.substructure_dep_tree = {}
+        for i in sorted(list(a_substructure_dict.keys())):
             print(i)
-            if i - 1 not in a_motif_dict.keys():
-                for j in a_motif_dict[i]:
+            if i - 1 not in a_substructure_dict.keys():
+                for j in a_substructure_dict[i]:
                     _dep_tree[j] = []
                 continue
-            for j in a_motif_dict[i]:
+            for j in a_substructure_dict[i]:
                 """
-                    motif j in i degree/motif in i-1 degree
+                    substructure j in i degree/substructure in i-1 degree
                 """
                 _dep_tree[j] = []
-                for k in a_motif_dict[i - 1]:
-                    if subtree_of(self.motif_vec[k], self.motif_vec[j], exact=self.linkage_specific) == 1:
+                for k in a_substructure_dict[i - 1]:
+                    if subtree_of(self.substructure_vec[k], self.substructure_vec[j], exact=self.linkage_specific) == 1:
                         _dep_tree[k].append(j)
                         edge_list.append((k, j))
         return _dep_tree, edge_list
@@ -131,12 +131,12 @@ class MotifLab():
         get the dep tree for all node
         :return: dep_tree, edge_list
         """
-        if self.motif_dep_tree == {}:
-            _dep_tree, _edge_list = self.build_dependence_tree(self.motif_dict)
-            self.motif_dep_tree = _dep_tree
+        if self.substructure_dep_tree == {}:
+            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict)
+            self.substructure_dep_tree = _dep_tree
             return _dep_tree, _edge_list
         else:
-            return self.motif_dep_tree, self._get_edge(self.motif_dep_tree)
+            return self.substructure_dep_tree, self._get_edge(self.substructure_dep_tree)
 
     def _get_edge(self, dep_tree):
         edge_list = []
@@ -199,15 +199,15 @@ _man2 = glycoct.loads("""
         LIN""")
 
 
-class MotifLabwithCore(MotifLab):
+class substructureLabwithCore(substructureLab):
     """
     store vec
     """
 
-    def __init__(self, motif_, glycan_core, linkage_specific):
+    def __init__(self, substructure_, glycan_core, linkage_specific):
         """
-        self.motif_dict stores the id of the self.motif_vec
-        :param motif_: motif vec or motif dict_degree_list:
+        self.substructure_dict stores the id of the self.substructure_vec
+        :param substructure_: substructure vec or substructure dict_degree_list:
         """
         # self.linkage_specific = linkage_specific
         self.core_index = -1
@@ -219,100 +219,100 @@ class MotifLabwithCore(MotifLab):
         print('the glycan core is')
         plot_glycan_utilities.plot_glycan(self.glycan_core)
         assert isinstance(self.glycan_core, glypy.structure.glycan.Glycan)
-        assert motif_, "motif vector is empty"
-        MotifLab.__init__(self, motif_, linkage_specific)
-        self.motif_dict_with_core = {}
-        self.motif_dep_tree_core = {}
-        self.motif_with_core_list = []
-        self.extract_motif_with_core()
+        assert substructure_, "substructure vector is empty"
+        substructureLab.__init__(self, substructure_, linkage_specific)
+        self.substructure_dict_with_core = {}
+        self.substructure_dep_tree_core = {}
+        self.substructure_with_core_list = []
+        self.extract_substructure_with_core()
 
-    #     self.motif_vec_sia_ept = []
-    #     self.motif_vec_gala_ept = []
+    #     self.substructure_vec_sia_ept = []
+    #     self.substructure_vec_gala_ept = []
     #
     # def create_epitope_vec(self):
-    #     print("start motif with sia")
-    #     if not self.motif_vec_sia_ept:
-    #         for i in sorted(list(self.motif_dict.keys())):
+    #     print("start substructure with sia")
+    #     if not self.substructure_vec_sia_ept:
+    #         for i in sorted(list(self.substructure_dict.keys())):
     #             # if (i) > 9:
     #             #     break
     #             # print("len", i)
-    #             for j in self.motif_dict[i]:
+    #             for j in self.substructure_dict[i]:
     #                 """
-    #                 motif j in i degree/motif in i-1 degree
+    #                 substructure j in i degree/substructure in i-1 degree
     #                 """
-    #                 if subtree_of(self._man1, self.motif_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(
-    #                         self._man2, self.motif_vec[
+    #                 if subtree_of(self._man1, self.substructure_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(
+    #                         self._man2, self.substructure_vec[
     #                             j], exact=__init__.exact_Ture) is not None:
     #                     continue
-    #                 if subtree_of(self._with_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
-    #                     if len(self.motif_vec[j]) % 2 == 1:
-    #                         self.motif_vec_sia_ept.append(j)
+    #                 if subtree_of(self._with_sia_core, self.substructure_vec[j], exact=__init__.exact_Ture) is not None:
+    #                     if len(self.substructure_vec[j]) % 2 == 1:
+    #                         self.substructure_vec_sia_ept.append(j)
     #                         # self.gala_ept_vec.append(j)
-    #                 elif subtree_of(self._no_sia_core, self.motif_vec[j], exact=__init__.exact_Ture) is not None:
-    #                     if len(self.motif_vec[j]) % 2 == 0:
-    #                         self.motif_vec_gala_ept.append(j)
+    #                 elif subtree_of(self._no_sia_core, self.substructure_vec[j], exact=__init__.exact_Ture) is not None:
+    #                     if len(self.substructure_vec[j]) % 2 == 0:
+    #                         self.substructure_vec_gala_ept.append(j)
     #
-    #         print("Finish sia match ", len(self.motif_vec_sia_ept),
-    #               " motifs are find with sia core ", len(self.motif_vec_gala_ept), " motifs are find with no sia core ")
+    #         print("Finish sia match ", len(self.substructure_vec_sia_ept),
+    #               " substructures are find with sia core ", len(self.substructure_vec_gala_ept), " substructures are find with no sia core ")
     #     else:
-    #         print("Finish sia match ", len(self.motif_vec_sia_ept),
-    #               " motifs are find with sia core ", len(self.motif_vec_sia_ept), " motifs are find with no sia core ")
+    #         print("Finish sia match ", len(self.substructure_vec_sia_ept),
+    #               " substructures are find with sia core ", len(self.substructure_vec_sia_ept), " substructures are find with no sia core ")
 
-    def extract_motif_with_core(self):
-        """ store the result in self.motif_with_core_list
+    def extract_substructure_with_core(self):
+        """ store the result in self.substructure_with_core_list
         and return the count"""
         # count = []
-        print("start motif_with core")
-        if self.motif_dict_with_core == {}:
-            for i in sorted(list(self.motif_dict.keys())):
+        print("start substructure_with core")
+        if self.substructure_dict_with_core == {}:
+            for i in sorted(list(self.substructure_dict.keys())):
                 if len(self.glycan_core) > i:
                     continue
                 print("len", i)
-                self.motif_dict_with_core[i] = []
-                for j in self.motif_dict[i]:
+                self.substructure_dict_with_core[i] = []
+                for j in self.substructure_dict[i]:
                     """
-                    motif j in i degree/motif in i-1 degree
+                    substructure j in i degree/substructure in i-1 degree
                     """
-                    # print(subtree_of(self.glycan_core, self.motif_vec[j], exact=__init__.exact_Ture))
-                    if subtree_of(self.glycan_core, self.motif_vec[j], exact=self.linkage_specific) == 1:
+                    # print(subtree_of(self.glycan_core, self.substructure_vec[j], exact=__init__.exact_Ture))
+                    if subtree_of(self.glycan_core, self.substructure_vec[j], exact=self.linkage_specific) == 1:
                         if self.core_index == -1 and len(self.glycan_core) == i:
-                            # print('check core', self.motif_vec[j])
-                            if subtree_of(self.motif_vec[j], self.glycan_core, exact=self.linkage_specific) == 1:
+                            # print('check core', self.substructure_vec[j])
+                            if subtree_of(self.substructure_vec[j], self.glycan_core, exact=self.linkage_specific) == 1:
                                 self.core_index = j
                                 # print('find it')
-                        self.motif_dict_with_core[i].append(j)
-                        self.motif_with_core_list.append(j)
-            print("Finish the n-glycan match ", len(self.motif_with_core_list),
-                  " motifs are matched to the n-glycan core")
+                        self.substructure_dict_with_core[i].append(j)
+                        self.substructure_with_core_list.append(j)
+            print("Finish the n-glycan match ", len(self.substructure_with_core_list),
+                  " substructures are matched to the n-glycan core")
         else:
-            print("Finish the n-glycan match ", len(self.motif_with_core_list),
-                  " motifs are matched to the n-glycan core")
+            print("Finish the n-glycan match ", len(self.substructure_with_core_list),
+                  " substructures are matched to the n-glycan core")
 
     def get_dependence_tree_core(self):
         """
         get the dep tree for core's node
         :return: dep_tree, edge_list
         """
-        if self.motif_dep_tree_core == {}:
-            _dep_tree, _edge_list = self.build_dependence_tree(self.motif_dict_with_core)
-            self.motif_dep_tree_core = _dep_tree
+        if self.substructure_dep_tree_core == {}:
+            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict_with_core)
+            self.substructure_dep_tree_core = _dep_tree
             return _dep_tree, _edge_list
         else:
-            return self.motif_dep_tree_core, self._get_edge(self.motif_dep_tree_core)
+            return self.substructure_dep_tree_core, self._get_edge(self.substructure_dep_tree_core)
 
 
-def get_weight_dict(motif_abd_table):
-    _np_mat = np.array(motif_abd_table)
+def get_weight_dict(substructure_abd_table):
+    _np_mat = np.array(substructure_abd_table)
     weight_dict = {}
     for i in range(len(_np_mat)):
-        weight_dict[motif_abd_table.index[i]] = list(_np_mat[i])
+        weight_dict[substructure_abd_table.index[i]] = list(_np_mat[i])
     return weight_dict
 
 
 class NodesState():
     threshold = 200
 
-    def __init__(self, dependence_tree, motif_weight, linkage_specific):
+    def __init__(self, dependence_tree, substructure_weight, linkage_specific):
         self.linkage_specific = linkage_specific
         self.dep_tree = dependence_tree
         self.nodes_sta = []
@@ -321,11 +321,11 @@ class NodesState():
         # self.nodes = self._get_node(self.dep_tree)
         self.edges = self._get_edge(dependence_tree)
         self.nodes = self._get_node(dependence_tree)
-        self.motif_weight = motif_weight
+        self.substructure_weight = substructure_weight
         self._drop_nodes_with_weight_zero()
         self._modify_dep_tree()
 
-        self.normalized_motif_weight = {}
+        self.normalized_substructure_weight = {}
         self._normalized_weight()
         self.parents_dic = {}
         for i in dependence_tree:
@@ -352,7 +352,7 @@ class NodesState():
 
     def upload_network(self, edges, nodes, edge_attri={}, node_attri={}, add_notimp_edge=True):
         """Will upload the network and manually annotate the node and edges
-        red node are nodes kept in motif_vector
+        red node are nodes kept in substructure_vector
         blue/dark grey node are nodes can be used
         light grey nodes are nodes removed
 
@@ -421,7 +421,7 @@ class NodesState():
                     else:
                         self.node_attri[i]['kept'] = 'root'
 
-    def nodes_dropping_pipe(self, drop_parellel=False, drop_diff_abund=False, motif_vec=[]):
+    def nodes_dropping_pipe(self, drop_parellel=False, drop_diff_abund=False, substructure_vec=[]):
         """check the unuseful nodes
            The node['kept'] attribute will have
                 immd
@@ -502,8 +502,8 @@ class NodesState():
             for i in range(len(mod_nodes)):
                 for j in range(i, len(mod_nodes)):
                     if j == i: continue
-                    if motif_vec:
-                        _re = subtree_of(motif_vec[mod_nodes[i]], motif_vec[mod_nodes[j]], exact=self.linkage_specific)
+                    if substructure_vec:
+                        _re = subtree_of(substructure_vec[mod_nodes[i]], substructure_vec[mod_nodes[j]], exact=self.linkage_specific)
                         if _re:
                             check_through = True
                             # print(mod_nodes[i], mod_nodes[j], _re, self.get_value_unnormed(mod_nodes[i], mod_nodes[j], self.get_corr))
@@ -583,12 +583,12 @@ class NodesState():
             nodes_dropped_by_out_degree = []
             for i in _temp_dropping_list:
                 _children_list = get_edges_from_edges_list(i, mod_edges)
-                _motif_abd_list = []
+                _substructure_abd_list = []
                 for j in _children_list:
-                    _motif_abd_list.extend(self.motif_weight[j])
-                _z, _p = scipy.stats.ttest_ind(self.motif_weight[i], _motif_abd_list, equal_var=False)
-                #     print(_a.motif_weight[i], _motif_abd_list)
-                #     plot_glycan_utilities.plot_glycan(motif_vec[i], title=str(_p/2))
+                    _substructure_abd_list.extend(self.substructure_weight[j])
+                _z, _p = scipy.stats.ttest_ind(self.substructure_weight[i], _substructure_abd_list, equal_var=False)
+                #     print(_a.substructure_weight[i], _substructure_abd_list)
+                #     plot_glycan_utilities.plot_glycan(substructure_vec[i], title=str(_p/2))
                 if _p / 2 > 0.15:
                     _count += 1
                     nodes_dropped_by_out_degree.append(i)
@@ -777,10 +777,10 @@ class NodesState():
 
     def _drop_nodes_with_weight_zero(self):
         print("Start dropping nodes with weight zero, nodes count:", len(self.nodes))
-        for i in list(self.motif_weight.keys()):
-            if sum(self.motif_weight[i]) == 0:
+        for i in list(self.substructure_weight.keys()):
+            if sum(self.substructure_weight[i]) == 0:
                 self.zero_value.append(i)
-                del self.motif_weight[i]
+                del self.substructure_weight[i]
         self.nodes = [x for x in self.nodes if x not in self.zero_value]
         for i in sorted(list(self.zero_value)):
             self.edges = [x for x in self.edges if i not in x]
@@ -854,23 +854,23 @@ class NodesState():
         return _list
 
     def _normalized_weight(self):
-        for i in self.motif_weight.keys():
-            _max = max(self.motif_weight[i])
+        for i in self.substructure_weight.keys():
+            _max = max(self.substructure_weight[i])
             if _max == 0:
                 print(i)
-            self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
+            self.normalized_substructure_weight[i] = [j / _max for j in self.substructure_weight[i]]
 
     def get_vector(self, i):
-        return self.normalized_motif_weight[i]
+        return self.normalized_substructure_weight[i]
 
     def get_value_unnormed(self, i, j, method):
         # print()
-        return method(vec_a=self.motif_weight[i], vec_b=self.motif_weight[j])
+        return method(vec_a=self.substructure_weight[i], vec_b=self.substructure_weight[j])
 
     #
     # def get_value_normed(self, i, j, method):
     #     # print()
-    #     return method(vec_a=self.normalized_motif_weight[j], vec_b=self.normalized_motif_weight[i])
+    #     return method(vec_a=self.normalized_substructure_weight[j], vec_b=self.normalized_substructure_weight[i])
 
     def get_corr(self, vec_a, vec_b):
         return 1 - distance.braycurtis(vec_a, vec_b)
@@ -912,8 +912,8 @@ class NodesState():
         return _return_list
 
     # def get_weight_list(self):
-    #     for i in self.normalized_motif_weight:
-    #         for j in self.normalized_motif_weight[i]:
+    #     for i in self.normalized_substructure_weight:
+    #         for j in self.normalized_substructure_weight[i]:
     #             _temp_vec = diff_vec[:]
     #             _temp_vec.remove(i)
 
@@ -926,10 +926,10 @@ class NodesState():
             if _temp:
                 _list.extend(_temp)
                 self.flat_paired_diff.extend(
-                    [self.motif_weight[i][k] - self.motif_weight[j][k] for k in range(len(self.motif_weight[j]))])
+                    [self.substructure_weight[i][k] - self.substructure_weight[j][k] for k in range(len(self.substructure_weight[j]))])
                 self.flat_normed_paired_diff.extend(
-                    [self.normalized_motif_weight[i][k] - self.normalized_motif_weight[j][k] for k in
-                     range(len(self.normalized_motif_weight[j]))])
+                    [self.normalized_substructure_weight[i][k] - self.normalized_substructure_weight[j][k] for k in
+                     range(len(self.normalized_substructure_weight[j]))])
         return _list
 
     def get_neg_log_p_ttest(self, _ele, _vec):
@@ -1022,8 +1022,8 @@ class NodesState():
     def get_node_sta(self):
         self.nodes_sta = []
         for i in sorted(list(self.parents_dic.keys())):
-            _mean = np.mean(self.motif_weight[i])
-            _var = np.var(self.motif_weight[i])
+            _mean = np.mean(self.substructure_weight[i])
+            _var = np.var(self.substructure_weight[i])
             self.nodes_sta.append((_mean, _var))
         return zip(*self.nodes_sta)
 
@@ -1066,7 +1066,7 @@ class NodesState():
 
 
 class NodesDropper:
-    def __init__(self, dependence_tree, motif_weight):
+    def __init__(self, dependence_tree, substructure_weight):
         self.dep_tree = dependence_tree
         self.all_nodes = self._get_node(dependence_tree)
 
@@ -1074,8 +1074,8 @@ class NodesDropper:
         for i in dependence_tree:
             self.parents_vec[i] = {}
 
-        self.motif_weight = motif_weight
-        self.normalized_motif_weight = {}
+        self.substructure_weight = substructure_weight
+        self.normalized_substructure_weight = {}
         self._normalized_weight()
         self.heavy_dependency = {}
         self.most_dependent_child = {}
@@ -1087,15 +1087,15 @@ class NodesDropper:
         for i in dep_tree:
             node_list.extend(dep_tree[i])
         return sorted(list(set(node_list)))
-        # self.gala_ept_vec = a_glycan_motif_lib.gala_ept_vec[:]
-        # self.sia_ept_vec = a_glycan_motif_lib.sia_ept_vec[:]
+        # self.gala_ept_vec = a_glycan_substructure_lib.gala_ept_vec[:]
+        # self.sia_ept_vec = a_glycan_substructure_lib.sia_ept_vec[:]
         # self.sia_gala_ept_vec = self.gala_ept_vec[:]
         # self.sia_gala_ept_vec.extend(self.sia_ept_vec[:])
 
     def _normalized_weight(self):
-        for i in self.motif_weight.keys():
-            _max = max(self.motif_weight[i])
-            self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
+        for i in self.substructure_weight.keys():
+            _max = max(self.substructure_weight[i])
+            self.normalized_substructure_weight[i] = [j / _max for j in self.substructure_weight[i]]
 
     def _z_score(self, vec_a, vec_b):
         diff_vec = [vec_a[i] - vec_b[i] for i in range(len(vec_a))]
@@ -1146,9 +1146,9 @@ class NodesDropper:
         # self.after_drop_node.append(i)
 
     # def _normalized_weight(self):
-    #     for i in self.motif_weight.keys():
-    #         _max = max(self.motif_weight[i])
-    #         self.normalized_motif_weight[i] = [j / _max for j in self.motif_weight[i]]
+    #     for i in self.substructure_weight.keys():
+    #         _max = max(self.substructure_weight[i])
+    #         self.normalized_substructure_weight[i] = [j / _max for j in self.substructure_weight[i]]
 
     def drop_node(self, method=distance.braycurtis, redo=True):
         if self.nodes_kept != [] and redo is False:
@@ -1158,8 +1158,8 @@ class NodesDropper:
             for i in self.parents_vec.keys():
                 # print(i)
                 for j in self.dep_tree[i]:
-                    self.parents_vec[j][i] = 1 - method(self.normalized_motif_weight[j],
-                                                        self.normalized_motif_weight[i])
+                    self.parents_vec[j][i] = 1 - method(self.normalized_substructure_weight[j],
+                                                        self.normalized_substructure_weight[i])
                     # sns.clustermap
             for i in self.parents_vec.keys():
                 find_ = False
@@ -1203,8 +1203,8 @@ class NodesDropper:
             for i in self.parents_vec.keys():
                 # print(i)
                 for j in self.dep_tree[i]:
-                    self.parents_vec[j][i] = 1 - method(self.normalized_motif_weight[j],
-                                                        self.normalized_motif_weight[i])
+                    self.parents_vec[j][i] = 1 - method(self.normalized_substructure_weight[j],
+                                                        self.normalized_substructure_weight[i])
                     # sns.clustermap
             for i in self.parents_vec.keys():
                 find_ = False
@@ -1250,5 +1250,5 @@ class NodesDropper:
             # self.most_depedent_child
             # def generate_tree(self):
             # def draw_dependency_with_abundance_with_parents_vec(self):
-            # def most_common_strcutre(self, a_vec, motif_vec):
-            #     NBT_motif_match_motifvec.find_common_structure_in_cluster(a_vec, )
+            # def most_common_strcutre(self, a_vec, substructure_vec):
+            #     NBT_substructure_match_substructurevec.find_common_structure_in_cluster(a_vec, )

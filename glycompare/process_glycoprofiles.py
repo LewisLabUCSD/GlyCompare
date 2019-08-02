@@ -741,8 +741,8 @@ def check_external_profile_name(external_profile_name):
 def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, profile_name_order, external_profile_name,
                           glyprofile_list_addr,
                           get_existance=True):
-    """combine glycan m/z with motif existances, convert the counts 1+/0 into 1/0 in each glycan
-    Glycan motifs are modified with
+    """combine glycan m/z with substructure existances, convert the counts 1+/0 into 1/0 in each glycan
+    Glycan substructures are modified with
     :param profile_name_order:
     :param get_existance:
     :param glyprofile_list_addr:
@@ -793,7 +793,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
                 elif _count == 0:
                     _existance_list.append(0)
                 else:
-                    assert False, 'wired in combine_profile_mz_with_motif_existance'
+                    assert False, 'wired in combine_profile_mz_with_substructure_existance'
 
             _temp_hit_matrix = np.array(_existance_list)
 
@@ -809,7 +809,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
                          name=pro, profile_name=external_profile_name[pro]))
 
     glycoprofile_output_list = []
-    # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
+    # print([round(i, 3) for i in merged_profile_dict[3]['substructure_vec'][:20]])
     for idex, i in enumerate(glycoprofile_list):
         glycoprofile_output_list.append(i.get_dict())
     # print(glycoprofile_output_list[0])
@@ -821,8 +821,8 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
 class Glycoprofile():
     """we will have the profile with topology
     dict self.profile
-    list self.motif_list
-    profile contains glycan name and str structure, and motif information
+    list self.substructure_list
+    profile contains glycan name and str structure, and substructure information
     we will have a
     """
 
@@ -863,10 +863,10 @@ class Glycoprofile():
 
 
 # def combine_profile_mz(a_glycan_profile, NBT_dict_name_abundance_cross_profile):
-#     """combine glycan m/z with motif existances, convert the counts into 1/0 in each glycan
+#     """combine glycan m/z with substructure existances, convert the counts into 1/0 in each glycan
 #     return profile_obj_list
 #     """
-#     NBT_glycan_match_existed_motif = load_json(__init__.json_address + "NBT_glycan_match_count_motif.json")
+#     NBT_glycan_match_existed_substructure = load_json(__init__.json_address + "NBT_glycan_match_count_substructure.json")
 #     profile_obj_list = []
 #     for _pro in range(1, len(a_glycan_profile) + 1):
 #         if _pro < 10:
@@ -874,7 +874,7 @@ class Glycoprofile():
 #         else:
 #             _id = 'Gly' + str(_pro)
 #             # print(_id)
-#         weighted_matrix = np.zeros((len(NBT_glycan_match_existed_motif["3865.1"])))
+#         weighted_matrix = np.zeros((len(NBT_glycan_match_existed_substructure["3865.1"])))
 #         # print(weighted_matrix.shape)
 #         abundance_ = []
 #         # glycan_hit_array_ = []
@@ -890,13 +890,13 @@ class Glycoprofile():
 #             _bundance = NBT_dict_name_abundance_cross_profile[i][_pro - 1]
 #             # print(_pro, _bundance)
 #             _existance_list = []
-#             for _count in NBT_glycan_match_existed_motif[_name]:
+#             for _count in NBT_glycan_match_existed_substructure[_name]:
 #                 if _count >= 1:
 #                     _existance_list.append(1)
 #                 elif _count == 0:
 #                     _existance_list.append(0)
 #                 else:
-#                     assert False, 'wired in combine_profile_mz_with_motif_existance'
+#                     assert False, 'wired in combine_profile_mz_with_substructure_existance'
 #
 #             _temp_hit_matrix = np.array(_existance_list)
 #
@@ -907,20 +907,20 @@ class Glycoprofile():
 #             glycan_profile_obj(glycan_id_, mz_, abundance_, weighted_matrix, hit_matrix_, name=str(_pro - 1)))
 #     merged_profile_dict = {}
 #
-#     # print([round(i, 3) for i in merged_profile_dict[3]['motif_vec'][:20]])
+#     # print([round(i, 3) for i in merged_profile_dict[3]['substructure_vec'][:20]])
 #     for idex, i in enumerate(profile_obj_list):
 #         merged_profile_dict[idex] = i.get_dict()
 #     store_json(__init__.json_address + r"NBT_merged_profile_dict_merged.json", merged_profile_dict)
 #     return profile_obj_list
 
 
-class MotifAbdTableGenerator:
+class substructureAbdTableGenerator:
     def __init__(self, glycoprofile_list):
         self.raw_table = glycoprofile_list[:]
 
     def table_btwn_two(self, n_a, n_b):
-        #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
-        #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        #     change_f = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        #     change_abs = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
         a_p = self.raw_table[n_a]
         b_p = self.raw_table[n_b]
         d = {a_p.name: a_p.match_vec_weighted, b_p.name: b_p.match_vec_weighted}
@@ -940,8 +940,8 @@ class MotifAbdTableGenerator:
 
     def table_against_wt_relative_abd(self):
         """just generate raw table"""
-        #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
-        #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        #     change_f = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        #     change_abs = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
         a_p = self.raw_table[0]
         d = {a_p.name: a_p.match_vec_weighted}
         wt_table = pd.DataFrame(data=d)
@@ -949,7 +949,7 @@ class MotifAbdTableGenerator:
             # if idex == 0:
             #     continue
             b_p = i
-            # _weight = 1 / b_p.weighted_motif_vec[7]
+            # _weight = 1 / b_p.weighted_substructure_vec[7]
             wt_table[b_p.name] = np.array(b_p.match_vec_weighted)
             #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
             """find out the abundance of the N-glycan core and use it to balance the weight """
@@ -957,8 +957,8 @@ class MotifAbdTableGenerator:
         return wt_table
 
     def table_existance(self):
-        #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
-        #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        #     change_f = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        #     change_abs = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
         a_p = self.raw_table[0]
 
         d = {a_p.name: a_p.match_vec_exist}
@@ -967,7 +967,7 @@ class MotifAbdTableGenerator:
             # if idex == 0:
             #     continue
             b_p = i
-            # _weight = 1 / b_p.weighted_motif_vec[7]
+            # _weight = 1 / b_p.weighted_substructure_vec[7]
             existance_table[b_p.name] = np.array(b_p.match_vec_exist)
             #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
             """find out the abundance of the N-glycan core and use it to balance the weight """
@@ -975,8 +975,8 @@ class MotifAbdTableGenerator:
         return existance_table
 
     def table_against_wt_fc(self):
-        #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
-        #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        #     change_f = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        #     change_abs = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
 
         wt_table = self.table_against_wt_relative_abd()
         wt_table += 0.001
@@ -992,8 +992,8 @@ class MotifAbdTableGenerator:
         return wt_table
 
     def table_against_wt_abs_val(self):
-        #     change_f = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
-        #     change_abs = np.array(a_p.weighted_motif_vec)/np.array(b_p.weighted_motif_vec)
+        #     change_f = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        #     change_abs = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
 
         wt_table = self.table_against_wt_relative_abd()
         for idex, i in enumerate(wt_table.columns):
