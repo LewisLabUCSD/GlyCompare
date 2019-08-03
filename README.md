@@ -6,10 +6,13 @@ Here, we present GlyCompare, a novel method wherein glycans from glycomic data a
 Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A. Mohammad, Morey W. Haymond, Lars Bode, and Nathan E. Lewis. 2019. “****Correcting for Sparsity and Non-Independence in Glycomic Data through a Systems Biology Framework.****” bioRxiv. https://doi.org/10.1101/693507.
 
 ### Demonstrations & Manuscript Analyses
-- [All demos](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_notebook)
-- [Figure 2 & 3, glycoprofile processing and analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
-- [Figure 4 & 5, glycoprofile processing](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_analysis.ipynb)
-- [Figure 4 & 5, glycoprofile analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
+- **Code Ocean Compute Capsule**
+  - [ EPO & HMO glyco-motif examples (provisional DOI)](doi.org/10.24433/CO.9148600.v1)
+- **Jupyter Notebooks**
+  - [All demos](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_notebook)
+  - [Figure 2 & 3, glycoprofile processing and analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+  - [Figure 4 & 5, glycoprofile processing](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_analysis.ipynb)
+  - [Figure 4 & 5, glycoprofile analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
 
 ## Installation (2-10 minutes)
 
