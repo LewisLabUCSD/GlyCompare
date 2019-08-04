@@ -7,7 +7,7 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
 
 ### Demonstrations & Manuscript Analyses
 - **Code Ocean Compute Capsule**
-  - [ EPO & HMO glyco-motif examples (provisional DOI)](doi.org/10.24433/CO.9148600.v1)
+  - [ EPO & HMO glyco-motif examples (provisional DOI)](https://doi.org/10.24433/CO.9148600.v1)
 - **Jupyter Notebooks**
   - [All demos](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_notebook)
   - [Figure 2 & 3, glycoprofile processing and analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
