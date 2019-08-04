@@ -5,4 +5,5 @@ numpy
 seaborn
 networkx==2.1
 ndex
+rdflib
 xlrd==1.2
