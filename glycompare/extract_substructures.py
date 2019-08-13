@@ -7,6 +7,46 @@ from . import glycan_io
 from . import __init__
 from . import json_utility
 
+from glypy.io import wurcs
+from glypy.io import glycoct
+
+
+#### proposed function
+
+def extract_substructure_wurcs_idx(a_glycan,sub_gly, branch=5,linkage_specific=True):
+    """
+    :param a_glycan: Glycan obj
+    :param sub_gly: dictionary of substructures. WURCS substructure index. Values are dictionary of matched glycans with the number of times each glycan appears.
+    :param branch:
+    :return:
+    """
+    if linkage_specific:
+        gw = wurcs.dumps(a_glycan)
+    else:
+        # strip linkage information
+        gct = glycoct.dumps(a_glycan)
+        # replace all linkages with -1
+        gct = re.sub('\(\d','(-1',gct)
+        a_glycan = glycoct.loads(gct)
+        gw = wurcs.dumps(a_glycan)
+
+    # iterate over glycan fragments
+    for i in a_glycan.fragments(max_cleavages=branch):
+        # print('aaa')
+        _frag_gly = wurcs.dumps(fragment_to_substructure(i, a_glycan))
+
+        # print('aab')
+        #add substructure 1st
+        try:
+            sub_gly[_frag_gly][gw] += 1
+        except:
+            try:
+                sub_gly[_frag_gly][gw] = 1
+            except:
+                sub_gly[_frag_gly] = {}
+
+
+#######
 
 def clean_duplicate(a_substructure_dict, linkage_specific):
     """
