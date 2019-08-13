@@ -164,10 +164,11 @@ def load_glycan_obj_from_glycoct_file(dir_address):
         """
     glycan_dict = {}
     for (dirpath, dirnames, filenames) in os.walk(dir_address):
+        #print(filenames)
         for i in filenames:
             if i.find('.glycoct_condensed') != -1:
                 glycan_id = i[:i.find('.glycoct_condensed')]
-                # print(i)
+         #        print(i)
                 temp_i = load_glycan_str_from_glycoct(glycan_id, dir_address)
                 glycan_dict[glycan_id] = glycoct.loads(temp_i)
     return glycan_dict
@@ -192,6 +193,10 @@ def glycan_str_to_glycan_obj(a_dict_of_glycan_str):
                 a_dict[i] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i]]
             elif type(a_dict_of_glycan_str[i]) == str:
                 a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
+            elif type(a_dict_of_glycan_str[i]) == unicode:
+                a_dict[i] = glycoct.loads(str(a_dict_of_glycan_str[i]))
+            else:
+                assert False, a_dict[i]+' is not a parsable type'
         return a_dict
 
 
