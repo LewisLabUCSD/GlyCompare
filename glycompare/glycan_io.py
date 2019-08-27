@@ -9,6 +9,8 @@ import numpy as np
 from . import json_utility
 
 
+
+#Updated
 def load_glycoprofile_name_to_id(addr, naming='mz', _format='json'):
     """ glycan_profile = {'1': {'2244': 'G04483SK',
                                 '2605': 'G30460NZ',
@@ -364,16 +366,20 @@ def load_glycan_str_from_glycoct(glycan_id, address):
     try:
         # print(glycan_id)
         if Path(os.path.join(address, glycan_id)).exists():
-            f = open(os.path.join(address, glycan_id))
+            glycan_str = load_glycoct_str_from_addr(os.path.join(address, glycan_id))
         elif Path(os.path.join(address, glycan_id + '.glycoct_condensed')).exists():
-            f = open(os.path.join(address, glycan_id + '.glycoct_condensed'))
+            glycan_str = load_glycoct_str_from_addr(os.path.join(address, glycan_id + '.glycoct_condensed'))
         else:
             raise FileNotFoundError
-        glycan_str = "".join(f.readlines())
-
     except FileNotFoundError:
         print("This id: ", glycan_id+".glycoct_condensed cannot be found, in ", address)
         glycan_str = ''
+    return glycan_str
+
+
+def load_glycoct_str_from_addr(address):
+    f = open(address)
+    glycan_str = "".join(f.readlines())
     return glycan_str
 
 

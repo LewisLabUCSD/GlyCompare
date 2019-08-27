@@ -75,20 +75,21 @@ def draw_substructure_representative(glyco_motif_cluster, substructure_vec, plot
     return repre_list
 
 # print(len(cccluster_dict.keys()))
-def draw_profile_cluster(g, df, profile_name, color_threshold, address=""):
+def draw_profile_cluster(g, df, profile_name, color_threshold, address="", prefix=''):
     """
     three profiles assss
     """
-    plt.figure(figsize=(15, 15))
-    plt.title('Hierarchical Clustering Profile', fontdict={'fontsize': 25})
+    plt.figure(figsize=(15, 10))
+    plt.title(str(prefix)+'_Hierarchical Clustering Profile', fontdict={'fontsize': 25})
+
     plt.xlabel('Distance', fontdict={'fontsize': 25})
     plt.rc_context({'lines.linewidth': 4})
     plt.ylabel('KO Gene Name', fontdict={'fontsize': 25})
     col_list = [str(x) for x in df.columns.tolist()]
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_col.linkage, distance_sort='descending',
                                              labels=[', '.join(i) for i in zip(col_list, profile_name)],
-                                             color_threshold=color_threshold, orientation='left', leaf_font_size=25.)
-    if address != address:
+                                             color_threshold=color_threshold, orientation='left', leaf_font_size=25.,)
+    if address != '':
         plt.savefig(address)
 
     profile_cluster = {}

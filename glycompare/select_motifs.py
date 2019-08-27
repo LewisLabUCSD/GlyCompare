@@ -58,7 +58,7 @@ class substructureLab():
         1b:b-dman-HEX-1:5
         LIN""")
 
-    def __init__(self, substructure_, linkage_specific):
+    def __init__(self, substructure_, linkage_specific, tree_={}):
         self.linkage_specific = linkage_specific
         if type(substructure_) == dict:
             print(type(list(substructure_.keys())[0]))
@@ -90,7 +90,7 @@ class substructureLab():
         else:
             assert False, "should be either list or dict"
         self.substructure_list = [i for i in range(len(self.substructure_vec))]
-        self.substructure_dep_tree = {}
+        self.substructure_dep_tree = tree_
 
     def dep_tree_to_edge_list(self, dep_tree):
         """
@@ -143,6 +143,8 @@ class substructureLab():
         for i in dep_tree:
             edge_list.extend([(i, j) for j in dep_tree[i]])
         return edge_list
+
+
 
 
 nglycan_core = """
@@ -204,7 +206,7 @@ class substructureLabwithCore(substructureLab):
     store vec
     """
 
-    def __init__(self, substructure_, glycan_core, linkage_specific):
+    def __init__(self, substructure_, glycan_core, linkage_specific, tree_={}):
         """
         self.substructure_dict stores the id of the self.substructure_vec
         :param substructure_: substructure vec or substructure dict_degree_list:
@@ -222,7 +224,7 @@ class substructureLabwithCore(substructureLab):
         assert substructure_, "substructure vector is empty"
         substructureLab.__init__(self, substructure_, linkage_specific)
         self.substructure_dict_with_core = {}
-        self.substructure_dep_tree_core = {}
+        self.substructure_dep_tree_core = tree_
         self.substructure_with_core_list = []
         self.extract_substructure_with_core()
 
