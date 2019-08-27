@@ -42,7 +42,6 @@ def extract_substructure(a_glycan, branch=5):
     for i in a_glycan.fragments(max_cleavages=branch):
         # print('aaa')
         _frag_gly = fragment_to_substructure(i, a_glycan)
-        # print('aab')
 
         if not str(len(_frag_gly)) in extracted_substructure_dic.keys():
             extracted_substructure_dic[str(len(_frag_gly))] = [_frag_gly]
@@ -74,8 +73,11 @@ def extract_substructure_wrapper(a_name, a_glycan_str, substructure_dic):
         #         print(j, len(substructure_dic[j]))
     except TypeError:
         print(a_name, 'has error')
+    except AttributeError:
+        print(a_name, 'has error')
     except KeyboardInterrupt:
         print('break')
+
 
 
 def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors):
@@ -85,6 +87,7 @@ def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors)
     2. convert to glypy.glycan obj {glyacn_id: glycan_}
     3. extract {glyacn_id: substructure_dict}
     4. save glycan_substructure_dic
+    :param num_processors:
     :param glycan_dict:
     :param gly_len: the max degree of the glycan that can be processed
     :param output_file: store str type of glycan_substructure_dict

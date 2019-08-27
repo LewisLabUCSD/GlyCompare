@@ -376,8 +376,8 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                                         glycoprofile_list_addr,
                                                                         get_existance=True)
         table_generator = process_glycoprofiles.substructureAbdTableGenerator(glycoprofile_list)
-        glycoprofile_vector_table = table_generator.table_against_wt_relative_abd()
-        glycoprofile_vector_table.to_csv(substructure_abd_table_addr)
+        substructure_abd_table = table_generator.table_against_wt_relative_abd()
+        substructure_abd_table.to_csv(substructure_abd_table_addr)
     else:
         assert False, 'missing one of them' + \
                       '\n'.join([glycan_substructure_occurance_dict_addr,
@@ -387,9 +387,9 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                     os.path.isfile(external_profile_naming_addr),
                                                     ]])
     # else:
-    #     glycoprofile_vector_table = pd.read_csv(substructure_abd_table_addr)
+    #     substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
     #     print('loaded substructure_abd_table')
-    return glycoprofile_vector_table, glycoprofile_list
+    return substructure_abd_table, glycoprofile_list
 
 
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
@@ -491,7 +491,7 @@ def clustering_analysis_pip(keywords_dict, motif_abd_table, select_profile_name=
     #                                     str(len(selected_name_list)) + r"selected_abundance_matrix.txt"))
     # motif_abd_table.colmuns = selected_name_list
 
-    plt.savefig(keywords_dict['plot_output_dir'] + 'pseudo_profile_clustering.svg')
+    # plt.savefig(keywords_dict['plot_output_dir'] + 'pseudo_profile_clustering.svg')
     cluster_grid = clustering_analysis.draw_glycan_clustermap(motif_abd_table=motif_abd_table,
                                                               address=keywords_dict[
                                                                           'plot_output_dir'] + 'pseudo_profile_clustering.svg',
