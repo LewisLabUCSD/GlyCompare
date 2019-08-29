@@ -384,13 +384,11 @@ if data_type=='mix': # load from both local glycoct and glytoucanid
 ```
 
 
-```
+
 The motif-abundance matrix is the dot product of the glycan abundance matrix (abundance of each glycan in each sample, sample x glycan) and the glycan-motif occurance matrix (number of occurances of each motif in each glycan, glycan x motif)
+```
 
 
-
-
-<!---
 ## comparison across enzyme isoform
 # extract motifs
 glycanMotifMatrix1 = np.matrix( [mapMotifs( extractMotifs( g1 ) , motifsVector = motifVector ) for g1 in glycanList1 ] )
@@ -402,6 +400,7 @@ glycanMotifVectorAbundance2 = glycanMotifMatrix1%*%abundance2
 glycanMotifVector1 = numpy.sum( glycanMotifMatrix1 , axis=1)
 glycanMotifVector2 = numpy.sum( glycanMotifMatrix2 , axis=1)
 =======
+```
 
 **Example:**
 
