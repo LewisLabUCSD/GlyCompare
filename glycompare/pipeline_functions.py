@@ -209,6 +209,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
                 assert type(structure_loader) is list, 'structure_loader should be a list of glycan_id'
                 try:
                     for j in structure_loader:
+                        j = str(j)
                         _j = j
                         glycan_dict[j] = _glycan_dict[j]
                 except KeyError:
@@ -231,6 +232,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             # print(glycan_dict)
             glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
+                i = str(i)
                 if i not in _glycoct_glycan_dict.keys():
                     _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
                     if _re:
@@ -250,6 +252,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
     # except KeyError as :
     #     print("No such glycan", KeyError)
     except:
+
         print("Unexpected error:", sys.exc_info()[0])
         raise
 

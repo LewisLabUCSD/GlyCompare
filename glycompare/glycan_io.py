@@ -1,10 +1,12 @@
 import glypy
+import sys
 from glypy import Glycan
 from glypy.io import glycoct, iupac
 from pathlib import Path
 import os
 import pandas as pd
 import numpy as np
+from glypy.io.glycoct import GlycoCTError
 
 from . import json_utility
 
@@ -172,7 +174,11 @@ def load_glycan_obj_from_glycoct_file(dir_address):
                 glycan_id = i[:i.find('.glycoct_condensed')]
          #        print(i)
                 temp_i = load_glycan_str_from_glycoct(glycan_id, dir_address)
-                glycan_dict[glycan_id] = glycoct.loads(temp_i)
+                try:
+                    glycan_dict[glycan_id] = glycoct.loads(temp_i)
+                except:
+                    print("Unexpected error:", sys.exc_info()[0])
+                    print(glycan_id)
     return glycan_dict
 
 
@@ -195,7 +201,7 @@ def glycan_str_to_glycan_obj(a_dict_of_glycan_str):
                 a_dict[i] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i]]
             elif type(a_dict_of_glycan_str[i]) == str:
                 a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
-            elif type(a_dict_of_glycan_str[i]) == unicode:
+            elif type(a_dict_of_glycan_str[i]) == np.unicode:
                 a_dict[i] = glycoct.loads(str(a_dict_of_glycan_str[i]))
             else:
                 assert False, a_dict[i]+' is not a parsable type'
@@ -376,9 +382,12 @@ def load_glycan_str_from_glycoct(glycan_id, address):
             glycan_str = load_glycoct_str_from_addr(os.path.join(address, glycan_id + '.glycoct_condensed'))
         else:
             raise FileNotFoundError
-    except FileNotFoundError:
-        print("This id: ", glycan_id+".glycoct_condensed cannot be found, in ", address)
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        print(glycan_id)
+        # print("This id: ", glycan_id+".glycoct_condensed cannot be found, in ", address)
         glycan_str = ''
+
     return glycan_str
 
 
@@ -411,11 +420,13 @@ def substructure_vec_to_substructure_dict(substructure_vec):
     return substructure_dict
 
 
-def out_glycan_obj_as_glycoct(a_glycan, glycan_addr):
+def out_glycan_obj_as_glycoct(a_glycan, glycan_addr, force=True):
     if os.path.isfile(glycan_addr):
-        print('file already exist, will not store')
-    else:
-
-        _w = open(glycan_addr, 'w')
-        _w.write(str(a_glycan))
-        _w.close()
+        if force:
+            pass
+        else:
+            print('file already exist, will not store')
+            return
+    _w = open(glycan_addr, 'w')
+    _w.write(str(a_glycan))
+    _w.close()
