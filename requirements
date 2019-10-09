@@ -1,9 +1,9 @@
-glypy==0.12.1
+glypy==0.12.4
 Cython
 pandas
 numpy
 seaborn
-networkx==2.1
+networkx==1.11
 ndex
 rdflib
 xlrd==1.2
