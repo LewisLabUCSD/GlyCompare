@@ -190,9 +190,9 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             glycan_dict = {}
             if 'glytoucan_db_addr' not in keywords_dict.keys():
                 assert False, 'need glytoucan_db_addr'
-            glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
+            # glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
-                _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
+                _re = glycan_io.get_glycoct_from_glytoucan(i)
                 if _re:
                     glycan_dict[i] = _re
 
@@ -230,11 +230,11 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             _glycoct_glycan_dict = glycan_io.load_glycan_obj_from_glycoct_file(glycoct_dir)
             print('end loading glycoct from ', glycoct_dir)
             # print(glycan_dict)
-            glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
+            # glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
                 i = str(i)
                 if i not in _glycoct_glycan_dict.keys():
-                    _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
+                    _re = glycan_io.get_glycoct_from_glytoucan(i)
                     if _re:
                         glycan_dict[i] = _re
                     else:

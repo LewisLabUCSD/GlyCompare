@@ -9,7 +9,7 @@ required = ["Cython","glypy","pandas","numpy","seaborn","networkx>=2","ndex","xl
 
 setuptools.setup(
      name='glycompare',  
-     version='1.0.1',
+     version='1.0.2',
      install_requires=required,
      author="B.B., B.P.K",
      author_email="bobao@eng.ucsd.edu",

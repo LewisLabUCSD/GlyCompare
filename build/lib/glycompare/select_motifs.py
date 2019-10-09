@@ -1,18 +1,16 @@
 import copy
-import scipy
-import pandas as pd
-import seaborn as sns
-from scipy.spatial import distance
-import numpy as np
-from scipy import stats
 import warnings
 
-from glypy.algorithms.subtree_search.inclusion import subtree_of
 import glypy.structure.glycan
+import numpy as np
+import pandas as pd
+import scipy
+import seaborn as sns
+from glypy.algorithms.subtree_search.inclusion import subtree_of
 from glypy.io import glycoct
-import ndex
-import networkx as nx
 from ndex.networkn import NdexGraph
+from scipy import stats
+from scipy.spatial import distance
 
 from . import plot_glycan_utilities
 
@@ -69,7 +67,7 @@ class substructureLab():
                     if isinstance(j, type(self._man1)):
                         self.substructure_vec.append(j)
                     else:
-                        self.substructure_vec.append(glycoct.loads(j))
+                            self.substructure_vec.append(glycoct.loads(j))
             self.substructure_dict = {}
             for idex, i in enumerate(self.substructure_vec):
                 if len(i) not in self.substructure_dict.keys():
@@ -313,7 +311,7 @@ def get_weight_dict(substructure_abd_table):
 
 class NodesState():
     threshold = 200
-
+    """mean median variance quantil profile entropy"""
     def __init__(self, dependence_tree, substructure_weight, linkage_specific):
         self.linkage_specific = linkage_specific
         self.dep_tree = dependence_tree
@@ -352,7 +350,7 @@ class NodesState():
         self.collapsed_edge_dic_re = {}
         self.collapsed_edge_attri = {}
 
-    def upload_network(self, edges, nodes, edge_attri={}, node_attri={}, add_notimp_edge=True):
+    def upload_network(self, edges, nodes, edge_attri={}, node_attri={}, username='bobao@ucsd.edu', password='37~bO^#1D3', add_notimp_edge=True):
         """Will upload the network and manually annotate the node and edges
         red node are nodes kept in substructure_vector
         blue/dark grey node are nodes can be used
@@ -373,10 +371,10 @@ class NodesState():
         # name2id_map={v:k for k,v in id2name_map.items()}
         # dG=nx.relabel_nodes(dG, name2id_map)
         # nx.set_node_attributes(dG,'names', id2name_map)
-        if edge_attri == {}:
-            edge_attri = copy.deepcopy(self.edge_attri)
-        if node_attri == {}:
-            node_attri = copy.deepcopy(self.node_attri)
+        # if edge_attri == {}:
+        #     edge_attri = copy.deepcopy(self.edge_attri)
+        # if node_attri == {}:
+        #     node_attri = copy.deepcopy(self.node_attri)
         # print(node_attri)
         G = NdexGraph()
         if node_attri == {}:
@@ -400,7 +398,7 @@ class NodesState():
                 else:
                     if edge_attri[i][j]['kept'].find('Not') == -1:
                         G.add_edge(i, j, attr_dict=edge_attri[i][j], key=ind)
-        G.upload_to(server='http://ndexbio.org', username='bobao@ucsd.edu', password='37~bO^#1D3')
+        G.upload_to(server='http://ndexbio.org', username=username, password=password)
         return G
 
     def _update_intermediate_node(self, if_collapsing=False):

@@ -13,11 +13,8 @@ RES
 12b:b-dglc-HEX-1:5
 13b:b-dgal-HEX-1:5
 14s:n-acetyl
-15b:b-dglc-HEX-1:5
-16b:b-dgal-HEX-1:5
-17s:n-acetyl
-18s:n-acetyl
-19s:n-acetyl
+15s:n-acetyl
+16s:n-acetyl
 LIN
 1:1o(-1+-1)2d
 2:2o(-1+-1)3d
@@ -32,8 +29,5 @@ LIN
 11:11o(-1+-1)12d
 12:12o(-1+-1)13d
 13:12d(2+1)14n
-14:11o(-1+-1)15d
-15:15o(-1+-1)16d
-16:15d(2+1)17n
-17:2d(2+1)18n
-18:1d(2+1)19n
+14:2d(2+1)15n
+15:1d(2+1)16n

@@ -1,5 +1,10 @@
+import warnings
+
 import glypy
 import sys
+
+from SPARQLWrapper import SPARQLWrapper
+from bs4 import BeautifulSoup
 from glypy import Glycan
 from glypy.io import glycoct, iupac
 from pathlib import Path
@@ -118,17 +123,51 @@ def load_match_dict_from_json(addr):
     return json_utility.load_json(addr)
 
 
+def get_glycoct_from_glytoucan(ID):
+    # Returns glycan GlycoCT structure from glytoucan ID
+    # Perform the query
+    AccNum = '"' + ID + '"'
+    sparql = SPARQLWrapper("http://ts.glytoucan.org/sparql")
+    query = '''
+PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+PREFIX glytoucan:  <http://www.glytoucan.org/glyco/owl/glytoucan#>
+
+SELECT DISTINCT ?Sequence
+FROM <http://rdf.glytoucan.org/core>
+FROM <http://rdf.glytoucan.org/sequence/glycoct>
+WHERE {
+    VALUES ?PrimaryId {%s}
+    ?Saccharide glytoucan:has_primary_id ?PrimaryId .
+    ?Saccharide glycan:has_glycosequence ?GlycoSequence .
+    ?GlycoSequence glycan:has_sequence ?Sequence .
+    ?GlycoSequence glycan:in_carbohydrate_format glycan:carbohydrate_format_glycoct.
+    }
+    ''' % AccNum
+    sparql.setQuery(query)
+    results = sparql.query().convert()
+
+    # Parse result
+    xml_data = results.toxml()
+    xml_parsed = BeautifulSoup(xml_data, 'lxml-xml')
+    tags = xml_parsed.find_all('literal')
+    try:
+        structure = tags[0].contents[0]
+    except:
+        print("No structure found for " + ID)
+        structure = ''
+    return structure
+
+
 def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=glycoct):
     """
         each line in topology_list is defined as m/z, glycan_id
 
         1. get the glycanID from Glycan_topolog_list
-        2. find glycan_id in glytoucan database: /root_address + r'data_dic_finnn.json'
+        2. find glycan_id in glytoucan database using API
         3. find glycan_id in self-generated local file: /__init__.json_address+glycan_id+".glycoct_condensed"
         4. output a dict glycan_id str -> glycan_str str stored in: root_address + 'NBT_for_substructure_extraction.json'
         :return: glycan_dict
         """
-    x = load_glytoucan_database()
     glycan_str_dict = {}
     glycan_dict = {}
     f = open(topology_list_addr)
@@ -139,7 +178,7 @@ def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=gly
         _name, glycan_id = i.rstrip('\n').split("\t")
 
         if len(glycan_id) == 8:
-            _glycan_str = load_glycan_str_from_glytoucan(glycan_id, x)
+            _glycan_str = get_glycoct_from_glytoucan(glycan_id)
         else:
             _glycan_str = load_glycan_str_from_glycoct(glycan_id)
         if _glycan_str == "":
@@ -156,9 +195,9 @@ def load_glycan_obj_from_database(topology_list_addr, output_file="", loader=gly
     return glycan_dict
 
 
-def output_dict_to_glycoct(dict, addr):
+def output_glycan_dict_to_glycoct_dir(dict, dir_addr):
     for i, j in dict.items():
-        out_glycan_obj_as_glycoct(j, i, addr)
+        output_glycan_obj_as_glycoct(j, os.path.join(dir_addr, i+'.glycoct_condensed'))
 
 
 def load_glycan_obj_from_glycoct_file(dir_address):
@@ -182,27 +221,27 @@ def load_glycan_obj_from_glycoct_file(dir_address):
     return glycan_dict
 
 
-def glycan_str_to_glycan_obj(a_dict_of_glycan_str):
+def glycan_str_to_glycan_obj(any_glycan_glycoct_str):
     """
-    :param a_dict_of_glycan_str: load glycoct str transform to Glycan
+    :param any_glycan_glycoct_str: load glycoct str transform to Glycan, list/dict/
     :return:
     """
-    if type(a_dict_of_glycan_str) == list:
+    if type(any_glycan_glycoct_str) == list:
         # if a list
-        return [glycoct.loads(i) for i in a_dict_of_glycan_str]
-    elif type(a_dict_of_glycan_str) == dict:
+        return [glycoct.loads(i) for i in any_glycan_glycoct_str]
+    elif type(any_glycan_glycoct_str) == dict:
         a_dict = {}
-        for i in a_dict_of_glycan_str.keys():
-            if type(a_dict_of_glycan_str[i]) == dict:
+        for i in any_glycan_glycoct_str.keys():
+            if type(any_glycan_glycoct_str[i]) == dict:
                 a_dict[i] = {}
-                for j in a_dict_of_glycan_str[i].keys():
-                    a_dict[i][j] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i][j]]
-            elif type(a_dict_of_glycan_str[i]) == list:
-                a_dict[i] = [glycoct.loads(k) for k in a_dict_of_glycan_str[i]]
-            elif type(a_dict_of_glycan_str[i]) == str:
-                a_dict[i] = glycoct.loads(a_dict_of_glycan_str[i])
-            elif type(a_dict_of_glycan_str[i]) == np.unicode:
-                a_dict[i] = glycoct.loads(str(a_dict_of_glycan_str[i]))
+                for j in any_glycan_glycoct_str[i].keys():
+                    a_dict[i][j] = [glycoct.loads(k) for k in any_glycan_glycoct_str[i][j]]
+            elif type(any_glycan_glycoct_str[i]) == list:
+                a_dict[i] = [glycoct.loads(k) for k in any_glycan_glycoct_str[i]]
+            elif type(any_glycan_glycoct_str[i]) == str:
+                a_dict[i] = glycoct.loads(any_glycan_glycoct_str[i])
+            elif type(any_glycan_glycoct_str[i]) == np.unicode:
+                a_dict[i] = glycoct.loads(str(any_glycan_glycoct_str[i]))
             else:
                 assert False, a_dict[i]+' is not a parsable type'
         return a_dict
@@ -305,24 +344,24 @@ def glycan_obj_to_glycan_str(a_dict_to_glycan_str):
                 a_dict[i] = str(a_dict_to_glycan_str[i])
         return a_dict
 
-
-def load_glycan_str_from_glytoucan(glycan_id, glytoucan):
-    """
-    Given a glytoucan id, check if they have glycoct format structure, if so, return the str, if not return ''
-    :param glycan_id: glytoucan id
-    :param glytoucan: dict, glytoucan database
-    :return:
-    """
-    try:
-        _gly_stru = glytoucan[glycan_id]['structure_']
-    except KeyError:
-        print("no name: ", glycan_id, "Please manually draw the glycoct format")
-        _gly_stru = ''
-    return _gly_stru
+#
+# def load_glycan_str_from_glytoucan(glycan_id, glytoucan):
+#     """
+#     Given a glytoucan id, check if they have glycoct format structure, if so, return the str, if not return ''
+#     :param glycan_id: glytoucan id
+#     :param glytoucan: dict, glytoucan database
+#     :return:
+#     """
+#     try:
+#         _gly_stru = glytoucan[glycan_id]['structure_']
+#     except KeyError:
+#         print("no name: ", glycan_id, "Please manually draw the glycoct format")
+#         _gly_stru = ''
+#     return _gly_stru
 
 
 def load_glycan_obj_from_glytoucan(glycan_id, glytoucan):
-    _gly_stu = load_glycan_str_from_glytoucan(glycan_id, glytoucan)
+    _gly_stu = get_glycoct_from_glytoucan(glycan_id)
     if _gly_stu == '':
         print('missing structure', glycan_id)
         return None
@@ -354,15 +393,16 @@ def check_glycan_substructure_dict(a_glycan_substructure_dict):
 
 
 def check_substructure_dict(a_substructure_dict):
-    assert str(1) in a_substructure_dict.keys(), 'a substructure_dict without monossar'
+    if not str(1) in a_substructure_dict.keys():
+        warnings.warn('a substructure_dict without monossar', DeprecationWarning, stacklevel=2)
     for j in a_substructure_dict.keys():
         assert type(j) == str, ('glycan degree are stored in degree, it stores', j, type(j))
         assert isinstance(a_substructure_dict[j][0], glypy.Glycan)
 
 
-def load_glytoucan_database(addr):
-    print('loading glytoucan_database from ', addr)
-    return json_utility.load_json(addr)
+# def load_glytoucan_database(addr):
+#     print('loading glytoucan_database from ', addr)
+#     return json_utility.load_json(addr)
 
 
 def load_glycan_obj_from_glycoct(glycan_id, address):
@@ -371,6 +411,8 @@ def load_glycan_obj_from_glycoct(glycan_id, address):
         return None
     else:
         return glycoct.loads(_gly_stu)
+
+
 
 
 def load_glycan_str_from_glycoct(glycan_id, address):
@@ -412,15 +454,15 @@ def substructure_vec_to_substructure_dict(substructure_vec):
     substructure_dict = {}
     for i in substructure_vec:
         # print(i,))
-        if len(i) not in substructure_dict.keys():
-            substructure_dict[len(i)] = [i]
+        if str(len(i)) not in substructure_dict.keys():
+            substructure_dict[str(len(i))] = [i]
         else:
-            substructure_dict[len(i)].append(i)
+            substructure_dict[str(len(i))].append(i)
     # print(len(substructure_vec))
     return substructure_dict
 
 
-def out_glycan_obj_as_glycoct(a_glycan, glycan_addr, force=True):
+def output_glycan_obj_as_glycoct(a_glycan, glycan_addr, force=True):
     if os.path.isfile(glycan_addr):
         if force:
             pass

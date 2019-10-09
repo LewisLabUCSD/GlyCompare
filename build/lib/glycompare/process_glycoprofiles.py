@@ -780,7 +780,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
             glycan_id = profile_naming_to_id[pro][i]
             mz_list.append(i)
             glycan_id_list.append(glycan_id)
-            print()
+            # print()
             _bundance = norm_mz_abd_dict[i][pro_idex]
             glycan_abd_dict[glycan_id][pro_idex] = _bundance
             _existance_list = []

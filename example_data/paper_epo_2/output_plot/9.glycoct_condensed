@@ -7,10 +7,9 @@ RES
 6s:n-acetyl
 7b:a-dman-HEX-1:5
 8b:b-dglc-HEX-1:5
-9b:b-dgal-HEX-1:5
+9s:n-acetyl
 10s:n-acetyl
 11s:n-acetyl
-12s:n-acetyl
 LIN
 1:1o(-1+-1)2d
 2:2o(-1+-1)3d
@@ -19,7 +18,6 @@ LIN
 5:5d(2+1)6n
 6:3o(-1+-1)7d
 7:7o(-1+-1)8d
-8:8o(-1+-1)9d
-9:8d(2+1)10n
-10:2d(2+1)11n
-11:1d(2+1)12n
+8:8d(2+1)9n
+9:2d(2+1)10n
+10:1d(2+1)11n

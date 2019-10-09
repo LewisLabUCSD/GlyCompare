@@ -29,7 +29,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     output_data_dir = os.path.join(working_addr, "output_data/")
     plot_output_dir = os.path.join(working_addr, "output_plot/")
     source_dir = os.path.join(working_addr, "source_data/")
-    glycoct_dir = os.path.join(working_addr, 'source_data/glycoct/')
+    glycoct_dir = os.path.join(working_addr, 'glycoct/')
 
     name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_structure_id.json')
     # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
@@ -190,9 +190,9 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             glycan_dict = {}
             if 'glytoucan_db_addr' not in keywords_dict.keys():
                 assert False, 'need glytoucan_db_addr'
-            glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
+            # glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
-                _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
+                _re = glycan_io.get_glycoct_from_glytoucan(i)
                 if _re:
                     glycan_dict[i] = _re
 
@@ -230,11 +230,11 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             _glycoct_glycan_dict = glycan_io.load_glycan_obj_from_glycoct_file(glycoct_dir)
             print('end loading glycoct from ', glycoct_dir)
             # print(glycan_dict)
-            glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
+            # glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
                 i = str(i)
                 if i not in _glycoct_glycan_dict.keys():
-                    _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
+                    _re = glycan_io.get_glycoct_from_glytoucan(i)
                     if _re:
                         glycan_dict[i] = _re
                     else:
@@ -274,7 +274,7 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
             if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
                 glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
                 glycan_substructure_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
-                                                                                   gly_len=23,
+                                                                                   gly_len=25,
                                                                                    output_file=glycan_substructure_glycoct_dict_addr,
                                                                                    num_processors=num_processors)
                 print('finished merging all substructures into substructure_dic')
