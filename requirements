@@ -7,3 +7,6 @@ networkx==2.1
 ndex
 rdflib
 xlrd==1.2
+beautifulsoup4
+SPARQLWrapper
+
