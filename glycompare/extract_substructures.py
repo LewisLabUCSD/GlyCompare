@@ -6,7 +6,7 @@ import multiprocessing
 from . import glycan_io
 from . import __init__
 from . import json_utility
-
+import re
 from glypy.io import wurcs
 from glypy.io import glycoct
 

@@ -2,79 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/1.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/1.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/10.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/10.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/11.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/11.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/12.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/12.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/13.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/13.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/14.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/14.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/15.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/15.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/16.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/16.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/17.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/17.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/18.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/18.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/19.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/19.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/2.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/2.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/20.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/20.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/21.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/21.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/22.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/22.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/23.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/23.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/24.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/24.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/3.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/3.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/4.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/4.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/5.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/5.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/6.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/6.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/7.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/7.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/8.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/8.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/9.representative.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/9.representative.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epo_ECDF.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epo_ECDF.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epo_adjusted_abundance_zscore.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epo_adjusted_abundance_zscore.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epo_raw_abundance_sub.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epo_raw_abundance_sub.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled1.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled1.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled2.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled2.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled3.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled3.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled4.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled4.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled5.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled5.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled7.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/paper_epocluster_rep_abd_std_scaled7.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/raw_glycan_cluster_no_anno.eps" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/raw_glycan_cluster_no_anno.eps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/linear_str.xlsx" afterPath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/linear_str.xlsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo_2/source_data/abundance_table.xlsx" afterPath="$PROJECT_DIR$/example_data/paper_epo_2/source_data/abundance_table.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_data/paper_epo_glycan_substructure_occurance_dict.json" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_data/paper_epo_glycan_substructure_occurance_dict.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster1.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster1.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster10.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster10.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster11.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster11.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster12.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster12.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster13.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster13.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster14.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster14.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster15.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster15.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster16.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster16.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster17.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster17.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster18.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster18.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster19.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster19.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster2.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster2.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster20.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster20.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster21.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster21.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster22.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster22.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster23.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster23.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster24.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster24.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster3.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster3.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster4.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster4.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster5.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster5.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster6.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster6.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster7.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster7.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster8.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster8.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster9.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/glycan_cluster9.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/motif_cluster.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/motif_cluster.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo/output_plot/pseudo_profile_clustering.svg" afterPath="$PROJECT_DIR$/example_data/paper_epo/output_plot/pseudo_profile_clustering.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_hmo/output_plot/motif_cluster.svg" afterPath="$PROJECT_DIR$/example_data/paper_hmo/output_plot/motif_cluster.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_hmo/output_plot/pseudo_profile_clustering.svg" afterPath="$PROJECT_DIR$/example_data/paper_hmo/output_plot/pseudo_profile_clustering.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig2_Fig3_epo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig2_Fig3_epo_analysis-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig4_Fig5_hmo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/Fig4_Fig5_hmo_analysis-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/Fig2_Fig3_epo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/Fig2_Fig3_epo_analysis.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/Fig4_Fig5_hmo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/Fig4_Fig5_hmo_analysis.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/test_iscience.ipynb" afterPath="$PROJECT_DIR$/example_notebook/test_iscience.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo_2/glycoct/1375.1.glycoct_condensed" afterPath="$PROJECT_DIR$/example_data/paper_epo_2/glycoct/1375.1.glycoct_condensed" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/paper_epo_glycan_glycoct_dict.json" afterPath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/paper_epo_glycan_glycoct_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/paper_epo_glycan_substructure_glycoct_dict.json" afterPath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/paper_epo_glycan_substructure_glycoct_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/paper_epo_glycan_substructure_occurance_dict.json" afterPath="$PROJECT_DIR$/example_data/paper_epo_2/output_data/paper_epo_glycan_substructure_occurance_dict.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/markov2glycompare-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/markov2glycompare-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/new_epo_analysis-checkpoint.ipynb" afterPath="$PROJECT_DIR$/example_notebook/.ipynb_checkpoints/new_epo_analysis-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/markov2glycompare.ipynb" afterPath="$PROJECT_DIR$/example_notebook/markov2glycompare.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example_notebook/new_epo_analysis.ipynb" afterPath="$PROJECT_DIR$/example_notebook/new_epo_analysis.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/clustering_analysis.py" afterPath="$PROJECT_DIR$/glycompare/clustering_analysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/extract_substructures.py" afterPath="$PROJECT_DIR$/glycompare/extract_substructures.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/glycan_io.py" afterPath="$PROJECT_DIR$/glycompare/glycan_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/json_utility.py" afterPath="$PROJECT_DIR$/glycompare/json_utility.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/pipeline_functions.py" afterPath="$PROJECT_DIR$/glycompare/pipeline_functions.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" afterPath="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glycompare/select_motifs.py" afterPath="$PROJECT_DIR$/glycompare/select_motifs.py" />
@@ -93,26 +33,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="glycan_io.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
+      <file leaf-file-name="merge_substructure_vec.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/merge_substructure_vec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="367" column="50" lean-forward="true" selection-start-line="367" selection-start-column="50" selection-end-line="367" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="json_utility.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/json_utility.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="252" column="11" lean-forward="false" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -120,8 +46,8 @@
       <file leaf-file-name="process_glycoprofiles.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/process_glycoprofiles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2940">
-              <caret line="201" column="40" lean-forward="false" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
+            <state relative-caret-position="405">
+              <caret line="783" column="21" lean-forward="false" selection-start-line="783" selection-start-column="21" selection-end-line="783" selection-end-column="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -129,13 +55,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plot_glycan_utilities.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
+      <file leaf-file-name="parse_markov.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/parse_markov.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="110" column="21" lean-forward="false" selection-start-line="110" selection-start-column="21" selection-end-line="110" selection-end-column="21" />
+            <state relative-caret-position="375">
+              <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#1#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,20 +70,18 @@
       <file leaf-file-name="select_motifs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1121">
+              <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clustering_analysis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis.py">
+      <file leaf-file-name="networkn.py" pinned="false" current-in-tab="true">
+        <entry file="file:///anaconda3/lib/python3.7/site-packages/ndex/networkn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-787">
-              <caret line="20" column="74" lean-forward="false" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
+            <state relative-caret-position="15">
+              <caret line="631" column="29" lean-forward="true" selection-start-line="631" selection-start-column="29" selection-end-line="631" selection-end-column="29" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -165,11 +89,43 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file:///anaconda3/lib/python3.7/site-packages/networkx/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-383">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clustering_analysis.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nglycan_alignment.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/nglycan_alignment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="704">
+              <caret line="281" column="25" lean-forward="false" selection-start-line="281" selection-start-column="25" selection-end-line="281" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="pipeline_functions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/glycompare/pipeline_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3497">
-              <caret line="297" column="106" lean-forward="false" selection-start-line="297" selection-start-column="106" selection-end-line="297" selection-end-column="106" />
+            <state relative-caret-position="493">
+              <caret line="420" column="64" lean-forward="false" selection-start-line="420" selection-start-column="64" selection-end-line="420" selection-end-column="64" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -177,34 +133,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="extract_substructures.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures.py">
+      <file leaf-file-name="test_glycan_io.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/glycompare/test_glycan_io.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            <state relative-caret-position="279">
+              <caret line="43" column="51" lean-forward="false" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="merge_substructure_vec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/merge_substructure_vec.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3960">
-              <caret line="269" column="31" lean-forward="false" selection-start-line="269" selection-start-column="31" selection-end-line="269" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/glycompare/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="13" column="47" lean-forward="false" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -220,36 +154,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mz_list</find>
-      <find>name_to_id_addr</find>
-      <find>abd_table_to_dict</find>
-      <find>drop_p</find>
-      <find>external_profile_naming_addr</find>
-      <find>ko gen</find>
-      <find>yeo</find>
-      <find>out_glycan_obj_as_glycoct</find>
-      <find>motif_vec</find>
-      <find>motif_</find>
-      <find>motif_dict_addr</find>
-      <find>matched_glycan_glycoct_dict_addr</find>
-      <find>matche</find>
-      <find>matched_dict_addr</find>
-      <find>glycan_substructure_occurance_dict</find>
-      <find>substructure_with_c</find>
-      <find>substructure_matching_wrapper</find>
-      <find>to_ve</find>
-      <find>substructure</find>
-      <find>motif</find>
-      <find>match</find>
-      <find>load_sub</find>
-      <find>to_subs</find>
-      <find>motif_glycoct_dict_addr</find>
-      <find>clustering_analysis_pip</find>
-      <find>extract_and_merge_substrutures_pip</find>
       <find>substructure_abd_tablesubstructure_abd_table</find>
       <find>draw_profile_cluster</find>
       <find>subt</find>
       <find>glycan_dict</find>
+      <find>drop_pa</find>
+      <find>fra</find>
+      <find>output_</find>
+      <find>load_glycan_obj_from_glytoucan</find>
+      <find>RG</find>
+      <find>load_glycoct_str_from_addr</find>
+      <find>glycoct_condensed</find>
+      <find>output</find>
+      <find>output_glycan</find>
+      <find>output_glycan_obj_as_glycoct</find>
+      <find>abunda</find>
+      <find>get_existance</find>
+      <find>core_index</find>
+      <find>load_glycan_str_from_glycoct</find>
+      <find>glycan_str_t</find>
+      <find>get_substructure_pip</find>
+      <find>dict_to</find>
+      <find>get_glycoprofile_list</find>
+      <find>draw</find>
+      <find>profile_name</find>
+      <find>drop</find>
+      <find>out</find>
+      <find>merged_weights_dict</find>
+      <find>glycan_substructure_dict</find>
+      <find>substructure_d</find>
+      <find>nx</find>
     </findStrings>
     <replaceStrings>
       <replace>gc_init</replace>
@@ -293,8 +227,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/unimplemented_hierach_part.py" />
-        <option value="$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" />
         <option value="$PROJECT_DIR$/src/customize_motif_vector.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py" />
         <option value="$PROJECT_DIR$/src/hierarchical_enrichment.py" />
@@ -337,13 +269,15 @@
         <option value="$PROJECT_DIR$/glycompare/nglycan_alignment.py" />
         <option value="$PROJECT_DIR$/glycompare/merge_substructure_vec.py" />
         <option value="$PROJECT_DIR$/glycompare/__init__.py" />
-        <option value="$PROJECT_DIR$/glycompare/select_motifs.py" />
-        <option value="$PROJECT_DIR$/glycompare/clustering_analysis.py" />
-        <option value="$PROJECT_DIR$/glycompare/extract_substructures.py" />
-        <option value="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" />
-        <option value="$PROJECT_DIR$/glycompare/pipeline_functions.py" />
         <option value="$PROJECT_DIR$/glycompare/json_utility.py" />
+        <option value="$PROJECT_DIR$/glycompare/parse_markov.py" />
+        <option value="$PROJECT_DIR$/glycompare/extract_substructures.py" />
         <option value="$PROJECT_DIR$/glycompare/glycan_io.py" />
+        <option value="$PROJECT_DIR$/glycompare/pipeline_functions.py" />
+        <option value="$PROJECT_DIR$/glycompare/process_glycoprofiles.py" />
+        <option value="$PROJECT_DIR$/glycompare/clustering_analysis.py" />
+        <option value="$PROJECT_DIR$/glycompare/select_motifs.py" />
+        <option value="/anaconda3/lib/python3.7/site-packages/ndex/networkn.py" />
       </list>
     </option>
   </component>
@@ -353,9 +287,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="367" />
-    <option name="y" value="-984" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="228" />
+    <option name="y" value="-1004" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
@@ -518,6 +452,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6a71896d-fd9a-4b22-905b-7d2ba859f898" name="Default" comment="" />
@@ -561,20 +498,20 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1080" width="1920" height="1080" extended-state="0" />
+    <frame x="228" y="-1004" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19009584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20100144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30744126" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3610013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3111588" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -614,14 +551,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/glycompare/select_motifs.py</url>
+          <line>1067</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/__init__.py" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/scipy/stats/contingency.py" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/collections/__init__.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/scipy/stats/stats.py" />
     <entry file="file://$PROJECT_DIR$/src/NBT_motif_match_motifvec.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glypy/plot/buchheim.py" />
@@ -659,35 +600,7 @@
     <entry file="file://$PROJECT_DIR$/glycompare/glycan_stats.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/glycompare/__init__.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/seaborn/matrix.py" />
-    <entry file="file://$PROJECT_DIR$/glycompare/hierarchical_enrichment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.5/site-packages/scipy/stats/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/glycompare/aa">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="97" column="53" lean-forward="false" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/test_glycan_io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="43" column="51" lean-forward="false" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/nglycan_alignment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///anaconda3/lib/python3.7/multiprocessing/pool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -700,45 +613,7 @@
         <state relative-caret-position="30">
           <caret line="13" column="47" lean-forward="false" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/merge_substructure_vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3960">
-          <caret line="269" column="31" lean-forward="false" selection-start-line="269" selection-start-column="31" selection-end-line="269" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="110" column="21" lean-forward="false" selection-start-line="110" selection-start-column="21" selection-end-line="110" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/process_glycoprofiles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2940">
-          <caret line="201" column="40" lean-forward="false" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -747,14 +622,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="547" column="31" lean-forward="false" selection-start-line="547" selection-start-column="25" selection-end-line="547" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/json_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#11#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/hierarchical_enrichment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/aa">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="98" column="20" lean-forward="false" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1342">
+          <caret line="144" column="28" lean-forward="false" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/plot_glycan_utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="145" column="34" lean-forward="false" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="416" column="26" lean-forward="false" selection-start-line="416" selection-start-column="26" selection-end-line="416" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/process_glycoprofiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="783" column="21" lean-forward="false" selection-start-line="783" selection-start-column="21" selection-end-line="783" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/clustering_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-787">
-          <caret line="20" column="74" lean-forward="false" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
+        <state relative-caret-position="403">
+          <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -763,38 +702,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/glycompare/pipeline_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3497">
-          <caret line="297" column="106" lean-forward="false" selection-start-line="297" selection-start-column="106" selection-end-line="297" selection-end-column="106" />
+        <state relative-caret-position="493">
+          <caret line="420" column="64" lean-forward="false" selection-start-line="420" selection-start-column="64" selection-end-line="420" selection-end-column="64" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/extract_substructures.py">
+    <entry file="file://$PROJECT_DIR$/glycompare/test_glycan_io.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        <state relative-caret-position="279">
+          <caret line="43" column="51" lean-forward="false" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/json_utility.py">
+    <entry file="file://$PROJECT_DIR$/glycompare/merge_substructure_vec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        <state relative-caret-position="270">
+          <caret line="252" column="11" lean-forward="false" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/nglycan_alignment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="281" column="25" lean-forward="false" selection-start-line="281" selection-start-column="25" selection-end-line="281" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/parse_markov.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#1#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/glycompare/glycan_io.py">
+    <entry file="file:///anaconda3/lib/python3.7/site-packages/networkx/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="367" column="50" lean-forward="true" selection-start-line="367" selection-start-column="50" selection-end-line="367" selection-end-column="50" />
+        <state relative-caret-position="-383">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/glycompare/select_motifs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1121">
+          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///anaconda3/lib/python3.7/site-packages/ndex/networkn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="631" column="29" lean-forward="true" selection-start-line="631" selection-start-column="29" selection-end-line="631" selection-end-column="29" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>

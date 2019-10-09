@@ -8,6 +8,7 @@ glycompare/hierarchical_enrichment.py
 glycompare/json_utility.py
 glycompare/merge_substructure_vec.py
 glycompare/nglycan_alignment.py
+glycompare/parse_markov.py
 glycompare/pipeline_functions.py
 glycompare/plot_glycan_utilities.py
 glycompare/process_glycoprofiles.py

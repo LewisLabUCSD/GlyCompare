@@ -209,6 +209,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
                 assert type(structure_loader) is list, 'structure_loader should be a list of glycan_id'
                 try:
                     for j in structure_loader:
+                        j = str(j)
                         _j = j
                         glycan_dict[j] = _glycan_dict[j]
                 except KeyError:
@@ -231,6 +232,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             # print(glycan_dict)
             glytoucan_db = glycan_io.load_glytoucan_database(keywords_dict['glytoucan_db_addr'])
             for i in structure_loader:
+                i = str(i)
                 if i not in _glycoct_glycan_dict.keys():
                     _re = glycan_io.load_glycan_obj_from_glytoucan(i, glytoucan_db)
                     if _re:
@@ -250,6 +252,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
     # except KeyError as :
     #     print("No such glycan", KeyError)
     except:
+
         print("Unexpected error:", sys.exc_info()[0])
         raise
 
@@ -376,8 +379,8 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                                         glycoprofile_list_addr,
                                                                         get_existance=True)
         table_generator = process_glycoprofiles.substructureAbdTableGenerator(glycoprofile_list)
-        glycoprofile_vector_table = table_generator.table_against_wt_relative_abd()
-        glycoprofile_vector_table.to_csv(substructure_abd_table_addr)
+        substructure_abd_table = table_generator.table_against_wt_relative_abd()
+        substructure_abd_table.to_csv(substructure_abd_table_addr)
     else:
         assert False, 'missing one of them' + \
                       '\n'.join([glycan_substructure_occurance_dict_addr,
@@ -387,9 +390,9 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                     os.path.isfile(external_profile_naming_addr),
                                                     ]])
     # else:
-    #     glycoprofile_vector_table = pd.read_csv(substructure_abd_table_addr)
+    #     substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
     #     print('loaded substructure_abd_table')
-    return glycoprofile_vector_table, glycoprofile_list
+    return substructure_abd_table, glycoprofile_list
 
 
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
@@ -491,7 +494,7 @@ def clustering_analysis_pip(keywords_dict, motif_abd_table, select_profile_name=
     #                                     str(len(selected_name_list)) + r"selected_abundance_matrix.txt"))
     # motif_abd_table.colmuns = selected_name_list
 
-    plt.savefig(keywords_dict['plot_output_dir'] + 'pseudo_profile_clustering.svg')
+    # plt.savefig(keywords_dict['plot_output_dir'] + 'pseudo_profile_clustering.svg')
     cluster_grid = clustering_analysis.draw_glycan_clustermap(motif_abd_table=motif_abd_table,
                                                               address=keywords_dict[
                                                                           'plot_output_dir'] + 'pseudo_profile_clustering.svg',

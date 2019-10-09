@@ -29,7 +29,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     output_data_dir = os.path.join(working_addr, "output_data/")
     plot_output_dir = os.path.join(working_addr, "output_plot/")
     source_dir = os.path.join(working_addr, "source_data/")
-    glycoct_dir = os.path.join(working_addr, 'source_data/glycoct/')
+    glycoct_dir = os.path.join(working_addr, 'glycoct/')
 
     name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_structure_id.json')
     # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
@@ -274,7 +274,7 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
             if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
                 glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
                 glycan_substructure_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
-                                                                                   gly_len=23,
+                                                                                   gly_len=25,
                                                                                    output_file=glycan_substructure_glycoct_dict_addr,
                                                                                    num_processors=num_processors)
                 print('finished merging all substructures into substructure_dic')
