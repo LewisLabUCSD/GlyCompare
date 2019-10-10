@@ -5,11 +5,21 @@ from setuptools import setup, find_packages, Extension
 # with open("README.md", "r") as fh:
 #     long_description = fh.read()
     
-required = ["Cython","glypy","pandas","numpy","seaborn","networkx>=2","ndex","xlrd>=1.2"]
+required = ["glypy==0.12.4",
+"Cython",
+"pandas",
+"numpy",
+"seaborn",
+"networkx==1.11",
+"ndex",
+"rdflib",
+"xlrd==1.2",
+"beautifulsoup4",
+"SPARQLWrapper"]
 
 setuptools.setup(
      name='glycompare',  
-     version='1.0.2',
+     version='1.0.3',
      install_requires=required,
      author="B.B., B.P.K",
      author_email="bobao@eng.ucsd.edu",
