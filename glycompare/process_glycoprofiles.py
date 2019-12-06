@@ -740,6 +740,7 @@ def check_external_profile_name(external_profile_name):
 
 def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, profile_name_order, external_profile_name,
                           glyprofile_list_addr,
+                          absolute=False,
                           get_existance=True):
     """combine glycan m/z with substructure existances, convert the counts 1+/0 into 1/0 in each glycan
     Glycan substructures are modified with
@@ -800,9 +801,12 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
             abundance_list.append(_bundance)
             match_mtrix.append(_temp_hit_matrix)
         # print(abundance_list)
+
         for idex, i in enumerate(abundance_list):
-            # print(abundance_list
-            weighted_vec += match_mtrix[idex] * i / sum(abundance_list)
+                # print(abundance_list
+                weighted_vec += match_mtrix[idex] * i
+
+
 
         glycoprofile_list.append(
             Glycoprofile(glycan_id_list, mz_list, abundance_list, weighted_vec, hit_matrix=match_mtrix,
@@ -848,7 +852,7 @@ class Glycoprofile():
         rt_ = {'profile_name': self.profile_name,
                'm/z_list': self.mz_id_list,
                'glycan_id_list': self.glycan_id_list,
-               # 'relative_abundance': list(self.relative_abundance),
+               'relative_abundance': list(self.relative_abundance),
                'match_vec_exist': self.match_vec_exist,
                'match_vec_weighted': list(self.match_vec_weighted),
                # 'hit_matrix': self.hit_matrix
@@ -950,6 +954,21 @@ class substructureAbdTableGenerator:
             #     continue
             b_p = i
             # _weight = 1 / b_p.weighted_substructure_vec[7]
+            wt_table[b_p.name] = np.array(b_p.match_vec_weighted)/sum(b_p.relative_abundance)
+            #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
+            """find out the abundance of the N-glycan core and use it to balance the weight """
+        # wt_table = pd.DataFrame(data=d)
+        return wt_table
+
+    def table_absolute_abd(self):
+        """just generate raw table"""
+        #     change_f = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        #     change_abs = np.array(a_p.weighted_substructure_vec)/np.array(b_p.weighted_substructure_vec)
+        a_p = self.raw_table[0]
+        d = {a_p.name: a_p.match_vec_weighted}
+        wt_table = pd.DataFrame(data=d)
+        for idex, i in enumerate(self.raw_table):
+            b_p = i
             wt_table[b_p.name] = np.array(b_p.match_vec_weighted)
             #     wt_table = wt_table[(wt_table[a_p.name]+wt_table[b_p.name])!=0]
             """find out the abundance of the N-glycan core and use it to balance the weight """

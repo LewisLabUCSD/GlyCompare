@@ -360,7 +360,7 @@ def glycan_obj_to_glycan_str(a_dict_to_glycan_str):
 #     return _gly_stru
 
 
-def load_glycan_obj_from_glytoucan(glycan_id, glytoucan):
+def load_glycan_obj_from_glytoucan(glycan_id):
     _gly_stu = get_glycoct_from_glytoucan(glycan_id)
     if _gly_stu == '':
         print('missing structure', glycan_id)
@@ -382,7 +382,7 @@ def check_glycan_dict(glycan_dict):
     """
     for i in glycan_dict.keys():
         assert isinstance(glycan_dict[i], Glycan), 'Failed glycan dict check, should be glypy.Glycan'
-
+    return True
 
 def check_glycan_substructure_dict(a_glycan_substructure_dict):
     for i in a_glycan_substructure_dict:
