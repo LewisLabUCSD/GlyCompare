@@ -3,7 +3,7 @@ import warnings
 import glypy
 import sys
 
-from SPARQLWrapper import SPARQLWrapper
+from SPARQLWrapper import SPARQLWrapper, JSON, XML
 from bs4 import BeautifulSoup
 from glypy import Glycan
 from glypy.io import glycoct, iupac, wurcs
