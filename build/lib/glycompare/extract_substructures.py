@@ -46,31 +46,6 @@ def extract_substructure_wurcs_idx(a_glycan,sub_gly, branch=5,linkage_specific=T
                 sub_gly[_frag_gly] = {}
 
 
-#######
-
-def clean_duplicate(a_substructure_dict, linkage_specific):
-    """
-
-    :param a_substructure_dict: remove the duplicates in a substructure_dict_degree_list
-    :return:
-    """
-    for i in a_substructure_dict.keys():
-        # print(i)
-        ldex = 0
-        _check_list = a_substructure_dict[i]
-        while ldex < len(_check_list):
-            jdex = ldex + 1
-            while jdex < len(_check_list):
-                if subtree_of(_check_list[ldex], _check_list[jdex], exact=linkage_specific) == 1:
-                    del _check_list[jdex]
-                else:
-                    jdex += 1
-            ldex += 1
-        a_substructure_dict[i] = _check_list
-    return a_substructure_dict
-
-
-
 def extract_substructure(a_glycan, branch=5):
     """
     :param a_glycan: Glycan obj

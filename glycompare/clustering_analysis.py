@@ -17,7 +17,7 @@ def draw_motif_cluster(g, df, color_threshold, address="", fig_size=(10, 35)):
     plt.ylabel('Samples', fontdict={'fontsize': 25})
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_row.linkage,
                                              # truncate_mode='lastp',show_contracted=True,p=50,
-                                             labels=df.index,
+                                             labels=list(df.index),
                                              color_threshold=color_threshold, orientation='left', leaf_font_size=10,
                                              distance_sort='descending', leaf_rotation=0)
 

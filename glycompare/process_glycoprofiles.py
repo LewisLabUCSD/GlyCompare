@@ -779,27 +779,28 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
 
         for i in sorted(list(profile_naming_to_id[pro].keys())):
             glycan_id = profile_naming_to_id[pro][i]
-            mz_list.append(i)
-            glycan_id_list.append(glycan_id)
-            # print()
-            _bundance = norm_mz_abd_dict[i][pro_idex]
-            glycan_abd_dict[glycan_id][pro_idex] = _bundance
-            _existance_list = []
-            for _count in match_dict[glycan_id]:
-                if _count >= 1:
-                    if get_existance:
-                        _existance_list.append(1)
+            if glycan_id in match_dict.keys():  
+                mz_list.append(i)
+                glycan_id_list.append(glycan_id)
+                # print()
+                _bundance = norm_mz_abd_dict[i][pro_idex]
+                glycan_abd_dict[glycan_id][pro_idex] = _bundance
+                _existance_list = []
+                for _count in match_dict[glycan_id]:
+                    if _count >= 1:
+                        if get_existance:
+                            _existance_list.append(1)
+                        else:
+                            _existance_list.append(_count)
+                    elif _count == 0:
+                        _existance_list.append(0)
                     else:
-                        _existance_list.append(_count)
-                elif _count == 0:
-                    _existance_list.append(0)
-                else:
-                    assert False, 'wired in combine_profile_mz_with_substructure_existance'
+                        assert False, 'wired in combine_profile_mz_with_substructure_existance'
 
-            _temp_hit_matrix = np.array(_existance_list)
+                _temp_hit_matrix = np.array(_existance_list)
 
-            abundance_list.append(_bundance)
-            match_mtrix.append(_temp_hit_matrix)
+                abundance_list.append(_bundance)
+                match_mtrix.append(_temp_hit_matrix)
         # print(abundance_list)
 
         for idex, i in enumerate(abundance_list):

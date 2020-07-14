@@ -10,7 +10,9 @@ from . import process_glycoprofiles
 from . import json_utility
 from . import clustering_analysis
 from .clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
-
+import numpy as np
+import bootstrapped.bootstrap as bs
+import bootstrapped.stats_functions as bs_stats
 from . import select_motifs
 
 
@@ -159,7 +161,7 @@ def check_init_dir(keywords_dict):
 #             assert isinstance(j, glypy.Glycan)
 
 
-def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
+def load_glycans_pip(keywords_dict, data_type, num_processors=8, structure_loader=None, forced=True):
     # project_name, structure_loader, data_type, glytoucan_db="", glycoct_address=""):
     """
     :param keywords_dict:
@@ -184,7 +186,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
         # project_name = kwargs['project_name']
         if data_type == "glycan_dict":
             glycan_dict = structure_loader
-            assert glycan_io.check_glycan_dict(glycan_dict), "Wrong structure_loader"
+            glycan_io.check_glycan_dict(glycan_dict)#, "Wrong structure_loader"
 
         elif data_type == "glytoucanid":
             glycan_dict = {}
@@ -248,6 +250,13 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             glycan_io.output_glycan_dict_to_glycoct_dict(glycan_dict, keywords_dict['glycan_glycoct_dict_addr'])
 
             print("Saved", keywords_dict['glycan_glycoct_dict_addr'], "for future use. You can use \"used\" in the datatype next time")
+        glycan_substructure_glycoct_dict_addr = keywords_dict['glycan_substructure_glycoct_dict_addr']
+        if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
+            glycan_substructure_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
+                                                                                  gly_len=25,
+                                                                                  output_file=glycan_substructure_glycoct_dict_addr,
+                                                                                  num_processors=num_processors)
+
         return glycan_dict
     # except KeyError as :
     #     print("No such glycan", KeyError)
@@ -269,19 +278,13 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
     glycan_substructure_occurance_dict_addr = keywords_dict['glycan_substructure_occurance_dict_addr']
 
     if os.path.isfile(glycan_glycoct_dict_addr):
-        print('start glycan_dict')
+        print('start glycan_substructure_dict')
         if forced or not os.path.isfile(glycan_substructure_occurance_dict_addr):
-            if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
-                glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
-                glycan_substructure_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
-                                                                                   gly_len=25,
-                                                                                   output_file=glycan_substructure_glycoct_dict_addr,
-                                                                                   num_processors=num_processors)
-                print('finished merging all substructures into substructure_dic')
-            else:
-                glycan_substructure_dic = glycan_io.load_glycan_substructure_dict_from_json(glycan_substructure_glycoct_dict_addr)
-                glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
-                print('loaded existed substructure_dic')
+            # if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
+                # print('finished merging all substructures into substructure_dic')
+            glycan_substructure_dic = glycan_io.load_glycan_substructure_dict_from_json(glycan_substructure_glycoct_dict_addr)
+            glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
+            print('loaded existed substructure_dic')
             if forced or not os.path.isfile(substructure_glycoct_dict_addr):
                 print('start merge substructure_dict')
                 merge_substructure_dict = merge_substructure_vec.merge_substructure_dict_pip(
@@ -310,7 +313,9 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
 
 def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_structure_id=False,
                      already_glytoucan_id=False,
-                     external_profile_naming=False, forced=False ):
+                     external_profile_naming=False,
+                     absolute=False,
+                     forced=False):
     """
     required file
     :param keywords_dict:
@@ -379,7 +384,11 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                                         glycoprofile_list_addr,
                                                                         get_existance=True)
         table_generator = process_glycoprofiles.substructureAbdTableGenerator(glycoprofile_list)
-        substructure_abd_table = table_generator.table_against_wt_relative_abd()
+        if absolute:
+            substructure_abd_table = table_generator.table_absolute_abd()
+        else:
+            substructure_abd_table = table_generator.table_against_wt_relative_abd()
+
         substructure_abd_table.to_csv(substructure_abd_table_addr)
     else:
         assert False, 'missing one of them' + \
@@ -512,7 +521,7 @@ def clustering_analysis_pip(keywords_dict, motif_abd_table, select_profile_name=
                                                                                      'plot_output_dir'] + 'profile_clustering.svg')
     glyco_motif_cluster_dict = clustering_analysis.draw_motif_cluster(g=cluster_grid,
                                                                       df=motif_abd_table,
-                                                                      color_threshold=0.185,
+                                                                      color_threshold=0.5, #0.185
                                                                       address=keywords_dict[
                                                                                   'plot_output_dir'] + 'motif_cluster.svg',
                                                                       fig_size=(6, 20),

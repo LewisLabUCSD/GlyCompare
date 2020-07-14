@@ -20,7 +20,7 @@ Please check our github for the latest update.
 
 
 Bokan & Ben,
-10/1/2019
+10/2/2019
 
 """)
 
