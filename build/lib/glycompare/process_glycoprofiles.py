@@ -816,7 +816,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
     glycoprofile_output_list = []
     # print([round(i, 3) for i in merged_profile_dict[3]['substructure_vec'][:20]])
     for idex, i in enumerate(glycoprofile_list):
-        glycoprofile_output_list.append(i.get_dict())
+        glycoprofile_output_list.append(str(i.get_dict()))
     # print(glycoprofile_output_list[0])
     json_utility.store_json(glyprofile_list_addr, glycoprofile_output_list)
     # json_utility.store_json(addr_root + r"glycoprofile_list.json", glycoprofile_output_list)
