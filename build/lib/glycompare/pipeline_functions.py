@@ -18,6 +18,8 @@ from . import select_motifs
 from glypy.io import glycoct, linear_code, wurcs
 import glypy
 import json
+import re
+import itertools
 
 
 def load_para_keywords(project_name, working_addr, **kwargs):
@@ -31,7 +33,6 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     :param kwargs: any other parameter might be used
     :return: a comprehensive para dict
     """
-    # for i in
     output_data_dir = os.path.join(working_addr, "output_data/")
     plot_output_dir = os.path.join(working_addr, "output_plot/")
     source_dir = os.path.join(working_addr, "source_data/")
@@ -50,8 +51,11 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     glycan_substructure_occurance_dict_addr = os.path.join(output_data_dir, project_name + "_glycan_substructure_occurance_dict.json")
     motif_abd_table_addr = os.path.join(output_data_dir, project_name + "_motif_abd_table.csv")
     substructure_abd_table_addr = os.path.join(output_data_dir, project_name + '_substructure_abd_table.csv')
+    var_annot = os.path.join(source_dir, project_name + "_variable_annotation.csv")
+    sam_annot = os.path.join(source_dir, project_name + "_samples_annotation.csv")
+    raw_abundance = os.path.join(source_dir, project_name + "_abundance_table.csv")
 
-    glycoprofile_list_addr = os.path.join(output_data_dir, project_name + "_glycoprofile_list.json")
+    glycoprofile_list_addr = os.path.join(source_dir, project_name + "_glycoprofile_list.json")
     # simple_profile = False
     # simple_naming = False
     # external_profile_naming = False
@@ -76,7 +80,10 @@ def load_para_keywords(project_name, working_addr, **kwargs):
                     # 'glycan_identifier_to_structure_id': glycan_identifier_to_structure_id,
                     # 'external_profile_naming': external_profile_naming,
                     'name_to_id_addr': name_to_id_addr,
-                    'glycoprofile_list_addr': glycoprofile_list_addr
+                    'glycoprofile_list_addr': glycoprofile_list_addr,
+                    'variable_annotation_addr': var_annot,
+                    'samples_annotation_addr': sam_annot,
+                    'abundance_table_addr': raw_abundance
                     }
     for key, para in kwargs.items():
         para_keyword[key] = para
@@ -456,6 +463,92 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
     #     substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
     #     print('loaded substructure_abd_table')
     return substructure_abd_table, glycoprofile_list
+
+def compositional_data(keywords_dict, protein_sites, reference_vector = None, forced = True):
+    abundance_table = keywords_dict['abundance_table_addr']
+    if not os.path.isfile(abundance_table):
+        assert False, "cannot find motif abundance table"
+    var_annot = keywords_dict['variable_annotation_addr']
+    if not os.path.isfile(var_annot):
+        assert False, "cannot find variable annotation file"
+#     sam_annot = keywords_dict['samples_annotation_addr']
+#     if not os.path.isfile(sam_annot):
+#         assert False, "cannot find samples annotation file"
+    project_name = keywords_dict['project_name']
+    output_data_dir = keywords_dict['output_data_dir']
+    
+    if forced or not os.path.isfile(output_data_dir + project_name + "_motif_abd_table_composition.csv") or not os.path.isfile(output_data_dir + project_name + "_directed_edge_list.txt"):
+        abundance_table = pd.read_csv(abundance_table, index_col = 0)
+        var_annot = pd.read_csv(var_annot)
+
+        abundance_table = abundance_table.transpose()
+        df = var_annot[["Name", "Composition"]]
+        df.index = df["Name"]
+        df = pd.concat([df, abundance_table], axis = 1, sort = True)
+        df.index = list(df.index)
+
+        pep_col = 'Name'
+        glycan_col = 'Composition'
+        abd_cols = list(abundance_table.columns)
+        if protein_sites == "all":
+            sites = set(var_annot[pep_col]) # can be specified to a singular site by setting to list of 1 site, ex. ['Y.YHKNnKSWMESEF.R']
+        else:
+            sites = protain_sites
+        df = df.loc[df[pep_col].isin(sites)]
+
+
+        # mod_motif_map becomes a matrix storing each compositional glycan's compositional motif vector
+        mod_motifs = {}
+        for mod in df[glycan_col]:
+            motifs = []
+            for a in mod.split(')')[:-1]:
+                motifs.append(a.split('('))
+            mod_motifs[mod] = motifs
+
+        all_motifs = []
+        for m in mod_motifs.values():
+            for i in range(1, len(m)+1):
+                for j in itertools.combinations([a+'('+b+')' for a,b in m], i):
+                    all_motifs.append(j)
+        all_motifs.sort()
+        all_motifs = list(all_motifs for all_motifs,_ in itertools.groupby(all_motifs))
+
+        mod_motif_map = pd.DataFrame(columns=mod_motifs.keys(), index=all_motifs)
+        for mod in mod_motifs.keys():
+            m = [a+'('+b+')' for a,b in mod_motifs[mod]]
+            motif_vector = []
+            for motif in all_motifs:
+                foo = True
+                for g in motif:
+                    if g in m:
+                        foo = True
+                    else:
+                        foo = False
+                        break
+                if foo == True:
+                    motif_vector.append(1)
+                else:
+                    motif_vector.append(0)
+            mod_motif_map[mod] = motif_vector
+
+        # calculate motif abundance -> matrix multiplication (abundance matrix by composition:motif occurrence matrix)
+        mod_abd = df.groupby(glycan_col)[abd_cols].sum()
+        motif_abd = pd.DataFrame(data=np.matmul(mod_motif_map.values, mod_abd.values), columns=mod_abd.columns, index=mod_motif_map.index)
+        motif_abd.to_csv(output_data_dir + project_name + "_motif_abd_table_composition.csv")
+
+        # create a directed edge list for the substructure network
+        # this means that in the edge (a,b) a->b
+        node_list = list(motif_abd.index)
+        directed_edge_list = [(a,b) for a,b in itertools.permutations(node_list, 2) if len(a) < len(b)]
+        directed_edge_list = [(a,b) for a,b in directed_edge_list if set(a) <= set(b)]
+        directed_edge_list = [(a,b) for a,b in directed_edge_list if len(a)+1 == len(b)]
+        json.dump(directed_edge_list, open(output_data_dir + project_name + "_directed_edge_list.txt", 'w'))
+    #     directed_edge_list.to_csv(output_data_dir + "/" + project_name + "_directed_edge_list.csv")
+    else:
+        motif_abd = pd.read_csv(output_data_dir + project_name + "_motif_abd_table_composition.csv", index_col = 0)
+        directed_edge_list = json.load(open(output_data_dir + project_name + "_directed_edge_list.txt", 'r'))
+    return motif_abd, directed_edge_list
+
 
 
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
