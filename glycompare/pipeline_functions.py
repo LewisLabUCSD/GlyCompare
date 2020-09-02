@@ -467,7 +467,7 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
 def compositional_data(keywords_dict, protein_sites, reference_vector = None, forced = True):
     abundance_table = keywords_dict['abundance_table_addr']
     if not os.path.isfile(abundance_table):
-        assert False, "cannot find motif abundance table"
+        assert False, "cannot find glycan abundance table"
     var_annot = keywords_dict['variable_annotation_addr']
     if not os.path.isfile(var_annot):
         assert False, "cannot find variable annotation file"
