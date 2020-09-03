@@ -550,6 +550,67 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
     return motif_abd, directed_edge_list
 
 
+def generate_glycoct_files(glycan_type):
+    types = ["glycoCT", "IUPAC-extended", "linear code", "WURCS", "glytoucan ID"]
+    assert glycan_type in types, "Glycan structure syntax unrecognized, the possible syntaxes are glycoCT, IUPAC-extended, linear code, WURCS, glytoucan ID"
+    var_annot = keywords_dict['variable_annotation_addr']
+    glycans = var_annot["Glycan Structure"]
+    names = var_annot["Name"]
+    target_path = keywords_dict['glycoct_dir']
+    
+    gct = []
+    if glycan_type == "glycoCT":
+        for i in range(len(glycans)):
+            try: 
+                _ = glycoct.loads(glycans[i]) 
+                gct.append(glycans[i])
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "IUPAC-extended":
+        for i in range(len(glycans)):
+            try:
+                g = iupac.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "linear code":
+        for i in range(len(glycans)):
+            try:
+                g = linear_code.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "WURCS":
+        for i in range(len(glycans)):
+            try:
+                g = wurcs.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "glytoucan ID":
+        for i in range(len(glycans)):     
+            g = get_glycoct_from_glytoucan(glycans[i])
+            if g:
+                gct.append(g)
+            else:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+                
+    if not gct:
+        raise Exception("No glycoCT can be generated from specified glycan structure type: " + glycan_type 
+                        + ". Please double check if you choose the correct type.")
+    for i in range(len(gct)):
+        f = open(target_path + str(names[i]) + ".glycoct_condensed", "w")
+        f.write(glycans[i])
+        f.close()
+    var_annot.to_csv(keywords_dict['variable_annotation_addr'])
+    return True
+            
+
 
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
                       drop_parellel=False, drop_diff_abund=True, select_col=[],
