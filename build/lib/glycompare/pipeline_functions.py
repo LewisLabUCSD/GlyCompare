@@ -37,6 +37,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     plot_output_dir = os.path.join(working_addr, "output_plot/")
     source_dir = os.path.join(working_addr, "source_data/")
     glycoct_dir = os.path.join(working_addr, 'glycoct/')
+    reference_dir = os.path.join(working_addr, "../../static/reference")
 
     name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_structure_id.json')
     # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
@@ -54,6 +55,12 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     var_annot = os.path.join(source_dir, project_name + "_variable_annotation.csv")
     sam_annot = os.path.join(source_dir, project_name + "_samples_annotation.csv")
     raw_abundance = os.path.join(source_dir, project_name + "_abundance_table.csv")
+    linkage_specific_glycoct_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_dict_glycoct.json")
+    linkage_specific_wurcs_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_dict_wurcs.json")
+    linkage_specific_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_reference_dict.json")
+    structure_only_glycoct_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_dict_glycoct.json")
+    structure_only_wurcs_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_dict_wurcs.json")
+    structure_only_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_reference_dict.json")
 
     glycoprofile_list_addr = os.path.join(source_dir, project_name + "_glycoprofile_list.json")
     # simple_profile = False
@@ -83,7 +90,13 @@ def load_para_keywords(project_name, working_addr, **kwargs):
                     'glycoprofile_list_addr': glycoprofile_list_addr,
                     'variable_annotation_addr': var_annot,
                     'samples_annotation_addr': sam_annot,
-                    'abundance_table_addr': raw_abundance
+                    'abundance_table_addr': raw_abundance,
+                    'linkage_specific_glycoct_reference': linkage_specific_glycoct_reference,
+                    'linkage_specific_wurcs_reference': linkage_specific_wurcs_reference,
+                    'linkage_specific_reference': linkage_specific_reference,
+                    'structure_only_glycoct_reference': structure_only_glycoct_reference,
+                    'structure_only_wurcs_reference': structure_only_wurcs_reference,
+                    'structure_only_reference': structure_only_reference
                     }
     for key, para in kwargs.items():
         para_keyword[key] = para
@@ -467,7 +480,7 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
 def compositional_data(keywords_dict, protein_sites, reference_vector = None, forced = True):
     abundance_table = keywords_dict['abundance_table_addr']
     if not os.path.isfile(abundance_table):
-        assert False, "cannot find motif abundance table"
+        assert False, "cannot find glycan abundance table"
     var_annot = keywords_dict['variable_annotation_addr']
     if not os.path.isfile(var_annot):
         assert False, "cannot find variable annotation file"
@@ -503,19 +516,44 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
             motifs = []
             for a in mod.split(')')[:-1]:
                 motifs.append(a.split('('))
+            added_motifs = []
+            for motif in motifs:
+                for i in range(1,int(motif[1])):
+                    added_motifs.append([motif[0],str(i)])
+            motifs += added_motifs
             mod_motifs[mod] = motifs
 
-        all_motifs = []
+        all_motif_comb = []
         for m in mod_motifs.values():
             for i in range(1, len(m)+1):
                 for j in itertools.combinations([a+'('+b+')' for a,b in m], i):
-                    all_motifs.append(j)
-        all_motifs.sort()
-        all_motifs = list(all_motifs for all_motifs,_ in itertools.groupby(all_motifs))
+                    all_motif_comb.append(j)
+        all_motif_comb = list(set(all_motif_comb))
+        all_motif_comb.sort()
+
+        all_motifs = []
+        for motif in all_motif_comb:
+            d = {}
+            for i in motif:
+                k,v = i.split(')')[0].split('(')
+                try:
+                    d[k].append(int(v))
+                except:
+                    d[k] = [int(v)]
+            comp_motif = list(zip(list(d.keys()), [max(v) for v in d.values()]))
+            if comp_motif not in all_motifs:
+                all_motifs.append(comp_motif)
+        all_motifs_clean = []
+        for i in [set(i) for i in all_motifs]:
+            if i not in all_motifs_clean:
+                all_motifs_clean.append(i)
+        all_motifs = sorted([sorted(i) for i in all_motifs_clean])
+        all_motifs = [tuple(i) for i in all_motifs]
+
 
         mod_motif_map = pd.DataFrame(columns=mod_motifs.keys(), index=all_motifs)
-        for mod in mod_motifs.keys():
-            m = [a+'('+b+')' for a,b in mod_motifs[mod]]
+        for mod in mod_motif_map.columns:
+            m = [(a, int(b)) for a,b in mod_motifs[mod]]
             motif_vector = []
             for motif in all_motifs:
                 foo = True
@@ -538,10 +576,19 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
 
         # create a directed edge list for the substructure network
         # this means that in the edge (a,b) a->b
-        node_list = list(motif_abd.index)
+
+        node_list = list(mod_motif_map.index)
         directed_edge_list = [(a,b) for a,b in itertools.permutations(node_list, 2) if len(a) < len(b)]
         directed_edge_list = [(a,b) for a,b in directed_edge_list if set(a) <= set(b)]
         directed_edge_list = [(a,b) for a,b in directed_edge_list if len(a)+1 == len(b)]
+        directed_edge_list = [(a,b) for a,b in directed_edge_list if tuple(set(b) - set(a))[0][1] == 1]
+
+        for a,b in [(a,b) for a,b in itertools.permutations(node_list, 2) if len(a) == len(b)]:
+            if [i for i,j in a] == [i for i,j in b]:
+                vec_bool = [i != j for (i, j) in zip([j for i,j in a], [j for i,j in b])]
+                if vec_bool.count(True) == 1:
+                    if [j for i,j in a][np.where(vec_bool)[0][0]] + 1 == [j for i,j in b][np.where(vec_bool)[0][0]]:
+                        directed_edge_list.append((a,b))
         json.dump(directed_edge_list, open(output_data_dir + project_name + "_directed_edge_list.txt", 'w'))
     #     directed_edge_list.to_csv(output_data_dir + "/" + project_name + "_directed_edge_list.csv")
     else:
@@ -549,6 +596,67 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
         directed_edge_list = json.load(open(output_data_dir + project_name + "_directed_edge_list.txt", 'r'))
     return motif_abd, directed_edge_list
 
+
+def generate_glycoct_files(keywords_dict, glycan_type):
+    types = ["glycoCT", "IUPAC-extended", "linear code", "WURCS", "glytoucan ID"]
+    assert glycan_type in types, "Glycan structure syntax unrecognized, the possible syntaxes are glycoCT, IUPAC-extended, linear code, WURCS, glytoucan ID"
+    var_annot = pd.read_csv(keywords_dict['variable_annotation_addr'])
+    glycans = var_annot["Glycan Structure"]
+    names = var_annot["Name"]
+    target_path = keywords_dict['glycoct_dir']
+    
+    gct = []
+    if glycan_type == "glycoCT":
+        for i in range(len(glycans)):
+            try: 
+                _ = glycoct.loads(glycans[i]) 
+                gct.append(glycans[i])
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "IUPAC-extended":
+        for i in range(len(glycans)):
+            try:
+                g = iupac.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "linear code":
+        for i in range(len(glycans)):
+            try:
+                g = linear_code.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "WURCS":
+        for i in range(len(glycans)):
+            try:
+                g = wurcs.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "glytoucan ID":
+        for i in range(len(glycans)):     
+            g = get_glycoct_from_glytoucan(glycans[i])
+            if g:
+                gct.append(g)
+            else:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+                
+    if not gct:
+        raise Exception("No glycoCT can be generated from specified glycan structure type: " + glycan_type 
+                        + ". Please double check if you choose the correct type.")
+    for i in range(len(gct)):
+        f = open(target_path + str(names[i]) + ".glycoct_condensed", "w")
+        f.write(glycans[i])
+        f.close()
+    var_annot.to_csv(keywords_dict['variable_annotation_addr'])
+    return True
+            
 
 
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
