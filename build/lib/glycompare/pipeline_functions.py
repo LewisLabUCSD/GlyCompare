@@ -347,7 +347,10 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                                 print(str(m) + " failed to be loaded as wurcs")
                                 continue
                             if gg_w not in reference_vector_wurcs[key]:
-                                reference_dict[glycoct.dumps(m)] = "X" + str(len(reference_dict))
+                                if linkage_specific:
+                                    reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
+                                else:
+                                    reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
                                 reference_vector_wurcs[key].append(gg_w)
                                 reference_vector_gct[key].append(glycoct.dumps(m))
                                 count += 1
@@ -360,7 +363,10 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                             except:
                                 print(str(m) + " failed to be loaded as wurcs")
                                 continue
-                            reference_dict[glycoct.dumps(m)] = "X" + str(len(reference_dict))
+                            if linkage_specific:
+                                reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
+                            else:
+                                reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
                             reference_vector_wurcs[key].append(gg_w)
                             reference_vector_gct[key].append(glycoct.dumps(m))
                             count += 1
@@ -654,7 +660,7 @@ def generate_glycoct_files(keywords_dict, glycan_type):
         f = open(target_path + str(names[i]) + ".glycoct_condensed", "w")
         f.write(glycans[i])
         f.close()
-    var_annot.to_csv(keywords_dict['variable_annotation_addr'])
+    var_annot.to_csv(keywords_dict['variable_annotation_addr'], index = False)
     return True
             
 
