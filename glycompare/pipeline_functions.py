@@ -20,6 +20,7 @@ import glypy
 import json
 import re
 import itertools
+from datetime import datetime
 
 
 def load_para_keywords(project_name, working_addr, **kwargs):
@@ -57,10 +58,22 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     raw_abundance = os.path.join(source_dir, project_name + "_abundance_table.csv")
     linkage_specific_glycoct_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_dict_glycoct.json")
     linkage_specific_wurcs_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_dict_wurcs.json")
-    linkage_specific_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_reference_dict.json")
+    linkage_specific_reference = ""
+    path = os.path.join(reference_dir, "linkage_specific/")
+    for i in os.listdir(path):
+        if os.path.isfile(os.path.join(path, i)) and 'unicarb_substructures.linkSpecific.merged_reference_dict' in i:
+            linkage_specific_reference = os.path.join(path, i)
     structure_only_glycoct_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_dict_glycoct.json")
     structure_only_wurcs_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_dict_wurcs.json")
-    structure_only_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_reference_dict.json")
+    structure_only_reference = ""
+    path = os.path.join(reference_dir, "structure_only/")
+    for i in os.listdir(path):
+        if os.path.isfile(os.path.join(path, i)) and 'unicarb_substructures.linkAmbiguous.merged_reference_dict' in i:
+            structure_only_reference = os.path.join(path, i)
+    print(linkage_specific_reference)
+    print(structure_only_reference)
+    if not linkage_specific_reference or not structure_only_reference:
+        assert False, "Reference motif vector not found."
 
     glycoprofile_list_addr = os.path.join(source_dir, project_name + "_glycoprofile_list.json")
     # simple_profile = False
@@ -374,7 +387,13 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                     json.dump(reference_vector_gct, outfile)
                 with open(merged_list[1], 'w') as outfile:
                     json.dump(reference_vector_wurcs, outfile)
-                with open(reference_dict_addr, 'w') as outfile:
+                    
+                os.remove(reference_dict_addr)
+                num = str(len(reference_dict))
+                time = "_".join(str(datetime.now()).split(".")[0].split(" "))
+                dir_path = "/".join(reference_dict_addr.split("/")[:-1])
+                target = reference_dict_addr.split("/")[-1].split(".json")[0].replace(":", "-")
+                with open(dir_path + "/" + "_".join(target.split("_")[:4]) + "_" + num + "_" + time + ".json", 'w') as outfile:
                     json.dump(reference_dict, outfile)
                 print("Renewed reference dict, " + str(count) + " new motifs are added")
                         
