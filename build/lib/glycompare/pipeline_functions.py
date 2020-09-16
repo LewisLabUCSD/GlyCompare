@@ -502,7 +502,43 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
     #     print('loaded substructure_abd_table')
     return substructure_abd_table, glycoprofile_list
 
-def compositional_data(keywords_dict, protein_sites, reference_vector = None, forced = True):
+# normalizer can be "median" or "mean"
+def probabilistic_quotient_norm(data, normalizer = "median"):
+    result = pd.DataFrame(columns = data.columns)
+    if normalizer == "mean":
+        m = [data[i].mean() for i in data.columns]
+    elif normalizer == "median":
+        m = [data[i].median() for i in data.columns]
+    else:
+        assert False, "Normalizer can only be mean or median"
+    m = np.median(m)
+    for i in range(data.shape[0]):
+        temp = [list(data[j])[i] / m for j in data.columns]
+        nn = np.median(temp)
+        temp2 = [list(data[j])[i] / nn for j in data.columns]
+        result = result.append(pd.Series(temp2, index = result.columns), ignore_index = True)
+    result.index = list(data.index)
+    return result
+
+# style can be "pq" for probabilistic quotient norm or "std" for standard normalization
+def normalization(data, style, normalizer = None):
+    if style == "pq":
+        if normalizer:
+            return probabilistic_quotient_norm(data, normalizer = normalizer)
+        else:
+            # Default normalizer to median
+            return probabilistic_quotient_norm(data)
+    elif style == "std":
+        result = pd.DataFrame(columns = data.columns)
+        for i in range(data.shape[0]):
+            mean = np.mean([list(data[j])[i] for j in data.columns])
+            std = np.std([list(data[j])[i] for j in data.columns])
+            new_row = [(list(data[j])[i] - mean) / std for j in data.columns]
+            result = result.append(pd.Series(new_row, index = result.columns), ignore_index = True)
+        result.index = list(data.index)
+    return result
+
+def compositional_data(keywords_dict, protein_sites, reference_vector = None, forced = True, norm = "no"):
     abundance_table = keywords_dict['abundance_table_addr']
     if not os.path.isfile(abundance_table):
         assert False, "cannot find glycan abundance table"
@@ -517,6 +553,15 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
     
     if forced or not os.path.isfile(output_data_dir + project_name + "_motif_abd_table_composition.csv") or not os.path.isfile(output_data_dir + project_name + "_directed_edge_list.txt"):
         abundance_table = pd.read_csv(abundance_table, index_col = 0)
+        if norm == "z-score":
+            print("z-score normalizing abundance table")
+            abundance_table = normalization(abundance_table, style = "std")
+        elif norm == "pq":
+            print("probabilistic quotient normalizing abundance table")
+            abundance_table = normalization(abundance_table, style = "pq")
+        elif norm == "no":
+            abundance_table = glycan_abd_table
+            
         var_annot = pd.read_csv(var_annot)
 
         abundance_table = abundance_table.transpose()
@@ -534,7 +579,7 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
             sites = protain_sites
         df = df.loc[df[pep_col].isin(sites)]
 
-
+        
         # mod_motif_map becomes a matrix storing each compositional glycan's compositional motif vector
         mod_motifs = {}
         for mod in df[glycan_col]:
@@ -575,7 +620,7 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
         all_motifs = sorted([sorted(i) for i in all_motifs_clean])
         all_motifs = [tuple(i) for i in all_motifs]
 
-
+        print("Constructing motifs map")
         mod_motif_map = pd.DataFrame(columns=mod_motifs.keys(), index=all_motifs)
         for mod in mod_motif_map.columns:
             m = [(a, int(b)) for a,b in mod_motifs[mod]]
@@ -601,7 +646,7 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
 
         # create a directed edge list for the substructure network
         # this means that in the edge (a,b) a->b
-
+        print("Constructing directed edge list")
         node_list = list(mod_motif_map.index)
         directed_edge_list = [(a,b) for a,b in itertools.permutations(node_list, 2) if len(a) < len(b)]
         directed_edge_list = [(a,b) for a,b in directed_edge_list if set(a) <= set(b)]
