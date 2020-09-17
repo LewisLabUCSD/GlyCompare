@@ -23,7 +23,7 @@ import itertools
 from datetime import datetime
 
 
-def load_para_keywords(project_name, working_addr, **kwargs):
+def load_para_keywords(project_name, working_addr, reference_addr, **kwargs):
     # glycan_identifier_to_structure_id=False,
     # already_glytoucan_id=False,
     # external_profile_naming=False,
@@ -38,7 +38,7 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     plot_output_dir = os.path.join(working_addr, "output_plot/")
     source_dir = os.path.join(working_addr, "source_data/")
     glycoct_dir = os.path.join(working_addr, 'glycoct/')
-    reference_dir = os.path.join(working_addr, "../../static/reference")
+    reference_dir = reference_addr
 
     name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_structure_id.json')
     # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
@@ -461,6 +461,12 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
             if os.path.isfile(name_to_id_addr):
                 glycan_identifier_to_structure_id = glycan_io.load_glycoprofile_name_to_id(name_to_id_addr)
             else:
+#                 temp = {}
+#                 glycan_identifier_to_structure_id = {}
+#                 for i in profile_columns:
+#                     temp[i] = i
+#                 for i in profile_columns:
+#                     glycan_identifier_to_structure_id[i] = temp
                 assert False, 'missing one of them' + name_to_id_addr
 
         if external_profile_naming:
