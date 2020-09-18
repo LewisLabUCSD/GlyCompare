@@ -728,7 +728,7 @@ def generate_glycoct_files(keywords_dict, glycan_type):
                         + ". Please double check if you choose the correct type.")
     for i in range(len(gct)):
         f = open(target_path + str(names[i]) + ".glycoct_condensed", "w")
-        f.write(glycans[i])
+        f.write(gct[i])
         f.close()
     var_annot.to_csv(keywords_dict['variable_annotation_addr'], index = False)
     return True
