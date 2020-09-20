@@ -356,10 +356,11 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                         for m in merge_substructure_dict[key]:
                             try:
                                 gg_w = wurcs.dumps(m)
+                                gg_gct = glycoct.dumps(m)
                             except:
                                 print(str(m) + " failed to be loaded as wurcs")
                                 continue
-                            if gg_w not in reference_vector_wurcs[key]:
+                            if gg_w not in reference_vector_wurcs[key] or gg_gct not in reference_vector_gct[key]:
                                 if linkage_specific:
                                     reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
                                 else:
