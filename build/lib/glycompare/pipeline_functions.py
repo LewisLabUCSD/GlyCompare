@@ -585,7 +585,6 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
         else:
             sites = protain_sites
         df = df.loc[df[pep_col].isin(sites)]
-
         
         # mod_motif_map becomes a matrix storing each compositional glycan's compositional motif vector
         mod_motifs = {}
@@ -601,7 +600,11 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
             mod_motifs[mod] = motifs
 
         all_motif_comb = []
+        count = 0
+        print("Generating all motif combinations...")
         for m in mod_motifs.values():
+#             count += 1
+#             print("Generating glycan " + str(count) + " / " + str(len(mod_motifs)))
             for i in range(1, len(m)+1):
                 for j in itertools.combinations([a+'('+b+')' for a,b in m], i):
                     all_motif_comb.append(j)
@@ -609,8 +612,12 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
         all_motif_comb.sort()
 
         all_motifs = []
+        count = 0
+        print("Calculating motif occurance...")
         for motif in all_motif_comb:
+            count += 1
             d = {}
+            print("proceeding glycan " + str(count) + " / " + str(len(all_motif_comb)))
             for i in motif:
                 k,v = i.split(')')[0].split('(')
                 try:
