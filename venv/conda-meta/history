@@ -1,0 +1,158 @@
+==> 2020-07-02 13:31:16 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda create --name glycompare_env_2
+# conda version: 4.8.3
+==> 2020-07-02 13:34:54 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes Cython==0.29.12
+# conda version: 4.8.3
++conda-forge/noarch::pip-20.1.1-py_1
++conda-forge/noarch::wheel-0.34.2-py_1
++conda-forge/osx-64::ca-certificates-2020.6.20-hecda079_0
++conda-forge/osx-64::certifi-2020.6.20-py37hc8dfbb8_0
++conda-forge/osx-64::cython-0.29.12-py37h6de7cb9_0
++conda-forge/osx-64::libcxx-10.0.0-h1af66ff_2
++conda-forge/osx-64::libffi-3.2.1-h4a8c4bd_1007
++conda-forge/osx-64::ncurses-6.1-h0a44026_1002
++conda-forge/osx-64::openssl-1.1.1g-h0b31af3_0
++conda-forge/osx-64::python-3.7.6-cpython_h1fd5dd1_6
++conda-forge/osx-64::python_abi-3.7-1_cp37m
++conda-forge/osx-64::readline-8.0-hcfe32e1_0
++conda-forge/osx-64::setuptools-47.3.1-py37hc8dfbb8_0
++conda-forge/osx-64::sqlite-3.32.3-h93121df_0
++conda-forge/osx-64::tk-8.6.10-hbbe82c9_0
++conda-forge/osx-64::xz-5.2.5-h0b31af3_0
++conda-forge/osx-64::zlib-1.2.11-h0b31af3_1006
+# update specs: ['cython==0.29.12']
+==> 2020-07-02 13:37:11 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes jupyter==1.0.0
+# conda version: 4.8.3
++conda-forge/noarch::attrs-19.3.0-py_0
++conda-forge/noarch::backcall-0.2.0-pyh9f0ad1d_0
++conda-forge/noarch::bleach-3.1.5-pyh9f0ad1d_0
++conda-forge/noarch::decorator-4.4.2-py_0
++conda-forge/noarch::defusedxml-0.6.0-py_0
++conda-forge/noarch::importlib_metadata-1.7.0-0
++conda-forge/noarch::ipython_genutils-0.2.0-py_1
++conda-forge/noarch::ipywidgets-7.5.1-py_0
++conda-forge/noarch::jinja2-2.11.2-pyh9f0ad1d_0
++conda-forge/noarch::jupyter-1.0.0-py_2
++conda-forge/noarch::jupyter_client-6.1.5-py_0
++conda-forge/noarch::jupyter_console-6.1.0-py_1
++conda-forge/noarch::nbformat-5.0.6-py_0
++conda-forge/noarch::packaging-20.4-pyh9f0ad1d_0
++conda-forge/noarch::pandocfilters-1.4.2-py_1
++conda-forge/noarch::parso-0.7.0-pyh9f0ad1d_0
++conda-forge/noarch::prometheus_client-0.8.0-pyh9f0ad1d_0
++conda-forge/noarch::prompt-toolkit-3.0.5-py_1
++conda-forge/noarch::prompt_toolkit-3.0.5-1
++conda-forge/noarch::ptyprocess-0.6.0-py_1001
++conda-forge/noarch::pygments-2.6.1-py_0
++conda-forge/noarch::pyparsing-2.4.7-pyh9f0ad1d_0
++conda-forge/noarch::python-dateutil-2.8.1-py_0
++conda-forge/noarch::qtconsole-4.7.5-pyh9f0ad1d_0
++conda-forge/noarch::qtpy-1.9.0-py_0
++conda-forge/noarch::send2trash-1.5.0-py_0
++conda-forge/noarch::six-1.15.0-pyh9f0ad1d_0
++conda-forge/noarch::testpath-0.4.4-py_0
++conda-forge/noarch::wcwidth-0.2.5-pyh9f0ad1d_0
++conda-forge/noarch::webencodings-0.5.1-py_1
++conda-forge/noarch::zipp-3.1.0-py_0
++conda-forge/osx-64::appnope-0.1.0-py37hc8dfbb8_1001
++conda-forge/osx-64::dbus-1.13.6-h2f22bb5_0
++conda-forge/osx-64::entrypoints-0.3-py37hc8dfbb8_1001
++conda-forge/osx-64::expat-2.2.9-h4a8c4bd_2
++conda-forge/osx-64::gettext-0.19.8.1-h46ab8bc_1002
++conda-forge/osx-64::glib-2.65.0-h577aef8_0
++conda-forge/osx-64::icu-64.2-h6de7cb9_1
++conda-forge/osx-64::importlib-metadata-1.7.0-py37hc8dfbb8_0
++conda-forge/osx-64::ipykernel-5.3.0-py37h43977f1_0
++conda-forge/osx-64::ipython-7.16.1-py37h43977f1_0
++conda-forge/osx-64::jedi-0.17.1-py37hc8dfbb8_0
++conda-forge/osx-64::jpeg-9d-h0b31af3_0
++conda-forge/osx-64::jsonschema-3.2.0-py37hc8dfbb8_1
++conda-forge/osx-64::jupyter_core-4.6.3-py37hc8dfbb8_1
++conda-forge/osx-64::krb5-1.17.1-h14dd6a4_1
++conda-forge/osx-64::libclang-9.0.1-default_hf57f61e_0
++conda-forge/osx-64::libedit-3.1.20191231-hed1e85f_0
++conda-forge/osx-64::libiconv-1.15-h0b31af3_1006
++conda-forge/osx-64::libllvm9-9.0.1-h7475705_1
++conda-forge/osx-64::libpng-1.6.37-hbbe82c9_1
++conda-forge/osx-64::libpq-12.2-h489d428_1
++conda-forge/osx-64::libsodium-1.0.17-h01d97ff_0
++conda-forge/osx-64::markupsafe-1.1.1-py37h9bfed18_1
++conda-forge/osx-64::mistune-0.8.4-py37h9bfed18_1001
++conda-forge/osx-64::nbconvert-5.6.1-py37hc8dfbb8_1
++conda-forge/osx-64::notebook-6.0.3-py37hc8dfbb8_0
++conda-forge/osx-64::nspr-4.20-h0a44026_1000
++conda-forge/osx-64::nss-3.47-hc0980d9_0
++conda-forge/osx-64::pandoc-2.10-0
++conda-forge/osx-64::pcre-8.44-h4a8c4bd_0
++conda-forge/osx-64::pexpect-4.8.0-py37hc8dfbb8_1
++conda-forge/osx-64::pickleshare-0.7.5-py37hc8dfbb8_1001
++conda-forge/osx-64::pyqt-5.12.3-py37ha62fc16_3
++conda-forge/osx-64::pyrsistent-0.16.0-py37h9bfed18_0
++conda-forge/osx-64::pyzmq-19.0.1-py37haec44b1_0
++conda-forge/osx-64::qt-5.12.5-h514805e_3
++conda-forge/osx-64::terminado-0.8.3-py37hc8dfbb8_1
++conda-forge/osx-64::tornado-6.0.4-py37h9bfed18_1
++conda-forge/osx-64::traitlets-4.3.3-py37hc8dfbb8_1
++conda-forge/osx-64::widgetsnbextension-3.5.1-py37_0
++conda-forge/osx-64::zeromq-4.3.2-h6de7cb9_2
+# update specs: ['jupyter==1.0.0']
+==> 2020-07-02 13:38:23 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes matplotlib==3.1.0
+# conda version: 4.8.3
++conda-forge/noarch::cycler-0.10.0-py_2
++conda-forge/osx-64::freetype-2.10.2-h8da9a1a_0
++conda-forge/osx-64::kiwisolver-1.2.0-py37ha1cc60f_0
++conda-forge/osx-64::libblas-3.8.0-17_openblas
++conda-forge/osx-64::libcblas-3.8.0-17_openblas
++conda-forge/osx-64::libgfortran-4.0.0-2
++conda-forge/osx-64::liblapack-3.8.0-17_openblas
++conda-forge/osx-64::libopenblas-0.3.10-h3d69b6c_0
++conda-forge/osx-64::llvm-openmp-10.0.0-h28b9765_0
++conda-forge/osx-64::matplotlib-3.1.0-py37_1
++conda-forge/osx-64::matplotlib-base-3.1.0-py37h3a684a6_1
++conda-forge/osx-64::numpy-1.18.5-py37h7687784_0
+# update specs: ['matplotlib==3.1.0']
+==> 2020-07-02 13:39:52 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes networkx==2.1
+# conda version: 4.8.3
++conda-forge/noarch::networkx-2.1-py_1
+# update specs: ['networkx==2.1']
+==> 2020-07-02 13:40:52 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes numpy==1.16.4
+# conda version: 4.8.3
+-conda-forge/osx-64::numpy-1.18.5-py37h7687784_0
++conda-forge/osx-64::numpy-1.16.4-py37h6b0580a_0
+# update specs: ['numpy==1.16.4']
+==> 2020-07-02 13:42:00 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes pandas==0.24.2
+# conda version: 4.8.3
++conda-forge/noarch::pytz-2020.1-pyh9f0ad1d_0
++conda-forge/osx-64::pandas-0.24.2-py37h4f17bb1_1
+# update specs: ['pandas==0.24.2']
+==> 2020-07-02 13:42:44 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes seaborn==0.9.0
+# conda version: 4.8.3
++conda-forge/noarch::patsy-0.5.1-py_0
++conda-forge/osx-64::scipy-1.5.0-py37hce1b9e5_0
++conda-forge/osx-64::statsmodels-0.11.1-py37h9bfed18_2
++defaults/osx-64::seaborn-0.9.0-py37_0
+# update specs: ['seaborn==0.9.0']
+==> 2020-07-02 13:43:14 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install --yes xlrd==1.2.0
+# conda version: 4.8.3
++conda-forge/noarch::xlrd-1.2.0-py_0
+# update specs: ['xlrd==1.2.0']
+==> 2020-07-02 13:53:04 <==
+# cmd: /Users/zhangyujie/anaconda3/bin/conda install -c anaconda ipykernel
+# conda version: 4.8.3
+-conda-forge/osx-64::ca-certificates-2020.6.20-hecda079_0
+-conda-forge/osx-64::certifi-2020.6.20-py37hc8dfbb8_0
+-conda-forge/osx-64::ipykernel-5.3.0-py37h43977f1_0
+-conda-forge/osx-64::openssl-1.1.1g-h0b31af3_0
++anaconda/osx-64::ca-certificates-2020.6.24-0
++anaconda/osx-64::certifi-2020.6.20-py37_0
++anaconda/osx-64::ipykernel-5.3.0-py37h5ca1d4c_0
++anaconda/osx-64::openssl-1.1.1g-h1de35cc_0
+# update specs: ['ipykernel']

@@ -1,0 +1,14 @@
+prefix=/Users/zhangyujie/anaconda3/envs/glycompare_env_2
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt
+
+host_bins=${prefix}/bin
+qt_config=shared rpath release c++11 c++14 concurrent dbus no-pkg-config reduce_exports stl properties animation textcodec big_codecs codecs textdate datestring doubleconversion filesystemiterator filesystemwatcher gestures itemmodel proxymodel identityproxymodel library mimetype process statemachine regularexpression settings sharedmemory sortfilterproxymodel stringlistmodel systemsemaphore temporaryfile translation xmlstream xmlstreamreader xmlstreamwriter
+
+Name: Qt5 Core
+Description: Qt Core module
+Version: 5.12.5
+Libs: -L${libdir} -lQt5Core 
+Cflags: -DQT_CORE_LIB -I${includedir}/QtCore -I${includedir}
+

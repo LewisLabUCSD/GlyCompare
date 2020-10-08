@@ -1,0 +1,50 @@
+{
+  "build": "0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-64",
+  "constrains": [],
+  "depends": [],
+  "extracted_package_dir": "/Users/zhangyujie/anaconda3/pkgs/pandoc-2.10-0",
+  "features": "",
+  "files": [
+    "bin/pandoc",
+    "bin/pandoc-citeproc"
+  ],
+  "fn": "pandoc-2.10-0.tar.bz2",
+  "license": "GPL-2.0",
+  "license_family": "GPL",
+  "link": {
+    "source": "/Users/zhangyujie/anaconda3/pkgs/pandoc-2.10-0",
+    "type": 1
+  },
+  "md5": "302ba2055ada1c340bd0d729747577ac",
+  "name": "pandoc",
+  "package_tarball_full_path": "/Users/zhangyujie/anaconda3/pkgs/pandoc-2.10-0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/pandoc",
+        "path_type": "hardlink",
+        "sha256": "b0219d54450a694357d7209ad3f9eb1bd95c01ae774c142ad6118814466ad49d",
+        "sha256_in_prefix": "b0219d54450a694357d7209ad3f9eb1bd95c01ae774c142ad6118814466ad49d",
+        "size_in_bytes": 82536096
+      },
+      {
+        "_path": "bin/pandoc-citeproc",
+        "path_type": "hardlink",
+        "sha256": "870970c068fb16c044c2e6c123e723c89ffa49eaabe5a1dc0512225e8bcb1e3c",
+        "sha256_in_prefix": "870970c068fb16c044c2e6c123e723c89ffa49eaabe5a1dc0512225e8bcb1e3c",
+        "size_in_bytes": 46261552
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "f91017c0167af77fd9251d861bdc9fd675dba37cc3c8068dcf368d3f574f95fe",
+  "size": 20877276,
+  "subdir": "osx-64",
+  "timestamp": 1593696440794,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-64/pandoc-2.10-0.tar.bz2",
+  "version": "2.10"
+}

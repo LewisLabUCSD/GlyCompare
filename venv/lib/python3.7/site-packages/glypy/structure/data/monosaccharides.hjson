@@ -1,0 +1,103 @@
+{
+  NeuGc: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-glycolyl LIN 1:1d(5+1)2n
+  NeuAc2: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl 3s:n-acetyl LIN 1:1d(5+1)2n 2:1d(9+1)3n
+  Oct: RES 1b:x-dman-OCT-2:6
+  Non: RES 1b:a-dgro-dgal-NON-2:6
+  GlcNAc: RES 1b:b-dglc-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  Gal: RES 1b:b-dgal-HEX-1:5
+  Neu5Gc: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-glycolyl LIN 1:1d(5+1)2n
+  ManAnhydro: RES 1b:b-dman-HEX-1:5 2s:anhydro LIN 1:1o(2+1)2n
+  Tri: RES 1b:x-TRI-x:x
+  "Neuraminic acid": RES 1b:x-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:amino LIN 1:1d(5+1)2n
+  GalNac: RES 1b:b-dgal-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  Bac: RES 1b:a-lglc-HEX-1:5|6:d 2s:amino 3s:amino LIN 1:1d(2+1)2n 2:1d(4+1)3n
+  bdMan: RES 1b:b-dman-HEX-1:5
+  Ara: RES 1b:x-lara-PEN-1:4
+  Fructofuranose: RES 1b:x-dara-HEX-2:5|2:keto
+  Tal: RES 1b:x-dtal-HEX-1:5
+  Rib: RES 1b:x-drib-PEN-1:4
+  Sug: RES 1b:x-SUG-0:0
+  GlcNA: RES 1b:b-dglc-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  Pen: RES 1b:x-PEN-1:4
+  Talose: RES 1b:x-dtal-HEX-1:5
+  Neu: RES 1b:x-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:amino LIN 1:1d(5+1)2n
+  Altose: RES 1b:x-dalt-HEX-1:5
+  bdGlc: RES 1b:b-dglc-HEX-1:5
+  Xylose: RES 1b:x-dxyl-PEN-1:5
+  Arabinose: RES 1b:x-lara-PEN-1:4
+  NeuAc: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl LIN 1:1d(5+1)2n
+  Glc: RES 1b:b-dglc-HEX-1:5
+  GlcNac: RES 1b:b-dglc-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  "Galacturonic Acid": RES 1b:x-dgal-HEX-1:5|6:a
+  N-Acetylglucosamine: RES 1b:b-dgal-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  adMan: RES 1b:a-dman-HEX-1:5
+  Mannose: RES 1b:b-dman-HEX-1:5
+  Gulose: RES 1b:x-dgul-HEX-1:5
+  HexNAc: RES 1b:x-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  "Iduronic Acid": RES 1b:x-lido-HEX-1:5|6:a
+  Xyl: RES 1b:x-dxyl-PEN-1:5
+  GalA: RES 1b:x-dgal-HEX-1:5|6:a
+  Hep: RES 1b:a-lgro-dman-HEP-1:5
+  Hex: RES 1b:x-HEX-1:5
+  bdGal: RES 1b:b-dgal-HEX-1:5
+  GlcN: RES 1b:b-dglc-HEX-1:5 2s:amino LIN 1:1x(-1+-1)2x
+  Fru: RES 1b:x-dara-HEX-2:5|2:keto
+  2-Amino-2-deoxyglucose: RES 1b:b-dglc-HEX-1:5 2s:amino LIN 1:1x(-1+-1)2x
+  GlcA: RES 1b:b-dglc-HEX-1:5|6:a
+  Glucose: RES 1b:b-dglc-HEX-1:5
+  KDN: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d
+  Allose: RES 1b:x-dall-HEX-1:5
+  Ribose: RES 1b:x-drib-PEN-1:4
+  Fucose: RES 1b:a-lgal-HEX-1:5|6:d
+  Gul: RES 1b:x-dgul-HEX-1:5
+  Fuc: RES 1b:a-lgal-HEX-1:5|6:d
+  Glucosamine: RES 1b:b-dglc-HEX-1:5 2s:amino LIN 1:1x(-1+-1)2x
+  Dec: RES 1b:x-DEC-x:x
+  Kdn: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d
+  Kdo: RES 1b:x-dman-OCT-2:6|1:a|2:keto|3:d
+  "Glucuronic Acid": RES 1b:b-dglc-HEX-1:5|6:a
+  Tet: RES 1b:x-TET-x:x
+  Neu5Ac: RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl LIN 1:1d(5+1)2n
+  "Neu5,9Ac2": RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl 3s:n-acetyl LIN 1:1d(5+1)2n 2:1d(9+1)3n
+  "2-Keto-3-deoxynanonic acid": RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d
+  "Sialic Acid": RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl LIN 1:1d(5+1)2n
+  IdoA: RES 1b:x-lido-HEX-1:5|6:a
+  GalNAc: RES 1b:b-dgal-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n
+  Rha: RES 1b:x-lman-HEX-1:5|6:d
+  Rhamnose: RES 1b:x-lman-HEX-1:5|6:d
+  Qui: RES 1b:x-dglc-HEX-1:5|6:d
+  Quinovose: RES 1b:x-dglc-HEX-1:5|6:d
+  Man: RES 1b:b-dman-HEX-1:5
+  Galactose: RES 1b:b-dgal-HEX-1:5
+  Ido: RES 1b:x-lido-HEX-1:5
+  Bacillosamine: RES 1b:a-lglc-HEX-1:5|6:d 2s:amino 3s:amino LIN 1:1d(2+1)2n 2:1d(4+1)3n
+  All: RES 1b:x-dall-HEX-1:5
+  aMan: RES 1b:a-dman-HEX-1:5
+  Alt: RES 1b:x-dalt-HEX-1:5
+  Lyx: RES 1b:x-dlyx-PEN-1:5
+  Lyxose: RES 1b:x-dlyx-PEN-1:5
+  Ery: RES 1b:x-dery-TET-1:4
+  Erythrose: RES 1b:x-dery-TET-1:4
+  Thr: RES 1b:x-dthr-TET-1:4
+  Threose: RES 1b:x-dthr-TET-1:4
+  Oli: RES 1b:x-dara-HEX-1:5|2:d|6:d
+  Olivose: RES 1b:x-dara-HEX-1:5|2:d|6:d
+  Tyv: RES 1b:x-dara-HEX-1:5|3:d|6:d
+  Tyvelose: RES 1b:x-dara-HEX-1:5|3:d|6:d
+  Psi: RES 1b:x-drib-HEX-2:6|2:keto
+  Psicose: RES 1b:x-drib-HEX-2:6|2:keto
+  Fru: RES 1b:x-dara-HEX-2:6|2:keto
+  Fructose: RES 1b:x-dara-HEX-2:6|2:keto
+  Sor: RES 1b:x-lxyl-HEX-2:6|2:keto
+  Sorbose: RES 1b:x-lxyl-HEX-2:6|2:keto
+  Tag: RES 1b:x-dlyx-HEX-2:6|2:keto
+  Tagatose: RES 1b:x-dlyx-HEX-2:6|2:keto
+  Xul: RES 1b:x-dthr-PEN-2:5|2:keto
+  Xulose: RES 1b:x-dthr-PEN-2:5|2:keto
+  Sed: RES 1b:x-dalt-HEP-2:6|2:keto
+  Sedulose: RES 1b:x-dalt-HEP-2:6|2:keto
+  Mur: RES 1b:x-dglc-HEX-1:5 2s:amino 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n
+  "Muramic Acid": RES 1b:x-dglc-HEX-1:5 2s:amino 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n
+  MurNAc: RES 1b:x-dglc-HEX-1:5 2s:n-acetyl 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n
+  MurNGc: RES 1b:x-dglc-HEX-1:5 2s:n-glycolyl 3s:(r)-lactate LIN 1:1d(2+1)2n 2:1o(3+1)3n
+}

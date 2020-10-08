@@ -1,0 +1,11 @@
+prefix=/Users/zhangyujie/anaconda3/envs/glycompare_env_2
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: GThread
+Description: Thread support for GLib
+Version: 2.65.0
+Requires: glib-2.0
+Libs: -L${libdir} -lgthread-2.0
+Libs.private: -lintl
+Cflags:-I${includedir}

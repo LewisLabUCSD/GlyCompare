@@ -1,0 +1,107 @@
+{
+  "build": "pyh9f0ad1d_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "python"
+  ],
+  "extracted_package_dir": "/Users/zhangyujie/anaconda3/pkgs/six-1.15.0-pyh9f0ad1d_0",
+  "features": "",
+  "files": [
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/INSTALLER",
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/LICENSE",
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/METADATA",
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/RECORD",
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/WHEEL",
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/direct_url.json",
+    "lib/python3.7/site-packages/six-1.15.0.dist-info/top_level.txt",
+    "lib/python3.7/site-packages/six.py",
+    "lib/python3.7/site-packages/__pycache__/six.cpython-37.pyc"
+  ],
+  "fn": "six-1.15.0-pyh9f0ad1d_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "link": {
+    "source": "/Users/zhangyujie/anaconda3/pkgs/six-1.15.0-pyh9f0ad1d_0",
+    "type": 1
+  },
+  "md5": "1eec421f0f1f39e579e44e4a5ce646a2",
+  "name": "six",
+  "noarch": "python",
+  "package_tarball_full_path": "/Users/zhangyujie/anaconda3/pkgs/six-1.15.0-pyh9f0ad1d_0.tar.bz2",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "8bb850c565aa389fdc16f3a46965ad23d82adff60f2393fc2762b63185e8e6c9",
+        "sha256_in_prefix": "8bb850c565aa389fdc16f3a46965ad23d82adff60f2393fc2762b63185e8e6c9",
+        "size_in_bytes": 1066
+      },
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "5baae5ca878c6475e1eacacff4d5cdb26d2b8c07ffebad2b7bc59d1f94c14fc1",
+        "sha256_in_prefix": "5baae5ca878c6475e1eacacff4d5cdb26d2b8c07ffebad2b7bc59d1f94c14fc1",
+        "size_in_bytes": 1795
+      },
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "173d7498f5bc866ce4cf4d9813c64545d551fd27db8ba9bd2e23fc65da6062eb",
+        "sha256_in_prefix": "173d7498f5bc866ce4cf4d9813c64545d551fd27db8ba9bd2e23fc65da6062eb",
+        "size_in_bytes": 652
+      },
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "9064fbe0b5b245466b2f85602e1ebf835d8879597ff6ef5956169dae05d95046",
+        "sha256_in_prefix": "9064fbe0b5b245466b2f85602e1ebf835d8879597ff6ef5956169dae05d95046",
+        "size_in_bytes": 110
+      },
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "e052381e1dda0db59a03f768bc67c04c7056dff66e0be20fc16cdda9f0e81d1f",
+        "sha256_in_prefix": "e052381e1dda0db59a03f768bc67c04c7056dff66e0be20fc16cdda9f0e81d1f",
+        "size_in_bytes": 99
+      },
+      {
+        "_path": "site-packages/six-1.15.0.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "fe2547fe2604b445e70fc9d819062960552f9145bdb043b51986e478a4806a2b",
+        "sha256_in_prefix": "fe2547fe2604b445e70fc9d819062960552f9145bdb043b51986e478a4806a2b",
+        "size_in_bytes": 4
+      },
+      {
+        "_path": "site-packages/six.py",
+        "path_type": "hardlink",
+        "sha256": "53867fcafe77e16e423728d8f62f15d4e5d8d928c09f2f32d8be6f0cb8614e13",
+        "sha256_in_prefix": "53867fcafe77e16e423728d8f62f15d4e5d8d928c09f2f32d8be6f0cb8614e13",
+        "size_in_bytes": 34159
+      },
+      {
+        "_path": "lib/python3.7/site-packages/__pycache__/six.cpython-37.pyc",
+        "path_type": "pyc_file"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "2514c7bcfb419c470eb953d62deba070f3b757ca12988691d0744e7757147f2a",
+  "size": 13926,
+  "subdir": "noarch",
+  "timestamp": 1590081273678,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/six-1.15.0-pyh9f0ad1d_0.tar.bz2",
+  "version": "1.15.0"
+}

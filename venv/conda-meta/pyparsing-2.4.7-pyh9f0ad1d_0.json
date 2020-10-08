@@ -1,0 +1,99 @@
+{
+  "build": "pyh9f0ad1d_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "python"
+  ],
+  "extracted_package_dir": "/Users/zhangyujie/anaconda3/pkgs/pyparsing-2.4.7-pyh9f0ad1d_0",
+  "features": "",
+  "files": [
+    "lib/python3.7/site-packages/pyparsing-2.4.7.dist-info/INSTALLER",
+    "lib/python3.7/site-packages/pyparsing-2.4.7.dist-info/LICENSE",
+    "lib/python3.7/site-packages/pyparsing-2.4.7.dist-info/METADATA",
+    "lib/python3.7/site-packages/pyparsing-2.4.7.dist-info/RECORD",
+    "lib/python3.7/site-packages/pyparsing-2.4.7.dist-info/WHEEL",
+    "lib/python3.7/site-packages/pyparsing-2.4.7.dist-info/top_level.txt",
+    "lib/python3.7/site-packages/pyparsing.py",
+    "lib/python3.7/site-packages/__pycache__/pyparsing.cpython-37.pyc"
+  ],
+  "fn": "pyparsing-2.4.7-pyh9f0ad1d_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "link": {
+    "source": "/Users/zhangyujie/anaconda3/pkgs/pyparsing-2.4.7-pyh9f0ad1d_0",
+    "type": 1
+  },
+  "md5": "626c4f20d5bf06dcec9cf2eaa31725c7",
+  "name": "pyparsing",
+  "noarch": "python",
+  "package_tarball_full_path": "/Users/zhangyujie/anaconda3/pkgs/pyparsing-2.4.7-pyh9f0ad1d_0.tar.bz2",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "site-packages/pyparsing-2.4.7.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "site-packages/pyparsing-2.4.7.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "10d5120a16805804ffda8b688c220bfb4e8f39741b57320604d455a309e01972",
+        "sha256_in_prefix": "10d5120a16805804ffda8b688c220bfb4e8f39741b57320604d455a309e01972",
+        "size_in_bytes": 1023
+      },
+      {
+        "_path": "site-packages/pyparsing-2.4.7.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "472e34b28659899ac09123104ff294d7fd5111ee8529ae545b36d3e9803c331b",
+        "sha256_in_prefix": "472e34b28659899ac09123104ff294d7fd5111ee8529ae545b36d3e9803c331b",
+        "size_in_bytes": 3636
+      },
+      {
+        "_path": "site-packages/pyparsing-2.4.7.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "4356d34892db9c33afd6ebf9168c0fcdd5051ef0f4d083d93296447711e419a0",
+        "sha256_in_prefix": "4356d34892db9c33afd6ebf9168c0fcdd5051ef0f4d083d93296447711e419a0",
+        "size_in_bytes": 604
+      },
+      {
+        "_path": "site-packages/pyparsing-2.4.7.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "9064fbe0b5b245466b2f85602e1ebf835d8879597ff6ef5956169dae05d95046",
+        "sha256_in_prefix": "9064fbe0b5b245466b2f85602e1ebf835d8879597ff6ef5956169dae05d95046",
+        "size_in_bytes": 110
+      },
+      {
+        "_path": "site-packages/pyparsing-2.4.7.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "7943a31b3255865437592dab140cb698ddcb5ffec5293339192274e237e72e65",
+        "sha256_in_prefix": "7943a31b3255865437592dab140cb698ddcb5ffec5293339192274e237e72e65",
+        "size_in_bytes": 10
+      },
+      {
+        "_path": "site-packages/pyparsing.py",
+        "path_type": "hardlink",
+        "sha256": "a315ff64ecfcb7e7aba2cf94598ee726071d5200fead0e770a4d2aa7bfefdc88",
+        "sha256_in_prefix": "a315ff64ecfcb7e7aba2cf94598ee726071d5200fead0e770a4d2aa7bfefdc88",
+        "size_in_bytes": 273365
+      },
+      {
+        "_path": "lib/python3.7/site-packages/__pycache__/pyparsing.cpython-37.pyc",
+        "path_type": "pyc_file"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "f1c801916dd64cb2e2c8ad9d65c2b63ccf968d8c976eed47ff45d21e47705608",
+  "size": 60960,
+  "subdir": "noarch",
+  "timestamp": 1586197623687,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/pyparsing-2.4.7-pyh9f0ad1d_0.tar.bz2",
+  "version": "2.4.7"
+}

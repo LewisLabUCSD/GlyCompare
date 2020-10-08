@@ -1,0 +1,13 @@
+prefix=/Users/zhangyujie/anaconda3/envs/glycompare_env_2
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt
+
+
+Name: Qt5 VirtualKeyboard
+Description: Qt VirtualKeyboard module
+Version: 5.12.5
+Libs: -L${libdir} -lQt5VirtualKeyboard 
+Cflags: -DQT_VIRTUALKEYBOARD_LIB -I${includedir}/QtVirtualKeyboard -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Qml Qt5Quick
+

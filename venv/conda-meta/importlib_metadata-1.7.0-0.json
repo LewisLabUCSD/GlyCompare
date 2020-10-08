@@ -1,0 +1,36 @@
+{
+  "build": "0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "importlib-metadata >=1.7.0,<1.7.1.0a0"
+  ],
+  "extracted_package_dir": "/Users/zhangyujie/anaconda3/pkgs/importlib_metadata-1.7.0-0",
+  "features": "",
+  "files": [],
+  "fn": "importlib_metadata-1.7.0-0.tar.bz2",
+  "license": "Apache-2.0",
+  "license_family": "APACHE",
+  "link": {
+    "source": "/Users/zhangyujie/anaconda3/pkgs/importlib_metadata-1.7.0-0",
+    "type": 1
+  },
+  "md5": "3e6503b25200f60149cce699a47cf09e",
+  "name": "importlib_metadata",
+  "noarch": "generic",
+  "package_tarball_full_path": "/Users/zhangyujie/anaconda3/pkgs/importlib_metadata-1.7.0-0.tar.bz2",
+  "package_type": "noarch_generic",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "5a1f45fc03c101c4c0c0b916b2193768436e31d7209f2128d1a54a546f9bcbdb",
+  "size": 3435,
+  "subdir": "noarch",
+  "timestamp": 1593211480784,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/importlib_metadata-1.7.0-0.tar.bz2",
+  "version": "1.7.0"
+}

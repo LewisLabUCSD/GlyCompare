@@ -1,0 +1,11 @@
+QT.webenginecore_private.VERSION = 5.12.5
+QT.webenginecore_private.name = QtWebEngineCore
+QT.webenginecore_private.module =
+QT.webenginecore_private.libs = $$QT_MODULE_LIB_BASE
+QT.webenginecore_private.includes = $$QT_MODULE_INCLUDE_BASE/QtWebEngineCore/5.12.5 $$QT_MODULE_INCLUDE_BASE/QtWebEngineCore/5.12.5/QtWebEngineCore
+QT.webenginecore_private.frameworks =
+QT.webenginecore_private.depends = qml_private quick_private gui_private core_private webenginecore
+QT.webenginecore_private.uses =
+QT.webenginecore_private.module_config = v2 internal_module
+QT.webenginecore_private.enabled_features = webengine-bison webengine-flex webengine-gperf webengine-pepper-plugins webengine-printing-and-pdf webengine-python2 webengine-ui-delegates webengine-v8-snapshot webengine-v8-snapshot-support webengine-webrtc
+QT.webenginecore_private.disabled_features = webengine-alsa webengine-arm-thumb webengine-embedded-build webengine-host-pkg-config webengine-kerberos webengine-noexecstack webengine-system-x11 webengine-ozone-x11 webengine-poppler-cpp webengine-proprietary-codecs webengine-pulseaudio webengine-sanitizer webengine-system-dbus webengine-system-ffmpeg webengine-system-fontconfig webengine-system-freetype webengine-system-glib webengine-system-glibc webengine-system-gn webengine-system-harfbuzz webengine-system-icu webengine-system-jpeg webengine-system-jsoncpp webengine-system-khr webengine-system-lcms2 webengine-system-libdrm webengine-system-libevent webengine-system-libvpx webengine-system-libwebp webengine-system-libxml2 webengine-system-minizip webengine-system-ninja webengine-system-nss webengine-system-opus webengine-system-png webengine-system-protobuf webengine-system-re2 webengine-system-snappy webengine-system-xcomposite webengine-system-xcursor webengine-system-xi webengine-system-xtst webengine-system-zlib webengine-testsupport webengine-win-compiler64 webengine-winversion

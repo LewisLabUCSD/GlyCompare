@@ -1,0 +1,36 @@
+{
+  "build": "1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "prompt-toolkit >=3.0.5,<3.0.6.0a0"
+  ],
+  "extracted_package_dir": "/Users/zhangyujie/anaconda3/pkgs/prompt_toolkit-3.0.5-1",
+  "features": "",
+  "files": [],
+  "fn": "prompt_toolkit-3.0.5-1.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/Users/zhangyujie/anaconda3/pkgs/prompt_toolkit-3.0.5-1",
+    "type": 1
+  },
+  "md5": "6be4088657cafb42b049d10f5573f8c4",
+  "name": "prompt_toolkit",
+  "noarch": "generic",
+  "package_tarball_full_path": "/Users/zhangyujie/anaconda3/pkgs/prompt_toolkit-3.0.5-1.tar.bz2",
+  "package_type": "noarch_generic",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "a98283dd67f52e9ff2452ce55fd97409b0777708b0612124d19ec5b6894105ef",
+  "size": 4224,
+  "subdir": "noarch",
+  "timestamp": 1592500548346,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/prompt_toolkit-3.0.5-1.tar.bz2",
+  "version": "3.0.5"
+}

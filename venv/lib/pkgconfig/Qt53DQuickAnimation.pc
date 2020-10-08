@@ -1,0 +1,13 @@
+prefix=/Users/zhangyujie/anaconda3/envs/glycompare_env_2
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt
+
+
+Name: Qt5 3DQuickAnimation
+Description: Qt 3DQuickAnimation module
+Version: 5.12.5
+Libs: -L${libdir} -lQt53DQuickAnimation 
+Cflags: -DQT_3DQUICKANIMATION_LIB -I${includedir}/Qt3DQuickAnimation -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Qml Qt53DCore Qt53DRender Qt53DAnimation Qt53DQuick
+
