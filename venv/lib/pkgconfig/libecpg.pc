@@ -1,9 +1,0 @@
-Name: libecpg
-Description: PostgreSQL libecpg library
-Url: http://www.postgresql.org/
-Version: 12.2
-Requires: 
-Requires.private: libpq libpgtypes
-Cflags: -I/Users/zhangyujie/anaconda3/envs/glycompare_env_2/include
-Libs: -L/Users/zhangyujie/anaconda3/envs/glycompare_env_2/lib -lecpg
-Libs.private: -L/Users/zhangyujie/anaconda3/envs/glycompare_env_2/lib -lm

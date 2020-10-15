@@ -1,9 +1,0 @@
-defines = -DV8_DEPRECATION_WARNINGS -DNO_TCMALLOC -DFULL_SAFE_BROWSING -DSAFE_BROWSING_CSD -DSAFE_BROWSING_DB_LOCAL -DOFFICIAL_BUILD -DCHROMIUM_BUILD -DFIELDTRIAL_TESTING_ENABLED -DTOOLKIT_QT -D_LIBCPP_HAS_NO_ALIGNED_ALLOCATION -DCR_XCODE_VERSION=0833 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORE=0 -DNDEBUG -DNVALGRIND -DDYNAMIC_ANNOTATIONS_ENABLED=0
-include_dirs = -Igen -I../../3rdparty/chromium
-label_name = fiat_license
-root_out_dir = .
-target_out_dir = obj/third_party/boringssl/src/third_party/fiat
-target_output_name = fiat_license
-
-
-build obj/third_party/boringssl/src/third_party/fiat/fiat_license.stamp: stamp

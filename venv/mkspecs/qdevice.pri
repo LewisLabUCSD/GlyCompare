@@ -1,2 +1,0 @@
-QMAKE_MAC_SDK = macosx
-GCC_MACHINE_DUMP = 
