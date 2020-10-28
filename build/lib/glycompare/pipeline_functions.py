@@ -415,7 +415,8 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                      already_glytoucan_id=False,
                      external_profile_naming=False,
                      absolute=False,
-                     forced=False):
+                     forced=False, 
+                     get_existance=False):
     """
     required file
     :param keywords_dict:
@@ -488,7 +489,7 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                                         profile_columns,
                                                                         profile_name,
                                                                         glycoprofile_list_addr,
-                                                                        get_existance=True)
+                                                                        get_existance=get_existance)
         table_generator = process_glycoprofiles.substructureAbdTableGenerator(glycoprofile_list)
         if absolute:
             substructure_abd_table = table_generator.table_absolute_abd()
@@ -538,9 +539,12 @@ def normalization(data, style, normalizer = None):
     elif style == "std":
         result = pd.DataFrame(columns = data.columns)
         for i in range(data.shape[0]):
-            mean = np.mean([list(data[j])[i] for j in data.columns])
-            std = np.std([list(data[j])[i] for j in data.columns])
-            new_row = [(list(data[j])[i] - mean) / std for j in data.columns]
+#             mean = np.mean([list(data[j])[i] for j in data.columns])
+#             std = np.std([list(data[j])[i] for j in data.columns])
+#             new_row = [(list(data[j])[i] - mean) / std for j in data.columns]
+            mini = min([list(data[j])[i] for j in data.columns])
+            maxi = max([list(data[j])[i] for j in data.columns])
+            new_row = [(list(data[j])[i] - mini) / (maxi - mini) for j in data.columns]
             result = result.append(pd.Series(new_row, index = result.columns), ignore_index = True)
         result.index = list(data.index)
     return result
@@ -560,8 +564,8 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
     
     if forced or not os.path.isfile(output_data_dir + project_name + "_motif_abd_table_composition.csv") or not os.path.isfile(output_data_dir + project_name + "_directed_edge_list.txt"):
         abundance_table = pd.read_csv(abundance_table, index_col = 0)
-        if norm == "z-score":
-            print("z-score normalizing abundance table")
+        if norm == "min-max":
+            print("min-max normalizing abundance table")
             abundance_table = normalization(abundance_table, style = "std")
         elif norm == "pq":
             print("probabilistic quotient normalizing abundance table")
