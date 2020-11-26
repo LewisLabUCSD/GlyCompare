@@ -172,6 +172,8 @@ If you don't have ```sudo``` privileges, you can run a local install by adding t
 python3 setup.py install --user
 ```
 
+If git lfs or the install fails, follow these alternative instructions for install: https://github.com/LewisLabUCSD/GlyCompare/wiki#install-glycompare
+
 <!--
 #### Install from PyPI
 
