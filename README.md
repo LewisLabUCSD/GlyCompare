@@ -1,3 +1,4 @@
+![Logo](logo_name.png)
 # GlyCompare
 
 Here, we present GlyCompare, a novel method wherein glycans from glycomic data are decomposed to a minimal set of intermediate substructures, thus incorporating shared intermediate glycan substructures into all comparisons of glycans. 
