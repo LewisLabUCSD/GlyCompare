@@ -137,6 +137,8 @@ Bokan Bao+, Benjamin P. Kellman+, Austin W. T. Chiang, Austin K. York, Mahmoud A
   - [Figure 2 & 3, glycoprofile processing and analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
   - [Figure 4 & 5, glycoprofile processing](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_analysis.ipynb)
   - [Figure 4 & 5, glycoprofile analysis](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
+- **Try our new beta webapp**
+  - [https://glycompare.herokuapp.com/](https://glycompare.herokuapp.com/)
 
 ## Installation (2-10 minutes)
 
