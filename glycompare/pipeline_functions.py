@@ -14,6 +14,7 @@ import numpy as np
 import bootstrapped.bootstrap as bs
 import bootstrapped.stats_functions as bs_stats
 from . import select_motifs
+from . import unit_tests
 
 from glypy.io import glycoct, linear_code, wurcs
 import glypy
@@ -495,8 +496,11 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
             substructure_abd_table = table_generator.table_absolute_abd()
         else:
             substructure_abd_table = table_generator.table_against_wt_relative_abd()
-
+        
         substructure_abd_table.to_csv(substructure_abd_table_addr)
+        
+        # Verify substructure abundance table is generated properly. 
+        unit_tests.sub_abd_validation(keywords_dict, abd_table, get_existance, absolute)
     else:
         assert False, 'missing one of them' + \
                       '\n'.join([glycan_substructure_occurance_dict_addr,
