@@ -71,8 +71,6 @@ def load_para_keywords(project_name, working_addr, reference_addr, **kwargs):
     for i in os.listdir(path):
         if os.path.isfile(os.path.join(path, i)) and 'unicarb_substructures.linkAmbiguous.merged_reference_dict' in i:
             structure_only_reference = os.path.join(path, i)
-    print(linkage_specific_reference)
-    print(structure_only_reference)
     if not linkage_specific_reference or not structure_only_reference:
         assert False, "Reference motif vector not found."
 
@@ -575,7 +573,7 @@ def compositional_data(keywords_dict, protein_sites, reference_vector = None, fo
             print("probabilistic quotient normalizing abundance table")
             abundance_table = normalization(abundance_table, style = "pq")
         elif norm == "no":
-            abundance_table = glycan_abd_table
+            abundance_table = abundance_table
             
         var_annot = pd.read_csv(var_annot)
 
