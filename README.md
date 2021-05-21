@@ -3,7 +3,7 @@
 
 Here, we present GlyCompare, a novel method wherein glycans from glycomic data are decomposed to a minimal set of intermediate substructures, thus incorporating shared intermediate glycan substructures into all comparisons of glycans. 
 
-The all data and code for paper is provided under the branch github.com/LewisLabUCSD/GlyCompare/for_publish
+The all data and code for paper is provided under the branch https://github.com/LewisLabUCSD/GlyCompare/tree/for_publish
 
 ## Citation
 
