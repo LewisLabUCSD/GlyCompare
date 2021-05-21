@@ -2,6 +2,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 import scipy
+from glypy.plot.draw_tree import plot
 from . import nglycan_alignment
 from . import plot_glycan_utilities
 from . import glycan_io
@@ -16,7 +17,7 @@ def draw_motif_cluster(g, df, color_threshold, address="", fig_size=(10, 35)):
     plt.ylabel('Samples', fontdict={'fontsize': 25})
     den = scipy.cluster.hierarchy.dendrogram(g.dendrogram_row.linkage,
                                              # truncate_mode='lastp',show_contracted=True,p=50,
-                                             labels=df.index,
+                                             labels=list(df.index),
                                              color_threshold=color_threshold, orientation='left', leaf_font_size=10,
                                              distance_sort='descending', leaf_rotation=0)
 
@@ -36,7 +37,7 @@ def draw_motif_cluster(g, df, color_threshold, address="", fig_size=(10, 35)):
 
 
 def draw_substructure_representative(glyco_motif_cluster, substructure_vec, plot_all_substructure, motif_weights_dict,
-                                     address_dir, threshold, plot_rep):
+                                     address_dir, threshold, use_max=False, plot_rep=True):
     # vec_ = load_json(NBT_init.root_address + 'NBT_motif_vec.json')
     _count = 0
     repre_list =[]
@@ -46,28 +47,34 @@ def draw_substructure_representative(glyco_motif_cluster, substructure_vec, plot
         name_list = [str(j) + ':' + str(round(motif_weights_dict[j], 4)) for j in list_]
         _count += len(list_)
         if plot_all_substructure:
-            plot_glycan_utilities.plot_glycan_list([substructure_vec[i] for i in list_], name_list, str(i))
+            plot_glycan_utilities.plot_glycan_list([substructure_vec[i] for i in list_], name_list, title=str(i))
             print(glyco_motif_cluster[i])
             plt.savefig(address_dir + 'glycan_cluster' + str(i) + '.svg')
 
         ## _temp_node, _name = NBT_motif_match_motifvec.find_greatest_common_divisor(glyco_motif_cluster[i], i, vec_)
         # plot_glycan_utilities.plot_glycan(_temp_node[0], _name[0])
         if plot_rep:
-            a_panel = nglycan_alignment.glycan_model()
-            for j in glyco_motif_cluster[i]:
-                # print(j)
-                # plot_glycan_utilities.plot_glycan(vec_[i], title=str(i))
-                gly_nglycan_dict = nglycan_alignment.traves_glycan(substructure_vec[j], weight=motif_weights_dict[j])
-                a_panel.glycan_walk(gly_nglycan_dict)
+            # Bokan, 10/20/2019 test the representative
+            if not use_max:
+                a_panel = nglycan_alignment.glycan_model()
+                for j in glyco_motif_cluster[i]:
+                    # print(j)
+                    # plot_glycan_utilities.plot_glycan(vec_[i], title=str(i))
+                    gly_nglycan_dict = nglycan_alignment.traves_glycan(substructure_vec[j], weight=motif_weights_dict[j])
+                    a_panel.glycan_walk(gly_nglycan_dict)
 
-                # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
+                    # NBT_nglycan_alignment.travel_str_dict(a_panel.panel)
 
-                # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
-            rep_glycan = a_panel.get_reps(threshold=threshold)
+                    # plot_glycan_utilities.plot_glycan(a_panel.get_common_representative(0.1), title=0.1)
+                rep_glycan = a_panel.get_reps(threshold=threshold)
+
+            else:
+                rep_glycan = substructure_vec[max(glyco_motif_cluster[i])]
+
             glycan_io.output_glycan_obj_as_glycoct(rep_glycan, glycan_addr = os.path.join(address_dir, str(i) + '.glycoct_condensed'))
-            plot_glycan_utilities.plot_glycan(rep_glycan, title=str(i), label=True,
+            plot_glycan_utilities.plot_glycan(rep_glycan, title=str(i), label=False,
                                               addr=address_dir + str(i) + '.representative.eps')
-
+            # plot(rep_glycan, title=str(i), label=True)
             # plt.savefig(__init__.plot_output_address + name_prefix + str(i) + '.png')
             # plot_glycan_utilities.plot_glycan_list(glycan_list, idex_list=[str(k) for k in [0.51, 0.6, 0.7]])
             # plt.savefig()

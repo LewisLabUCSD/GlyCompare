@@ -10,19 +10,14 @@ from glypy.plot import cfg_symbols, iupac_symbols
 # def
 
 def _bounding_box_to_limits(dtree):
-    scale_up = mtransforms.Affine2D().scale(1.1).get_matrix()
-    points = dtree._compute_bounding_box()
-    stretched = []
-    for x, y in points:
-        x, y, w = scale_up.dot(np.array((x, y, 1)))
-        x /= w
-        y /= w
-        stretched.append((x, y))
-    points = stretched
-    xs, ys = zip(*points)
-    min_x, max_x = min(xs) - 2, max(xs) + 2
-    min_y, max_y = min(ys) - 2, max(ys) + 2
-    return np.array((min_x, max_x)), np.array((min_y, max_y))
+    xlim, ylim = dtree._compute_bounding_box()
+    xlim = list(xlim)
+    xlim[0] -= 2
+    xlim[1] += 2
+    ylim = list(ylim)
+    ylim[0] -= 2
+    ylim[1] += 2
+    return np.array(xlim), np.array(ylim)
 
 
 line_to = cfg_symbols.CFGNomenclature().line_to
@@ -38,7 +33,7 @@ layout_map = {
     "topological": TopologicalTreeLayout
 }
 
-# DEFAULT_SYMBOL_SCALE_FACTOR = 0.16
+DEFAULT_SYMBOL_SCALE_FACTOR = 0.16
 
 #: :data:`special_cases` contains a list of names for
 #: special case monosaccharides

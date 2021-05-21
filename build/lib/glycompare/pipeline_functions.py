@@ -10,11 +10,21 @@ from . import process_glycoprofiles
 from . import json_utility
 from . import clustering_analysis
 from .clustering_analysis import draw_substructure_representative as draw_substructure_representative_pip
-
+import numpy as np
+import bootstrapped.bootstrap as bs
+import bootstrapped.stats_functions as bs_stats
 from . import select_motifs
+from . import unit_tests
+
+from glypy.io import glycoct, linear_code, wurcs
+import glypy
+import json
+import re
+import itertools
+from datetime import datetime
 
 
-def load_para_keywords(project_name, working_addr, **kwargs):
+def load_para_keywords(project_name, working_addr, reference_addr, **kwargs):
     # glycan_identifier_to_structure_id=False,
     # already_glytoucan_id=False,
     # external_profile_naming=False,
@@ -25,11 +35,11 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     :param kwargs: any other parameter might be used
     :return: a comprehensive para dict
     """
-    # for i in
     output_data_dir = os.path.join(working_addr, "output_data/")
     plot_output_dir = os.path.join(working_addr, "output_plot/")
     source_dir = os.path.join(working_addr, "source_data/")
     glycoct_dir = os.path.join(working_addr, 'glycoct/')
+    reference_dir = reference_addr
 
     name_to_id_addr = os.path.join(source_dir, 'glycan_identifier_to_structure_id.json')
     # abundance_table_addr = os.path.join(source_dir, 'abundance_table')
@@ -44,8 +54,27 @@ def load_para_keywords(project_name, working_addr, **kwargs):
     glycan_substructure_occurance_dict_addr = os.path.join(output_data_dir, project_name + "_glycan_substructure_occurance_dict.json")
     motif_abd_table_addr = os.path.join(output_data_dir, project_name + "_motif_abd_table.csv")
     substructure_abd_table_addr = os.path.join(output_data_dir, project_name + '_substructure_abd_table.csv')
+    var_annot = os.path.join(source_dir, project_name + "_variable_annotation.csv")
+    sam_annot = os.path.join(source_dir, project_name + "_samples_annotation.csv")
+    raw_abundance = os.path.join(source_dir, project_name + "_abundance_table.csv")
+    linkage_specific_glycoct_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_dict_glycoct.json")
+    linkage_specific_wurcs_reference = os.path.join(reference_dir, "linkage_specific/" + "unicarb_substructures.linkSpecific.merged_dict_wurcs.json")
+    linkage_specific_reference = ""
+    path = os.path.join(reference_dir, "linkage_specific/")
+    for i in os.listdir(path):
+        if os.path.isfile(os.path.join(path, i)) and 'unicarb_substructures.linkSpecific.merged_reference_dict' in i:
+            linkage_specific_reference = os.path.join(path, i)
+    structure_only_glycoct_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_dict_glycoct.json")
+    structure_only_wurcs_reference = os.path.join(reference_dir, "structure_only/" + "unicarb_substructures.linkAmbiguous.merged_dict_wurcs.json")
+    structure_only_reference = ""
+    path = os.path.join(reference_dir, "structure_only/")
+    for i in os.listdir(path):
+        if os.path.isfile(os.path.join(path, i)) and 'unicarb_substructures.linkAmbiguous.merged_reference_dict' in i:
+            structure_only_reference = os.path.join(path, i)
+    if not linkage_specific_reference or not structure_only_reference:
+        assert False, "Reference motif vector not found."
 
-    glycoprofile_list_addr = os.path.join(output_data_dir, project_name + "_glycoprofile_list.json")
+    glycoprofile_list_addr = os.path.join(source_dir, project_name + "_glycoprofile_list.json")
     # simple_profile = False
     # simple_naming = False
     # external_profile_naming = False
@@ -70,7 +99,16 @@ def load_para_keywords(project_name, working_addr, **kwargs):
                     # 'glycan_identifier_to_structure_id': glycan_identifier_to_structure_id,
                     # 'external_profile_naming': external_profile_naming,
                     'name_to_id_addr': name_to_id_addr,
-                    'glycoprofile_list_addr': glycoprofile_list_addr
+                    'glycoprofile_list_addr': glycoprofile_list_addr,
+                    'variable_annotation_addr': var_annot,
+                    'samples_annotation_addr': sam_annot,
+                    'abundance_table_addr': raw_abundance,
+                    'linkage_specific_glycoct_reference': linkage_specific_glycoct_reference,
+                    'linkage_specific_wurcs_reference': linkage_specific_wurcs_reference,
+                    'linkage_specific_reference': linkage_specific_reference,
+                    'structure_only_glycoct_reference': structure_only_glycoct_reference,
+                    'structure_only_wurcs_reference': structure_only_wurcs_reference,
+                    'structure_only_reference': structure_only_reference
                     }
     for key, para in kwargs.items():
         para_keyword[key] = para
@@ -159,7 +197,7 @@ def check_init_dir(keywords_dict):
 #             assert isinstance(j, glypy.Glycan)
 
 
-def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
+def load_glycans_pip(keywords_dict, data_type, num_processors=8, structure_loader=None, forced=True):
     # project_name, structure_loader, data_type, glytoucan_db="", glycoct_address=""):
     """
     :param keywords_dict:
@@ -184,7 +222,7 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
         # project_name = kwargs['project_name']
         if data_type == "glycan_dict":
             glycan_dict = structure_loader
-            assert glycan_io.check_glycan_dict(glycan_dict), "Wrong structure_loader"
+            glycan_io.check_glycan_dict(glycan_dict)#, "Wrong structure_loader"
 
         elif data_type == "glytoucanid":
             glycan_dict = {}
@@ -248,6 +286,13 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
             glycan_io.output_glycan_dict_to_glycoct_dict(glycan_dict, keywords_dict['glycan_glycoct_dict_addr'])
 
             print("Saved", keywords_dict['glycan_glycoct_dict_addr'], "for future use. You can use \"used\" in the datatype next time")
+        glycan_substructure_glycoct_dict_addr = keywords_dict['glycan_substructure_glycoct_dict_addr']
+        if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
+            glycan_substructure_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
+                                                                                  gly_len=25,
+                                                                                  output_file=glycan_substructure_glycoct_dict_addr,
+                                                                                  num_processors=num_processors)
+
         return glycan_dict
     # except KeyError as :
     #     print("No such glycan", KeyError)
@@ -257,7 +302,10 @@ def load_glycans_pip(keywords_dict, data_type, structure_loader=None):
         raise
 
 
-def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_processors, forced=False):
+def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_processors, forced=False, merged_list = None, reference_dict_addr = None):
+    assert type(merged_list) is list, 'Merged list should contain a glycoct merged dict and a wurcs merged dict'
+    assert type(reference_dict_addr) is str, 'reference_dict_addr should be a string address of reference_dict'
+    
     # project_name = keywords_dict['project_name']
     # working_addr = keywords_dict['working_addr']
     # intermediate_address = keywords_dict['intermediate_address']
@@ -267,22 +315,21 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
     glycan_substructure_glycoct_dict_addr = keywords_dict['glycan_substructure_glycoct_dict_addr']
     substructure_glycoct_dict_addr = keywords_dict['substructure_glycoct_dict_addr']
     glycan_substructure_occurance_dict_addr = keywords_dict['glycan_substructure_occurance_dict_addr']
-
+    
     if os.path.isfile(glycan_glycoct_dict_addr):
-        print('start glycan_dict')
+        if linkage_specific:
+            assert "mbiguous" not in reference_dict_addr or "pecific" in reference_dict_addr, 'Linkage_specific is set to True while the reference file is speculated to be linkage ambiguous file. Please double check the reference file or rename it.'
+        else:
+            assert "mbiguous" in reference_dict_addr or "pecific" not in reference_dict_addr, 'Linkage_specific is set to False while the reference file is speculated to be linkage specific file. Please double check the reference file or rename it.'
+                 
+        print('start glycan_substructure_dict')
         if forced or not os.path.isfile(glycan_substructure_occurance_dict_addr):
-            if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
-                glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
-                glycan_substructure_dic = extract_substructures.extract_substructures_pip(glycan_dict=glycan_dict,
-                                                                                   gly_len=25,
-                                                                                   output_file=glycan_substructure_glycoct_dict_addr,
-                                                                                   num_processors=num_processors)
-                print('finished merging all substructures into substructure_dic')
-            else:
-                glycan_substructure_dic = glycan_io.load_glycan_substructure_dict_from_json(glycan_substructure_glycoct_dict_addr)
-                glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
-                print('loaded existed substructure_dic')
-            if forced or not os.path.isfile(substructure_glycoct_dict_addr):
+            # if forced or not os.path.isfile(glycan_substructure_glycoct_dict_addr):
+                # print('finished merging all substructures into substructure_dic')
+            glycan_substructure_dic = glycan_io.load_glycan_substructure_dict_from_json(glycan_substructure_glycoct_dict_addr)
+            glycan_dict = glycan_io.load_glycan_dict_from_json(glycan_glycoct_dict_addr)
+            print('loaded existed substructure_dic')
+            if not os.path.isfile(substructure_glycoct_dict_addr):
                 print('start merge substructure_dict')
                 merge_substructure_dict = merge_substructure_vec.merge_substructure_dict_pip(
                     glycan_substructure_dict=glycan_substructure_dic,
@@ -291,15 +338,70 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                     num_processors=num_processors,
                     output_merged_substructure_glycoct_dict_addr=substructure_glycoct_dict_addr)
                 print('finished merge substructure_dic')
+#             elif merged_list:
+#                 merge_substructure_dict = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(merged_list))
             else:
                 merge_substructure_dict = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(substructure_glycoct_dict_addr))
                 print('loaded merged substructure_dic')
-
+            if merged_list and reference_dict_addr:
+#                 reference_vector_gct = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(merged_list[0]))
+                reference_vector_gct = json.load(open(merged_list[0], "r"))
+                reference_vector_wurcs = json.load(open(merged_list[1], "r"))
+                reference_dict = json.load(open(reference_dict_addr, "r"))
+                index = reference_dict.keys()
+                count = 0
+                for key in merge_substructure_dict.keys():
+                    if key in reference_vector_wurcs.keys():
+                        for m in merge_substructure_dict[key]:
+                            try:
+                                gg_w = wurcs.dumps(m)
+                                gg_gct = glycoct.dumps(m)
+                            except:
+                                print(str(m) + " failed to be loaded as wurcs")
+                                continue
+                            if gg_w not in reference_vector_wurcs[key] or gg_gct not in reference_vector_gct[key]:
+                                if linkage_specific:
+                                    reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
+                                else:
+                                    reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
+                                reference_vector_wurcs[key].append(gg_w)
+                                reference_vector_gct[key].append(glycoct.dumps(m))
+                                count += 1
+                    else:
+                        reference_vector_wurcs[key] = []
+                        reference_vector_gct[key] = []
+                        for m in merge_substructure_dict[key]:
+                            try:
+                                gg_w = wurcs.dumps(m)
+                            except:
+                                print(str(m) + " failed to be loaded as wurcs")
+                                continue
+                            if linkage_specific:
+                                reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
+                            else:
+                                reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
+                            reference_vector_wurcs[key].append(gg_w)
+                            reference_vector_gct[key].append(glycoct.dumps(m))
+                            count += 1
+                with open(merged_list[0], 'w') as outfile:
+                    json.dump(reference_vector_gct, outfile)
+                with open(merged_list[1], 'w') as outfile:
+                    json.dump(reference_vector_wurcs, outfile)
+                    
+                os.remove(reference_dict_addr)
+                num = str(len(reference_dict))
+                time = "_".join(str(datetime.now()).split(".")[0].split(" "))
+                dir_path = "/".join(reference_dict_addr.split("/")[:-1])
+                target = reference_dict_addr.split("/")[-1].split(".json")[0].replace(":", "-")
+                with open(dir_path + "/" + "_".join(target.split("_")[:4]) + "_" + num + "_" + time + ".json", 'w') as outfile:
+                    json.dump(reference_dict, outfile)
+                print("Renewed reference dict, " + str(count) + " new motifs are added")
+                        
             matched_dict = merge_substructure_vec.substructure_matching_wrapper(substructure_=merge_substructure_dict,
                                                                                 glycan_substructure_dict=glycan_substructure_dic,
                                                                                 linkage_specific=linkage_specific,
                                                                                 num_processors=num_processors,
-                                                                                matched_dict_addr=glycan_substructure_occurance_dict_addr)
+                                                                          matched_dict_addr=glycan_substructure_occurance_dict_addr)
         else:
             matched_dict = json_utility.load_json(glycan_substructure_occurance_dict_addr)
         print('finished glycan deconvolution')
@@ -310,7 +412,10 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
 
 def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_structure_id=False,
                      already_glytoucan_id=False,
-                     external_profile_naming=False, forced=False ):
+                     external_profile_naming=False,
+                     absolute=False,
+                     forced=False, 
+                     get_existance=False):
     """
     required file
     :param keywords_dict:
@@ -357,6 +462,12 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
             if os.path.isfile(name_to_id_addr):
                 glycan_identifier_to_structure_id = glycan_io.load_glycoprofile_name_to_id(name_to_id_addr)
             else:
+#                 temp = {}
+#                 glycan_identifier_to_structure_id = {}
+#                 for i in profile_columns:
+#                     temp[i] = i
+#                 for i in profile_columns:
+#                     glycan_identifier_to_structure_id[i] = temp
                 assert False, 'missing one of them' + name_to_id_addr
 
         if external_profile_naming:
@@ -377,10 +488,17 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
                                                                         profile_columns,
                                                                         profile_name,
                                                                         glycoprofile_list_addr,
-                                                                        get_existance=True)
+                                                                        get_existance=get_existance)
         table_generator = process_glycoprofiles.substructureAbdTableGenerator(glycoprofile_list)
-        substructure_abd_table = table_generator.table_against_wt_relative_abd()
+        if absolute:
+            substructure_abd_table = table_generator.table_absolute_abd()
+        else:
+            substructure_abd_table = table_generator.table_against_wt_relative_abd()
+        
         substructure_abd_table.to_csv(substructure_abd_table_addr)
+        
+        # Verify substructure abundance table is generated properly. 
+        unit_tests.sub_abd_validation(keywords_dict, abd_table, get_existance, absolute)
     else:
         assert False, 'missing one of them' + \
                       '\n'.join([glycan_substructure_occurance_dict_addr,
@@ -393,6 +511,242 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
     #     substructure_abd_table = pd.read_csv(substructure_abd_table_addr)
     #     print('loaded substructure_abd_table')
     return substructure_abd_table, glycoprofile_list
+
+# normalizer can be "median" or "mean"
+def probabilistic_quotient_norm(data, normalizer = "median"):
+    result = pd.DataFrame(columns = data.columns)
+    if normalizer == "mean":
+        m = [data[i].mean() for i in data.columns]
+    elif normalizer == "median":
+        m = [data[i].median() for i in data.columns]
+    else:
+        assert False, "Normalizer can only be mean or median"
+    m = np.median(m)
+    for i in range(data.shape[0]):
+        temp = [list(data[j])[i] / m for j in data.columns]
+        nn = np.median(temp)
+        temp2 = [list(data[j])[i] / nn for j in data.columns]
+        result = result.append(pd.Series(temp2, index = result.columns), ignore_index = True)
+    result.index = list(data.index)
+    return result
+
+# style can be "pq" for probabilistic quotient norm or "std" for standard normalization
+def normalization(data, style, normalizer = None):
+    if style == "pq":
+        if normalizer:
+            return probabilistic_quotient_norm(data, normalizer = normalizer)
+        else:
+            # Default normalizer to median
+            return probabilistic_quotient_norm(data)
+    elif style == "std":
+        result = pd.DataFrame(columns = data.columns)
+        for i in range(data.shape[0]):
+#             mean = np.mean([list(data[j])[i] for j in data.columns])
+#             std = np.std([list(data[j])[i] for j in data.columns])
+#             new_row = [(list(data[j])[i] - mean) / std for j in data.columns]
+            mini = min([list(data[j])[i] for j in data.columns])
+            maxi = max([list(data[j])[i] for j in data.columns])
+            new_row = [(list(data[j])[i] - mini) / (maxi - mini) for j in data.columns]
+            result = result.append(pd.Series(new_row, index = result.columns), ignore_index = True)
+        result.index = list(data.index)
+    return result
+
+def compositional_data(keywords_dict, protein_sites, reference_vector = None, forced = True, norm = "no"):
+    abundance_table = keywords_dict['abundance_table_addr']
+    if not os.path.isfile(abundance_table):
+        assert False, "cannot find glycan abundance table"
+    var_annot = keywords_dict['variable_annotation_addr']
+    if not os.path.isfile(var_annot):
+        assert False, "cannot find variable annotation file"
+#     sam_annot = keywords_dict['samples_annotation_addr']
+#     if not os.path.isfile(sam_annot):
+#         assert False, "cannot find samples annotation file"
+    project_name = keywords_dict['project_name']
+    output_data_dir = keywords_dict['output_data_dir']
+    
+    if forced or not os.path.isfile(output_data_dir + project_name + "_motif_abd_table_composition.csv") or not os.path.isfile(output_data_dir + project_name + "_directed_edge_list.txt"):
+        abundance_table = pd.read_csv(abundance_table, index_col = 0)
+        if norm == "min-max":
+            print("min-max normalizing abundance table")
+            abundance_table = normalization(abundance_table, style = "std")
+        elif norm == "pq":
+            print("probabilistic quotient normalizing abundance table")
+            abundance_table = normalization(abundance_table, style = "pq")
+        elif norm == "no":
+            abundance_table = abundance_table
+            
+        var_annot = pd.read_csv(var_annot)
+
+        abundance_table = abundance_table.transpose()
+        df = var_annot[["Name", "Composition"]]
+        df.index = df["Name"]
+        df = pd.concat([df, abundance_table], axis = 1, sort = True)
+        df.index = list(df.index)
+
+        pep_col = 'Name'
+        glycan_col = 'Composition'
+        abd_cols = list(abundance_table.columns)
+        if protein_sites == "all":
+            sites = set(var_annot[pep_col]) # can be specified to a singular site by setting to list of 1 site, ex. ['Y.YHKNnKSWMESEF.R']
+        else:
+            sites = protain_sites
+        df = df.loc[df[pep_col].isin(sites)]
+        
+        # mod_motif_map becomes a matrix storing each compositional glycan's compositional motif vector
+        mod_motifs = {}
+        for mod in df[glycan_col]:
+            motifs = []
+            for a in mod.split(')')[:-1]:
+                motifs.append(a.split('('))
+            added_motifs = []
+            for motif in motifs:
+                for i in range(1,int(motif[1])):
+                    added_motifs.append([motif[0],str(i)])
+            motifs += added_motifs
+            mod_motifs[mod] = motifs
+
+        all_motif_comb = []
+        count = 0
+        print("Generating all motif combinations...")
+        for m in mod_motifs.values():
+#             count += 1
+#             print("Generating glycan " + str(count) + " / " + str(len(mod_motifs)))
+            for i in range(1, len(m)+1):
+                for j in itertools.combinations([a+'('+b+')' for a,b in m], i):
+                    all_motif_comb.append(j)
+        all_motif_comb = list(set(all_motif_comb))
+        all_motif_comb.sort()
+
+        all_motifs = []
+        count = 0
+        print("Calculating motif occurance...")
+        for motif in all_motif_comb:
+            count += 1
+            d = {}
+            print("proceeding glycan " + str(count) + " / " + str(len(all_motif_comb)))
+            for i in motif:
+                k,v = i.split(')')[0].split('(')
+                try:
+                    d[k].append(int(v))
+                except:
+                    d[k] = [int(v)]
+            comp_motif = list(zip(list(d.keys()), [max(v) for v in d.values()]))
+            if comp_motif not in all_motifs:
+                all_motifs.append(comp_motif)
+        all_motifs_clean = []
+        for i in [set(i) for i in all_motifs]:
+            if i not in all_motifs_clean:
+                all_motifs_clean.append(i)
+        all_motifs = sorted([sorted(i) for i in all_motifs_clean])
+        all_motifs = [tuple(i) for i in all_motifs]
+
+        print("Constructing motifs map")
+        mod_motif_map = pd.DataFrame(columns=mod_motifs.keys(), index=all_motifs)
+        for mod in mod_motif_map.columns:
+            m = [(a, int(b)) for a,b in mod_motifs[mod]]
+            motif_vector = []
+            for motif in all_motifs:
+                foo = True
+                for g in motif:
+                    if g in m:
+                        foo = True
+                    else:
+                        foo = False
+                        break
+                if foo == True:
+                    motif_vector.append(1)
+                else:
+                    motif_vector.append(0)
+            mod_motif_map[mod] = motif_vector
+
+        # calculate motif abundance -> matrix multiplication (abundance matrix by composition:motif occurrence matrix)
+        mod_abd = df.groupby(glycan_col)[abd_cols].sum()
+        motif_abd = pd.DataFrame(data=np.matmul(mod_motif_map.values, mod_abd.values), columns=mod_abd.columns, index=mod_motif_map.index)
+        motif_abd.to_csv(output_data_dir + project_name + "_motif_abd_table_composition.csv")
+
+        # create a directed edge list for the substructure network
+        # this means that in the edge (a,b) a->b
+        print("Constructing directed edge list")
+        node_list = list(mod_motif_map.index)
+        directed_edge_list = [(a,b) for a,b in itertools.permutations(node_list, 2) if len(a) < len(b)]
+        directed_edge_list = [(a,b) for a,b in directed_edge_list if set(a) <= set(b)]
+        directed_edge_list = [(a,b) for a,b in directed_edge_list if len(a)+1 == len(b)]
+        directed_edge_list = [(a,b) for a,b in directed_edge_list if tuple(set(b) - set(a))[0][1] == 1]
+
+        for a,b in [(a,b) for a,b in itertools.permutations(node_list, 2) if len(a) == len(b)]:
+            if [i for i,j in a] == [i for i,j in b]:
+                vec_bool = [i != j for (i, j) in zip([j for i,j in a], [j for i,j in b])]
+                if vec_bool.count(True) == 1:
+                    if [j for i,j in a][np.where(vec_bool)[0][0]] + 1 == [j for i,j in b][np.where(vec_bool)[0][0]]:
+                        directed_edge_list.append((a,b))
+        json.dump(directed_edge_list, open(output_data_dir + project_name + "_directed_edge_list.txt", 'w'))
+    #     directed_edge_list.to_csv(output_data_dir + "/" + project_name + "_directed_edge_list.csv")
+    else:
+        motif_abd = pd.read_csv(output_data_dir + project_name + "_motif_abd_table_composition.csv", index_col = 0)
+        directed_edge_list = json.load(open(output_data_dir + project_name + "_directed_edge_list.txt", 'r'))
+    return motif_abd, directed_edge_list
+
+
+def generate_glycoct_files(keywords_dict, glycan_type):
+    types = ["glycoCT", "IUPAC-extended", "linear code", "WURCS", "glytoucan ID"]
+    assert glycan_type in types, "Glycan structure syntax unrecognized, the possible syntaxes are glycoCT, IUPAC-extended, linear code, WURCS, glytoucan ID"
+    var_annot = pd.read_csv(keywords_dict['variable_annotation_addr'])
+    glycans = var_annot["Glycan Structure"]
+    names = var_annot["Name"]
+    target_path = keywords_dict['glycoct_dir']
+    
+    gct = []
+    if glycan_type == "glycoCT":
+        for i in range(len(glycans)):
+            try: 
+                _ = glycoct.loads(glycans[i]) 
+                gct.append(glycans[i])
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "IUPAC-extended":
+        for i in range(len(glycans)):
+            try:
+                g = iupac.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "linear code":
+        for i in range(len(glycans)):
+            try:
+                g = linear_code.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "WURCS":
+        for i in range(len(glycans)):
+            try:
+                g = wurcs.loads(glycans[i])
+                gct.append(glycoct.dumps(g))
+            except:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+    elif glycan_type == "glytoucan ID":
+        for i in range(len(glycans)):     
+            g = get_glycoct_from_glytoucan(glycans[i])
+            if g:
+                gct.append(g)
+            else:
+                print(glycans[i] + " not recognized as " + glycan_type)
+                var_annot = var_annot.drop(var_annot[var_annot["Glycan Structure"] == glycans[i]].index)
+                
+    if not gct:
+        raise Exception("No glycoCT can be generated from specified glycan structure type: " + glycan_type 
+                        + ". Please double check if you choose the correct type.")
+    for i in range(len(gct)):
+        f = open(target_path + str(names[i]) + ".glycoct_condensed", "w")
+        f.write(gct[i])
+        f.close()
+    var_annot.to_csv(keywords_dict['variable_annotation_addr'], index = False)
+    return True
+            
 
 
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, core='',
@@ -512,7 +866,7 @@ def clustering_analysis_pip(keywords_dict, motif_abd_table, select_profile_name=
                                                                                      'plot_output_dir'] + 'profile_clustering.svg')
     glyco_motif_cluster_dict = clustering_analysis.draw_motif_cluster(g=cluster_grid,
                                                                       df=motif_abd_table,
-                                                                      color_threshold=0.185,
+                                                                      color_threshold=0.5, #0.185
                                                                       address=keywords_dict[
                                                                                   'plot_output_dir'] + 'motif_cluster.svg',
                                                                       fig_size=(6, 20),

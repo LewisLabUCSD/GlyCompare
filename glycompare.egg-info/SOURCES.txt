@@ -4,6 +4,7 @@ glycompare/__init__.py
 glycompare/clustering_analysis.py
 glycompare/extract_substructures.py
 glycompare/glycan_io.py
+glycompare/glycoct2linear.py
 glycompare/hierarchical_enrichment.py
 glycompare/json_utility.py
 glycompare/merge_substructure_vec.py
@@ -14,6 +15,7 @@ glycompare/plot_glycan_utilities.py
 glycompare/process_glycoprofiles.py
 glycompare/select_motifs.py
 glycompare/test_glycan_io.py
+glycompare/unit_tests.py
 glycompare.egg-info/PKG-INFO
 glycompare.egg-info/SOURCES.txt
 glycompare.egg-info/dependency_links.txt

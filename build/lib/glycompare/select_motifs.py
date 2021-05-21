@@ -377,6 +377,8 @@ class NodesState():
         #     node_attri = copy.deepcopy(self.node_attri)
         # print(node_attri)
         G = NdexGraph()
+
+
         if node_attri == {}:
             for i in node_list:
                 G.add_node(i, name=str(i), attr_dict={})

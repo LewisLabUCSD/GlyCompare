@@ -3,10 +3,10 @@ import warnings
 import glypy
 import sys
 
-from SPARQLWrapper import SPARQLWrapper
+from SPARQLWrapper import SPARQLWrapper, JSON, XML
 from bs4 import BeautifulSoup
 from glypy import Glycan
-from glypy.io import glycoct, iupac
+from glypy.io import glycoct, iupac, wurcs
 from pathlib import Path
 import os
 import pandas as pd
@@ -123,6 +123,38 @@ def load_match_dict_from_json(addr):
     return json_utility.load_json(addr)
 
 
+def get_wurcs_from_glytoucan(ID):
+    sparql = SPARQLWrapper("https://ts.glytoucan.org/sparql")
+    sparql.setQuery("""
+    PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>
+    PREFIX glytoucan: <http://www.glytoucan.org/glyco/owl/glytoucan#>
+
+    SELECT DISTINCT ?WURCS_label
+    WHERE {
+      # Accession Number
+      ?saccharide glytoucan:has_primary_id ?accNum .
+      FILTER (?accNum = '%s')
+
+      # WURCS
+      OPTIONAL{
+      ?saccharide glycan:has_glycosequence ?wcsSeq .
+      ?wcsSeq glycan:has_sequence ?wcsLabel .
+      BIND(STR(?wcsLabel) AS ?WURCS_label)
+      ?wcsSeq glycan:in_carbohydrate_format glycan:carbohydrate_format_wurcs .
+      }
+    }
+
+    """ % ID)
+
+    try:
+        sparql.setReturnFormat(JSON)
+        results = sparql.query().convert()
+        structure = results["results"]["bindings"][0]['WURCS_label']['value']
+    except:
+        print("No WURCS structure found for ", ID)
+        structure = ''
+    return structure
+
 def get_glycoct_from_glytoucan(ID):
     # Returns glycan GlycoCT structure from glytoucan ID
     # Perform the query
@@ -154,7 +186,8 @@ WHERE {
         structure = tags[0].contents[0]
     except:
         print("No structure found for " + ID)
-        structure = ''
+        wurcs_structure = get_wurcs_from_glytoucan(ID)
+        structure = glycoct.dumps(wurcs.loads(wurcs_structure))
     return structure
 
 
@@ -472,3 +505,4 @@ def output_glycan_obj_as_glycoct(a_glycan, glycan_addr, force=True):
     _w = open(glycan_addr, 'w')
     _w.write(str(a_glycan))
     _w.close()
+

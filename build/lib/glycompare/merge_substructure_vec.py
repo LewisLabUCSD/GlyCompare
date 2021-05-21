@@ -1,5 +1,6 @@
 from glypy.algorithms.subtree_search.inclusion import subtree_of
 from glypy.io import glycoct
+import glypy
 import multiprocessing
 # from . import __init__
 from . import glycan_io
@@ -165,6 +166,15 @@ def merge_substructure_dict_pip(glycan_substructure_dict, glycan_dict, linkage_s
 
     print('finished removing duplicate')
     substructure_dict = dict(cleaned_substructure_dic)
+    
+    substructure_dict_to_save = {}
+    for k in substructure_dict.keys():
+        temp = []
+        for g in substructure_dict[k]:
+            if type(g) == glypy.structure.glycan.Glycan:
+                temp.append(glycoct.dumps(g))
+        substructure_dict_to_save[k] = temp
+            
 
     print('after the cleaning the substructure vec\'s length is', check_substructure_dict_length(substructure_dict))
 
@@ -179,7 +189,9 @@ def merge_substructure_dict_pip(glycan_substructure_dict, glycan_dict, linkage_s
 
 
     if output_merged_substructure_glycoct_dict_addr != "":
-        json_utility.store_json(output_merged_substructure_glycoct_dict_addr, substructure_glycoct_dict_str)
+        json_utility.store_json(output_merged_substructure_glycoct_dict_addr, substructure_dict_to_save)
+#         json_utility.store_json(output_merged_substructure_glycoct_dict_addr, substructure_glycoct_dict_str)
+
 
     return substructure_dict
 
