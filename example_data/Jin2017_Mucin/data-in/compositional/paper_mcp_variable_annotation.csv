@@ -1,0 +1,251 @@
+m/z,Composition,Glycan Structure,Name,Glycoprofiles
+384,Hex(1)HexNAc(1),Galβ1-3GalNAcol,384,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P5TA-AS', 'P8H', 'P10H']"
+425,HexNAc(2),GlcNAcβ1-3GalNAcol,425-1,"['P1TI', 'P2TS', 'P6TA-FS', 'P5TA-AS', 'P10H']"
+425,HexNAc(2),GalNAcα1-3GalNAcol,425-2,"['P1TS', 'P6TA-FS', 'P5TA-AS', 'P8H', 'P10H']"
+513,NeuAc(1)HexNAc(1),NeuAcα2-6GalNAcol,513,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+530,Hex(1)HexNAc(1)dHex(1),Fucα1-2Galβ1-3GalNAcol,530,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+587,Hex(1)HexNAc(2),Galβ1-3(GlcNAcβ1-6)GalNAcol,587-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P7TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+587,Hex(1)HexNAc(2),GlcNAcα1-4Galβ1-3GalNAcol,587-2,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+587,Hex(1)HexNAc(2),Galβ1-4GlcNAcβ1-3GalNAcol,587-3,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P5TA-AG', 'P8H', 'P10H']"
+587,Hex(1)HexNAc(2),Galβ1-3GlcNAcβ1-3GalNAcol,587-4,"['P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P5TA-AS', 'P5TA-AG', 'P8H']"
+628,HexNAc(3),GalNAcβ1-4GlcNAcβ1-3GalNAcol,628,"['P1TS', 'P1TI', 'P2TS', 'P6TA-FS', 'P8H']"
+667,Hex(1)HexNAc(2)Sul(1),"Galb1,3(6SGlcNAcβ1-6)GalNAcol",667-1,"['P1TS', 'P1TI', 'P2TS', 'P4TS']"
+667,Hex(1)HexNAc(2)Sul(1),Galβ1-4(6S)GlcNAcβ1-3GalNAcol,667-2,"['P1TS', 'P4TS']"
+675,NeuAc(2)Hex(1)HexNAc(1),Galβ1-3(NeuAcα2-6)GalNAcol,675-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+675,NeuAc(2)Hex(1)HexNAc(1),NeuAcαα2-3Galβ1-3GalNAcol,675-2,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+692,Hex(2)HexNAc(1)dHex(1),Galα1-3(Fucα1-2)Galβ1-3GalNAcol,692,"['P1TI', 'P5TA-AS', 'P8H', 'P10H']"
+716,NeuAc(1)HexNAc(2),GlcNAcβ1-3(NeuAcα2-6)GalNAcol,716-1,"['P1TI', 'P2TS', 'P4TS', 'P5TA-AS', 'P10H']"
+716,NeuAc(1)HexNAc(2),GalNAcα1-3(NeuAcα2-6)GalNAcol,716-2,"['P1TI', 'P2TS', 'P4TS', 'P5TA-AS', 'P10H']"
+733,Hex(1)HexNAc(2)dHex(1),Gal(Fuc)GlcNAcβ1-3GalNAcol,733-1,"['P1TI', 'P6TA-FS', 'P5TA-AS', 'P8H', 'P10H']"
+733,Hex(1)HexNAc(2)dHex(1),Fucα1-2Galβ1-3GlcNAcβ1-3GalNAcol,733-2,"['P1TI', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P8H', 'P10H']"
+733,Hex(1)HexNAc(2)dHex(1),Fucα1-2(GalNAcα1-3)Galβ1-3GalNAcol,733-3,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P10H']"
+733,Hex(1)HexNAc(2)dHex(1),Fucα1-2Galβ1-4GlcNAcβ1-3GalNAcol,733-4,"['P1TS', 'P1TI', 'P6TA-FG', 'P6TA-AS', 'P8H', 'P10H']"
+733,Hex(1)HexNAc(2)dHex(1),Fucα1-2Galβ1-3(GlcNAcβ1-6)GalNAcol,733-5,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+749,Hex(2)HexNAc(2),Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,749-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+749,Hex(2)HexNAc(2),Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,749-2,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+790,Hex(1)HexNAc(3),Galβ1-3(GalNAcβ1-4GlcNAcβ1-6)GalNAcol,790-1,"['P1TS', 'P1TI', 'P2TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AG', 'P8H', 'P9H', 'P10H']"
+790,Hex(1)HexNAc(3),GlcNAcα1-4Galβ1-3(GlcNAcβ1-6)GalNAcol,790-2,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+813,Hex(1)HexNAc(2)dHex(1)Sul(1),Fucα1-2Galβ1-3(6SGlcNAcβ1-6)GalNAcol,813-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P7TA-AS', 'P7TA-AG', 'P8H', 'P10H']"
+813,Hex(1)HexNAc(2)dHex(1)Sul(1),Fucα1-2Galβ1-4(S)GlcNAcβ1-3GalNAcol,813-2,['P3TS']
+821,NeuAc(1)Hex(1)HexNAc(1)dHex(1),Fucα1-2Galβ1-3(NeuAcα2-6)GalNAcol,821,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+829,Hex(2)HexNAc(2)Sul(1),Galβ1-3[Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,829-1,"['P2TS', 'P4TS']"
+829,Hex(2)HexNAc(2)Sul(1),Galβ1-3[(S)Galβ1-4GlcNAcβ1-6]GalNAcol,829-2,['P2TS']
+878,NeuAc(1)Hex(1)HexNAc(2),HexNAc1-4Galβ1-3(NeuAcα2-6)GalNAcol,878-1,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-AS', 'P5TA-AS', 'P8H', 'P10H']"
+878,NeuAc(1)Hex(1)HexNAc(2),NeuAcα2-3Galβ1-3(GlcNAcβ1-6)GalNAcol,878-2,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P8H', 'P9H', 'P10H']"
+878,NeuAc(1)Hex(1)HexNAc(2),NeuAcα2-3Galβ1-4GlcNAcβ1-3GalNAcol,878-3,"['P2TS', 'P5TA-AS']"
+895,Hex(2)HexNAc(2)dHex(1),Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,895-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AG', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+895,Hex(2)HexNAc(2)dHex(1),Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-3GalNAcol,895-2,"['P1TI', 'P5TA-AS', 'P10H']"
+895,Hex(2)HexNAc(2)dHex(1),Galβ1-4GlcNAcβ1-3(Fucα1-2)Galβ1-3GalNAcol,895-3,"['P1TS', 'P1TI', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P7TA-AG', 'P9H', 'P10H']"
+895,Hex(2)HexNAc(2)dHex(1),Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,895-4,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P8H', 'P9H', 'P10H']"
+895,Hex(2)HexNAc(2)dHex(1),Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,895-5,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+895,Hex(2)HexNAc(2)dHex(1),Fucα1-2Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,895-6,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+936,Hex(1)HexNAc(3)dHex(1),Fucα1-2(GalNAcα1-3)Galβ1-4GlcNAcβ1-3GalNAcol,936-1,"['P1TI', 'P2TS', 'P4TI', 'P6TA-FG', 'P6TA-AS', 'P5TA-AG', 'P7TA-AG']"
+936,Hex(1)HexNAc(3)dHex(1),Fucα1-2(GalNAcα1-3)Galβ1-3(GlcNAcβ1-6)GalNAcol,936-2,"['P1TI', 'P2TS', 'P4TI', 'P6TA-FG', 'P5TA-AG', 'P7TA-AG', 'P8H']"
+936,Hex(1)HexNAc(3)dHex(1),GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,936-3,"['P1TI', 'P2TS', 'P6TA-FG', 'P6TA-AS', 'P8H']"
+936,Hex(1)HexNAc(3)dHex(1),Fucα1-2Galβ1-3(GalNAcβ1-4GlcNAcβ1-6)GalNAcol,936-4,"['P1TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+952,Hex(2)HexNAc(3),"Galβ1-3(HexNAc1-4Galβ1-4GlcNAcb1,6)GalNAcol",952-1,"['P1TS', 'P1TI', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P8H', 'P9H', 'P10H']"
+952,Hex(2)HexNAc(3),Galβ1-4GlcNAcβ1-3(GlcNAcβ1-6)Galβ1-3GalNAcol,952-2,"['P6TA-FG', 'P5TA-AG']"
+952,Hex(2)HexNAc(3),GlcNAcα1-4Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,952-3,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P10H']"
+952,Hex(2)HexNAc(3),HexNAc1-4Galβ1-3Gal(Galβ1-4GlcNAcβ1-6)GalNAcol,952-4,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P5TA-AS', 'P5TA-AG', 'P10H']"
+952,Hex(2)HexNAc(3),HexNAc1-3Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,952-5,"['P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P8H', 'P10H']"
+952,Hex(2)HexNAc(3),Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,952-6,"['P4TI', 'P5TA-AG']"
+958,NeuAc(1)Hex(1)HexNAc(2)Sul(1),NeuAcα2-3Galβ1-3(6S-GlcNAcβ1-6)GalNAcol,958,['P2TS']
+966,NeuAc(2)Hex(1)HexNAc(1),NeuAcα2-3Galβ1-3(NeuAcα2-6)GalNAcol,966,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-AG', 'P5TA-AS', 'P8H', 'P9H', 'P10H']"
+975,Hex(2)HexNAc(2)dHex(1)Sul(1),Galβ1-3[Fucα1-2Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,975-1,"['P5TA-AS', 'P10H']"
+975,Hex(2)HexNAc(2)dHex(1)Sul(1),Gal(Fuc)(6S)GlcNAc-Galβ1-3GalNAcol,975-2,"['P2TS', 'P4TS']"
+975,Hex(2)HexNAc(2)dHex(1)Sul(1),Fucα1-2Galβ1-3[Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,975-3,"['P2TS', 'P4TS', 'P7TA-AS']"
+993,Hex(1)HexNAc(4),GlcNAc-Gal+GlcNAcβ1-3(GlcNAcβ1-6)GalNAcol,993-1,"['P2TS', 'P4TS']"
+993,Hex(1)HexNAc(4),HexNAc1-4Galβ1-3(GalNAcβ1-4GlcNAcβ1-6)GalNAcol,993-2,"['P2TS', 'P4TS', 'P4TI']"
+1016,Hex(1)HexNAc(3)dHex(1)Sul(1),GalNAcα1-3(Fucα1-2)Galβ1-3(SGlcNAcβ1-6)GalNAcol,1016-1,"['P2TS', 'P4TS']"
+1016,Hex(1)HexNAc(3)dHex(1)Sul(1),Fucα1-2Galβ1-3[GalNAcβ1-4(S)GlcNAcβ1-6]GalNAcol,1016-2,['P1TS']
+1032,Hex(2)HexNAc(3)Sul(1),HexNAc1-4Galβ1-3[Galβ1-4(S)GlcNAcβ1-6]GalNAcol,1032,['P4TS']
+1040,NeuAc(1)Hex(2)HexNAc(2),NeuAcα2-3Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1040-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P7TA-AS', 'P8H', 'P9H', 'P10H']"
+1040,NeuAc(1)Hex(2)HexNAc(2),Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1040-2,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P5TA-AS', 'P8H', 'P10H']"
+1041,Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1041-1,['P7TA-AG']
+1041,Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3GlcNAcβ1-3(Fucα1-2)Galβ1-3GalNAcol,1041-2,"['P1TS', 'P9H']"
+1041,Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3(Fucα1-2Galβ1-3GlcNAcβ1-6)GalNAcol,1041-3,['P1TS']
+1041,Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1041-4,"['P6TA-FG', 'P5TA-AS', 'P7TA-AG']"
+1041,Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1041-5,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+1057,Hex(3)HexNAc(2)dHex(1),Galα1-3(Fucα1-2)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1057-1,"['P1TI', 'P5TA-AS', 'P10H']"
+1057,Hex(3)HexNAc(2)dHex(1),Galβ1-3[Fucα1-2(Galα1-3)Galβ-GlcNAcβ1-6]GalNAcol,1057-2,"['P1TI', 'P4TI', 'P5TA-AS', 'P5TA-AG', 'P9H', 'P10H']"
+1057,Hex(3)HexNAc(2)dHex(1),Fucα1-2Galβ1-3(Galα1-3Galβ-GlcNAcβ1-6)GalNAcol,1057-3,"['P4TI', 'P5TA-AG', 'P9H']"
+1081,NeuAc(1)Hex(1)HexNAc(3),NeuAcα2-3Galβ1-3(GalNAcβ1-4GlcNAcβ1-6)GalNAcol,1081-1,['P1TS']
+1081,NeuAc(1)Hex(1)HexNAc(3),NeuAcα2-3Gal-GlcNAcβ1-3(GlcNAcβ1-6)GalNAcol,1081-2,['P10H']
+1082,Hex(1)HexNAc(3)dHex(2),GlcNAcβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]GalNAcol,1082,['P2TS']
+1098,Hex(2)HexNAc(3)dHex(1),Fucα1-2(GalNAcα1-3)Galβ1-4GlcNAc-Galβ1-3GalNAcol,1098-1,"['P1TS', 'P1TI', 'P2TS', 'P8H']"
+1098,Hex(2)HexNAc(3)dHex(1),Galβ1-3[Fucα1-2(GalNAcα1-3)Galβ1-4GlcNAcβ1-6]GalNAcol,1098-2,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H']"
+1098,Hex(2)HexNAc(3)dHex(1),Gal(Fuc)GlcNAc-Galβ1-3(GlcNAcβ1-6)GalNAcol,1098-3,"['P6TA-FS', 'P10H']"
+1098,Hex(2)HexNAc(3)dHex(1),Fucα1-2(GalNAcα1-3)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1098-4,"['P1TI', 'P2TS', 'P4TI', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H']"
+1098,Hex(2)HexNAc(3)dHex(1),GlcNAcα1-4Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1098-5,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P10H']"
+1098,Hex(2)HexNAc(3)dHex(1),Fucα1-2Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1098-6,"['P3TS', 'P6TA-AG', 'P7TA-AG', 'P8H', 'P10H']"
+1098,Hex(2)HexNAc(3)dHex(1),Fucα1-2Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1098-7,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG']"
+1114,Hex(3)HexNAc(3),Gal-GlcNAcβ1-3Galβ1-3(Gal-GlcNAcβ1-6)GalNAcol,1114-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AG', 'P8H', 'P9H', 'P10H']"
+1114,Hex(3)HexNAc(3),Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1114-2,"['P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P8H', 'P9H']"
+1114,Hex(3)HexNAc(3),Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,1114-3,"['P3TS', 'P8H']"
+1121,Hex(2)HexNAc(2)dHex(2)Sul(1),Fucα1-2Galβ1-3[Fucα1-2Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1121,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P7TA-AS']"
+1139,Hex(1)HexNAc(4)dHex(1),Fucα1-2(GalNAcα1-3)Galβ1-3(GalNAcβ1-4GlcNAcβ1-6)GalNAcol,1139,"['P1TI', 'P4TI', 'P7TA-AG']"
+1155,Hex(2)HexNAc(4),HexNAc1-4Galβ1-3(GlcNAcα1-4Galβ1-4GlcNAcβ1-6)GalNAcol,1155-1,"['P1TS', 'P1TI', 'P3TS', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+1155,Hex(2)HexNAc(4),HexNAc-Galβ1-3(GlcNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1155-2,"['P4TS', 'P4TI', 'P5TA-AG']"
+1178,Hex(2)HexNAc(3)dHex(1)Sul(1),HexNAc1-4Galβ1-3[Fucα1-2Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1178,['P4TS']
+1186,NeuAc(1)Hex(2)HexNAc(2)dHex(1),Galβ1-3[NeuAcα2-3Galβ1-4(Fucα1-3)GlcNAcβ1-6]GalNAcol,1186-1,"['P1TI', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-AG', 'P5TA-AS', 'P8H', 'P9H', 'P10H']"
+1186,NeuAc(1)Hex(2)HexNAc(2)dHex(1),Galβ1-3[NeuAcα2-3Galβ1-3(Fucα1-4)GlcNAcβ1-6]GalNAcol,1186-2,"['P1TS', 'P2TS', 'P10H']"
+1186,NeuAc(1)Hex(2)HexNAc(2)dHex(1),NeuAcα2-3Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1186-3,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P8H', 'P9H', 'P10H']"
+1186,NeuAc(1)Hex(2)HexNAc(2)dHex(1),Fucα1-2Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1186-4,"['P1TS', 'P1TI', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P8H', 'P10H']"
+1187,Hex(2)HexNAc(2)dHex(3),Fucα1-2Galβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]GalNAcol,1187,"['P6TA-FG', 'P7TA-AG']"
+1203,Hex(3)HexNAc(2)dHex(2),Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4(Fucα1-3)GlcNAcβ1-6]GalNAcol,1203-1,"['P1TI', 'P5TA-AS', 'P10H']"
+1203,Hex(3)HexNAc(2)dHex(2),Galα1-3(Fucα1-2)Galβ1-3[Galβ1-4(Fucα1-3)GlcNAcβ1-6]GalNAcol,1203-2,"['P1TS', 'P1TI', 'P6TA-FS', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+1203,Hex(3)HexNAc(2)dHex(2),Galα1-3(Fucα1-2)Gal(Fuc)GlcNAc-Galβ1-3GalNAcol,1203-3,"['P1TI', 'P5TA-AS', 'P10H']"
+1203,Hex(3)HexNAc(2)dHex(2),Galα1-3(Fucα1-2)Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1203-4,['P1TS']
+1203,Hex(3)HexNAc(2)dHex(2),Fucα1-2Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1203-5,"['P1TI', 'P4TI', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+1235,Hex(2)HexNAc(4)Sul(1),Galβ1-4GlcNAcβ1-3Galβ1-3[GalNAcβ1-4(6S)GlcNAcβ1-6]GalNAcol,1235-1,['P4TS']
+1235,Hex(2)HexNAc(4)Sul(1),GlcNAcβ1-3[HexNAc-Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1235-2,['P4TS']
+1243,NeuAc(1)Hex(2)HexNAc(3),NeuAcα2-3Galβ1-3[HexNAc1-4Galβ1-4GlcNAcβ1-6]GalNAcol,1243-1,"['P1TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P8H', 'P9H', 'P10H']"
+1243,NeuAc(1)Hex(2)HexNAc(3),NeuAcα2-3Galβ1-4GlcNAcβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1243-2,['P10H']
+1244,Hex(2)HexNAc(3)dHex(2),Galβ1-3[GalNAcα1-3(Fucα1-2)Gal(Fuc)GlcNAcβ1-6]GalNAcol,1244-1,['P7TA-AG']
+1244,Hex(2)HexNAc(3)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAc(Fucα1-2)Galβ1-3GalNAcol,1244-2,['P7TA-AG']
+1244,Hex(2)HexNAc(3)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1244-3,['P7TA-AG']
+1244,Hex(2)HexNAc(3)dHex(2),HexNAc1-4Galβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]GalNAcol,1244-4,['P7TA-AG']
+1244,Hex(2)HexNAc(3)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1244-5,"['P1TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P7TA-AG', 'P8H', 'P9H']"
+1244,Hex(2)HexNAc(3)dHex(2),Fucα1-2Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1244-6,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P8H', 'P9H']"
+1244,Hex(2)HexNAc(3)dHex(2),Fucα1-2Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-3GlcNAcβ1-6]GalNAcol,1244-7,"['P6TA-FG', 'P6TA-AS', 'P6TA-AG']"
+1260,Hex(3)HexNAc(3)dHex(1),Gal(Fuc)GlcNAc-Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1260-1,"['P1TS', 'P6TA-FS', 'P6TA-FG', 'P7TA-AG', 'P8H', 'P9H', 'P10H']"
+1260,Hex(3)HexNAc(3)dHex(1),Gal(Fuc)GlcNAc-Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1260-2,"['P6TA-FS', 'P6TA-AG', 'P10H']"
+1260,Hex(3)HexNAc(3)dHex(1),HexNAc1-4Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1260-3,['P5TA-AG']
+1260,Hex(3)HexNAc(3)dHex(1),Galβ1-3[Fuc(Gal)GlcNAc-Galβ1-4GlcNAcβ1-6]GalNAcol,1260-4,"['P4TS', 'P6TA-FG', 'P8H', 'P9H']"
+1260,Hex(3)HexNAc(3)dHex(1),Gal-GlcNAc-Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1260-5,"['P1TS', 'P4TI', 'P8H']"
+1260,Hex(3)HexNAc(3)dHex(1),Galβ1-3(Fucα1-2Gal-GlcNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1260-6,"['P1TS', 'P4TI', 'P6TA-FG']"
+1260,Hex(3)HexNAc(3)dHex(1),Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,1260-7,['P1TS']
+1301,Hex(2)HexNAc(4)dHex(1),Gal(Fuc)GlcNAcβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,1301-1,"['P3TS', 'P4TS']"
+1301,Hex(2)HexNAc(4)dHex(1),HexNAc-Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1301-2,"['P4TI', 'P6TA-FG']"
+1301,Hex(2)HexNAc(4)dHex(1),HexNAc-Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1301-3,"['P1TS', 'P1TI', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P8H', 'P10H']"
+1301,Hex(2)HexNAc(4)dHex(1),GalNAcα1-3(Fucα1-2)Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1301-4,"['P4TS', 'P4TI', 'P6TA-FG', 'P7TA-AG']"
+1301,Hex(2)HexNAc(4)dHex(1),GalNAcα1-3(Fucα1-2)Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1301-5,['P6TA-FG']
+1317,Hex(3)HexNAc(4),"HexNAc-Galβ1-4GlcNAcβ1-3Galb1,3(Galβ1-4GlcNAcb1,6)GalNAcol",1317-1,"['P4TS', 'P6TA-FG', 'P5TA-AG', 'P7TA-AG', 'P9H']"
+1317,Hex(3)HexNAc(4),Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1317-2,"['P4TS', 'P4TI', 'P6TA-FG', 'P6TA-AG', 'P5TA-AG']"
+1317,Hex(3)HexNAc(4),Galβ1-4GlcNAcβ1-3(GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1317-3,['P5TA-AG']
+1317,Hex(3)HexNAc(4),Gal-GlcNAcβ1-3(Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1317-4,['P6TA-FS']
+1331,NeuAc(2)Hex(2)HexNAc(2),NeuAcα2-3Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1331,"['P1TS', 'P3TS', 'P2TS', 'P6TA-FS', 'P6TA-AS', 'P6TA-AG', 'P5TA-AS', 'P7TA-AS', 'P8H', 'P10H']"
+1332,NeuAc(1)Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAcβ1-6]GalNAcol,1332-1,['P10H']
+1332,NeuAc(1)Hex(2)HexNAc(2)dHex(2),NeuAcα2-3Galβ1-3[Fucα1-2Gal-(Fuc)GlcNAcβ1-6]GalNAcol,1332-2,"['P1TS', 'P10H']"
+1332,NeuAc(1)Hex(2)HexNAc(2)dHex(2),Fucα1-2Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAcβ1-6]GalNAcol,1332-3,"['P1TS', 'P1TI', 'P4TS', 'P5TA-AS', 'P10H']"
+1340,Hex(3)HexNAc(3)dHex(1)Sul(1),Fucα1-2Galβ1-3[Galβ1-4GlcNAcβ1-3Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1340-1,['P4TS']
+1340,Hex(3)HexNAc(3)dHex(1)Sul(1),Galβ1-3[Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1340-2,['P4TS']
+1348,NeuAc(1)Hex(3)HexNAc(2)dHex(1),Galα1-3(Fucα1-2)Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1348,"['P5TA-AS', 'P10H']"
+1349,Hex(3)HexNAc(2)dHex(3),Fucα1-2Galβ1-3[Galα1-3(Fucα1-2)Gal(Fuc)GlcNAcβ1-6]GalNAcol,1349,"['P5TA-AS', 'P10H']"
+1365,Hex(4)HexNAc(2)dHex(2),Galα1-3(Fucα1-2)Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1365,"['P1TI', 'P5TA-AS', 'P10H']"
+1389,NeuAc(1)Hex(2)HexNAc(3)dHex(1),NeuAcα2-3Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1389-1,"['P6TA-FS', 'P6TA-AS', 'P8H']"
+1389,NeuAc(1)Hex(2)HexNAc(3)dHex(1),GlcNAcα1-4Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAcβ1-6]GalNAcol,1389-2,"['P5TA-AS', 'P10H']"
+1389,NeuAc(1)Hex(2)HexNAc(3)dHex(1),Fucα1-2Galβ1-4GlcNAcβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1389-3,['P10H']
+1390,Hex(2)HexNAc(3)dHex(3),GalNAcα1-3(Fucα1-2)Galβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]GalNAcol,1390,['P7TA-AG']
+1397,Hex(3)HexNAc(4)Sul(1),HexNAc1-4Galβ1-3[Galβ1-4GlcNAcβ1-3Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1397,['P4TS']
+1405,NeuAc(1)Hex(3)HexNAc(3),NeuAcα2-3Galβ1-3[Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6]GalNAcol,1405,"['P2TS', 'P6TA-FS']"
+1406,Hex(3)HexNAc(3)dHex(2),Gal(Fuc)GlcNAcβ1-3Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1406-1,"['P7TA-AG', 'P9H']"
+1406,Hex(3)HexNAc(3)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1406-2,"['P1TI', 'P5TA-AS', 'P5TA-AG', 'P7TA-AG', 'P10H']"
+1406,Hex(3)HexNAc(3)dHex(2),Galα1-3(Fucα1-2)Galβ1-3[GalNAcα1-3(Fucα1-2)Gal-GlcNAcβ1-6]GalNAcol,1406-3,['P10H']
+1406,Hex(3)HexNAc(3)dHex(2),Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1406-4,"['P1TI', 'P4TS', 'P4TI', 'P6TA-FG', 'P6TA-AS']"
+1406,Hex(3)HexNAc(3)dHex(2),Fucα1-2Gal-GlcNAc-Galβ1-3(Fucα1-2Gal-GlcNAcβ1-6)GalNAcol,1406-5,['P9H']
+1406,Hex(3)HexNAc(3)dHex(2),Fucα1-2Gal(Fuc)GlcNAc-Galβ1-3(Gal-GlcNAcβ1-6)GalNAcol,1406-6,['P9H']
+1406,Hex(3)HexNAc(3)dHex(2),Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1406-7,['P8H']
+1406,Hex(3)HexNAc(3)dHex(2),Fucα1-2Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1406-8,"['P6TA-AS', 'P8H', 'P9H']"
+1406,Hex(3)HexNAc(3)dHex(2),Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3GalNAcol,1406-9,"['P1TI', 'P4TS', 'P4TI', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P8H', 'P10H']"
+1411,NeuAc(2)Hex(2)HexNAc(2)Sul(1),NeuAcα2-3Galβ1-3[NeuAcα2-3Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1411,['P2TS']
+1412,NeuAc(1)Hex(2)HexNAc(2)dHex(2)Sul(1),Fucα1-2Gaβ1-3[NeuAcα2-3Gal(Fuc)(6S)GlcNAcβ1-6]GalNAcol,1412,['P5TA-AS']
+1447,Hex(2)HexNAc(4)dHex(2),"GalNAcα1,3(Fucα1,2)Galβ1,3[GalNAcα1,3(Fucα1,2)Galβ1,4GlcNAcβ1,6]GalNAcol",1447,"['P1TI', 'P2TS', 'P4TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P6TA-AG', 'P5TA-AG', 'P7TA-AG', 'P8H']"
+1463,Hex(3)HexNAc(4)dHex(1),Gal(Fuc)GlcNAcβ1-3Galβ1-3[HexNAc1-4Galβ1-4GlcNAcβ1-6]GalNAcol,1463-1,"['P1TI', 'P4TS', 'P6TA-FG', 'P6TA-AG', 'P7TA-AG', 'P9H']"
+1463,Hex(3)HexNAc(4)dHex(1),HexNAc1-4Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1463-2,"['P1TI', 'P4TS']"
+1477,NeuAc(2)Hex(2)HexNAc(2)dHex(1),NeuAcα2-3Galβ1-3[NeuAcα2-3Galβ1-4(Fucα1-3)GlcNAcβ1-6]GalNAcol,1477-1,"['P1TS', 'P1TI', 'P5TA-AS', 'P10H']"
+1477,NeuAc(2)Hex(2)HexNAc(2)dHex(1),NeuAcα2-3Galβ1-3[NeuAcα2-3Galβ1-3(Fucα1-4)GlcNAcβ1-6]GalNAcol,1477-2,"['P2TS', 'P4TS']"
+1479,Hex(4)HexNAc(4),Galβ1-4GlcNAcβ1-3(Galβ1-4GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1479-1,"['P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AG', 'P8H', 'P9H']"
+1479,Hex(4)HexNAc(4),Galβ1-4GlcNAcβ1-3Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1479-2,"['P3TS', 'P2TS', 'P4TS', 'P6TA-FS', 'P8H']"
+1479,Hex(4)HexNAc(4),Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1479-3,"['P6TA-FS', 'P8H']"
+1479,Hex(4)HexNAc(4),Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,1479-4,"['P3TS', 'P6TA-FS', 'P8H']"
+1494,NeuAc(1)Hex(3)HexNAc(2)dHex(2),Galα1-3(Fucα1-2)Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAcβ1-6]GalNAcol,1494,"['P5TA-AS', 'P10H']"
+1511,Hex(4)HexNAc(2)dHex(3),Galα1-3(Fucα1-2)Galβ1-3[Galα1-3(Fucα1-2)Gal(Fuc)GlcNAcβ1-6]GalNAcol,1511,"['P5TA-AS', 'P10H']"
+1520,Hex(3)HexNAc(5),HexNAc1-4Galβ1-3(HexNAc1-4Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1520-1,"['P6TA-FG', 'P7TA-AG', 'P9H']"
+1520,Hex(3)HexNAc(5),HexNAc1-4Gal-GlcNAc-Galβ1-3(HexNAc1-4Gal-GlcNAcβ1-6)GalNAcol,1520-2,"['P6TA-FS', 'P6TA-FG', 'P7TA-AG', 'P9H']"
+1534,NeuAc(2)Hex(2)HexNAc(3),NeuAcα2-3Galβ1-4GlcNAcβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1534,['P10H']
+1535,NeuAc(1)Hex(2)HexNAc(3)dHex(2),NeuAcα2-3Galβ1-3[GalNAcα1-3(Fucα1-2)Gal(Fuc)GlcNAcβ1-6]GalNAcol,1535,"['P5TA-AS', 'P10H']"
+1543,Hex(3)HexNAc(4)dHex(1)Sul(1),HexNAc1-4Galβ1-3[Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4(6S)GlcNAcβ1-6]GalNAcol,1543,['P4TS']
+1551,NeuAc(1)Hex(3)HexNAc(3)dHex(1),Gal(Fuc)GlcNAc-Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1551-1,['P10H']
+1551,NeuAc(1)Hex(3)HexNAc(3)dHex(1),NeuAcα2-3Galβ1-3(Fucα1-2Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1551-2,"['P1TS', 'P10H']"
+1552,Hex(3)HexNAc(3)dHex(3),Fucα1-2Galβ1-3[Fuc(Gal)GlcNAc-Gal(Fuc)GlcNAcβ1-6]GalNAcol,1552-1,['P7TA-AG']
+1552,Hex(3)HexNAc(3)dHex(3),Fucα1-2(GalNAcα1-3)Galβ1-3[Fucα1-2(Galα1-3)Gal(Fuc)GlcNAcβ1-6]GalNAcol,1552-2,['P1TI']
+1552,Hex(3)HexNAc(3)dHex(3),Fuc(Gal)GlcNAcβ1-3Galβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]GalNAcol,1552-3,['P7TA-AG']
+1552,Hex(3)HexNAc(3)dHex(3),Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2)Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1552-4,['P1TS']
+1552,Hex(3)HexNAc(3)dHex(3),Fucα1-2Galβ1-3[Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1552-5,"['P1TS', 'P4TI', 'P9H', 'P10H']"
+1557,NeuAc(2)Hex(2)HexNAc(2)dHex(1)Sul(1),NeuAcα2-3Galβ1-3[NeuAcα2-3Galβ1-4(Fucα1-3)(6S)GlcNAcβ1-6]GalNAcol,1557,['P2TS']
+1559,Hex(4)HexNAc(4)Sul(1),Galβ1-3[Gal-GlcNAc-Gal-GlcNAc-Gal-(6S)GlcNAcβ1-6]GalNAcol,1559,['P4TS']
+1568,Hex(4)HexNAc(3)dHex(2),Fucα1-2Gal-GlcNAcβ1-3Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1568-1,['P10H']
+1568,Hex(4)HexNAc(3)dHex(2),Fucα1-2Gal-GlcNAcβ1-3Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1568-2,['P10H']
+1568,Hex(4)HexNAc(3)dHex(2),Galα1-3(Fucα1-2)Galβ1-3[Fucα1-2Gal-GlcNAc-Gal-GlcNAcβ1-6]GalNAcol,1568-3,['P9H']
+1593,Hex(2)HexNAc(4)dHex(3),GalNAcα1-3(Fucα1-2)Galβ1-3[GalNAcα1-3(Fucα1-2)Gal(Fuc)GlcNAcβ1-6]GalNAcol,1593,['P7TA-AG']
+1609,Hex(3)HexNAc(4)dHex(2),Gal(Fuc)GlcNAcβ1-3[Gal(Fuc)GlcNAcβ1-6]Galβ1-3(GlcNAcβ1-6)GalNAcol,1609-1,['P9H']
+1609,Hex(3)HexNAc(4)dHex(2),Gal(Fuc)GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3(GlcNAcβ1-6)GalNAcol,1609-2,['P8H']
+1609,Hex(3)HexNAc(4)dHex(2),HexNAc-Galβ1-3[Fucα1-2Gal(Fuc)GlcNAc-Gal-GlcNAcβ1-6]GalNAcol,1609-3,['P7TA-AG']
+1609,Hex(3)HexNAc(4)dHex(2),Gal(Fuc)GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3(GlcNAcβ1-6)GalNAcol,1609-4,['P8H']
+1609,Hex(3)HexNAc(4)dHex(2),GalNAcα1-3(Fucα1-2)Gal-GlcNAc-Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1609-5,"['P7TA-AG', 'P8H']"
+1609,Hex(3)HexNAc(4)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-3(Fucα1-2Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1609-6,['P8H']
+1609,Hex(3)HexNAc(4)dHex(2),Fucα1-2Gal-GlcNAc-Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1609-7,['P8H']
+1625,Hex(4)HexNAc(4)dHex(1),Gal-GlcNAc-Galβ1-3[Gal(Fuc)GlcNAc-Gal-GlcNAcβ1-6]GalNAcol,1625-1,['P6TA-FS']
+1625,Hex(4)HexNAc(4)dHex(1),Gal(Fuc)GlcNAcβ1-3(Gal-GlcNAcβ1-6)Galβ1-3(Gal-GlcNAcβ1-6)GalNAcol,1625-2,"['P1TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AG', 'P8H']"
+1650,Hex(2)HexNAc(5)dHex(2),GalNAcα1-3(Fucα1-2)Gal-GlcNAcβ1-3[GalNAcα1-3(Fucα1-2)Gal-GlcNAcβ1-6]GalNAcol,1650,['P1TI']
+1666,Hex(3)HexNAc(5)dHex(1),Gal(Fuc)GlcNAc(GlcNAc)Galβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,1666-1,"['P8H', 'P9H']"
+1666,Hex(3)HexNAc(5)dHex(1),Gal(Fuc)GlcNAc(GlcNAc)Galβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,1666-2,"['P8H', 'P9H']"
+1666,Hex(3)HexNAc(5)dHex(1),GalNAcβ1-4GlcNAcβ1-3(Galβ1-4GlcNAcβ1-6)Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1666-4,"['P1TS', 'P1TI', 'P2TS', 'P4TS']"
+1682,Hex(4)HexNAc(5),HexNAc+Galβ1-4GlcNAcβ1-3(Galβ1-4GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1682,"['P6TA-FG', 'P5TA-AG']"
+1697,NeuAc(1)Hex(3)HexNAc(3)dHex(2),NeuAcα2-3Gal(Fuc)GlcNAcβ1-3Galβ1-3[Gal(Fuc)GlNAcβ1-6]GalNAcol,1697-1,"['P5TA-AS', 'P10H']"
+1697,NeuAc(1)Hex(3)HexNAc(3)dHex(2),Fucα1-2Gal(Fuc)GlcNAc-Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1697-2,['P8H']
+1697,NeuAc(1)Hex(3)HexNAc(3)dHex(2),NeuAcα2-3Galβ1-3[Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1697-3,['P1TS']
+1698,Hex(3)HexNAc(3)dHex(4),Gal(Fuc)GlcNAc(Fucα1-2)Galβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]GalNAcol,1698,['P7TA-AG']
+1713,NeuAc(1)Hex(4)HexNAc(3)dHex(1),Galα1-3(Fucα1-2)Gal-GlcNAcβ1-3Galβ1-3(NeuAcα2-3Galβ1-4GlcNAcβ1-6)GalNAcol,1713,['P10H']
+1723,Hex(3)HexNAc(6),HexNAc-Galβ1-4GlcNAcβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)Galβ1-3(GlcNAcβ1-6)GalNAcol,1723,"['P2TS', 'P4TS', 'P6TA-FG', 'P7TA-AG', 'P10H']"
+1755,Hex(3)HexNAc(4)dHex(3),Gal(Fuc)GlcNAc-Galβ1-3[GalNAcα1-3(Fucα1-2)Gal-(Fuc)GlcNAcβ1-6]GalNAcol,1755-1,['P7TA-AG']
+1755,Hex(3)HexNAc(4)dHex(3),Gal(Fuc)GlcNAc-Galβ1-3[GalNAcα1-3(Fucα1-2)Gal-(Fuc)GlcNAcβ1-6]GalNAcol,1755-2,['P7TA-AG']
+1770,NeuAc(1)Hex(4)HexNAc(4),NeuAcα2-3Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1770,"['P2TS', 'P6TA-FS']"
+1771,Hex(4)HexNAc(4)dHex(2),GalNAcα1-3(Fucα1-2)Gal-GlcNAcβ1-3Galβ1-3[Galα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1771-1,"['P1TI', 'P5TA-AS', 'P5TA-AG', 'P10H']"
+1771,Hex(4)HexNAc(4)dHex(2),Galβ1-3[Gal(Fuc)GlcNAc-Gal-GlcNAc-Gal(Fuc)GalNAcβ1-6]GalNAcol,1771-2,"['P6TA-FS', 'P8H']"
+1771,Hex(4)HexNAc(4)dHex(2),Galα1-3(Fucα1-2)Gal-GlcNAcβ1-3Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1771-3,['P1TI']
+1771,Hex(4)HexNAc(4)dHex(2),Fucα1-2Gal-GlcNAc-Gal[Gal(Fuc)GlcNAc-Gal-GlcNAcβ1-6]GalNAcol,1771-4,['P8H']
+1771,Hex(4)HexNAc(4)dHex(2),Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2)Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1771-5,"['P1TS', 'P1TI', 'P8H']"
+1771,Hex(4)HexNAc(4)dHex(2),Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1771-6,"['P1TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P8H', 'P9H']"
+1771,Hex(4)HexNAc(4)dHex(2),Fucα1-2Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1771-7,"['P1TS', 'P10H']"
+1812,Hex(3)HexNAc(5)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-3Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1812-1,"['P1TI', 'P4TI', 'P6TA-FG', 'P7TA-AG']"
+1812,Hex(3)HexNAc(5)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6]GalNAcol,1812-2,"['P1TI', 'P6TA-FG']"
+1812,Hex(3)HexNAc(5)dHex(2),GalNAcα1-3(Fucα1-2)Gal+Hex2HexNAc3dHex1+GalNAcol,1812-3,['P1TI']
+1828,Hex(4)HexNAc(5)dHex(1),GalGlcNAcβ1-3[Gal(Fuc)GlcNAcβ1-6]Galβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,1828-1,"['P1TI', 'P6TA-FG', 'P6TA-AG']"
+1828,Hex(4)HexNAc(5)dHex(1),GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-3(Galβ1-4GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1828-2,"['P1TI', 'P4TS', 'P8H']"
+1842,NeuAc(2)Hex(3)HexNAc(3)dHex(1),NeuAcα2-3Galβ1-3[NeuAcα2-3Galβ1-4GlcNAcβ1-3Gal(Fuc)GlcNAcβ1-6]GalNAcol,1842,['P10H']
+1843,NeuAc(1)Hex(3)HexNAc(3)dHex(3),Fucα1-2Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAc-Gal(Fuc)GlcNAcβ1-6]GalNAcol,1843,"['P5TA-AS', 'P10H']"
+1844,Hex(5)HexNAc(5),Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1844-1,"['P3TS', 'P6TA-FS', 'P8H']"
+1844,Hex(5)HexNAc(5),Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-3GalNAcol,1844-2,['P3TS']
+1844,Hex(5)HexNAc(5),Gal-GlcNAc-Galβ1-3(Gal-GlcNAc-Gal-GlcNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1844-3,"['P6TA-FS', 'P8H']"
+1876,Hex(5)HexNAc(3)dHex(3),Galα1-3(Fucα1-2)Gal(Fuc)GlcNAc-Galβ1-3[Galα1-3(Fucα1-2)Gal-GlcNAcβ1-6]GalNAcol,1876-1,"['P5TA-AS', 'P10H']"
+1876,Hex(5)HexNAc(3)dHex(3),Galα1-3(Fucα1-2)Gal(Fuc)GlcNAc-Galβ1-3[Galα1-3(Fucα1-2)Gal-GlcNAcβ1-6]GalNAcol,1876-2,"['P1TI', 'P10H']"
+1885,Hex(4)HexNAc(6),HexNAc-Galβ1-4GlcNAcβ1-3(Galβ1-4GlcNAcβ1-6)Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1885,"['P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AG', 'P7TA-AG', 'P9H']"
+1917,Hex(4)HexNAc(4)dHex(3),Gal(Fuc)GlcNAcβ1-3[Gal(Fuc)GlcNAcβ1-6]Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1917-1,"['P6TA-FS', 'P8H', 'P9H']"
+1917,Hex(4)HexNAc(4)dHex(3),Fucα1-2Gal-(Fuc)GlcNAcβ1-3(Gal-GlcNAcβ1-6)Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)GalNAcol,1917-2,['P8H']
+1917,Hex(4)HexNAc(4)dHex(3),Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3[Gal(Fuc)GlcNAcβ1-6]GalNAcol,1917-3,"['P2TS', 'P4TS', 'P6TA-FS', 'P6TA-FG', 'P6TA-AS', 'P8H']"
+1917,Hex(4)HexNAc(4)dHex(3),Fucα1-2Gal-(Fuc)GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1917-4,['P8H']
+1917,Hex(4)HexNAc(4)dHex(3),Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3[Fucα1-2Galβ1-4GlcNAcβ1-6]GalNAcol,1917-5,"['P2TS', 'P4TS', 'P4TI', 'P6TA-FG', 'P6TA-AS', 'P8H', 'P9H', 'P10H']"
+1958,Hex(3)HexNAc(5)dHex(3),GalNAcα1-3(Fucα1-2)Gal-GlcNAcβ1-3(Fucα1-2)Galβ1-3[GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-6]GalNAcol,1958,['P7TA-AG']
+1974,Hex(4)HexNAc(5)dHex(2),Gal(Fuc)GlcNAcβ1-3[Gal(Fuc)GlcNAcβ1-6]Galβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,1974-1,"['P6TA-FS', 'P6TA-AG', 'P8H', 'P9H']"
+1974,Hex(4)HexNAc(5)dHex(2),GalNAcα1-3(Fucα1-2)Gal-GlcNAc-(Fucα1-2)Galβ1-3(Gal-GlcNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,1974-3,"['P1TS', 'P8H', 'P10H']"
+1974,Hex(4)HexNAc(5)dHex(2),GalNAcα1-3(Fucα1-2)Galβ1-4GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,1974-4,"['P2TS', 'P4TS', 'P4TI', 'P6TA-FG']"
+1974,Hex(4)HexNAc(5)dHex(2),Fucα1-2Galβ1-3[GalNAcα1-3(Fucα1-2)Gal-GlcNAc-Gal-GlcNAc-Gal-GalNAcβ1-6]GalNAcol,1974-5,['P8H']
+1988,NeuAc(2)Hex(3)HexNAc(3)dHex(2),NeuAcα2-3Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAc-Gal(Fuc)GlcNAcβ1-6]GalNAcol,1988,"['P5TA-AS', 'P10H']"
+1990,Hex(5)HexNAc(5)dHex(1),Fucα1-2Gal-GlcNAc(Gal-GlcNAc)Galβ1-3(Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1990-1,['P6TA-FS']
+1990,Hex(5)HexNAc(5)dHex(1),Fucα1-2Gal-GlcNAc(Gal-GlcNAc)Galβ1-3(Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1990-2,['P6TA-FS']
+1990,Hex(5)HexNAc(5)dHex(1),Fucα1-2Gal-GlcNAc(Gal-GlcNAc)Galβ1-3(Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1990-3,['P6TA-FS']
+1990,Hex(5)HexNAc(5)dHex(1),Fucα1-2Gal-GlcNAc(Gal-GlcNAc)Galβ1-3(Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,1990-4,['P6TA-FS']
+1990,Hex(5)HexNAc(5)dHex(1),Galβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1990-5,['P1TS']
+1990,Hex(5)HexNAc(5)dHex(1),Fucα1-2Galβ1-3(Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-3Galβ1-4GlcNAcβ1-6)GalNAcol,1990-6,['P1TS']
+2031,Hex(4)HexNAc(6)dHex(1),Gal(Fuc)GlcNAcβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,2031-1,"['P6TA-AG', 'P7TA-AG']"
+2031,Hex(4)HexNAc(6)dHex(1),HexNAc-Galβ1-4GlcNAcβ1-3[Gal(Fuc)GlcNAcβ1-6]Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,2031-2,"['P6TA-FG', 'P6TA-AG', 'P7TA-AG']"
+2031,Hex(4)HexNAc(6)dHex(1),Gal(Fuc)GlcNAcβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,2031-3,"['P6TA-FS', 'P6TA-AG', 'P8H', 'P9H', 'P10H']"
+2031,Hex(4)HexNAc(6)dHex(1),HexNAc-Galβ1-4GlcNAcβ1-3[Gal(Fuc)GlcNAcβ1-6]Galβ1-3(HexNAc-Galβ1-4GlcNAcβ1-6)GalNAcol,2031-4,"['P1TS', 'P6TA-FS', 'P6TA-AG', 'P8H', 'P9H']"
+2031,Hex(4)HexNAc(6)dHex(1),Fuc+HexNAc-Galβ1-4GlcNAcβ1-3(HexNAc-Gal-GlcNAcβ1-6)Galβ1-3(Galβ1-4GlcNAcβ1-6)GalNAcol,2031-5,['P1TS']
+2062,NeuAc(1)Hex(4)HexNAc(4)dHex(2),Gal(Fuc)GlcNAcβ1-3Galβ1-3[NeuAcα2-3Gal(Fuc)GlcNAc-Galβ1-4GlcNAcβ1-6]GalNAcol,2062,['P10H']
+2088,Hex(4)HexNAc(7),HexNAc-Gal-GlcNAcβ1-3(HexNAc-Gal-GlcNAcβ1-6)Galβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,2088,"['P1TS', 'P4TI', 'P6TA-FS', 'P6TA-FG', 'P6TA-AG', 'P7TA-AG', 'P9H', 'P10H']"
+2120,Hex(4)HexNAc(5)dHex(3),Gal(Fuc)GlcNAcβ1-3[Fucα1-2Gal(Fuc)GlcNAcβ1-6]Galβ1-3(HexNAc-Gal-GlcNAcβ1-6)GalNAcol,2120-1,['P8H']
+2120,Hex(4)HexNAc(5)dHex(3),Fucα1-2GalGlcNAcβ1-3(Fucα1-2GalGlcNAcβ1-6)Galβ1-3[GalNAc(Fuc)Gal-GlcNAcβ1-6]GalNAcol,2120-2,['P8H']
+2136,Hex(5)HexNAc(5)dHex(2),Fucα1-2Galβ1-4GlcNAcβ1-3(Fucα1-2Galβ1-4GlcNAcβ1-6)Galβ1-3(Gal-GlcNAc-Gal-GlcNAcβ1-6)GalNAcol,2136,"['P1TS', 'P6TA-FS', 'P10H']"

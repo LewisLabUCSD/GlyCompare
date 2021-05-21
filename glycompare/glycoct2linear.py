@@ -4,12 +4,15 @@
 
 mono2markov = {'RES 1b:b-dglc-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n':'bNG',
                'RES 1b:x-dglc-HEX-1:5 2s:n-acetyl LIN 1:1d(2+1)2n':'bNG',
+               'RES 1b:x-dman-HEX-1:5':'bm',
                'RES 1b:b-dman-HEX-1:5':'bM',
                'RES 1b:a-dman-HEX-1:5':'aM',
                'RES 1b:b-dgal-HEX-1:5':'bA',
+               'RES 1b:x-dgal-HEX-1:5':'bA',
                'RES 1b:a-dgro-dgal-NON-2:6|1:a|2:keto|3:d 2s:n-acetyl LIN 1:1d(5+1)2n':'aNN',
                'RES 1b:a-lgal-HEX-1:5|6:d':'aF',
               }
+
 # for i in glycan_dict['5486.1'].index:
 #     print(i)
 #     print(mono2markov[str(i)])

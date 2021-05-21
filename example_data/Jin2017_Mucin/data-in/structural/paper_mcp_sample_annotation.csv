@@ -1,0 +1,18 @@
+﻿Sample,Specimen,Disease,Extraction,Tissue,Subtype,Location
+P1TS,1,Tumor,Soluble,Tumor,Tumor,
+P1TI,1,Tumor,Insoluble,Tumor,Tumor,
+P3TS,3,Tumor,Soluble,Tumor,Tumor,
+P2TS,2,Tumor,Soluble,Tumor,Tumor,
+P4TS,4,Tumor,Soluble,Tumor,Tumor,
+P4TI,4,Tumor,Insoluble,Tumor,Tumor,
+P6TA_FS,6,TumorAdjacent,,Stomach,Fundus,Surface
+P6TA_FG,6,TumorAdjacent,,Stomach,Fundus,Gland
+P6TA_AS,6,TumorAdjacent,,Stomach,Antrum,Surface
+P6TA_AG,6,TumorAdjacent,,Stomach,Antrum,Gland
+P5TA_AS,5,TumorAdjacent,,Stomach,Antrum,Surface
+P5TA_AG,5,TumorAdjacent,,Stomach,Antrum,Gland
+P7TA_AS,7,TumorAdjacent,,Stomach,Antrum,Surface
+P7TA_AG,7,TumorAdjacent,,Stomach,Antrum,Gland
+P8H,8,Normal,,Stomach,Corpus-Autrum Junction,
+P9H,9,Normal,,Stomach,Corpus-Autrum Junction,
+P10H,10,Normal,,Stomach,Corpus-Autrum Junction,
