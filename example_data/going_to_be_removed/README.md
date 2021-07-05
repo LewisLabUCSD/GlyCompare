@@ -1,1 +1,0 @@
-# Glycompare_examples
