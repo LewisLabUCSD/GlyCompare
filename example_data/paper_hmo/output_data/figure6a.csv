@@ -22,7 +22,6 @@
 "(Intercept)35","glycan",0.181
 "Secretor36","glycan",0.368
 "(Intercept)110","motif",0.757
-"Secretor210","motif",0.0804
 "(Intercept)51","motif",0.412
 "(Intercept)61","motif",0.742
 "(Intercept)71","motif",0.441
@@ -40,7 +39,6 @@
 "Secretor331","glycan",0.594
 "(Intercept)361","glycan",0.342
 "(Intercept)112","motif",0.734
-"Secretor212","motif",0.0774
 "(Intercept)52","motif",0.308
 "(Intercept)62","motif",0.691
 "Secretor72","motif",0.0949
@@ -49,13 +47,10 @@
 "(Intercept)132","motif",0.206
 "(Intercept)152","motif",0.155
 "(Intercept)162","motif",0.387
-"(Intercept)202","motif",0.144
 "Secretor232","glycan",0.128
 "(Intercept)252","glycan",0.649
 "(Intercept)312","glycan",0.155
 "(Intercept)332","glycan",0.387
-"(Intercept)352","glycan",0.144
-"(Intercept)53","motif",0.113
 "(Intercept)73","motif",0.354
 "(Intercept)123","motif",0.13
 "(Intercept)133","motif",0.315
