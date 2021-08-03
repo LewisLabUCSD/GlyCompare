@@ -93,8 +93,10 @@ from scipy import stats
 
 from glycompare import *
 
-# parameter setting 
-# environment parameter setting 
+#######################################
+# parameter setting                   #
+# environment parameter setting       #
+#######################################
 glycompare_addr = '<PATH_TO_GLYCOMPARE>/GlyCompare/'
 glytoucan_db_addr = os.path.join(glycompare_addr, 'glycompare','database', 'glytoucan_database.json')
 linkage_specific = False
@@ -104,16 +106,20 @@ working_addr = os.path.join(glycompare_addr,'paper_epo/')
 project_name = "paper_epo"
 costumized_glycan_identifier = True
 external_profile_naming= True
-rerun = False 
+rerun = False
 
-# initiator
+#############
+# initiator #
+#############
 keywords_dict = pipeline_functions.load_para_keywords(project_name, working_addr, glytoucan_db_addr=glytoucan_db_addr)
 keywords_dict
 
 pipeline_functions.check_init_dir(keywords_dict)
 ##
 
-## initialize glycans
+########################
+## initialize glycans ##
+########################
 meta_name = pd.read_csv(os.path.join(working_addr,'source_data','glycan_id_list.txt'), sep='\t')
 structure_loader = meta_name['glycan_id'].tolist()
 data_type = 'mix'
@@ -121,10 +127,14 @@ glycan_dict = pipeline_functions.load_glycans_pip(keywords_dict=keywords_dict,
                                            data_type=data_type, 
                                            structure_loader=structure_loader)
 
-## extract substructure and generate substructure vector
+#############################################################
+## extract substructure and generate substructure vector ####
+#############################################################
 matched_dict = pipeline_functions.extract_and_merge_substrutures_pip(keywords_dict, num_processors=num_processors,linkage_specific=linkage_specific, forced=rerun)
 
-## calculate substructure abundance -> glycoprofile vector 
+##############################################################
+## calculate substructure abundance -> glycoprofile vector ###
+##############################################################
 abd_table = glycan_io.load_table(os.path.join(keywords_dict['source_dir'], 'abundance_table.xls'))
 _, glycoprofile_list = pipeline_functions.glycoprofile_pip(keywords_dict, 
                                                            abd_table, 
@@ -156,15 +166,19 @@ for i in selected_profile:
         feature_name.append(j)
 
 feature_name = list(set(feature_name))
-## select motif and get motif abundance -> glyco-motif vector
+
+################################################################
+## select motif and get motif abundance -> glyco-motif vector ##
+################################################################
 core=select_motifs.nglycan_core
 motif_abd_table, motif_lab, merged_weights_dict=pipeline_functions.select_motifs_pip(keywords_dict, 
                                                      linkage_specific=linkage_specific,   
                                                      core=core,
                                                      only_substructures_start_from_root=True,
                                                      select_col= select_col)
-
-## cluster and determine representative motifs
+#################################################
+## cluster and determine representative motifs ##
+#################################################
 glycoprofile_cluster_dict, glyco_motif_cluster_dict = pipeline_functions.clustering_analysis_pip(keywords_dict=keywords_dict, 
                                            motif_abd_table=motif_abd_table, 
                                            select_profile_name = selected_name_list)
