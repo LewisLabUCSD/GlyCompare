@@ -68,7 +68,7 @@ To install via PyPI, using pip3
 pip3 install glycompare
 
 # download the glytoucan db (the path to this db is glytoucan_db_addr)
-wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/glytoucan_database.json
+wget https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/glycompare/database/glytoucan_database.json
 ```
 -->
 
@@ -211,18 +211,18 @@ Glycompare provides several complete pipelines that several major pre-prescribed
 
 ### Create a new session and all data are required in ./source_data/
 
-1.1. abundance_table.xls. An abundance_table has column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id or custimized: m/z, hplc). An abundance table (1.1) is necessary to run the full GlyCompare pipeline, if the glytoucan_id for each glycan is specified. For example, [iscience_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/test_iscience/source_data/abundace_table.csv). Complex data need more, [epo_data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/).
+1.1. abundance_table.xls. An abundance_table has column: sample (glycoprofile), row: glycan (the glycan identifier can be glytoucan_id or custimized: m/z, hplc). An abundance table (1.1) is necessary to run the full GlyCompare pipeline, if the glytoucan_id for each glycan is specified. For example, [iscience_data](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_data/test_iscience/source_data/abundace_table.csv). Complex data need more, [epo_data](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_data/paper_epo/source_data/).
     
     
 
-1.2. (optional) external_profile_naming.json. Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use. i.e. [paper_epo/source_data/external_profile_naming.json](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/external_profile_naming.json)
+1.2. (optional) external_profile_naming.json. Glycompare defaults to index names for each sample (e.g. 1,2,3). If you want to specify a name for each sample use. i.e. [paper_epo/source_data/external_profile_naming.json](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_data/paper_epo/source_data/external_profile_naming.json)
     
     
 
-1.3. (optional) glycan_identifier_to_glytoucan_id.json. If the glycan identifiers in abundance_table.xls are glytoucan_id or m/z which map uniquely (1:1) to glytoucan IDs, this file can be ignored. If m/z can map to multiple isoforms, this file must be completed to specify which m/z correspond to which structures  [paper_epo/source_data/glycan_identifier_to_glytoucan_id.json](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json)
+1.3. (optional) glycan_identifier_to_glytoucan_id.json. If the glycan identifiers in abundance_table.xls are glytoucan_id or m/z which map uniquely (1:1) to glytoucan IDs, this file can be ignored. If m/z can map to multiple isoforms, this file must be completed to specify which m/z correspond to which structures  [paper_epo/source_data/glycan_identifier_to_glytoucan_id.json](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json)
     
     
-1.4. (optinal) source_data/glycoct/. If part of glycan structures are manually curated, we need a source_data/glycoct/ directory to store all of them (i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct))
+1.4. (optinal) source_data/glycoct/. If part of glycan structures are manually curated, we need a source_data/glycoct/ directory to store all of them (i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/for_publish/example_data/paper_epo/source_data/glycoct))
 
 
 ### There are several parameter should be set up first
@@ -268,11 +268,11 @@ keywords_dict = pipeline_functions.load_para_keywords(project_name, working_addr
 
 ### ```load_glycans_pip```
 
-**Description:** Load glycans from glycoprofile using glytoucan database (data_type='glytoucanid') or local glycoct structure (data_type='local_glycoct') or both (data_type='mix'). Glycoct structures will be read from ```source_data/glycoct/``` folder in the source_data directory (i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct)). Returns a glycan_dict object, a dictionary of glypy.Glycan objects with glytoucan and m/z as keys.
+**Description:** Load glycans from glycoprofile using glytoucan database (data_type='glytoucanid') or local glycoct structure (data_type='local_glycoct') or both (data_type='mix'). Glycoct structures will be read from ```source_data/glycoct/``` folder in the source_data directory (i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/for_publish/example_data/paper_epo/source_data/glycoct)). Returns a glycan_dict object, a dictionary of glypy.Glycan objects with glytoucan and m/z as keys.
 
 **Input:**
 - keywords_dict: dict, keyword pipeline variable dictionary from ```load_para_keywords``` function
-- data_type: string, either ['used', 'glycan_dict', 'glytoucanid', 'local_glycoct', 'mix'] indicating which method should be used to load and initilize the glypy.glycan objects. If ```data_type=='local_glycoct'``` or ```data_type=='mix'```, then the user must add glycoct files to the ```source_data/glycoct/``` folder in the source_data directory (i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycoct)).
+- data_type: string, either ['used', 'glycan_dict', 'glytoucanid', 'local_glycoct', 'mix'] indicating which method should be used to load and initilize the glypy.glycan objects. If ```data_type=='local_glycoct'``` or ```data_type=='mix'```, then the user must add glycoct files to the ```source_data/glycoct/``` folder in the source_data directory (i.e. [paper_epo/source_data/glycoct](https://github.com/LewisLabUCSD/GlyCompare/tree/for_publish/example_data/paper_epo/source_data/glycoct)).
 - structure_loader: a list of glycan name/customized id, or a glycan_dict
 
 **Output:**
@@ -324,7 +324,7 @@ glycan_dict = pipeline_functions.load_structure_pip(keywords_dict=keywords_dict,
                                            structure_loader=structure_loader)
 ```
 
-From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/3_Fig3_Fig4_epo_analysis.ipynb)
 ```
 keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
 meta_name = pd.read_csv(os.path.join('example_data/paper_epo/source_data','glycan_id_list.txt'), sep='\t')
@@ -348,7 +348,7 @@ glycan_dict = pipeline_functions.load_structure_pip(keywords_dict=keywords_dict,
 - forced: boolean, defaults to False. If False, ```extract_and_merge_substructures_pip``` will not run if the output file already exists. If True, ```extract_and_merge_substructures_pip``` will run and overwrite the existing output file.
 
 **Output:**
-- matched_dict: dict, mapping from observed glycans (keys) to a ```substructure_present_absent_vector``` (e.g. [matched_dict.json](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_data/paper_epo/intermediate_file/paper_epo_matched_dict.json)). The ```substructure_present_absent_vector``` indicates the number of times each substructure occurs in a glycan. The i-th substructure referenced in the ```substructure_present_absent_vector``` matches the i-th substructure in the ```substructure_vec``` which contains the glycoct for each substructure. #The ```substructure_vec``` is returned by ```glycan_io.motif_dict_to_motif_vec(substructure_vector_dict)```. 
+- matched_dict: dict, mapping from observed glycans (keys) to a ```substructure_present_absent_vector``` (e.g. [matched_dict.json](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_data/paper_epo/intermediate_file/paper_epo_matched_dict.json)). The ```substructure_present_absent_vector``` indicates the number of times each substructure occurs in a glycan. The i-th substructure referenced in the ```substructure_present_absent_vector``` matches the i-th substructure in the ```substructure_vec``` which contains the glycoct for each substructure. #The ```substructure_vec``` is returned by ```glycan_io.motif_dict_to_motif_vec(substructure_vector_dict)```. 
 
 <!-- extract_and_merge_substructures_pip,
     - Is "motif occurance vector" the correct term? What do we call this?
@@ -357,7 +357,7 @@ glycan_dict = pipeline_functions.load_structure_pip(keywords_dict=keywords_dict,
 
 **Example:**
 
-From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/3_Fig3_Fig4_epo_analysis.ipynb)
 ```
 keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
 
@@ -375,8 +375,8 @@ present_substructures=glycan_io.motif_dict_to_motif_vec(substructure_vector_dict
 **Input:**
 - keywords_dict: dict, keyword pipeline variable dictionary from ```load_para_keywords``` function
 - abd_table: string, filename pointing to the glycan abundance table. The loader will handel csv and xls tables. 
-Row names are m/z, glytoucan ids, or custom glycan ids specified in ```glycan_identifier_to_glytoucan_id.json```. in the source_data directory (i.e. [paper_epo/source_data/glycan_identifier_to_glytoucan_id.json](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json)).
-Column names will be ignored, to name sample/glycoprofiles the user must specify ``` external_profile_naming.json``` in the source_data directory (i.e. [paper_epo/source_data/external_profile_naming.json](https://github.com/LewisLabUCSD/GlyCompare/tree/master/example_data/paper_epo/source_data/external_profile_naming.json)).
+Row names are m/z, glytoucan ids, or custom glycan ids specified in ```glycan_identifier_to_glytoucan_id.json```. in the source_data directory (i.e. [paper_epo/source_data/glycan_identifier_to_glytoucan_id.json](https://github.com/LewisLabUCSD/GlyCompare/tree/for_publish/example_data/paper_epo/source_data/glycan_identifier_to_glytoucan_id.json)).
+Column names will be ignored, to name sample/glycoprofiles the user must specify ``` external_profile_naming.json``` in the source_data directory (i.e. [paper_epo/source_data/external_profile_naming.json](https://github.com/LewisLabUCSD/GlyCompare/tree/for_publish/example_data/paper_epo/source_data/external_profile_naming.json)).
 - simple_profile: boolean, defaults to False. If False, ```glycoprofile_pip``` will search for ```source_data/glycan_identifier_to_glytoucan_id.json``` to determine the names of glycans in the glycoprofile. If True, glycan structure will be read from the table. If glycans are identified by m/z in the abundance table and there is not a 1:1 mapping from m/z to glycan structure, ```simple_profile``` must be False.
 - unique_glycan_identifier_to_structure_id: boolean, defaults to False. If this variable and ```already_glytoucan_id``` are set to True, ```glycoprofile_pip``` will run using the using the GlyTouCanIDs in the abundance table. Otherwise, ```glycan_identifier_to_glytoucan_id.json.``` will be read to name the glycoprofiles/samples.
 - already_glytoucan_id: boolean, defaults to False. If False, glycan structure will be read from the glytoucan database using glytoucan IDs from the abundance table. If True, the glycan identifiers specified in the abundance table must be read in separately
@@ -390,7 +390,7 @@ Column names will be ignored, to name sample/glycoprofiles the user must specify
 
 **Example:**
 
-From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/3_Fig3_Fig4_epo_analysis.ipynb)
 ```
 keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
 abd_table = glycan_io.load_table(os.path.join(keywords_dict['source_dir'], 'abundance_table.xls'))
@@ -422,7 +422,7 @@ glycoprofile_vector_table=pipeline_functions.glycoprofile_pip(keywords_dict, abd
 -->
 
 **Example:**
-From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/3_Fig3_Fig4_epo_analysis.ipynb)
 ```
 keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
 
@@ -448,7 +448,7 @@ motif_abd_table,a_node_state = pipeline_functions.select_motifs_pip(keywords_dic
 
 
 **Example:**
-From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+From the [cho epo example](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/3_Fig3_Fig4_epo_analysis.ipynb)
 ```
 keywords_dict = pipeline_functions.load_para_keywords("paper_epo", "example_data/paper_epo", glytoucan_db_addr='glycompare/database/glytoucan_database.json') 
 
@@ -459,5 +459,5 @@ pipeline_functions.profile_cluster_pip(keyworks_dict,motif_abd_table)
 ```
 
 ## Statistical Analysis 
-Statistical analyses are not yet incorperate in the package. The analysese performed can be found at [example_notebook/Fig4_Fig5_hmo_stats.r](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig4_Fig5_hmo_stats.ipynb)
+Statistical analyses are not yet incorperate in the package. The analysese performed can be found at [example_notebook/Fig4_Fig5_hmo_stats.r](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/5_Fig5_Fig6_hmo_stats.ipynb)
 
