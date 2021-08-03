@@ -78,7 +78,7 @@ wget https://github.com/LewisLabUCSD/GlyCompare/blob/master/glycompare/database/
 
 ## Quick Example (2-10 minutes)
 
-A quick run through the top-level functions using the [CHO-EPO data](https://github.com/LewisLabUCSD/GlyCompare/blob/master/example_notebook/Fig2_Fig3_epo_analysis.ipynb)
+A quick run through the top-level functions using the [CHO-EPO data](https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/example_notebook/3_Fig3_Fig4_epo_analysis.ipynb)
 
 
 ```python3
