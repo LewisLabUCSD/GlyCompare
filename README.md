@@ -74,7 +74,7 @@ wget https://github.com/LewisLabUCSD/GlyCompare/blob/for_publish/glycompare/data
 
 # Pipeline Overview
 
-![workflow](GlyCompare_flow.png)
+![workflow](glycompare.jpeg)
 
 ## Quick Example (2-10 minutes)
 
