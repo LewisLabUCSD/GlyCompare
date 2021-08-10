@@ -391,8 +391,9 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                 os.remove(reference_dict_addr)
                 num = str(len(reference_dict))
                 time = "_".join(str(datetime.now()).split(".")[0].split(" "))
+                time = time.replace(":", "-")
                 dir_path = "/".join(reference_dict_addr.split("/")[:-1])
-                target = reference_dict_addr.split("/")[-1].split(".json")[0].replace(":", "-")
+                target = reference_dict_addr.split("/")[-1].split(".json")[0]
                 with open(dir_path + "/" + "_".join(target.split("_")[:4]) + "_" + num + "_" + time + ".json", 'w') as outfile:
                     json.dump(reference_dict, outfile)
                 print("Renewed reference dict, " + str(count) + " new motifs are added")
