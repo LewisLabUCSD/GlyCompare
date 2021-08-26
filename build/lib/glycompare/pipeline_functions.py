@@ -513,19 +513,20 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
     #     print('loaded substructure_abd_table')
     return substructure_abd_table, glycoprofile_list
 
-# normalizer can be "median" or "mean"
-def probabilistic_quotient_norm(data, normalizer = "median"):
+# normalizer is "mean"
+def probabilistic_quotient_norm(data, normalizer = "mean"):
     result = pd.DataFrame(columns = data.columns)
-    if normalizer == "mean":
-        m = [data[i].mean() for i in data.columns]
-    elif normalizer == "median":
-        m = [data[i].median() for i in data.columns]
-    else:
-        assert False, "Normalizer can only be mean or median"
+    m = [data[i].mean() for i in data.columns]
+#     if normalizer == "mean":
+#         m = [data[i].mean() for i in data.columns]
+#     elif normalizer == "median":
+#         m = [data[i].median() for i in data.columns]
+#     else:
+#         assert False, "Normalizer can only be mean or median"
     m = np.median(m)
     for i in range(data.shape[0]):
         temp = [list(data[j])[i] / m for j in data.columns]
-        nn = np.median(temp)
+        nn = np.mean(temp)
         temp2 = [list(data[j])[i] / nn for j in data.columns]
         result = result.append(pd.Series(temp2, index = result.columns), ignore_index = True)
     result.index = list(data.index)
