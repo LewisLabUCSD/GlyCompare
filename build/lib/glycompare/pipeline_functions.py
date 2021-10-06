@@ -789,8 +789,11 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
                                                 substructure_weight=select_motifs.get_weight_dict(
                                                     substructure_abd_table[select_col]),
                                                 linkage_specific=linkage_specific)
-        node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict = a_node_state.nodes_dropping_pipe(
+        try:
+            node_attri, edge_attri, mod_nodes, mod_edges, merged_weights_dict = a_node_state.nodes_dropping_pipe(
             drop_parellel=drop_parellel, drop_diff_abund=drop_diff_abund)
+        except:
+            print("None nodes to unpack. Could be that no substructures matched the given core.")
         print("after selection, the nodes preserved: ", mod_nodes)
         print("after selection, the edges preserved: ", mod_edges)
         #
