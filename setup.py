@@ -5,15 +5,15 @@ from setuptools import setup, find_packages, Extension
 # with open("README.md", "r") as fh:
 #     long_description = fh.read()
     
-required = ["glypy==0.12.4",
+required = ["glypy",
 "Cython",
 "pandas",
 "numpy",
 "seaborn",
-"networkx==1.11",
+"networkx",
 "ndex",
 "rdflib",
-"xlrd==1.2",
+"xlrd",
 "beautifulsoup4",
 "SPARQLWrapper"]
 
