@@ -1,12 +1,12 @@
-glypy==0.12.4
+glypy
 Cython
 pandas
 numpy
 seaborn
-networkx==1.11
+networkx
 ndex
 rdflib
-xlrd==1.2
+xlrd
 beautifulsoup4
 SPARQLWrapper
 
