@@ -1,3 +1,5 @@
+from multiprocessing import freeze_support
+freeze_support()
 import os
 import seaborn as sns
 import numpy as np

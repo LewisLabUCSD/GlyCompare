@@ -6,9 +6,12 @@ Home-page: https://github.com/LewisLabUCSD/GlyCompare
 Author: B.B., B.P.K
 Author-email: bobao@eng.ucsd.edu
 License: UNKNOWN
-Description: Please check https://github.com/LewisLabUCSD/GlyCompare
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Description-Content-Type: text/markdown
+License-File: LICENSE
+
+Please check https://github.com/LewisLabUCSD/GlyCompare
+
