@@ -414,7 +414,7 @@ def check_glycan_dict(glycan_dict):
         check if the glycan dict contains Glycan obj not string
     """
     for i in glycan_dict.keys():
-        assert isinstance(glycan_dict[i], Glycan), 'Failed glycan dict check, should be glypy.Glycan'
+        assert isinstance(glycan_dict[i], Glycan), str(i) + " " + str(glycan_dict[i]) + ' Failed glycan dict check, should be glypy.Glycan'
     return True
 
 def check_glycan_substructure_dict(a_glycan_substructure_dict):

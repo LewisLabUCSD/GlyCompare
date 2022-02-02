@@ -15,7 +15,7 @@ from . import test_glycan_io
 # num_processors = 8
 
 print("""
-Thanks for using the GlyCompare v1.1, 
+Thanks for using the GlyCompare v1.1 special version for GlyCompareCT, 
 Please check our github for the latest update.
 
 

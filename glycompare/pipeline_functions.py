@@ -346,22 +346,19 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                 merge_substructure_dict = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(substructure_glycoct_dict_addr))
                 print('loaded merged substructure_dic')
             if merged_list and reference_dict_addr:
-#                 reference_vector_gct = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(merged_list[0]))
                 reference_vector_gct = json.load(open(merged_list[0], "r"))
                 reference_vector_wurcs = json.load(open(merged_list[1], "r"))
                 reference_dict = json.load(open(reference_dict_addr, "r"))
-                index = reference_dict.keys()
                 count = 0
                 for key in merge_substructure_dict.keys():
                     if key in reference_vector_wurcs.keys():
                         for m in merge_substructure_dict[key]:
                             try:
                                 gg_w = wurcs.dumps(m)
-                                gg_gct = glycoct.dumps(m)
                             except:
                                 print(str(m) + " failed to be loaded as wurcs")
-                                continue
-                            if gg_w not in reference_vector_wurcs[key] or gg_gct not in reference_vector_gct[key]:
+                                gg_w = reference_vector_wurcs[key][0]
+                            if gg_w not in reference_vector_wurcs[key] or glycoct.dumps(m) not in reference_vector_gct[key]:
                                 if linkage_specific:
                                     reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
                                 else:
@@ -377,12 +374,13 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                                 gg_w = wurcs.dumps(m)
                             except:
                                 print(str(m) + " failed to be loaded as wurcs")
-                                continue
+                                gg_w = ""
                             if linkage_specific:
                                 reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
                             else:
                                 reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
-                            reference_vector_wurcs[key].append(gg_w)
+                            if gg_w:
+                                reference_vector_wurcs[key].append(gg_w)
                             reference_vector_gct[key].append(glycoct.dumps(m))
                             count += 1
                 with open(merged_list[0], 'w') as outfile:
