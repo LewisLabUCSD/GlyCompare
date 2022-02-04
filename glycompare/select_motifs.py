@@ -21,7 +21,7 @@ warnings.filterwarnings('ignore')
 sns.set(color_codes=True)
 
 
-def clean_duplicate(_frag_substructure_list, linkage_specific):
+def clean_duplicate(_frag_substructure_list, linkage_specific, reverse_dict):
     for i in _frag_substructure_list.keys():
         # print(i)
         ldex = 0
@@ -29,9 +29,9 @@ def clean_duplicate(_frag_substructure_list, linkage_specific):
         while ldex < len(_check_list):
             jdex = ldex + 1
             while jdex < len(_check_list):
-                if subtree_of(_check_list[ldex], _check_list[jdex], linkage_specific) == 1 and subtree_of(
-                        _check_list[jdex],
-                        _check_list[ldex]) == 1:
+                if subtree_of(glycoct.loads(reverse_dict[_check_list[ldex]]), glycoct.loads(reverse_dict[_check_list[jdex]]), linkage_specific) == 1 and subtree_of(
+                        glycoct.loads(reverse_dict[_check_list[jdex]]),
+                        glycoct.loads(reverse_dict[_check_list[ldex]])) == 1:
                     del _check_list[jdex]
                 else:
                     jdex += 1
@@ -56,7 +56,7 @@ class substructureLab():
         1b:b-dman-HEX-1:5
         LIN""")
 
-    def __init__(self, substructure_, linkage_specific, tree_={}):
+    def __init__(self, substructure_, linkage_specific, reverse_dict, tree_={}):
         self.linkage_specific = linkage_specific
         if type(substructure_) == dict:
             print(type(list(substructure_.keys())[0]))
@@ -64,27 +64,27 @@ class substructureLab():
             self.substructure_vec = []
             for i in dict_keys:
                 for j in substructure_[str(i)]:
-                    if isinstance(j, type(self._man1)):
+                    if isinstance(glycoct.loads(reverse_dict[j]), type(self._man1)):
                         self.substructure_vec.append(j)
                     else:
-                            self.substructure_vec.append(glycoct.loads(j))
+                        self.substructure_vec.append(j)
             self.substructure_dict = {}
             for idex, i in enumerate(self.substructure_vec):
-                if len(i) not in self.substructure_dict.keys():
-                    self.substructure_dict[len(i)] = [idex]
+                if len(glycoct.loads(reverse_dict[i])) not in self.substructure_dict.keys():
+                    self.substructure_dict[len(glycoct.loads(reverse_dict[i]))] = [idex]
                 else:
-                    self.substructure_dict[len(i)].append(idex)
+                    self.substructure_dict[len(glycoct.loads(reverse_dict[i]))].append(idex)
         elif type(substructure_) == list:
-            if isinstance(substructure_[0], type(self._man1)):
+            if isinstance(glycoct.loads(reverse_dict[substructure_[0]]), type(self._man1)):
                 self.substructure_vec = substructure_
             else:
-                self.substructure_vec = [glycoct.loads(i) for i in substructure_]
+                self.substructure_vec = [i for i in substructure_]
             self.substructure_dict = {}
             for idex, i in enumerate(self.substructure_vec):
-                if len(i) not in self.substructure_dict.keys():
-                    self.substructure_dict[len(i)] = [idex]
+                if len(glycoct.loads(reverse_dict[i])) not in self.substructure_dict.keys():
+                    self.substructure_dict[len(glycoct.loads(reverse_dict[i]))] = [idex]
                 else:
-                    self.substructure_dict[len(i)].append(idex)
+                    self.substructure_dict[len(glycoct.loads(reverse_dict[i]))].append(idex)
         else:
             assert False, "should be either list or dict"
         self.substructure_list = [i for i in range(len(self.substructure_vec))]
@@ -101,7 +101,7 @@ class substructureLab():
                 edge_list.append((i, k))
         return edge_list
 
-    def build_dependence_tree(self, a_substructure_dict):
+    def build_dependence_tree(self, a_substructure_dict, reverse_dict):
         """ connect substructure to all parents"""
         print('start building dependence_tree')
         edge_list = []
@@ -119,18 +119,18 @@ class substructureLab():
                 """
                 _dep_tree[j] = []
                 for k in a_substructure_dict[i - 1]:
-                    if subtree_of(self.substructure_vec[k], self.substructure_vec[j], exact=self.linkage_specific) == 1:
+                    if subtree_of(glycoct.loads(reverse_dict[self.substructure_vec[k]]), glycoct.loads(reverse_dict[self.substructure_vec[j]]), exact=self.linkage_specific) == 1:
                         _dep_tree[k].append(j)
                         edge_list.append((k, j))
         return _dep_tree, edge_list
 
-    def get_dependence_tree_all(self):
+    def get_dependence_tree_all(self, reverse_dict):
         """
         get the dep tree for all node
         :return: dep_tree, edge_list
         """
         if self.substructure_dep_tree == {}:
-            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict)
+            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict, reverse_dict = reverse_dict)
             self.substructure_dep_tree = _dep_tree
             return _dep_tree, _edge_list
         else:
@@ -204,7 +204,7 @@ class substructureLabwithCore(substructureLab):
     store vec
     """
 
-    def __init__(self, substructure_, glycan_core, linkage_specific, tree_={}):
+    def __init__(self, substructure_, glycan_core, linkage_specific, reverse_dict, tree_={}):
         """
         self.substructure_dict stores the id of the self.substructure_vec
         :param substructure_: substructure vec or substructure dict_degree_list:
@@ -220,11 +220,11 @@ class substructureLabwithCore(substructureLab):
         plot_glycan_utilities.plot_glycan(self.glycan_core)
         assert isinstance(self.glycan_core, glypy.structure.glycan.Glycan)
         assert substructure_, "substructure vector is empty"
-        substructureLab.__init__(self, substructure_, linkage_specific)
+        substructureLab.__init__(self, substructure_, linkage_specific, reverse_dict)
         self.substructure_dict_with_core = {}
         self.substructure_dep_tree_core = tree_
         self.substructure_with_core_list = []
-        self.extract_substructure_with_core()
+        self.extract_substructure_with_core(reverse_dict = reverse_dict)
 
     #     self.substructure_vec_sia_ept = []
     #     self.substructure_vec_gala_ept = []
@@ -258,7 +258,7 @@ class substructureLabwithCore(substructureLab):
     #         print("Finish sia match ", len(self.substructure_vec_sia_ept),
     #               " substructures are find with sia core ", len(self.substructure_vec_sia_ept), " substructures are find with no sia core ")
 
-    def extract_substructure_with_core(self):
+    def extract_substructure_with_core(self, reverse_dict):
         """ store the result in self.substructure_with_core_list
         and return the count"""
         # count = []
@@ -274,10 +274,10 @@ class substructureLabwithCore(substructureLab):
                     substructure j in i degree/substructure in i-1 degree
                     """
                     # print(subtree_of(self.glycan_core, self.substructure_vec[j], exact=__init__.exact_Ture))
-                    if subtree_of(self.glycan_core, self.substructure_vec[j], exact=self.linkage_specific) == 1:
+                    if subtree_of(self.glycan_core, glycoct.loads(reverse_dict[self.substructure_vec[j]]), exact=self.linkage_specific) == 1:
                         if self.core_index == -1 and len(self.glycan_core) == i:
                             # print('check core', self.substructure_vec[j])
-                            if subtree_of(self.substructure_vec[j], self.glycan_core, exact=self.linkage_specific) == 1:
+                            if subtree_of(glycoct.loads(reverse_dict[self.substructure_vec[j]]), self.glycan_core, exact=self.linkage_specific) == 1:
                                 self.core_index = j
                                 # print('find it')
                         self.substructure_dict_with_core[i].append(j)
@@ -288,13 +288,13 @@ class substructureLabwithCore(substructureLab):
             print("Finish the n-glycan match ", len(self.substructure_with_core_list),
                   " substructures are matched to the n-glycan core")
 
-    def get_dependence_tree_core(self):
+    def get_dependence_tree_core(self, reverse_dict):
         """
         get the dep tree for core's node
         :return: dep_tree, edge_list
         """
         if self.substructure_dep_tree_core == {}:
-            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict_with_core)
+            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict_with_core, reverse_dict = reverse_dict)
             self.substructure_dep_tree_core = _dep_tree
             return _dep_tree, _edge_list
         else:
@@ -423,7 +423,7 @@ class NodesState():
                     else:
                         self.node_attri[i]['kept'] = 'root'
 
-    def nodes_dropping_pipe(self, drop_parellel=False, drop_diff_abund=False, substructure_vec=[]):
+    def nodes_dropping_pipe(self, reverse_dict, drop_parellel=False, drop_diff_abund=False, substructure_vec=[]):
         """check the unuseful nodes
            The node['kept'] attribute will have
                 immd
@@ -505,7 +505,7 @@ class NodesState():
                 for j in range(i, len(mod_nodes)):
                     if j == i: continue
                     if substructure_vec:
-                        _re = subtree_of(substructure_vec[mod_nodes[i]], substructure_vec[mod_nodes[j]], exact=self.linkage_specific)
+                        _re = subtree_of(glycoct.loads(reverse_dict[substructure_vec[mod_nodes[i]]]), glycoct.loads(reverse_dict[substructure_vec[mod_nodes[j]]]), exact=self.linkage_specific)
                         if _re:
                             check_through = True
                             # print(mod_nodes[i], mod_nodes[j], _re, self.get_value_unnormed(mod_nodes[i], mod_nodes[j], self.get_corr))
