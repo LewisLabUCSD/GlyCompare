@@ -3,6 +3,7 @@ freeze_support()
 import os
 import seaborn as sns
 import numpy as np
+import pandas as pd
 import sys
 
 from . import merge_substructure_vec
@@ -53,7 +54,7 @@ def load_para_keywords(project_name, working_addr, reference_addr, **kwargs):
     substructure_glycoct_vec_addr = os.path.join(output_data_dir, project_name + "_substructure_glycoct_vec.json")
     motif_glycoct_dict_addr = os.path.join(output_data_dir, project_name + "_motif_glycoct_dict.json")
 
-    glycan_substructure_occurance_dict_addr = os.path.join(output_data_dir, project_name + "_glycan_substructure_occurance_dict.json")
+    glycan_substructure_occurance_dict_addr = os.path.join(output_data_dir, project_name + "_glycan_substructure_occurance_dict.csv")
     motif_abd_table_addr = os.path.join(output_data_dir, project_name + "_motif_abd_table.csv")
     substructure_abd_table_addr = os.path.join(output_data_dir, project_name + '_substructure_abd_table.csv')
     var_annot = os.path.join(source_dir, project_name + "_variable_annotation.csv")
@@ -347,23 +348,24 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
                     output_merged_substructure_glycoct_dict_addr=substructure_glycoct_dict_addr)
                 print('finished merge substructure_dic')
             else:
-                merge_substructure_dict = glycan_io.glycan_str_to_glycan_obj(json_utility.load_json(substructure_glycoct_dict_addr))
+                merge_substructure_dict = json.load(open(substructure_glycoct_dict_addr, "r"))
                 print('loaded merged substructure_dic')
 #             if merged_list and reference_dict_addr:
 #                 reference_update(merge_substructure_dict, merged_list, reference_dict_addr)
                         
-            matched_dict = merge_substructure_vec.substructure_matching_wrapper(substructure_=merge_substructure_dict,
+            matched_df = merge_substructure_vec.substructure_matching_wrapper(substructure_=merge_substructure_dict,
                                                                                 glycan_substructure_dict=glycan_substructure_dic,
                                                                                 linkage_specific=linkage_specific,
                                                                                 num_processors=num_processors,
                                                                                 reverse_dict = reverse_dict,
                                                                           matched_dict_addr=glycan_substructure_occurance_dict_addr)
         else:
-            matched_dict = json_utility.load_json(glycan_substructure_occurance_dict_addr)
+#             matched_dict = json_utility.load_json(glycan_substructure_occurance_dict_addr)
+            matched_df = pd.read_csv(glycan_substructure_occurance_dict_addr, index_col = 0)
         print('finished glycan deconvolution')
     else:
         assert False, 'cannot find the glycan_dict file'
-    return matched_dict
+    return matched_df
 
 
 def reference_update(merge_substructure_dict, merged_list, reference_dict_addr):
@@ -491,11 +493,11 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
             print("no external profile naming found")
             profile_name = []
 
-        match_dict = glycan_io.load_match_dict_from_json(glycan_substructure_occurance_dict_addr)
+        match_df = pd.read_csv(glycan_substructure_occurance_dict_addr, index_col = 0)
         # print(naming_abd_dict)
         glycoprofile_list = process_glycoprofiles.get_glycoprofile_list(glycan_identifier_to_structure_id,
                                                                         naming_abd_dict,
-                                                                        match_dict,
+                                                                        match_df,
                                                                         profile_columns,
                                                                         profile_name,
                                                                         glycoprofile_list_addr,
@@ -509,7 +511,7 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
         substructure_abd_table.to_csv(substructure_abd_table_addr)
         
         # Verify substructure abundance table is generated properly. 
-        unit_tests.sub_abd_validation(keywords_dict, abd_table, get_existance, absolute)
+#         unit_tests.sub_abd_validation(keywords_dict, abd_table, get_existance, absolute)
     else:
         assert False, 'missing one of them' + \
                       '\n'.join([glycan_substructure_occurance_dict_addr,
@@ -921,7 +923,7 @@ def parse_abundance_table(glycan_abundance_table, ):
         sorted_glycan_data_array[i, :] = filtered_matrix[i, :] / sum(filtered_matrix[i, :])
 
 
-import pandas as pd
+
 
 
 def parse_meta_table(addr, *kwargs):

@@ -738,7 +738,7 @@ def check_external_profile_name(external_profile_name):
 """change the name of the glycan and glycan id"""
 
 
-def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, profile_name_order, external_profile_name,
+def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_df, profile_name_order, external_profile_name,
                           glyprofile_list_addr,
                           absolute=False,
                           get_existance=True):
@@ -749,7 +749,7 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
     :param glyprofile_list_addr:
     :param profile_naming_to_id:
     :param norm_mz_abd_dict:
-    :param match_dict:
+    :param match_df:
     return profile_obj_list
     """
 
@@ -766,12 +766,12 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
 
     glycan_abd_dict = {}
     _num = len(profile_naming_to_id.keys())
-    for i in match_dict.keys():
+    for i in match_df.columns:
         glycan_abd_dict[i] = _num * [0]
 
     for pro_idex, pro in enumerate(profile_name_order):
         # pro_id = pro
-        weighted_vec = np.zeros(len(match_dict[list(match_dict.keys())[0]]))
+        weighted_vec = np.zeros(match_df.shape[0])
         abundance_list = []
         mz_list = []
         glycan_id_list = []
@@ -779,14 +779,14 @@ def get_glycoprofile_list(profile_naming_to_id, norm_mz_abd_dict, match_dict, pr
 
         for i in sorted(list(profile_naming_to_id[pro].keys())):
             glycan_id = profile_naming_to_id[pro][i]
-            if glycan_id in match_dict.keys():  
+            if glycan_id in match_df.columns:  
                 mz_list.append(i)
                 glycan_id_list.append(glycan_id)
                 # print()
                 _bundance = norm_mz_abd_dict[i][pro_idex]
                 glycan_abd_dict[glycan_id][pro_idex] = _bundance
                 _existance_list = []
-                for _count in match_dict[glycan_id]:
+                for _count in match_df[glycan_id]:
                     if _count >= 1:
                         if get_existance:
                             _existance_list.append(1)

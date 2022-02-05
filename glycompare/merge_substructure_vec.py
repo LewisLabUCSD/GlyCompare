@@ -5,6 +5,8 @@ import multiprocessing
 # from . import __init__
 from . import glycan_io
 from . import json_utility
+import pandas as pd
+import numpy as np
 
 
 
@@ -106,7 +108,7 @@ def merge_substructure_dict_pip(glycan_substructure_dict, glycan_dict, linkage_s
     for k in substructure_dict.keys():
         temp = []
         for g in substructure_dict[k]:
-            if type(glycoct.loads(reverse_dict[g])) == glypy.structure.glycan.Glycan:
+            if type(glycoct.loads(reverse_dict[g])) == glypy.structure.glycan.Glycan and g not in temp:
                 temp.append(g)
 
         substructure_dict_to_save[k] = temp
@@ -157,6 +159,7 @@ def match_substructure(substructure_vec, _glycan_substructure_dict, linkage_spec
 #         else:
 #             glycan_substructure_dict[i] = _glycan_substructure_dict[i]
     match_vec = [0] * len(substructure_vec)
+#     match_vec = []
 
     for jdex, j in enumerate(substructure_vec):
         #             print(type(j), type(_tree))
@@ -173,7 +176,7 @@ def match_substructure(substructure_vec, _glycan_substructure_dict, linkage_spec
     return match_vec
 
 
-def match_substructure_for_pip(substructure_vec, glycan_substructure_dict, glycan_id, match_dict, linkage_specific, reverse_dict, idex=0):
+def match_substructure_for_pip(substructure_vec, glycan_substructure_dict, glycan_id, linkage_specific, reverse_dict, idex=0):
     """
     :param substructure_vec: customized substructure vec
     :param glycan_substructure_dict: extracted_substructure_dic returned from the extract_substructure
@@ -185,10 +188,11 @@ def match_substructure_for_pip(substructure_vec, glycan_substructure_dict, glyca
     # make duplicate
     try:
         match_vec = match_substructure(substructure_vec, glycan_substructure_dict, linkage_specific=linkage_specific, reverse_dict = reverse_dict)
-        match_dict[glycan_id] = match_vec[:]
+#         match_dict[glycan_id] = match_vec[:]
     except:
         print('error', idex)
     print('finished ', idex)
+    return glycan_id, match_vec
 
 
 def substructure_matching_wrapper(substructure_, glycan_substructure_dict, linkage_specific, num_processors, reverse_dict, matched_dict_addr=""):
@@ -213,45 +217,30 @@ def substructure_matching_wrapper(substructure_, glycan_substructure_dict, linka
     print('get substructure vec, the length is ', len(substructure_vec))
     pool = multiprocessing.Pool(processes=num_processors)
     manager = multiprocessing.Manager()
-    match_dict = manager.dict()  # {substructure_name:[scores]}
+#     match_dict = manager.dict()  # {substructure_name:[scores]}
+    pool_list = []
     for idex, i in enumerate(glycan_substructure_dict):
         print('start processing', i)
-        pool.apply_async(match_substructure_for_pip, args=(substructure_vec, glycan_substructure_dict[i], i, match_dict, linkage_specific, reverse_dict, idex))
+        pool_list.append(pool.apply_async(match_substructure_for_pip, args=(substructure_vec, glycan_substructure_dict[i], i, linkage_specific, reverse_dict, idex)))
+    matched_df = pd.DataFrame(np.array([i.get()[1] for i in pool_list]).transpose(), columns = [i.get()[0] for i in pool_list])
     print("closing poll")
     pool.close()
     print('joining pool')
     pool.join()
     print('converting dict')
-    return_matched_dic = dict(match_dict)
+#     return_matched_dic = dict(match_dict)
     # print(return_matched_dic)
     if matched_dict_addr != "":
-        json_utility.store_json(matched_dict_addr, return_matched_dic)
+        matched_df.to_csv(matched_dict_addr)
+#         json_utility.store_json(matched_dict_addr, return_matched_dic)
 
-    return return_matched_dic
+    return matched_df
 
 
 def check_substructure_dict_length(a_dict):
     return sum([len(a_dict[i]) for i in a_dict.keys()])
 
 
-# def customizing_substructure_vec_pip():
-#     """ merge the substructure of all glycans into substructure dict"""
-#     print('start merging')
-#     glycan_substructure_dict = glycan_io.glycan_str_to_glycan_obj(
-#         load_json(__init__.glycan_substructure_dict_addr))
-#
-#     merged_substructure_dict = merge_substructure_dict_pipe(glycan_substructure_dict,
-#                                               output_merged_substructure_dict_addr=__init__.merged_substructure_dict_addr)
-#
-#     """ Start substructure matching"""
-#     print('start substructure match')
-#     merged_substructure_dict = glycan_io.glycan_str_to_glycan_obj(load_json(__init__.merged_substructure_dict_addr))
-#     match_dict = substructure_matching_wrapper(merged_substructure_dict,
-#                                         glycan_substructure_dict,
-#                                         matched_glycan_dict_addr=__init__.output_matched_dict_addr)
-
-    # nbt_table = pd.read_table(input_profile_addr)
-    # a_profile = build_profiles(nbt_glycan_dict, nbt_table)
 
 
 if __name__ == '__main__':
