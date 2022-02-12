@@ -320,6 +320,7 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
     # print(glycan_glycoct_dict_addr)
     glycan_substructure_glycoct_dict_addr = keywords_dict['glycan_substructure_glycoct_dict_addr']
     substructure_glycoct_dict_addr = keywords_dict['substructure_glycoct_dict_addr']
+    substructure_glycoct_vec_addr = keywords_dict['substructure_glycoct_vec_addr']
     glycan_substructure_occurance_dict_addr = keywords_dict['glycan_substructure_occurance_dict_addr']
     
     if os.path.isfile(glycan_glycoct_dict_addr):
@@ -338,27 +339,29 @@ def extract_and_merge_substrutures_pip(keywords_dict, linkage_specific, num_proc
             print('loaded existed substructure_dic')
             if not os.path.isfile(substructure_glycoct_dict_addr):
                 print('start merge substructure_dict')
-                merge_substructure_dict = merge_substructure_vec.merge_substructure_dict_pip(
+                merge_substructure_vector = merge_substructure_vec.merge_substructure_dict_pip(
                     glycan_substructure_dict=glycan_substructure_dic,
                     glycan_dict=glycan_dict,
                     linkage_specific=linkage_specific,
                     num_processors=num_processors,
                     reference_dict = reference_dict,
                     reverse_dict = reverse_dict,
+                    output_merged_substructure_glycoct_vec_addr=substructure_glycoct_vec_addr,
                     output_merged_substructure_glycoct_dict_addr=substructure_glycoct_dict_addr)
                 print('finished merge substructure_dic')
             else:
-                merge_substructure_dict = json.load(open(substructure_glycoct_dict_addr, "r"))
+                merge_substructure_vector = json.load(open(substructure_glycoct_vec_addr, "r"))
                 print('loaded merged substructure_dic')
 #             if merged_list and reference_dict_addr:
 #                 reference_update(merge_substructure_dict, merged_list, reference_dict_addr)
                         
-            matched_df = merge_substructure_vec.substructure_matching_wrapper(substructure_=merge_substructure_dict,
+            matched_df = merge_substructure_vec.substructure_matching_wrapper(substructure_vec=merge_substructure_vector,
                                                                                 glycan_substructure_dict=glycan_substructure_dic,
                                                                                 linkage_specific=linkage_specific,
                                                                                 num_processors=num_processors,
+                                                                                reference_dict = reference_dict,
                                                                                 reverse_dict = reverse_dict,
-                                                                          matched_dict_addr=glycan_substructure_occurance_dict_addr)
+                                                                                sub_glycoct_addr = substructure_glycoct_vec_addr, matched_dict_addr=glycan_substructure_occurance_dict_addr)
         else:
 #             matched_dict = json_utility.load_json(glycan_substructure_occurance_dict_addr)
             matched_df = pd.read_csv(glycan_substructure_occurance_dict_addr, index_col = 0)
@@ -374,43 +377,13 @@ def reference_update(merge_substructure_dict, merged_list, reference_dict_addr):
     reference_dict = json.load(open(reference_dict_addr, "r"))
     count = 0
     for key in merge_substructure_dict.keys():
-#         if key in reference_vector_wurcs.keys():
         for m in merge_substructure_dict[key]:
-#                 try:
-#                     gg_w = wurcs.dumps(m)
-#                 except:
-#                     print(str(m) + " failed to be loaded as wurcs")
-#                     gg_w = reference_vector_wurcs[key][0]
-#                 if gg_w not in reference_vector_wurcs[key] or glycoct.dumps(m) not in reference_vector_gct[key]:
             if glycoct.dumps(m) not in reference_dict:
                 if linkage_specific:
                     reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
                 else:
                     reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
-#                     reference_vector_wurcs[key].append(gg_w)
-#                     reference_vector_gct[key].append(glycoct.dumps(m))
                 count += 1
-#         else:
-# #             reference_vector_wurcs[key] = []
-# #             reference_vector_gct[key] = []
-#             for m in merge_substructure_dict[key]:
-# #                 try:
-# #                     gg_w = wurcs.dumps(m)
-# #                 except:
-# #                     print(str(m) + " failed to be loaded as wurcs")
-# #                     gg_w = ""
-#                 if linkage_specific:
-#                     reference_dict[glycoct.dumps(m)] = "L" + str(len(reference_dict))
-#                 else:
-#                     reference_dict[glycoct.dumps(m)] = "S" + str(len(reference_dict))
-#                 if gg_w:
-#                     reference_vector_wurcs[key].append(gg_w)
-#                 reference_vector_gct[key].append(glycoct.dumps(m))
-#                 count += 1
-#     with open(merged_list[0], 'w') as outfile:
-#         json.dump(reference_vector_gct, outfile)
-#     with open(merged_list[1], 'w') as outfile:
-#         json.dump(reference_vector_wurcs, outfile)
 
     os.remove(reference_dict_addr)
     num = str(len(reference_dict))
@@ -511,7 +484,7 @@ def glycoprofile_pip(keywords_dict, abd_table, unique_glycan_identifier_to_struc
         substructure_abd_table.to_csv(substructure_abd_table_addr)
         
         # Verify substructure abundance table is generated properly. 
-#         unit_tests.sub_abd_validation(keywords_dict, abd_table, get_existance, absolute)
+        unit_tests.sub_abd_validation(keywords_dict, abd_table, get_existance, absolute)
     else:
         assert False, 'missing one of them' + \
                       '\n'.join([glycan_substructure_occurance_dict_addr,
@@ -766,20 +739,21 @@ def generate_glycoct_files(keywords_dict, glycan_type):
 def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, reverse_dict, core='',
                       drop_parellel=False, drop_diff_abund=True, select_col=[],
                       remove_core=True):
-    substructure_glycoct_dict_addr = keywords_dict['substructure_glycoct_dict_addr']
-    assert os.path.isfile(substructure_glycoct_dict_addr), 'missing ' + substructure_glycoct_dict_addr
+#     substructure_glycoct_dict_addr = keywords_dict['substructure_glycoct_dict_addr']
+#     assert os.path.isfile(substructure_glycoct_dict_addr), 'missing ' + substructure_glycoct_dict_addr
+    substructure_glycoct_vec_addr = keywords_dict['substructure_glycoct_vec_addr']
+    assert os.path.isfile(substructure_glycoct_vec_addr), 'missing ' + substructure_glycoct_vec_addr   
     substructure_abd_table_addr = keywords_dict['substructure_abd_table_addr']
     assert os.path.isfile(substructure_abd_table_addr), 'missing' + substructure_abd_table_addr
 
     substructure_abd_table = pd.read_csv(substructure_abd_table_addr, index_col=0)
-    substructure_dict = json.load(open(substructure_glycoct_dict_addr, "r"))
-    # _substructure_lab = select_substructures.substructureLabwithCore(substructure_dict, glycan_core=select_substructures.nglycan_core, linkage_specific=False)  # unicarbkb_substructures_12259.json
-    # _substructure_lab.get_dependence_tree_core()
+#     substructure_dict = json.load(open(substructure_glycoct_dict_addr, "r"))
+    substructure_vec = json.load(open(substructure_glycoct_vec_addr, "r"))
 
     if not select_col:
         select_col = substructure_abd_table.columns
     if not only_substructures_start_from_root:
-        _substructure_lab = select_motifs.substructureLab(substructure_=substructure_dict,
+        _substructure_lab = select_motifs.substructureLab(substructure_=substructure_vec,
                                             linkage_specific=linkage_specific, reverse_dict = reverse_dict)
         _substructure_lab.get_dependence_tree_all(reverse_dict = reverse_dict)
         a_node_state = select_motifs.NodesState(dependence_tree=_substructure_lab.substructure_dep_tree,
@@ -793,7 +767,7 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
 
     else:
         assert core != '', 'Should specify core'
-        _substructure_lab = select_motifs.substructureLabwithCore(substructure_=substructure_dict,
+        _substructure_lab = select_motifs.substructureLabwithCore(substructure_=substructure_vec,
                                                     glycan_core=core,
                                                     linkage_specific=linkage_specific, reverse_dict = reverse_dict)  # unicarbkb_substructures_12259.json
         _substructure_lab.get_dependence_tree_core()
@@ -808,25 +782,7 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
             print("None nodes to unpack. Could be that no substructures matched the given core.")
         print("after selection, the nodes preserved: ", mod_nodes)
         print("after selection, the edges preserved: ", mod_edges)
-        #
-        # substructure_glycoct_dict_addr = keywords_dict['substructure_glycoct_dict_addr']
-        # assert os.path.isfile(substructure_glycoct_dict_addr), 'missing ' + substructure_glycoct_dict_addr
-        # substructure_abd_table_addr = keywords_dict['substructure_abd_table_addr']
-        # assert os.path.isfile(substructure_abd_table_addr), 'missing' + substructure_abd_table_addr
-        #
-        # substructure_abd_table = pd.read_csv(substructure_abd_table_addr, index_col=0)
-        # substructure_dict = glycan_io.load_substructure_vec_from_json(substructure_glycoct_dict_addr)
-        # _substructure_lab = select_motifs.substructureLabwithCore(substructure_dict, glycan_core=select_motifs.nglycan_core, linkage_specific=False)  # unicarbkb_motifs_12259.json
-        # _substructure_lab.get_dependence_tree_core()
-        #
-        # _a = select_motifs.NodesState(_substructure_lab.substructure_dep_tree_core,
-        #                                               select_motifs.get_weight_dict(substructure_abd_table[_table_col]),
-        #                             linkage_specific=linkage_specific)
-        #
-        # _,_,mod_nodes,_, merged_weights_dict=_a.nodes_dropping_pipe(drop_parellel=False, drop_diff_abund=True)
-        #
-        # # _collapsed_edge, _collapsed_node, _collapsed_dege_attri = _a.collapsing_potential_node()
-        # #
+
         if remove_core:
             if _substructure_lab.core_index in mod_nodes:
                 mod_nodes.remove(_substructure_lab.core_index)

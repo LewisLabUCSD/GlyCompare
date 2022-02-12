@@ -58,33 +58,34 @@ class substructureLab():
 
     def __init__(self, substructure_, linkage_specific, reverse_dict, tree_={}):
         self.linkage_specific = linkage_specific
-        if type(substructure_) == dict:
-            print(type(list(substructure_.keys())[0]))
-            dict_keys = sorted([int(i) for i in substructure_.keys()])
-            self.substructure_vec = []
-            for i in dict_keys:
-                for j in substructure_[str(i)]:
-                    if isinstance(glycoct.loads(reverse_dict[j]), type(self._man1)):
-                        self.substructure_vec.append(j)
-                    else:
-                        self.substructure_vec.append(j)
+        if type(substructure_) == list:
+            self.substructure_vec = substructure_
+#             print(type(list(substructure_.keys())[0]))
+#             dict_keys = sorted([int(i) for i in substructure_.keys()])
+#             self.substructure_vec = []
+#             for i in dict_keys:
+#                 for j in substructure_[str(i)]:
+#                     if isinstance(glycoct.loads(reverse_dict[j]), type(self._man1)):
+#                         self.substructure_vec.append(j)
+#                     else:
+#                         self.substructure_vec.append(j)
             self.substructure_dict = {}
             for idex, i in enumerate(self.substructure_vec):
                 if len(glycoct.loads(reverse_dict[i])) not in self.substructure_dict.keys():
                     self.substructure_dict[len(glycoct.loads(reverse_dict[i]))] = [idex]
                 else:
                     self.substructure_dict[len(glycoct.loads(reverse_dict[i]))].append(idex)
-        elif type(substructure_) == list:
-            if isinstance(glycoct.loads(reverse_dict[substructure_[0]]), type(self._man1)):
-                self.substructure_vec = substructure_
-            else:
-                self.substructure_vec = [i for i in substructure_]
-            self.substructure_dict = {}
-            for idex, i in enumerate(self.substructure_vec):
-                if len(glycoct.loads(reverse_dict[i])) not in self.substructure_dict.keys():
-                    self.substructure_dict[len(glycoct.loads(reverse_dict[i]))] = [idex]
-                else:
-                    self.substructure_dict[len(glycoct.loads(reverse_dict[i]))].append(idex)
+#         elif type(substructure_) == list:
+#             if isinstance(glycoct.loads(reverse_dict[substructure_[0]]), type(self._man1)):
+#                 self.substructure_vec = substructure_
+#             else:
+#                 self.substructure_vec = [i for i in substructure_]
+#             self.substructure_dict = {}
+#             for idex, i in enumerate(self.substructure_vec):
+#                 if len(glycoct.loads(reverse_dict[i])) not in self.substructure_dict.keys():
+#                     self.substructure_dict[len(glycoct.loads(reverse_dict[i]))] = [idex]
+#                 else:
+#                     self.substructure_dict[len(glycoct.loads(reverse_dict[i]))].append(idex)
         else:
             assert False, "should be either list or dict"
         self.substructure_list = [i for i in range(len(self.substructure_vec))]
@@ -226,38 +227,6 @@ class substructureLabwithCore(substructureLab):
         self.substructure_with_core_list = []
         self.extract_substructure_with_core(reverse_dict = reverse_dict)
 
-    #     self.substructure_vec_sia_ept = []
-    #     self.substructure_vec_gala_ept = []
-    #
-    # def create_epitope_vec(self):
-    #     print("start substructure with sia")
-    #     if not self.substructure_vec_sia_ept:
-    #         for i in sorted(list(self.substructure_dict.keys())):
-    #             # if (i) > 9:
-    #             #     break
-    #             # print("len", i)
-    #             for j in self.substructure_dict[i]:
-    #                 """
-    #                 substructure j in i degree/substructure in i-1 degree
-    #                 """
-    #                 if subtree_of(self._man1, self.substructure_vec[j], exact=__init__.exact_Ture) is not None or subtree_of(
-    #                         self._man2, self.substructure_vec[
-    #                             j], exact=__init__.exact_Ture) is not None:
-    #                     continue
-    #                 if subtree_of(self._with_sia_core, self.substructure_vec[j], exact=__init__.exact_Ture) is not None:
-    #                     if len(self.substructure_vec[j]) % 2 == 1:
-    #                         self.substructure_vec_sia_ept.append(j)
-    #                         # self.gala_ept_vec.append(j)
-    #                 elif subtree_of(self._no_sia_core, self.substructure_vec[j], exact=__init__.exact_Ture) is not None:
-    #                     if len(self.substructure_vec[j]) % 2 == 0:
-    #                         self.substructure_vec_gala_ept.append(j)
-    #
-    #         print("Finish sia match ", len(self.substructure_vec_sia_ept),
-    #               " substructures are find with sia core ", len(self.substructure_vec_gala_ept), " substructures are find with no sia core ")
-    #     else:
-    #         print("Finish sia match ", len(self.substructure_vec_sia_ept),
-    #               " substructures are find with sia core ", len(self.substructure_vec_sia_ept), " substructures are find with no sia core ")
-
     def extract_substructure_with_core(self, reverse_dict):
         """ store the result in self.substructure_with_core_list
         and return the count"""
@@ -362,20 +331,6 @@ class NodesState():
 
         node_list = list(nodes)
         edge_list = list(edges)
-        # G=nx.Graph(G)
-        # dG=nx.relabel_nodes(G, nx.get_node_attributes(G,'name'), copy=True)
-
-        # nx.draw(dG, with_labels=True)
-        # # G=NdexGraph()
-        # id2name_map=dict(zip(range(len(dG.nodes())), dG.nodes()))
-        # name2id_map={v:k for k,v in id2name_map.items()}
-        # dG=nx.relabel_nodes(dG, name2id_map)
-        # nx.set_node_attributes(dG,'names', id2name_map)
-        # if edge_attri == {}:
-        #     edge_attri = copy.deepcopy(self.edge_attri)
-        # if node_attri == {}:
-        #     node_attri = copy.deepcopy(self.node_attri)
-        # print(node_attri)
         G = NdexGraph()
 
 

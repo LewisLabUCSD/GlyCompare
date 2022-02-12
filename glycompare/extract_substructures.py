@@ -61,22 +61,33 @@ def extract_substructure(a_glycan, reference_dict, linkage_specific, branch=5):
     extracted_substructure_dic = {}
     ref_up = []
     for i in a_glycan.fragments(max_cleavages=branch):
-        # print('aaa')
         _frag_gly = fragment_to_substructure(i, a_glycan)
-        ref_ind, reference_dict = reference_get(glycoct.dumps(_frag_gly), reference_dict, linkage_specific = linkage_specific)
-        ref_up.append((glycoct.dumps(_frag_gly), ref_ind))
+#         ref_ind, reference_dict = reference_get(glycoct.dumps(_frag_gly), reference_dict, linkage_specific = linkage_specific)
+#         ref_up.append((glycoct.dumps(_frag_gly), ref_ind))
+#         if not str(len(_frag_gly)) in extracted_substructure_dic.keys():
+#             extracted_substructure_dic[str(len(_frag_gly))] = [ref_ind]
+#         elif ref_ind not in extracted_substructure_dic[str(len(_frag_gly))]:
+#             extracted_substructure_dic[str(len(_frag_gly))].append(ref_ind)
+        gct = glycoct.dumps(_frag_gly)
         if not str(len(_frag_gly)) in extracted_substructure_dic.keys():
-            extracted_substructure_dic[str(len(_frag_gly))] = [ref_ind]
+            extracted_substructure_dic[str(len(_frag_gly))] = [gct]
         else:
-            extracted_substructure_dic[str(len(_frag_gly))].append(ref_ind)
-    # print('ab')
-    ref_ind = reference_get(glycoct.dumps(a_glycan), reference_dict, linkage_specific = linkage_specific)[0]
-    ref_up.append((glycoct.dumps(a_glycan), ref_ind))
-    reference_dict = ""
-    extracted_substructure_dic[str(len(a_glycan))] = [ref_ind]
+            extracted_substructure_dic[str(len(_frag_gly))].append(gct)
+#     ref_ind = reference_get(glycoct.dumps(a_glycan), reference_dict, linkage_specific = linkage_specific)[0]
+#     ref_up.append((glycoct.dumps(a_glycan), ref_ind))
+#     reference_dict = ""
+#     if not str(len(a_glycan)) in extracted_substructure_dic.keys():
+#         extracted_substructure_dic[str(len(a_glycan))] = [ref_ind]
+#     else:
+#         extracted_substructure_dic[str(len(a_glycan))].append([ref_ind])
+    gct = glycoct.dumps(a_glycan)
+    if not str(len(a_glycan)) in extracted_substructure_dic.keys():
+        extracted_substructure_dic[str(len(a_glycan))] = [gct]
+    else:
+        extracted_substructure_dic[str(len(a_glycan))].append(gct)
     
     # print('ac')
-    return extracted_substructure_dic, ref_up
+    return extracted_substructure_dic
 
 def reference_get(glycan, reference_dict, linkage_specific = True):
 #     global reference_dict_
@@ -92,7 +103,7 @@ def reference_get(glycan, reference_dict, linkage_specific = True):
     
 def reference_update(reference_dict, reference_dict_addr):
     old_reference_dict = json.load(open(reference_dict_addr, "r"))
-    count = len(old_reference_dict) - len(reference_dict)
+    count = len(reference_dict) - len(old_reference_dict)
     os.remove(reference_dict_addr)
     num = str(len(reference_dict))
     time = "_".join(str(datetime.now()).split(".")[0].split(" "))
@@ -115,10 +126,10 @@ def extract_substructure_wrapper(a_name, a_glycan_str, substructure_dic, referen
 #     try:
     print('start', a_name)
     start_time = time.time()
-    substructure_dic[a_name], ref_up = extract_substructure(a_glycan_str, reference_dict, linkage_specific, branch = 5)
+    substructure_dic[a_name] = extract_substructure(a_glycan_str, reference_dict, linkage_specific, branch = 5)
     end_time = time.time()
     print(a_name, len(substructure_dic[a_name]), end_time - start_time)
-    return ref_up
+#     return ref_up
         # print('has_substructure', substructure_dic[_name])
         #     for j in substructure_dic.keys():
         #         print(j, len(substructure_dic[j]))
@@ -160,34 +171,44 @@ def extract_substructures_pip(glycan_dict, gly_len, output_file, num_processors,
             Also check exists wrapper
         """
         pool_list.append(pool.apply_async(extract_substructure_wrapper, args=(i, glycan_dict[i], substructure_dic, reference_dict, linkage_specific)))
-    result_list = [xx.get() for xx in pool_list]
-#     print(result_list)
-    for gly in result_list:
-        for sub in gly:
-            if sub[0] not in reference_dict:
-                reference_dict[sub[0]] = sub[1]
-    # print('finished ', idex)
-    # print("closing poll")
+#     result_list = [xx.get() for xx in pool_list]
+#     for gly in result_list:
+#         for sub in gly:
+#             if sub[0] not in reference_dict:
+#                 reference_dict[sub[0]] = sub[1]
     pool.close()
-    # print('joining pool')
     pool.join()
     print('finished pool')
     print('glycan_dict', len(substructure_dic))
-    glycan_substructure_dic = dict(substructure_dic)
     
-    str_substructure = {}
-    for i in glycan_dict:
-        # if len(glycan_dict[i]) > gly_len: continue
-        if i not in glycan_substructure_dic.keys():
-            print('missing', i)
-            continue
-        str_substructure[i] = {}
-        for j in glycan_substructure_dic[i]:
-            str_substructure[i][j] = [str(k) for k in glycan_substructure_dic[i][j]]
-    if output_file != '':
-        json_utility.store_json(output_file, str_substructure)
+    print("updating reference dict...")
+    substructure_dic = dict(substructure_dic)
+#     glycan_substructure_dic = {}
+    for gly in substructure_dic:
+        for sub_len in substructure_dic[gly]:
+            for si in range(len(substructure_dic[gly][sub_len])):
+                if substructure_dic[gly][sub_len][si] not in reference_dict:
+                    if linkage_specific:
+                        reference_dict[substructure_dic[gly][sub_len][si]] = "L" + str(len(reference_dict))
+                    else:
+                        reference_dict[substructure_dic[gly][sub_len][si]] = "S" + str(len(reference_dict))
+                substructure_dic[gly][sub_len][si] = reference_dict[substructure_dic[gly][sub_len][si]]
     reference_update(reference_dict, reference_dict_addr)
-    return glycan_substructure_dic
+    
+#     glycan_substructure_dic = dict(substructure_dic)
+#     str_substructure = {}
+#     for i in glycan_dict:
+#         # if len(glycan_dict[i]) > gly_len: continue
+#         if i not in glycan_substructure_dic.keys():
+#             print('missing', i)
+#             continue
+#         str_substructure[i] = {}
+#         for j in glycan_substructure_dic[i]:
+#             str_substructure[i][j] = [str(k) for k in glycan_substructure_dic[i][j]]
+    if output_file != '':
+        json_utility.store_json(output_file, substructure_dic)
+#     reference_update(reference_dict, reference_dict_addr)
+    return substructure_dic
 
 
 # def main():
