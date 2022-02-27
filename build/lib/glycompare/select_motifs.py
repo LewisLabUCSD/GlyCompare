@@ -11,6 +11,7 @@ from glypy.io import glycoct
 from ndex.networkn import NdexGraph
 from scipy import stats
 from scipy.spatial import distance
+import multiprocessing
 
 from . import plot_glycan_utilities
 
@@ -56,8 +57,9 @@ class substructureLab():
         1b:b-dman-HEX-1:5
         LIN""")
 
-    def __init__(self, substructure_, linkage_specific, reverse_dict, tree_={}):
+    def __init__(self, substructure_, linkage_specific, reverse_dict, num_processors, tree_={}):
         self.linkage_specific = linkage_specific
+        self.num_processors = num_processors
         if type(substructure_) == list:
             self.substructure_vec = substructure_
 #             print(type(list(substructure_.keys())[0]))
@@ -102,36 +104,76 @@ class substructureLab():
                 edge_list.append((i, k))
         return edge_list
 
-    def build_dependence_tree(self, a_substructure_dict, reverse_dict):
+    def build_dependence_tree(self, a_substructure_dict, reverse_dict, num_processors):
         """ connect substructure to all parents"""
         print('start building dependence_tree')
-        edge_list = []
-        _dep_tree = {}
-        # self.substructure_dep_tree = {}
+#         edge_list = []
+#         _dep_tree = {}
+        pool = multiprocessing.Pool(processes=num_processors)
+        manager = multiprocessing.Manager()
+        edge_list = manager.list()
+#         _dep_tree = manager.dict()
         for i in sorted(list(a_substructure_dict.keys())):
             print(i)
+            
             if i - 1 not in a_substructure_dict.keys():
-                for j in a_substructure_dict[i]:
-                    _dep_tree[j] = []
+                temp = a_substructure_dict[i]
+#                 for j in a_substructure_dict[i]:
+#                     _dep_tree[j] = []
                 continue
-            for j in a_substructure_dict[i]:
-                """
-                    substructure j in i degree/substructure in i-1 degree
-                """
-                _dep_tree[j] = []
-                for k in a_substructure_dict[i - 1]:
-                    if subtree_of(glycoct.loads(reverse_dict[self.substructure_vec[k]]), glycoct.loads(reverse_dict[self.substructure_vec[j]]), exact=self.linkage_specific) == 1:
-                        _dep_tree[k].append(j)
-                        edge_list.append((k, j))
+            
+            pool.apply_async(self.process_tree, args = (a_substructure_dict[i], a_substructure_dict[i - 1], edge_list, reverse_dict))
+        pool.close()
+        pool.join()
+#             for j in a_substructure_dict[i]:
+#                 """
+#                     substructure j in i degree/substructure in i-1 degree
+#                 """
+#                 _dep_tree[j] = []
+#                 for k in a_substructure_dict[i - 1]:
+#                     if subtree_of(glycoct.loads(reverse_dict[self.substructure_vec[k]]), glycoct.loads(reverse_dict[self.substructure_vec[j]]), exact=self.linkage_specific) == 1:
+#                         _dep_tree[k].append(j)
+#                         edge_list.append((k, j))
+        _dep_tree = {}
+        for i in list(edge_list):
+            if i[0] in _dep_tree:
+                _dep_tree[i[0]].append(i[1])
+            else:
+                _dep_tree[i[0]] = [i[1]]
+            if i[1] not in _dep_tree:
+                _dep_tree[i[1]] = []
+        for i in temp:
+            if i not in _dep_tree:
+                _dep_tree[i] = []
+                
+                
+#         print(edge_list)
         return _dep_tree, edge_list
 
+    def process_tree(self, i_sub, last_sub, edge_list, reverse_dict):
+        for j in i_sub:
+            """
+                substructure j in i degree/substructure in i-1 degree
+            """
+#             _dep_tree[j] = []
+            
+            for k in last_sub:
+#                 temp = []
+                if subtree_of(glycoct.loads(reverse_dict[self.substructure_vec[k]]), glycoct.loads(reverse_dict[self.substructure_vec[j]]), exact=self.linkage_specific) == 1:
+#                     temp.append(j)
+#                     _dep_tree[k].append(j)
+                    edge_list.append((k, j))
+#                 _dep_tree[k] = temp
+#             print(_dep_tree)
+    
+    
     def get_dependence_tree_all(self, reverse_dict):
         """
         get the dep tree for all node
         :return: dep_tree, edge_list
         """
         if self.substructure_dep_tree == {}:
-            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict, reverse_dict = reverse_dict)
+            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict, reverse_dict = reverse_dict, num_processors = self.num_processors)
             self.substructure_dep_tree = _dep_tree
             return _dep_tree, _edge_list
         else:
@@ -205,14 +247,14 @@ class substructureLabwithCore(substructureLab):
     store vec
     """
 
-    def __init__(self, substructure_, glycan_core, linkage_specific, reverse_dict, tree_={}):
+    def __init__(self, substructure_, glycan_core, linkage_specific, reverse_dict, num_processors, tree_={}):
         """
         self.substructure_dict stores the id of the self.substructure_vec
         :param substructure_: substructure vec or substructure dict_degree_list:
         """
         # self.linkage_specific = linkage_specific
         self.core_index = -1
-
+        self.num_processors = num_processors
         if type(glycan_core) == str:
             self.glycan_core = glycoct.loads(glycan_core)
         else:
@@ -263,7 +305,7 @@ class substructureLabwithCore(substructureLab):
         :return: dep_tree, edge_list
         """
         if self.substructure_dep_tree_core == {}:
-            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict_with_core, reverse_dict = reverse_dict)
+            _dep_tree, _edge_list = self.build_dependence_tree(self.substructure_dict_with_core, reverse_dict = reverse_dict, num_processors = self.num_processors)
             self.substructure_dep_tree_core = _dep_tree
             return _dep_tree, _edge_list
         else:

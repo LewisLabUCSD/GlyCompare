@@ -200,7 +200,7 @@ def check_init_dir(keywords_dict):
 #             assert isinstance(j, glypy.Glycan)
 
 
-def load_glycans_pip(keywords_dict, data_type, reference_dict, reverse_dict, linkage_specific, reference_dict_addr, num_processors=8, structure_loader=None, forced=True):
+def load_glycans_pip(keywords_dict, data_type, reference_dict, reverse_dict, linkage_specific, reference_dict_addr, num_processors=1, structure_loader=None, forced=True):
     # project_name, structure_loader, data_type, glytoucan_db="", glycoct_address=""):
     """
     :param keywords_dict:
@@ -736,7 +736,7 @@ def generate_glycoct_files(keywords_dict, glycan_type):
             
 
 
-def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, reverse_dict, core='',
+def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_from_root, reverse_dict, num_processors, core='',
                       drop_parellel=False, drop_diff_abund=True, select_col=[],
                       remove_core=True):
 #     substructure_glycoct_dict_addr = keywords_dict['substructure_glycoct_dict_addr']
@@ -754,7 +754,7 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
         select_col = substructure_abd_table.columns
     if not only_substructures_start_from_root:
         _substructure_lab = select_motifs.substructureLab(substructure_=substructure_vec,
-                                            linkage_specific=linkage_specific, reverse_dict = reverse_dict)
+                                            linkage_specific=linkage_specific, reverse_dict = reverse_dict, num_processors = num_processors)
         _substructure_lab.get_dependence_tree_all(reverse_dict = reverse_dict)
         a_node_state = select_motifs.NodesState(dependence_tree=_substructure_lab.substructure_dep_tree,
                                                 substructure_weight=select_motifs.get_weight_dict(
@@ -769,8 +769,8 @@ def select_motifs_pip(keywords_dict, linkage_specific, only_substructures_start_
         assert core != '', 'Should specify core'
         _substructure_lab = select_motifs.substructureLabwithCore(substructure_=substructure_vec,
                                                     glycan_core=core,
-                                                    linkage_specific=linkage_specific, reverse_dict = reverse_dict)  # unicarbkb_substructures_12259.json
-        _substructure_lab.get_dependence_tree_core()
+                                                    linkage_specific=linkage_specific, reverse_dict = reverse_dict, num_processors = num_processors)  # unicarbkb_substructures_12259.json
+        _substructure_lab.get_dependence_tree_core(reverse_dict = reverse_dict)
         a_node_state = select_motifs.NodesState(dependence_tree=_substructure_lab.substructure_dep_tree_core,
                                                 substructure_weight=select_motifs.get_weight_dict(
                                                     substructure_abd_table[select_col]),
