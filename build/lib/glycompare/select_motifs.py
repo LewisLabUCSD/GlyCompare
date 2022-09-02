@@ -263,7 +263,7 @@ class substructureLabwithCore(substructureLab):
         plot_glycan_utilities.plot_glycan(self.glycan_core)
         assert isinstance(self.glycan_core, glypy.structure.glycan.Glycan)
         assert substructure_, "substructure vector is empty"
-        substructureLab.__init__(self, substructure_, linkage_specific, reverse_dict)
+        substructureLab.__init__(self, substructure_, linkage_specific, reverse_dict, num_processors)
         self.substructure_dict_with_core = {}
         self.substructure_dep_tree_core = tree_
         self.substructure_with_core_list = []
