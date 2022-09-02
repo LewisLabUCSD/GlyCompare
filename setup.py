@@ -17,6 +17,7 @@ required = ["glypy",
 "beautifulsoup4",
 "SPARQLWrapper"]
 
+
 setuptools.setup(
      name='glycompare',  
      version='1.2.1',
