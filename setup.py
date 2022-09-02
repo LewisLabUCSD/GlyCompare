@@ -20,9 +20,9 @@ required = ["glypy",
 
 setuptools.setup(
      name='glycompare',  
-     version='1.0.3',
+     version='1.2.1',
      install_requires=required,
-     author="B.B., B.P.K",
+     author="B.B., B.P.K, Y.Z",
      author_email="bobao@eng.ucsd.edu",
      description="GlyCompare",
      long_description='Please check https://github.com/LewisLabUCSD/GlyCompare',
