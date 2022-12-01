@@ -14,15 +14,15 @@ from . import test_glycan_io
 # root_ = "/Users/apple/PycharmProjects/GlyCompare/"
 # num_processors = 8
 
-print("""
-Thanks for using the GlyCompare v1.2.1, 
-Please check our github for the latest update.
+# print("""
+# Thanks for using the GlyCompare v1.2.1, 
+# Please check our github for the latest update.
 
 
-Bokan & Ben,
-05/09/2022
+# Bokan & Ben,
+# 05/09/2022
 
-""")
+# """)
 
 
 if __name__ == '__main__':
